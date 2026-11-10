@@ -1,0 +1,6 @@
+make: Entering directory '/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_lpx_mxfp8_dma/build'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_lpx_mxfp8_dma/build'
+- V e r i l a t i o n   R e p o r t: Verilator 5.054 2026-11-01 rev vUNKNOWN-built20261104
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 1.395 s (elab=0.000, cvt=0.000, bld=0.193); cpu 0.218 s on 8 threads; allocated 13.145 MB

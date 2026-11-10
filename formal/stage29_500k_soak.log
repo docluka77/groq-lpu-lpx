@@ -1,0 +1,18 @@
+================================================================================
+STAGE 29 500,000-CYCLE 9-SUBSYSTEM ULTRA-ENDURANCE SOAK SIMULATION SUMMARY
+================================================================================
+Total Consecutive Cycles Executed : 500000
+Total Subsystems Verified         : 9 (spec, droop, sram, dot, pcs, kv_quant, mxm, sxm, vxm)
+Total Invariant Checks Verified   : 4500047 (spec=499999 droop=500010 sram=500010 dot=499998 pcs=500001 kvq=499999 mxm=500010 sxm=500010 vxm=500010)
+Total Invariant Errors Detected   : 0
+Power Droop Peak |di/dt|          : Mitigated=36 vs Unmitigated=200 (-82%)
+Power Droop Minimum VDD (mV)      : Mitigated=684 mV vs Unmitigated=597 mV (thresh=620 mV)
+SRAM SER Single-Bit Upsets        : Injected=6250 | Background Scrub Healed=6247 | DED=0
+C2C PCS CRC-16 Link Errors        : Injected=1667 | Go-Back-N Replays=1667
+C2C KV-Cache Quantizer Blocks     : Verified=499999 | NaN/Inf Clamped=64119
+================================================================================
+STAGE 29 500,000-CYCLE 9-SUBSYSTEM SOAK TEST PASSED WITH 0 ERRORS!
+- formal/tb_stage29_500k_soak.sv:1163: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 500us; walltime 2.708 s; speed 184.671 us/s
+- Verilator: cpu 2.708 s on 1 threads; allocated 2 MB

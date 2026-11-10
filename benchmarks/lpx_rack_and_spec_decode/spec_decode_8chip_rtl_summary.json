@@ -1,0 +1,21 @@
+{
+  "target_passes_executed": 4,
+  "pass_emitted_tokens": [4, 5, 3, 4],
+  "pass_kv_ring_advance": [3, 4, 2, 3],
+  "total_emitted_tokens": 16,
+  "total_kv_ring_advance": 12,
+  "effective_decode_speedup_x": 4.00,
+  "peak_didt_mitigated": 36,
+  "peak_didt_unmitigated": 200,
+  "peak_didt_reduction_pct": 82,
+  "min_vdd_mitigated_mv": 684,
+  "min_vdd_unmitigated_mv": 597,
+  "emerg_throttle_cycles_mitigated": 0,
+  "emerg_throttle_cycles_unmitigated": 4,
+  "sram_ser_upsets_injected": 32,
+  "sram_ser_upsets_scrub_healed": 32,
+  "sram_post_scrub_readback_checks": 32,
+  "pcs_crc16_errors_injected": 8,
+  "cluster_c2c_flits_tx": 32,
+  "total_errors": 0
+}

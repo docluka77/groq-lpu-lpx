@@ -1,0 +1,12 @@
+========================================================================
+STAGE 17 POST-SYNTHESIS GATE-LEVEL vs. RTL CO-SIMULATION SUMMARY
+  Total Clock Cycles Simulated : 5220 (Active: 3000, Zero-Skip/Idle: 2000)
+  Post-Reset Lockstep Cycles   : 5200
+  Total Output Comparisons     : 62400 (12 Modules x 5200 Cycles)
+  Total Gate-vs-RTL Mismatches : 0
+========================================================================
+STAGE17_GATE_COSIM_PASS: 100.0% CYCLE-ACCURATE EQUIVALENCE VERIFIED!
+- /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/gate_sim/tb_gate_vs_rtl_cosim.sv:823: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 5us; walltime 0.734 s; speed 7.111 us/s
+- Verilator: cpu 0.625 s on 1 threads; allocated 12 MB

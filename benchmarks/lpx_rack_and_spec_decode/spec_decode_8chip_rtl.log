@@ -1,0 +1,18 @@
+[PASS 0] SpecDecode Tree: mask=0x25 best_leaf=5 draft_len=3 emitted_tokens=4 kv_ring_advance=3 committed=0x0090151210
+[PASS 1] SpecDecode Tree: mask=0xff best_leaf=6 draft_len=4 emitted_tokens=5 kv_ring_advance=4 committed=0x9116131110
+[PASS 2] SpecDecode Tree: mask=0x03 best_leaf=1 draft_len=2 emitted_tokens=3 kv_ring_advance=2 committed=0x0000921110
+[PASS 3] SpecDecode Tree: mask=0x13 best_leaf=4 draft_len=3 emitted_tokens=4 kv_ring_advance=3 committed=0x0093141110
+================================================================================
+STAGE 22 8-CHIP SPECULATIVE DECODING TREE + POWER DROOP + SCRUBBER RTL BENCHMARK
+================================================================================
+Passes Executed       : 4 (Emitted=[4, 5, 3, 4] -> Total=16 tokens, 4.00x Speedup)
+KV Ring Advance       : [3, 4, 2, 3] (Total Draft Advance=12)
+Power Droop |di/dt|   : Mitigated=36 vs Unmitigated=200 (-82%)
+Supply Voltage VDD    : Mitigated Min=684 mV (0 emerg) vs Unmitigated Min=597 mV (4 emerg cycles)
+Background Scrubber   : Injected=32 SER upsets | Healed=32 | Post-Scrub Readbacks=32/32 clean
+Errors                : 0
+================================================================================
+- /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/benchmarks/lpx_rack_and_spec_decode/tb_spec_decode_8chip.sv:657: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 226ns; walltime 0.210 s; speed 1.075 us/s
+- Verilator: cpu 0.189 s on 1 threads; allocated 11 MB

@@ -1,0 +1,8 @@
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_stream_fabric.sv
+hierarchy -top groq_stream_fabric -chparam P_NUM_EAST_STREAMS 2 -chparam P_NUM_WEST_STREAMS 2 -chparam P_STREAM_WIDTH 16
+proc
+opt
+async2sync
+dffunmap
+stat
+sat -seq 8 -set-init-zero -prove-asserts

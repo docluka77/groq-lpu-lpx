@@ -1,0 +1,1610 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `
+        read_verilog -sv -Irtl -Isram_ip sram_ip/groq_sram_macro_sp.sv;
+        chparam -set ADDR_W 4 -set DEPTH 16 groq_sram_macro_sp;
+        chformal -remove;
+        synth -top groq_sram_macro_sp -noabc;
+        dfflibmap -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+        abc -fast -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+        stat -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+        write_verilog -noattr synth/groq_sram_macro_sp_asap7_netlist.v
+    ' --
+
+1. Executing Verilog-2005 frontend: sram_ip/groq_sram_macro_sp.sv
+Parsing SystemVerilog input from `sram_ip/groq_sram_macro_sp.sv' to AST representation.
+verilog frontend filename sram_ip/groq_sram_macro_sp.sv
+Generating RTLIL representation for module `\groq_sram_macro_sp'.
+Warning: Replacing memory \mem with list of registers. See sram_ip/groq_sram_macro_sp.sv:281
+Successfully finished Verilog frontend.
+Parameter \ADDR_W = 4
+Parameter \DEPTH = 16
+
+2. Executing AST frontend in derive mode using pre-parsed AST for module `\groq_sram_macro_sp'.
+Parameter \ADDR_W = 4
+Parameter \DEPTH = 16
+Generating RTLIL representation for module `$paramod$833f90ede73432dd3aa1a635a1238979451422c2\groq_sram_macro_sp'.
+Warning: Replacing memory \mem with list of registers. See sram_ip/groq_sram_macro_sp.sv:281
+
+3. Executing SYNTH pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \groq_sram_macro_sp
+
+3.1.2. Analyzing design hierarchy..
+Top module:  \groq_sram_macro_sp
+Removed 0 unused modules.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 3 switch rules as full_case in process $proc$sram_ip/groq_sram_macro_sp.sv:60$246 in module groq_sram_macro_sp.
+Marked 2 switch rules as full_case in process $proc$sram_ip/groq_sram_macro_sp.sv:107$250 in module groq_sram_macro_sp.
+Marked 14 switch rules as full_case in process $proc$sram_ip/groq_sram_macro_sp.sv:142$258 in module groq_sram_macro_sp.
+Removed 1 dead cases from process $proc$sram_ip/groq_sram_macro_sp.sv:259$290 in module groq_sram_macro_sp.
+Marked 33 switch rules as full_case in process $proc$sram_ip/groq_sram_macro_sp.sv:259$290 in module groq_sram_macro_sp.
+Removed a total of 1 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 27 assignments to connections.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+Found async reset \rst_n in `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~56 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:60$246'.
+     1/6: $3\sram_ready[0:0]
+     2/6: $3\pwr_mode[1:0]
+     3/6: $2\sram_ready[0:0]
+     4/6: $2\pwr_mode[1:0]
+     5/6: $1\sram_ready[0:0]
+     6/6: $1\pwr_mode[1:0]
+Creating decoders for process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:107$250'.
+     1/6: $2\bist_wdata_mux[71:0]
+     2/6: $2\bist_we_n[0:0]
+     3/6: $2\bist_ce_n[0:0]
+     4/6: $1\bist_wdata_mux[71:0]
+     5/6: $1\bist_we_n[0:0]
+     6/6: $1\bist_ce_n[0:0]
+Creating decoders for process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+     1/5: $0\mbist_sub[0:0]
+     2/5: $0\mbist_addr[3:0]
+     3/5: $0\mbist_state[2:0]
+     4/5: $0\mbist_fail[0:0]
+     5/5: $0\mbist_done[0:0]
+Creating decoders for process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+     1/297: $6$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_DATA[71:0]$467
+     2/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA[71:0]$466
+     3/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR[3:0]$465
+     4/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA[71:0]$464
+     5/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR[3:0]$463
+     6/297: $0\mem[15][71:0] [71:64]
+     7/297: $0\mem[15][71:0] [63:56]
+     8/297: $0\mem[14][71:0] [63:56]
+     9/297: $0\mem[13][71:0] [63:56]
+    10/297: $0\mem[12][71:0] [63:56]
+    11/297: $0\mem[11][71:0] [63:56]
+    12/297: $0\mem[10][71:0] [63:56]
+    13/297: $0\mem[9][71:0] [63:56]
+    14/297: $0\mem[8][71:0] [63:56]
+    15/297: $0\mem[7][71:0] [63:56]
+    16/297: $0\mem[6][71:0] [63:56]
+    17/297: $0\mem[5][71:0] [63:56]
+    18/297: $0\mem[4][71:0] [63:56]
+    19/297: $0\mem[3][71:0] [63:56]
+    20/297: $0\mem[2][71:0] [63:56]
+    21/297: $0\mem[1][71:0] [63:56]
+    22/297: $0\mem[0][71:0] [63:56]
+    23/297: $0\spare_word[71:0] [63:56]
+    24/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR[3:0]$460
+    25/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA[71:0]$459
+    26/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR[3:0]$458
+    27/297: $0\mem[14][71:0] [71:64]
+    28/297: $0\mem[15][71:0] [55:48]
+    29/297: $0\mem[14][71:0] [55:48]
+    30/297: $0\mem[13][71:0] [55:48]
+    31/297: $0\mem[12][71:0] [55:48]
+    32/297: $0\mem[11][71:0] [55:48]
+    33/297: $0\mem[10][71:0] [55:48]
+    34/297: $0\mem[9][71:0] [55:48]
+    35/297: $0\mem[8][71:0] [55:48]
+    36/297: $0\mem[7][71:0] [55:48]
+    37/297: $0\mem[6][71:0] [55:48]
+    38/297: $0\mem[5][71:0] [55:48]
+    39/297: $0\mem[4][71:0] [55:48]
+    40/297: $0\mem[3][71:0] [55:48]
+    41/297: $0\mem[2][71:0] [55:48]
+    42/297: $0\mem[1][71:0] [55:48]
+    43/297: $0\mem[0][71:0] [55:48]
+    44/297: $0\spare_word[71:0] [55:48]
+    45/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR[3:0]$455
+    46/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA[71:0]$454
+    47/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR[3:0]$453
+    48/297: $0\mem[13][71:0] [71:64]
+    49/297: $0\mem[15][71:0] [47:40]
+    50/297: $0\mem[14][71:0] [47:40]
+    51/297: $0\mem[13][71:0] [47:40]
+    52/297: $0\mem[12][71:0] [47:40]
+    53/297: $0\mem[11][71:0] [47:40]
+    54/297: $0\mem[10][71:0] [47:40]
+    55/297: $0\mem[9][71:0] [47:40]
+    56/297: $0\mem[8][71:0] [47:40]
+    57/297: $0\mem[7][71:0] [47:40]
+    58/297: $0\mem[6][71:0] [47:40]
+    59/297: $0\mem[5][71:0] [47:40]
+    60/297: $0\mem[4][71:0] [47:40]
+    61/297: $0\mem[3][71:0] [47:40]
+    62/297: $0\mem[2][71:0] [47:40]
+    63/297: $0\mem[1][71:0] [47:40]
+    64/297: $0\mem[0][71:0] [47:40]
+    65/297: $0\spare_word[71:0] [47:40]
+    66/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR[3:0]$450
+    67/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA[71:0]$449
+    68/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR[3:0]$448
+    69/297: $0\mem[12][71:0] [71:64]
+    70/297: $0\mem[15][71:0] [39:32]
+    71/297: $0\mem[14][71:0] [39:32]
+    72/297: $0\mem[13][71:0] [39:32]
+    73/297: $0\mem[12][71:0] [39:32]
+    74/297: $0\mem[11][71:0] [39:32]
+    75/297: $0\mem[10][71:0] [39:32]
+    76/297: $0\mem[9][71:0] [39:32]
+    77/297: $0\mem[8][71:0] [39:32]
+    78/297: $0\mem[7][71:0] [39:32]
+    79/297: $0\mem[6][71:0] [39:32]
+    80/297: $0\mem[5][71:0] [39:32]
+    81/297: $0\mem[4][71:0] [39:32]
+    82/297: $0\mem[3][71:0] [39:32]
+    83/297: $0\mem[2][71:0] [39:32]
+    84/297: $0\mem[1][71:0] [39:32]
+    85/297: $0\mem[0][71:0] [39:32]
+    86/297: $0\spare_word[71:0] [39:32]
+    87/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR[3:0]$445
+    88/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA[71:0]$444
+    89/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR[3:0]$443
+    90/297: $0\mem[11][71:0] [71:64]
+    91/297: $0\mem[15][71:0] [31:24]
+    92/297: $0\mem[14][71:0] [31:24]
+    93/297: $0\mem[13][71:0] [31:24]
+    94/297: $0\mem[12][71:0] [31:24]
+    95/297: $0\mem[11][71:0] [31:24]
+    96/297: $0\mem[10][71:0] [31:24]
+    97/297: $0\mem[9][71:0] [31:24]
+    98/297: $0\mem[8][71:0] [31:24]
+    99/297: $0\mem[7][71:0] [31:24]
+   100/297: $0\mem[6][71:0] [31:24]
+   101/297: $0\mem[5][71:0] [31:24]
+   102/297: $0\mem[4][71:0] [31:24]
+   103/297: $0\mem[3][71:0] [31:24]
+   104/297: $0\mem[2][71:0] [31:24]
+   105/297: $0\mem[1][71:0] [31:24]
+   106/297: $0\mem[0][71:0] [31:24]
+   107/297: $0\spare_word[71:0] [31:24]
+   108/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR[3:0]$440
+   109/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA[71:0]$439
+   110/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR[3:0]$438
+   111/297: $0\mem[10][71:0] [71:64]
+   112/297: $0\mem[15][71:0] [23:16]
+   113/297: $0\mem[14][71:0] [23:16]
+   114/297: $0\mem[13][71:0] [23:16]
+   115/297: $0\mem[12][71:0] [23:16]
+   116/297: $0\mem[11][71:0] [23:16]
+   117/297: $0\mem[10][71:0] [23:16]
+   118/297: $0\mem[9][71:0] [23:16]
+   119/297: $0\mem[8][71:0] [23:16]
+   120/297: $0\mem[7][71:0] [23:16]
+   121/297: $0\mem[6][71:0] [23:16]
+   122/297: $0\mem[5][71:0] [23:16]
+   123/297: $0\mem[4][71:0] [23:16]
+   124/297: $0\mem[3][71:0] [23:16]
+   125/297: $0\mem[2][71:0] [23:16]
+   126/297: $0\mem[1][71:0] [23:16]
+   127/297: $0\mem[0][71:0] [23:16]
+   128/297: $0\spare_word[71:0] [23:16]
+   129/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR[3:0]$435
+   130/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA[71:0]$434
+   131/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR[3:0]$433
+   132/297: $0\mem[9][71:0] [71:64]
+   133/297: $0\mem[15][71:0] [15:8]
+   134/297: $0\mem[14][71:0] [15:8]
+   135/297: $0\mem[13][71:0] [15:8]
+   136/297: $0\mem[12][71:0] [15:8]
+   137/297: $0\mem[11][71:0] [15:8]
+   138/297: $0\mem[10][71:0] [15:8]
+   139/297: $0\mem[9][71:0] [15:8]
+   140/297: $0\mem[8][71:0] [15:8]
+   141/297: $0\mem[7][71:0] [15:8]
+   142/297: $0\mem[6][71:0] [15:8]
+   143/297: $0\mem[5][71:0] [15:8]
+   144/297: $0\mem[4][71:0] [15:8]
+   145/297: $0\mem[3][71:0] [15:8]
+   146/297: $0\mem[2][71:0] [15:8]
+   147/297: $0\mem[1][71:0] [15:8]
+   148/297: $0\mem[0][71:0] [15:8]
+   149/297: $0\spare_word[71:0] [15:8]
+   150/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR[3:0]$430
+   151/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA[71:0]$429
+   152/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR[3:0]$428
+   153/297: $0\mem[8][71:0] [71:64]
+   154/297: $0\mem[15][71:0] [7:0]
+   155/297: $0\mem[14][71:0] [7:0]
+   156/297: $0\mem[13][71:0] [7:0]
+   157/297: $0\mem[12][71:0] [7:0]
+   158/297: $0\mem[11][71:0] [7:0]
+   159/297: $0\mem[10][71:0] [7:0]
+   160/297: $0\mem[9][71:0] [7:0]
+   161/297: $0\mem[8][71:0] [7:0]
+   162/297: $0\mem[7][71:0] [7:0]
+   163/297: $0\mem[6][71:0] [7:0]
+   164/297: $0\mem[5][71:0] [7:0]
+   165/297: $0\mem[4][71:0] [7:0]
+   166/297: $0\mem[3][71:0] [7:0]
+   167/297: $0\mem[2][71:0] [7:0]
+   168/297: $0\mem[1][71:0] [7:0]
+   169/297: $0\mem[0][71:0] [7:0]
+   170/297: $0\spare_word[71:0] [7:0]
+   171/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR[3:0]$425
+   172/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA[71:0]$424
+   173/297: $6$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR[3:0]$423
+   174/297: $5$fordecl_block$1.b[31:0]$401
+   175/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA[71:0]$419
+   176/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR[3:0]$418
+   177/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA[71:0]$417
+   178/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR[3:0]$416
+   179/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA[71:0]$415
+   180/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR[3:0]$414
+   181/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA[71:0]$413
+   182/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR[3:0]$412
+   183/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA[71:0]$411
+   184/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR[3:0]$410
+   185/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA[71:0]$409
+   186/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR[3:0]$408
+   187/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA[71:0]$407
+   188/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR[3:0]$406
+   189/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA[71:0]$405
+   190/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR[3:0]$404
+   191/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA[71:0]$403
+   192/297: $5$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR[3:0]$402
+   193/297: $5$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_DATA[71:0]$421
+   194/297: $5$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_ADDR[3:0]$420
+   195/297: $4$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_DATA[71:0]$399
+   196/297: $4$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_ADDR[3:0]$398
+   197/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA[71:0]$397
+   198/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR[3:0]$396
+   199/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA[71:0]$395
+   200/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR[3:0]$394
+   201/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA[71:0]$393
+   202/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR[3:0]$392
+   203/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA[71:0]$391
+   204/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR[3:0]$390
+   205/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA[71:0]$389
+   206/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR[3:0]$388
+   207/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA[71:0]$387
+   208/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR[3:0]$386
+   209/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA[71:0]$385
+   210/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR[3:0]$384
+   211/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA[71:0]$383
+   212/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR[3:0]$382
+   213/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA[71:0]$381
+   214/297: $4$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR[3:0]$380
+   215/297: $4$fordecl_block$1.b[31:0]$379
+   216/297: $3$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_DATA[71:0]$377
+   217/297: $3$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_ADDR[3:0]$376
+   218/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA[71:0]$375
+   219/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR[3:0]$374
+   220/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA[71:0]$373
+   221/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR[3:0]$372
+   222/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA[71:0]$371
+   223/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR[3:0]$370
+   224/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA[71:0]$369
+   225/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR[3:0]$368
+   226/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA[71:0]$367
+   227/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR[3:0]$366
+   228/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA[71:0]$365
+   229/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR[3:0]$364
+   230/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA[71:0]$363
+   231/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR[3:0]$362
+   232/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA[71:0]$361
+   233/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR[3:0]$360
+   234/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA[71:0]$359
+   235/297: $3$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR[3:0]$358
+   236/297: $3$fordecl_block$1.b[31:0]$357
+   237/297: $0\rvalid[0:0]
+   238/297: $2$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_DATA[71:0]$355
+   239/297: $2$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_ADDR[3:0]$354
+   240/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA[71:0]$353
+   241/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR[3:0]$352
+   242/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA[71:0]$351
+   243/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR[3:0]$350
+   244/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA[71:0]$349
+   245/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR[3:0]$348
+   246/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA[71:0]$347
+   247/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR[3:0]$346
+   248/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA[71:0]$345
+   249/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR[3:0]$344
+   250/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA[71:0]$343
+   251/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR[3:0]$342
+   252/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA[71:0]$341
+   253/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR[3:0]$340
+   254/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA[71:0]$339
+   255/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR[3:0]$338
+   256/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA[71:0]$337
+   257/297: $2$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR[3:0]$336
+   258/297: $2$fordecl_block$1.b[31:0]$335
+   259/297: $1$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_DATA[71:0]$333
+   260/297: $1$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_ADDR[3:0]$332
+   261/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA[71:0]$331
+   262/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR[3:0]$330
+   263/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA[71:0]$329
+   264/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR[3:0]$328
+   265/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA[71:0]$327
+   266/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR[3:0]$326
+   267/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA[71:0]$325
+   268/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR[3:0]$324
+   269/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA[71:0]$323
+   270/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR[3:0]$322
+   271/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA[71:0]$321
+   272/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR[3:0]$320
+   273/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA[71:0]$319
+   274/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR[3:0]$318
+   275/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA[71:0]$317
+   276/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR[3:0]$316
+   277/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA[71:0]$315
+   278/297: $1$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR[3:0]$314
+   279/297: $1$fordecl_block$1.b[31:0]$313
+   280/297: $0\mem[7][71:0] [71:64]
+   281/297: $0\mem[6][71:0] [71:64]
+   282/297: $0\mem[5][71:0] [71:64]
+   283/297: $0\mem[4][71:0] [71:64]
+   284/297: $0\mem[3][71:0] [71:64]
+   285/297: $0\mem[2][71:0] [71:64]
+   286/297: $0\mem[1][71:0] [71:64]
+   287/297: $0\mem[0][71:0] [71:64]
+   288/297: $0\spare_word[71:0] [71:64]
+   289/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA[71:0]$461
+   290/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA[71:0]$456
+   291/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA[71:0]$451
+   292/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA[71:0]$446
+   293/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA[71:0]$441
+   294/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA[71:0]$436
+   295/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA[71:0]$431
+   296/297: $7$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA[71:0]$426
+   297/297: $0\rdata[71:0]
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sram_macro_sp.\pwr_mode' from process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:60$246'.
+No latch inferred for signal `\groq_sram_macro_sp.\sram_ready' from process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:60$246'.
+No latch inferred for signal `\groq_sram_macro_sp.\bist_ce_n' from process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:107$250'.
+No latch inferred for signal `\groq_sram_macro_sp.\bist_we_n' from process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:107$250'.
+No latch inferred for signal `\groq_sram_macro_sp.\bist_addr_mux' from process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:107$250'.
+No latch inferred for signal `\groq_sram_macro_sp.\bist_wdata_mux' from process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:107$250'.
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_sram_macro_sp.\mbist_done' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+  created $adff cell `$procdff$6122' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_fail' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+  created $adff cell `$procdff$6127' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_state' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+  created $adff cell `$procdff$6132' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_addr' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+  created $adff cell `$procdff$6137' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_sub' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+  created $adff cell `$procdff$6142' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\rdata' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6147' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\rvalid' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6152' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\spare_word' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6157' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$fordecl_block$1.b' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6164' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[0]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6171' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[1]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6178' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[2]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6185' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[3]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6192' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[4]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6199' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[5]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6206' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[6]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6213' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[7]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6220' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[8]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6227' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[9]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6234' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[10]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6241' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[11]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6248' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[12]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6255' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[13]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6262' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[14]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6269' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[15]' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $dff cell `$procdff$6276' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6281' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$236_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6286' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6291' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$237_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6296' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6301' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$238_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6306' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6311' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$239_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6316' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6321' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$240_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6326' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6331' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$241_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6336' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6341' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$242_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6346' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6351' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$243_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6356' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6361' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$sram_ip/groq_sram_macro_sp.sv:281$244_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6366' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_ADDR' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6371' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_rd$\mem$sram_ip/groq_sram_macro_sp.sv:287$245_DATA' using process `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+  created $adff cell `$procdff$6376' with positive edge clock and positive level reset.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 3 empty switches in `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:60$246'.
+Removing empty process `groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:60$246'.
+Found and cleaned up 2 empty switches in `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:107$250'.
+Removing empty process `groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:107$250'.
+Found and cleaned up 19 empty switches in `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+Removing empty process `groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:142$258'.
+Found and cleaned up 32 empty switches in `\groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+Removing empty process `groq_sram_macro_sp.$proc$sram_ip/groq_sram_macro_sp.sv:259$290'.
+Cleaned up 56 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+<suppressed ~1319 debug messages>
+
+3.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 500 unused cells and 2305 unused wires.
+<suppressed ~501 debug messages>
+
+3.5. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_macro_sp...
+Found and reported 0 problems.
+
+3.6. Executing OPT pass (performing simple optimizations).
+
+3.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~570 debug messages>
+Removed a total of 190 cells.
+
+3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$473.
+    dead port 2/2 on $mux $procmux$476.
+    dead port 2/2 on $mux $procmux$482.
+    dead port 2/2 on $mux $procmux$485.
+    dead port 2/2 on $mux $procmux$491.
+    dead port 2/2 on $mux $procmux$497.
+    dead port 2/2 on $mux $procmux$511.
+    dead port 2/2 on $mux $procmux$520.
+    dead port 2/2 on $mux $procmux$529.
+    dead port 2/2 on $mux $procmux$738.
+    dead port 1/2 on $mux $procmux$740.
+    dead port 2/2 on $mux $procmux$743.
+    dead port 2/2 on $mux $procmux$746.
+Removed 13 multiplexer ports.
+<suppressed ~1827 debug messages>
+
+3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+    New ctrl vector for $pmux cell $procmux$524: { $auto$opt_reduce.cc:137:opt_pmux$6378 $procmux$525_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$6377: { $procmux$519_CMP $procmux$517_CMP $procmux$510_CMP }
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 2 changes.
+
+3.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~39 debug messages>
+Removed a total of 13 cells.
+
+3.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 213 unused wires.
+<suppressed ~1 debug messages>
+
+3.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1665 debug messages>
+
+3.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+    New ctrl vector for $pmux cell $procmux$516: { $procmux$519_CMP $auto$opt_reduce.cc:137:opt_pmux$6380 }
+    New ctrl vector for $pmux cell $procmux$545: { $procmux$519_CMP $auto$opt_reduce.cc:137:opt_pmux$6382 }
+    New ctrl vector for $pmux cell $procmux$673: { $auto$opt_reduce.cc:137:opt_pmux$6386 $auto$opt_reduce.cc:137:opt_pmux$6384 }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$6379: { $procmux$517_CMP $procmux$510_CMP }
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 4 changes.
+
+3.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+3.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+3.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.6.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.6.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1654 debug messages>
+
+3.6.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+3.6.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.6.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.6.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.6.23. Finished fast OPT passes. (There is nothing left to do.)
+
+3.7. Executing FSM pass (extract and optimize FSM).
+
+3.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register groq_sram_macro_sp.mbist_state.
+
+3.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\mbist_state' from module `\groq_sram_macro_sp'.
+  found $adff cell for state register: $procdff$6132
+  root of input selection tree: $0\mbist_state[2:0]
+  found reset state: 3'000 (from async reset)
+  found ctrl input: \mbist_en
+  found ctrl input: \sram_ready
+  found ctrl input: $procmux$621_CMP
+  found ctrl input: $procmux$525_CMP
+  found ctrl input: $procmux$517_CMP [1]
+  found ctrl input: $procmux$510_CMP [1]
+  found ctrl input: $procmux$517_CMP [0]
+  found ctrl input: $procmux$510_CMP [0]
+  found ctrl input: $procmux$519_CMP
+  found ctrl input: \mbist_sub
+  found ctrl input: $eq$sram_ip/groq_sram_macro_sp.sv:158$261_Y
+  found state code: 3'110
+  found ctrl input: $eq$sram_ip/groq_sram_macro_sp.sv:200$273_Y
+  found state code: 3'101
+  found state code: 3'100
+  found state code: 3'011
+  found state code: 3'010
+  found state code: 3'001
+  found ctrl output: $procmux$510_CMP [0]
+  found ctrl output: $procmux$510_CMP [1]
+  found ctrl output: $procmux$517_CMP [0]
+  found ctrl output: $procmux$517_CMP [1]
+  found ctrl output: $procmux$519_CMP
+  found ctrl output: $procmux$525_CMP
+  found ctrl output: $procmux$621_CMP
+  ctrl inputs: { $eq$sram_ip/groq_sram_macro_sp.sv:200$273_Y $eq$sram_ip/groq_sram_macro_sp.sv:158$261_Y \mbist_sub \mbist_en \sram_ready }
+  ctrl outputs: { $procmux$621_CMP $procmux$525_CMP $procmux$519_CMP $procmux$517_CMP $procmux$510_CMP $0\mbist_state[2:0] }
+  transition:      3'000 5'---0- ->      3'000 10'0010000000
+  transition:      3'000 5'---10 ->      3'000 10'0010000000
+  transition:      3'000 5'-0-11 ->      3'000 10'0010000000
+  transition:      3'000 5'-1-11 ->      3'001 10'0010000001
+  transition:      3'100 5'---0- ->      3'000 10'0001000000
+  transition:      3'100 5'---10 ->      3'100 10'0001000100
+  transition:      3'100 5'--011 ->      3'100 10'0001000100
+  transition:      3'100 5'0-111 ->      3'100 10'0001000100
+  transition:      3'100 5'1-111 ->      3'101 10'0001000101
+  transition:      3'010 5'---0- ->      3'000 10'0000100000
+  transition:      3'010 5'---10 ->      3'010 10'0000100010
+  transition:      3'010 5'--011 ->      3'010 10'0000100010
+  transition:      3'010 5'-0111 ->      3'010 10'0000100010
+  transition:      3'010 5'-1111 ->      3'011 10'0000100011
+  transition:      3'110 5'---0- ->      3'000 10'1000000000
+  transition:      3'110 5'---10 ->      3'110 10'1000000110
+  transition:      3'110 5'---11 ->      3'110 10'1000000110
+  transition:      3'001 5'---0- ->      3'000 10'0000001000
+  transition:      3'001 5'---10 ->      3'001 10'0000001001
+  transition:      3'001 5'--011 ->      3'001 10'0000001001
+  transition:      3'001 5'-0111 ->      3'001 10'0000001001
+  transition:      3'001 5'-1111 ->      3'010 10'0000001010
+  transition:      3'101 5'---0- ->      3'000 10'0100000000
+  transition:      3'101 5'---10 ->      3'101 10'0100000101
+  transition:      3'101 5'--011 ->      3'101 10'0100000101
+  transition:      3'101 5'-0111 ->      3'101 10'0100000101
+  transition:      3'101 5'-1111 ->      3'110 10'0100000110
+  transition:      3'011 5'---0- ->      3'000 10'0000010000
+  transition:      3'011 5'---10 ->      3'011 10'0000010011
+  transition:      3'011 5'--011 ->      3'011 10'0000010011
+  transition:      3'011 5'0-111 ->      3'011 10'0000010011
+  transition:      3'011 5'1-111 ->      3'100 10'0000010100
+
+3.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\mbist_state$6387' from module `\groq_sram_macro_sp'.
+  Merging pattern 5'---10 and 5'---11 from group (3 3 10'1000000110).
+  Merging pattern 5'---11 and 5'---10 from group (3 3 10'1000000110).
+
+3.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 22 unused cells and 22 unused wires.
+<suppressed ~23 debug messages>
+
+3.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\mbist_state$6387' from module `\groq_sram_macro_sp'.
+  Removing unused output signal $0\mbist_state[2:0] [0].
+  Removing unused output signal $0\mbist_state[2:0] [1].
+  Removing unused output signal $0\mbist_state[2:0] [2].
+
+3.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\mbist_state$6387' from module `\groq_sram_macro_sp' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> ------1
+  100 -> -----1-
+  010 -> ----1--
+  110 -> ---1---
+  001 -> --1----
+  101 -> -1-----
+  011 -> 1------
+
+3.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\mbist_state$6387' from module `groq_sram_macro_sp':
+-------------------------------------
+
+  Information on FSM $fsm$\mbist_state$6387 (\mbist_state):
+
+  Number of input signals:    5
+  Number of output signals:   7
+  Number of state bits:       7
+
+  Input signals:
+    0: \sram_ready
+    1: \mbist_en
+    2: \mbist_sub
+    3: $eq$sram_ip/groq_sram_macro_sp.sv:158$261_Y
+    4: $eq$sram_ip/groq_sram_macro_sp.sv:200$273_Y
+
+  Output signals:
+    0: $procmux$510_CMP [0]
+    1: $procmux$510_CMP [1]
+    2: $procmux$517_CMP [0]
+    3: $procmux$517_CMP [1]
+    4: $procmux$519_CMP
+    5: $procmux$525_CMP
+    6: $procmux$621_CMP
+
+  State encoding:
+    0:  7'------1  <RESET STATE>
+    1:  7'-----1-
+    2:  7'----1--
+    3:  7'---1---
+    4:  7'--1----
+    5:  7'-1-----
+    6:  7'1------
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 5'---10   ->     0 7'0010000
+      1:     0 5'-0-11   ->     0 7'0010000
+      2:     0 5'---0-   ->     0 7'0010000
+      3:     0 5'-1-11   ->     4 7'0010000
+      4:     1 5'---0-   ->     0 7'0001000
+      5:     1 5'---10   ->     1 7'0001000
+      6:     1 5'--011   ->     1 7'0001000
+      7:     1 5'0-111   ->     1 7'0001000
+      8:     1 5'1-111   ->     5 7'0001000
+      9:     2 5'---0-   ->     0 7'0000100
+     10:     2 5'---10   ->     2 7'0000100
+     11:     2 5'--011   ->     2 7'0000100
+     12:     2 5'-0111   ->     2 7'0000100
+     13:     2 5'-1111   ->     6 7'0000100
+     14:     3 5'---0-   ->     0 7'1000000
+     15:     3 5'---1-   ->     3 7'1000000
+     16:     4 5'---0-   ->     0 7'0000001
+     17:     4 5'-1111   ->     2 7'0000001
+     18:     4 5'---10   ->     4 7'0000001
+     19:     4 5'--011   ->     4 7'0000001
+     20:     4 5'-0111   ->     4 7'0000001
+     21:     5 5'---0-   ->     0 7'0100000
+     22:     5 5'-1111   ->     3 7'0100000
+     23:     5 5'---10   ->     5 7'0100000
+     24:     5 5'--011   ->     5 7'0100000
+     25:     5 5'-0111   ->     5 7'0100000
+     26:     6 5'---0-   ->     0 7'0000010
+     27:     6 5'1-111   ->     1 7'0000010
+     28:     6 5'---10   ->     6 7'0000010
+     29:     6 5'--011   ->     6 7'0000010
+     30:     6 5'0-111   ->     6 7'0000010
+
+-------------------------------------
+
+3.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\mbist_state$6387' from module `\groq_sram_macro_sp'.
+
+3.8. Executing OPT pass (performing simple optimizations).
+
+3.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+<suppressed ~2 debug messages>
+
+3.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+3.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1639 debug messages>
+
+3.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+3.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[15] [7:0]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[15] [15:8]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[15] [23:16]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[15] [31:24]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[15] [39:32]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[15] [47:40]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[15] [55:48]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[15] [63:56]).
+Adding EN signal on $procdff$6276 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[15] [71:64]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[14] [7:0]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[14] [15:8]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[14] [23:16]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[14] [31:24]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[14] [39:32]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[14] [47:40]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[14] [55:48]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[14] [63:56]).
+Adding EN signal on $procdff$6269 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[14] [71:64]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[13] [7:0]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[13] [15:8]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[13] [23:16]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[13] [31:24]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[13] [39:32]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[13] [47:40]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[13] [55:48]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[13] [63:56]).
+Adding EN signal on $procdff$6262 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[13] [71:64]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[12] [7:0]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[12] [15:8]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[12] [23:16]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[12] [31:24]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[12] [39:32]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[12] [47:40]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[12] [55:48]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[12] [63:56]).
+Adding EN signal on $procdff$6255 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[12] [71:64]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[11] [7:0]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[11] [15:8]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[11] [23:16]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[11] [31:24]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[11] [39:32]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[11] [47:40]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[11] [55:48]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[11] [63:56]).
+Adding EN signal on $procdff$6248 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[11] [71:64]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[10] [7:0]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[10] [15:8]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[10] [23:16]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[10] [31:24]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[10] [39:32]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[10] [47:40]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[10] [55:48]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[10] [63:56]).
+Adding EN signal on $procdff$6241 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[10] [71:64]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[9] [7:0]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[9] [15:8]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[9] [23:16]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[9] [31:24]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[9] [39:32]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[9] [47:40]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[9] [55:48]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[9] [63:56]).
+Adding EN signal on $procdff$6234 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[9] [71:64]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[8] [7:0]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[8] [15:8]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[8] [23:16]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[8] [31:24]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[8] [39:32]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[8] [47:40]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[8] [55:48]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[8] [63:56]).
+Adding EN signal on $procdff$6227 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[8] [71:64]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[7] [7:0]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[7] [15:8]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[7] [23:16]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[7] [31:24]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[7] [39:32]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[7] [47:40]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[7] [55:48]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[7] [63:56]).
+Adding EN signal on $procdff$6220 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[7] [71:64]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[6] [7:0]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[6] [15:8]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[6] [23:16]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[6] [31:24]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[6] [39:32]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[6] [47:40]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[6] [55:48]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[6] [63:56]).
+Adding EN signal on $procdff$6213 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[6] [71:64]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[5] [7:0]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[5] [15:8]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[5] [23:16]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[5] [31:24]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[5] [39:32]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[5] [47:40]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[5] [55:48]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[5] [63:56]).
+Adding EN signal on $procdff$6206 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[5] [71:64]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[4] [7:0]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[4] [15:8]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[4] [23:16]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[4] [31:24]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[4] [39:32]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[4] [47:40]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[4] [55:48]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[4] [63:56]).
+Adding EN signal on $procdff$6199 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[4] [71:64]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[3] [7:0]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[3] [15:8]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[3] [23:16]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[3] [31:24]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[3] [39:32]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[3] [47:40]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[3] [55:48]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[3] [63:56]).
+Adding EN signal on $procdff$6192 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[3] [71:64]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[2] [7:0]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[2] [15:8]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[2] [23:16]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[2] [31:24]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[2] [39:32]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[2] [47:40]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[2] [55:48]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[2] [63:56]).
+Adding EN signal on $procdff$6185 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[2] [71:64]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[1] [7:0]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[1] [15:8]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[1] [23:16]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[1] [31:24]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[1] [39:32]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[1] [47:40]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[1] [55:48]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[1] [63:56]).
+Adding EN signal on $procdff$6178 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[1] [71:64]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [7:0], Q = \mem[0] [7:0]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [15:8], Q = \mem[0] [15:8]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [23:16], Q = \mem[0] [23:16]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [31:24], Q = \mem[0] [31:24]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [39:32], Q = \mem[0] [39:32]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [47:40], Q = \mem[0] [47:40]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [55:48], Q = \mem[0] [55:48]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [63:56], Q = \mem[0] [63:56]).
+Adding EN signal on $procdff$6171 ($dff) from module groq_sram_macro_sp (D = \eff_wdata [71:64], Q = \mem[0] [71:64]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [7:0], Q = \spare_word [7:0]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [15:8], Q = \spare_word [15:8]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [23:16], Q = \spare_word [23:16]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [31:24], Q = \spare_word [31:24]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [39:32], Q = \spare_word [39:32]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [47:40], Q = \spare_word [47:40]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [55:48], Q = \spare_word [55:48]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [63:56], Q = \spare_word [63:56]).
+Adding EN signal on $procdff$6157 ($adff) from module groq_sram_macro_sp (D = $0\spare_word[71:0] [71:64], Q = \spare_word [71:64]).
+Adding EN signal on $procdff$6147 ($adff) from module groq_sram_macro_sp (D = $0\rdata[71:0], Q = \rdata).
+Adding EN signal on $procdff$6142 ($adff) from module groq_sram_macro_sp (D = $0\mbist_sub[0:0], Q = \mbist_sub).
+Adding EN signal on $procdff$6137 ($adff) from module groq_sram_macro_sp (D = $0\mbist_addr[3:0], Q = \mbist_addr).
+Adding EN signal on $procdff$6127 ($adff) from module groq_sram_macro_sp (D = $0\mbist_fail[0:0], Q = \mbist_fail).
+Adding EN signal on $procdff$6122 ($adff) from module groq_sram_macro_sp (D = $0\mbist_done[0:0], Q = \mbist_done).
+
+3.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 1024 unused cells and 920 unused wires.
+<suppressed ~1025 debug messages>
+
+3.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~140 debug messages>
+
+3.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+3.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~1800 debug messages>
+Removed a total of 600 cells.
+
+3.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 600 unused wires.
+<suppressed ~1 debug messages>
+
+3.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~140 debug messages>
+
+3.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+3.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+3.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8264 ($ne).
+Removed top 2 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8260 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8251 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8249 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8247 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8245 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8238 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8234 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8232 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8230 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8228 ($ne).
+Removed top 6 bits (of 7) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8226 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8219 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8215 ($ne).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8210 ($ne).
+Removed top 1 bits (of 2) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8099 ($ne).
+Removed top 1 bits (of 2) from port B of cell groq_sram_macro_sp.$auto$opt_dff.cc:248:make_patterns_logic$8091 ($ne).
+Removed top 1 bits (of 4) from port B of cell groq_sram_macro_sp.$auto$fsm_map.cc:77:implement_pattern_cache$6501 ($eq).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$fsm_map.cc:77:implement_pattern_cache$6493 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_macro_sp.$auto$fsm_map.cc:77:implement_pattern_cache$6480 ($eq).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$auto$fsm_map.cc:77:implement_pattern_cache$6405 ($eq).
+Removed top 1 bits (of 2) from mux cell groq_sram_macro_sp.$procmux$479 ($mux).
+Removed top 1 bits (of 4) from port B of cell groq_sram_macro_sp.$procmux$1034_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_macro_sp.$procmux$1063_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_macro_sp.$procmux$1093_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_macro_sp.$procmux$1124_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_macro_sp.$procmux$1156_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_macro_sp.$procmux$1189_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_macro_sp.$procmux$1223_CMP0 ($eq).
+Removed top 1 bits (of 2) from wire groq_sram_macro_sp.$3\pwr_mode[1:0].
+
+3.10. Executing PEEPOPT pass (run peephole optimizers).
+
+3.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+3.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module groq_sram_macro_sp:
+  creating $macc model for $add$sram_ip/groq_sram_macro_sp.sv:163$262 ($add).
+  creating $macc model for $sub$sram_ip/groq_sram_macro_sp.sv:204$274 ($sub).
+  creating $alu model for $macc $sub$sram_ip/groq_sram_macro_sp.sv:204$274.
+  creating $alu model for $macc $add$sram_ip/groq_sram_macro_sp.sv:163$262.
+  creating $alu cell for $add$sram_ip/groq_sram_macro_sp.sv:163$262: $auto$alumacc.cc:512:replace_alu$8268
+  creating $alu cell for $sub$sram_ip/groq_sram_macro_sp.sv:204$274: $auto$alumacc.cc:512:replace_alu$8271
+  created 2 $alu and 0 $macc cells.
+
+3.13. Executing SHARE pass (SAT-based resource sharing).
+
+3.14. Executing OPT pass (performing simple optimizations).
+
+3.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~140 debug messages>
+
+3.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+3.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+3.15. Executing MEMORY pass.
+
+3.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+3.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+3.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+3.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+3.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+3.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+3.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+3.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.17. Executing OPT pass (performing simple optimizations).
+
+3.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+<suppressed ~85 debug messages>
+
+3.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 71 unused wires.
+<suppressed ~1 debug messages>
+
+3.17.5. Finished fast OPT passes.
+
+3.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+3.19. Executing OPT pass (performing simple optimizations).
+
+3.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+<suppressed ~1 debug messages>
+
+3.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~52 debug messages>
+
+3.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+    Consolidated identical input bits for $mux cell $procmux$509:
+      Old ports: A=72'000000000000000000000000000000000000000000000000000000000000000000000000, B=72'111111111111111111111111111111111111111111111111111111111111111111111111, Y=$2\bist_wdata_mux[71:0]
+      New ports: A=1'0, B=1'1, Y=$2\bist_wdata_mux[71:0] [0]
+      New connections: $2\bist_wdata_mux[71:0] [71:1] = { $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] $2\bist_wdata_mux[71:0] [0] }
+    New ctrl vector for $pmux cell $procmux$580: { \mbist_state [2] \mbist_state [6] \mbist_state [1] \mbist_state [5] }
+  Optimizing cells in module \groq_sram_macro_sp.
+    Consolidated identical input bits for $mux cell $procmux$532:
+      Old ports: A=72'000000000000000000000000000000000000000000000000000000000000000000000000, B=$2\bist_wdata_mux[71:0], Y=\bist_wdata_mux
+      New ports: A=1'0, B=$2\bist_wdata_mux[71:0] [0], Y=\bist_wdata_mux [0]
+      New connections: \bist_wdata_mux [71:1] = { \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] \bist_wdata_mux [0] }
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 3 changes.
+
+3.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.19.6. Executing OPT_SHARE pass.
+
+3.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+<suppressed ~2 debug messages>
+
+3.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~49 debug messages>
+
+3.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+3.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.19.14. Executing OPT_SHARE pass.
+
+3.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+3.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~49 debug messages>
+
+3.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+3.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+3.19.22. Executing OPT_SHARE pass.
+
+3.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+3.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+3.19.26. Finished fast OPT passes. (There is nothing left to do.)
+
+3.20. Executing TECHMAP pass (map to technology primitives).
+
+3.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+3.20.2. Continuing TECHMAP pass.
+Using template $paramod$8742280fdebca84e1c87f2a86ed84f62d558f4cc\_90_alu for cells of type $alu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$c5c783b17ab1d780abfad8cfe6563a0a7b47a3b0\_90_pmux for cells of type $pmux.
+Using template $paramod$20d3ee62d72123142eb855d7ddafd835e31ba009\_90_pmux for cells of type $pmux.
+Using template $paramod$cb9cfc1d8956b5229474704b0354980801f85430\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~902 debug messages>
+
+3.21. Executing OPT pass (performing simple optimizations).
+
+3.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+<suppressed ~338 debug messages>
+
+3.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~2901 debug messages>
+Removed a total of 967 cells.
+
+3.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 7 unused cells and 1047 unused wires.
+<suppressed ~8 debug messages>
+
+3.21.5. Finished fast OPT passes.
+
+3.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `groq_sram_macro_sp'. Setting top module to groq_sram_macro_sp.
+
+3.22.1. Analyzing design hierarchy..
+Top module:  \groq_sram_macro_sp
+
+3.22.2. Analyzing design hierarchy..
+Top module:  \groq_sram_macro_sp
+Removed 0 unused modules.
+
+3.23. Printing statistics.
+
+=== groq_sram_macro_sp ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      793 wires
+     4988 wire bits
+       49 public wires
+     1578 public wire bits
+       19 ports
+      176 port bits
+     4613 cells
+     1377   $_AND_
+      151   $_DFFE_PN0P_
+     1152   $_DFFE_PP_
+        7   $_DFF_PN0_
+        1   $_DFF_PN1_
+      479   $_MUX_
+      133   $_NOT_
+     1303   $_OR_
+       10   $_XOR_
+
+3.24. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_macro_sp...
+Found and reported 0 problems.
+
+4. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFFLQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_N_.
+  cell DFFHQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_P_.
+  cell DFFASRHQNx1_ASAP7_75t_R (inv, pins=5, area=0.38) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    \DFFLQNx1_ASAP7_75t_R _DFF_N_ (.CLK( C), .D( D), .QN(~Q));
+    \DFFHQNx1_ASAP7_75t_R _DFF_P_ (.CLK( C), .D( D), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    unmapped dff cell: $_DFF_PN0_
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFASRHQNx1_ASAP7_75t_R _DFFSR_PNN_ (.CLK( C), .D( D), .QN(~Q), .RESETN( R), .SETN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+4.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~8 debug messages>
+Mapping DFF cells in module `\groq_sram_macro_sp':
+  mapped 159 $_DFFSR_PNN_ cells to \DFFASRHQNx1_ASAP7_75t_R cells.
+  mapped 1152 $_DFF_P_ cells to \DFFHQNx1_ASAP7_75t_R cells.
+
+5. Executing ABC pass (technology mapping using ABC).
+
+5.1. Extracting gate netlist of module `\groq_sram_macro_sp' to `<abc-temp-dir>/input.blif'..
+
+5.1.1. Executed ABC.
+Extracted 5916 gates and 7326 wires to a netlist network with 1408 inputs and 1389 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.28 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFASRHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx1_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx3_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5p33DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx6p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx8DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx4_ASAP7_75t_R".
+ABC: Library "asap7_rvt_ff" from "/nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib" has 169 cells (33 skipped: 23 seq; 0 tri-state; 10 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.38 sec
+ABC: Memory =   82.23 MB. Time =     0.38 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FAx1_ASAP7_75t_R").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+5.1.2. Re-integrating ABC results.
+ABC RESULTS:   A2O1A1Ixp33_ASAP7_75t_R cells:       79
+ABC RESULTS:   A2O1A1O1Ixp25_ASAP7_75t_R cells:       72
+ABC RESULTS:   AND2x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   AND3x1_ASAP7_75t_R cells:        9
+ABC RESULTS:   AO21x1_ASAP7_75t_R cells:        5
+ABC RESULTS:   AOI211xp5_ASAP7_75t_R cells:        1
+ABC RESULTS:   AOI21xp33_ASAP7_75t_R cells:       79
+ABC RESULTS:   AOI221xp5_ASAP7_75t_R cells:        1
+ABC RESULTS:   AOI22xp33_ASAP7_75t_R cells:        2
+ABC RESULTS:   AOI31xp33_ASAP7_75t_R cells:        1
+ABC RESULTS:   INVx1_ASAP7_75t_R cells:     1262
+ABC RESULTS:   NAND2xp33_ASAP7_75t_R cells:      176
+ABC RESULTS:   NAND3xp33_ASAP7_75t_R cells:       98
+ABC RESULTS:   NAND4xp25_ASAP7_75t_R cells:      460
+ABC RESULTS:   NAND5xp2_ASAP7_75t_R cells:       15
+ABC RESULTS:   NOR2xp33_ASAP7_75t_R cells:      155
+ABC RESULTS:   NOR3xp33_ASAP7_75t_R cells:       78
+ABC RESULTS:   NOR4xp25_ASAP7_75t_R cells:       97
+ABC RESULTS:   NOR5xp2_ASAP7_75t_R cells:        2
+ABC RESULTS:   O2A1O1Ixp33_ASAP7_75t_R cells:        7
+ABC RESULTS:   OA211x2_ASAP7_75t_R cells:        2
+ABC RESULTS:   OAI211xp5_ASAP7_75t_R cells:       91
+ABC RESULTS:   OAI21xp33_ASAP7_75t_R cells:     1523
+ABC RESULTS:   OAI221xp5_ASAP7_75t_R cells:        4
+ABC RESULTS:   OAI22xp33_ASAP7_75t_R cells:      146
+ABC RESULTS:   OAI311xp33_ASAP7_75t_R cells:        4
+ABC RESULTS:   OAI31xp33_ASAP7_75t_R cells:     1231
+ABC RESULTS:   OAI32xp33_ASAP7_75t_R cells:        2
+ABC RESULTS:   OR3x1_ASAP7_75t_R cells:        3
+ABC RESULTS:   OR4x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   XNOR2x2_ASAP7_75t_R cells:        3
+ABC RESULTS:        internal signals:     4529
+ABC RESULTS:           input signals:     1408
+ABC RESULTS:          output signals:     1389
+Removing temp directory.
+Removing global temp directory.
+
+6. Printing statistics.
+
+=== groq_sram_macro_sp ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+    10425        - wires
+    14620        - wire bits
+       49        - public wires
+     1578        - public wire bits
+       19        - ports
+      176        - port bits
+     6921  800.048 cells
+       79    6.911   A2O1A1Ixp33_ASAP7_75t_R
+       72    9.448   A2O1A1O1Ixp25_ASAP7_75t_R
+        1    0.087   AND2x2_ASAP7_75t_R
+        9    0.787   AND3x1_ASAP7_75t_R
+        5    0.437   AO21x1_ASAP7_75t_R
+        1    0.087   AOI211xp5_ASAP7_75t_R
+       79    5.759   AOI21xp33_ASAP7_75t_R
+        1    0.102   AOI221xp5_ASAP7_75t_R
+        2    0.175   AOI22xp33_ASAP7_75t_R
+        1    0.087   AOI31xp33_ASAP7_75t_R
+      159   60.274   DFFASRHQNx1_ASAP7_75t_R
+     1152  335.923   DFFHQNx1_ASAP7_75t_R
+     1262     55.2   INVx1_ASAP7_75t_R
+      176   10.264   NAND2xp33_ASAP7_75t_R
+       98    7.144   NAND3xp33_ASAP7_75t_R
+      460   40.241   NAND4xp25_ASAP7_75t_R
+       15    1.531   NAND5xp2_ASAP7_75t_R
+      155     9.04   NOR2xp33_ASAP7_75t_R
+       78    5.686   NOR3xp33_ASAP7_75t_R
+       97    8.486   NOR4xp25_ASAP7_75t_R
+        2    0.204   NOR5xp2_ASAP7_75t_R
+        7    0.612   O2A1O1Ixp33_ASAP7_75t_R
+        2    0.233   OA211x2_ASAP7_75t_R
+       91    7.961   OAI211xp5_ASAP7_75t_R
+     1523  111.027   OAI21xp33_ASAP7_75t_R
+        4    0.408   OAI221xp5_ASAP7_75t_R
+      146   12.772   OAI22xp33_ASAP7_75t_R
+        4    0.408   OAI311xp33_ASAP7_75t_R
+     1231  107.688   OAI31xp33_ASAP7_75t_R
+        2    0.204   OAI32xp33_ASAP7_75t_R
+        3    0.262   OR3x1_ASAP7_75t_R
+        1    0.117   OR4x2_ASAP7_75t_R
+        3    0.481   XNOR2x2_ASAP7_75t_R
+
+   Chip area for module '\groq_sram_macro_sp': 800.048340
+     of which used for sequential elements: 396.196920 (49.52%)
+
+7. Executing Verilog backend.
+
+7.1. Executing BMUXMAP pass.
+
+7.2. Executing DEMUXMAP pass.
+Dumping module `\groq_sram_macro_sp'.
+
+Warnings: 1 unique messages, 2 total
+End of script. Logfile hash: 511c9d410b, CPU: user 2.95s system 0.11s, MEM: 151.27 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 35% 3x read_verilog (1 sec), 29% 1x abc (1 sec), ...

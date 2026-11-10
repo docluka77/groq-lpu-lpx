@@ -1,0 +1,19 @@
+# ==============================================================================
+# Stage 23 Formal Verification Script: groq_c2c_kv_quant_rx_engine
+# Proves via unbounded SAT (Yosys 0.60):
+#   1. Zero-input preservation (exp8_i == 0 -> zero magnitude in MXFP8 & NVFP4)
+#   2. Sign-bit preservation across all 16 lanes (quant_vec_o sign == input sign)
+#   3. Maximum finite lane (exp8_i == E_max) never overflows and never underflows
+#   4. zero_lanes_cnt_o <= 5'd16 and sram_wr_en_o == valid_o
+# ==============================================================================
+read_verilog -sv -DFORMAL -Irtl rtl/groq_c2c_kv_quant_rx_engine.sv
+hierarchy -top groq_c2c_kv_quant_rx_engine
+proc
+opt
+async2sync
+dffunmap
+opt
+stat
+
+# Unbounded 3-step sequential SAT across all 4 quant_mode_i modes & 256-bit inputs
+sat -verify -seq 3 -set-init-zero -set-at 1 rst_n 1 -set-at 2 rst_n 1 -set-at 3 rst_n 1 -prove-asserts

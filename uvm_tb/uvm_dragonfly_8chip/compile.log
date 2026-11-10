@@ -1,0 +1,281 @@
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/uvm_pkg.sv:54:9: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   54 | package uvm_pkg;
+      |         ^~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/TIMESCALEMOD?v=5.054
+                       ... Use "/* verilator lint_off TIMESCALEMOD */" and lint_on around source to disable this message.
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pkg.sv:11:9: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   11 | package groq_pkg;
+      |         ^~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:15:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   15 | module groq_sram_macro_sp #(
+      |        ^~~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:10:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   10 | module groq_sram_ecc_secded #(
+      |        ^~~~~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:13:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   13 | module groq_mem_agu #(
+      |        ^~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_slice.sv:15:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   15 | module groq_mem_slice #(
+      |        ^~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_stream_fabric.sv:16:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   16 | module groq_stream_fabric #(
+      |        ^~~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:16:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   16 | module groq_icu_slice #(
+      |        ^~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_nim_realsync.sv:21:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   21 | module groq_nim_realsync #(
+      |        ^~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:24:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   24 | module groq_sxm_slice #(
+      |        ^~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_vxm_slice.sv:18:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   18 | module groq_vxm_slice #(
+      |        ^~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_mxm_slice.sv:21:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   21 | module groq_mxm_slice #(
+      |        ^~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_lpu_top.sv:20:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   20 | module groq_lpu_top #(
+      |        ^~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_c2c_serdes_pcs.sv:14:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   14 | module groq_c2c_serdes_pcs #(
+      |        ^~~~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:19:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   19 | module groq_pcie_c2c_dma #(
+      |        ^~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_dragonfly_8chip_cluster.sv:19:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   19 | module groq_dragonfly_8chip_cluster #(
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/dragonfly_8chip_if.sv:90:8: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   90 | module dragonfly_8chip_dut_wrap (
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-TIMESCALEMOD: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:13:9: Timescale missing on this module as other modules have it (IEEE 1800-2023 3.14.2.3)
+   13 | package uvm_dragonfly_8chip_pkg;
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+                       /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:12:8: ... Location of module with timescale
+   12 | module tb_uvm_dragonfly_8chip;
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-IMPLICITSTATIC: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/tb_uvm_dragonfly_8chip.sv:24:9: Variable's lifetime implicitly set to static (IEEE 1800-2023 6.21)
+                                                                                                                                    : ... The initializer value will only be set once
+                                                                                                                                    : ... Suggest use 'static' before variable declaration'
+   24 |     int inj_val = 0;
+      |         ^~~~~~~
+                         ... For warning description see https://verilator.org/warn/IMPLICITSTATIC?v=5.054
+                         ... Use "/* verilator lint_off IMPLICITSTATIC */" and lint_on around source to disable this message.
+%Warning-WIDTHCONCAT: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/dragonfly_8chip_if.sv:25:89: Replication of more that --replication-limit 8192 is suspect: 9216
+                                                                                                                              : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut.u_dut.gen_chip[7].u_lpu.u_mem_e.gen_banks[3].gen_sub_macro[1].u_sram_macro'
+   25 |  logic [P_NUM_CHIPS-1:0][NUM_SLICES-1:0][VLIW_INSTR_BITS-1:0] chip_imem_vliw_bundle_i = '0;
+      |                                                                                         ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHCONCAT?v=5.054
+                      ... Use "/* verilator lint_off WIDTHCONCAT */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:944:84: Operator AND expects 32 bits on the LHS, but LHS's SEL generates 3 bits.
+                                                                                                                                    : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  944 |           nim_send_dst_packed |= ((item.chip_imem_vliw_bundle[c][SLICE_NIM][18:16] & 3'h7) << (c * 3));
+      |                                                                                    ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.054
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:944:84: Operator AND expects 32 bits on the RHS, but RHS's CONST '3'h7' generates 3 bits.
+                                                                                                                                    : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  944 |           nim_send_dst_packed |= ((item.chip_imem_vliw_bundle[c][SLICE_NIM][18:16] & 3'h7) << (c * 3));
+      |                                                                                    ^
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'global_cycle' generates 16 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'dma_target_chip' generates 3 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'dma_bcast_all_chips' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'dma_vliw_sram_busy' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'dma_desc_push_valid' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'dma_payload_valid' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'dma_payload_parity' generates 16 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'cluster_route_mode' generates 2 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'ring_dir_west' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'congestion_mask' generates 8 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'butterfly_stage' generates 3 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'pcs_link_enable' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'pcs_rx_ts1_seen' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'pcs_rx_ts2_seen' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'pcs_deskew_done' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'pcs_retrain_req' generates 1 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:948:7: Operator TASKREF 'dpi_dragonfly_8chip_step' expects 32 bits on the Function Argument, but Function Argument's MEMBERSEL 'mem_err_inject_en' generates 8 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  948 |       dpi_dragonfly_8chip_step(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:1024:15: Operator FUNCREF 'dpi_check_c2c_rx_from_sram' expects 32 bits on the Function Argument, but Function Argument's ARRAYSEL generates 16 bits.
+                                                                                                                                     : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+ 1024 |           if (dpi_check_c2c_rx_from_sram(c, 0, expect_dly_rx_row[c], item.act_cluster_nim_rx_data[d]) == 0) begin
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:1033:15: Operator FUNCREF 'dpi_check_c2c_rx_from_sram' expects 32 bits on the Function Argument, but Function Argument's ARRAYSEL generates 16 bits.
+                                                                                                                                     : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+ 1033 |           if (dpi_check_c2c_rx_from_sram(c, 0, expect_gbn_0dly_row[c], item.act_cluster_nim_rx_data[d]) == 0) begin
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:1042:15: Operator FUNCREF 'dpi_check_c2c_rx_from_sram' expects 32 bits on the Function Argument, but Function Argument's ARRAYSEL generates 16 bits.
+                                                                                                                                     : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+ 1042 |           if (dpi_check_c2c_rx_from_sram(c, 0, expect_gbn_1dly_row_s3[c], item.act_cluster_nim_rx_data[d]) == 0) begin
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:1073:19: Operator FUNCREF 'dpi_check_c2c_rx_from_sram' expects 32 bits on the Function Argument, but Function Argument's ARRAYSEL generates 16 bits.
+                                                                                                                                     : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+ 1073 |               if (dpi_check_c2c_rx_from_sram(c, 0, pend_sram_row[c], item.act_cluster_nim_rx_data[d]) == 0) begin
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHCONCAT: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:232:29: Replication of more that --replication-limit 8192 is suspect: 9216
+                                                                                                                                    : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  232 |  it.chip_imem_vliw_bundle = '0;
+      |                             ^~
+%Warning-WIDTHTRUNC: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:466:53: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'dir' generates 32 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  466 |           run_collective_wave(2, 16'(step & 3), dir ? 7 : 1, 8'h00, 16'h0000, 8'h00, '0, 1'b0);
+      |                                                     ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.054
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:511:71: Operator XOR expects 32 bits on the LHS, but LHS's CONST '16'h8005' generates 16 bits.
+                                                                                                                                    : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  511 |           run_collective_wave(3, 16'((c + 1) & 3), 5, 8'hFF, 16'h8005 ^ (16'h0101 * c), 8'h00, '0, 1'b0);
+      |                                                                       ^
+%Warning-WIDTHTRUNC: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/uvm_dragonfly_8chip_pkg.sv:511:11: Operator TASKREF 'run_collective_wave' expects 16 bits on the Function Argument, but Function Argument's XOR generates 32 bits.
+                                                                                                                                   : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut'
+  511 |           run_collective_wave(3, 16'((c + 1) & 3), 5, 8'hFF, 16'h8005 ^ (16'h0101 * c), 8'h00, '0, 1'b0);
+      |           ^~~~~~~~~~~~~~~~~~~
+%Warning-UNOPTFLAT: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_lpu_top.sv:140:34: Signal unoptimizable: Circular combinational logic: 'tb_uvm_dragonfly_8chip.u_dut.u_dut.gen_chip[0].u_lpu.slice_notify_ready'
+                                                                                                : ... note: In instance 'tb_uvm_dragonfly_8chip.u_dut.u_dut.gen_chip[0].u_lpu'
+  140 |   logic [P_NUM_SLICES-1:0]       slice_notify_ready;
+      |                                  ^~~~~~~~~~~~~~~~~~
+                    ... For warning description see https://verilator.org/warn/UNOPTFLAT?v=5.054
+                    ... Use "/* verilator lint_off UNOPTFLAT */" and lint_on around source to disable this message.
+                    /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_lpu_top.sv:140:34:      Example path: tb_uvm_dragonfly_8chip.u_dut.u_dut.gen_chip[0].u_lpu.slice_notify_ready
+                    /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:89:3:      Example path: ALWAYS
+                    /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:35:59:      Example path: tb_uvm_dragonfly_8chip.u_dut.u_dut.gen_chip[0].u_lpu.u_icu.slice_vliw_valid_o
+                    /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_lpu_top.sv:660:28:      Example path: ASSIGNW
+                    /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_lpu_top.sv:140:34:      Example path: tb_uvm_dragonfly_8chip.u_dut.u_dut.gen_chip[0].u_lpu.slice_notify_ready
+make: Entering directory '/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/build'
+ccache g++  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -Os  -c -o sim_main.o /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/sim_main.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -o verilated.o /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/verilated.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -o verilated_dpi.o /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/verilated_dpi.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -o verilated_cov.o /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/verilated_cov.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -o verilated_covergroup.o /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/verilated_covergroup.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -o verilated_timing.o /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/verilated_timing.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -o verilated_random.o /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/verilated_random.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -o verilated_threads.o /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/verilated_threads.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -x c++-header Vtb_uvm_dragonfly_8chip__pch.h -o Vtb_uvm_dragonfly_8chip__pch.h.fast.gch
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -c -x c++-header Vtb_uvm_dragonfly_8chip__pch.h -o Vtb_uvm_dragonfly_8chip__pch.h.slow.gch
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_0.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_1.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_2.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_3.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_4.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_5.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_6.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip_vm_classes_7.cpp
+ccache g++ -Os  -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.fast -c Vtb_uvm_dragonfly_8chip__Dpi.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_0.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_1.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_2.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_3.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_4.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_5.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_6.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip_vm_classes_Slow_7.cpp
+ccache g++   -I.  -MMD -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include -I/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/verilator-5.054/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable  -DVM_PREFIX_INCLUDE="<Vtb_uvm_dragonfly_8chip.h>" -DVM_PREFIX_INCLUDE_DPI="<Vtb_uvm_dragonfly_8chip__Dpi.h>"   -O1 -std=c++17   -fcoroutines -include Vtb_uvm_dragonfly_8chip__pch.h.slow -c Vtb_uvm_dragonfly_8chip__Syms__Slow.cpp
+g++    dpi_dragonfly_8chip_ref.o sim_main.o verilated.o verilated_dpi.o verilated_cov.o verilated_covergroup.o verilated_timing.o verilated_random.o verilated_threads.o Vtb_uvm_dragonfly_8chip__ALL.a    -pthread -lpthread -latomic   -o uvm_dragonfly_8chip_sim
+rm Vtb_uvm_dragonfly_8chip__ALL.verilator_deplist.tmp
+make: Leaving directory '/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_dragonfly_8chip/build'
+- V e r i l a t i o n   R e p o r t: Verilator 5.054 2026-11-01 rev vUNKNOWN-built20261104
+- Verilator: Built from 115.951 MB sources in 389 modules, into 124.081 MB in 2517 C++ files needing 0.016 MB
+- Verilator: Walltime 163.058 s (elab=1.153, cvt=32.581, bld=125.722); cpu 37.692 s on 8 threads; allocated 1683.754 MB

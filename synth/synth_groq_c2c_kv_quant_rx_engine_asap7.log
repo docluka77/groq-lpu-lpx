@@ -1,0 +1,1883 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `
+  read_verilog -sv -Irtl rtl/groq_c2c_kv_quant_rx_engine.sv;
+  chformal -remove;
+  synth -top groq_c2c_kv_quant_rx_engine -noabc;
+  dfflibmap -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+  abc -fast -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+  stat -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+  write_verilog -noattr synth/groq_c2c_kv_quant_rx_engine_asap7_netlist.v
+' --
+
+1. Executing Verilog-2005 frontend: rtl/groq_c2c_kv_quant_rx_engine.sv
+Parsing SystemVerilog input from `rtl/groq_c2c_kv_quant_rx_engine.sv' to AST representation.
+verilog frontend filename rtl/groq_c2c_kv_quant_rx_engine.sv
+Generating RTLIL representation for module `\groq_c2c_kv_quant_rx_engine'.
+Warning: Replacing memory \nvfp4_lane_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:216, rtl/groq_c2c_kv_quant_rx_engine.sv:204
+Warning: Replacing memory \mxfp8_lane_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:215, rtl/groq_c2c_kv_quant_rx_engine.sv:191
+Warning: Replacing memory \rel_exp_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:196, rtl/groq_c2c_kv_quant_rx_engine.sv:187
+Warning: Replacing memory \max_lvl3 with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:133, rtl/groq_c2c_kv_quant_rx_engine.sv:130
+Warning: Replacing memory \max_lvl2 with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:130, rtl/groq_c2c_kv_quant_rx_engine.sv:126
+Warning: Replacing memory \max_lvl1 with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:126, rtl/groq_c2c_kv_quant_rx_engine.sv:122
+Warning: Replacing memory \finite_exp8_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:100
+Warning: Replacing memory \frac7_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:90
+Warning: Replacing memory \exp8_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:97, rtl/groq_c2c_kv_quant_rx_engine.sv:84
+Warning: Replacing memory \sign_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:79
+Warning: Replacing memory \raw16_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:79, rtl/groq_c2c_kv_quant_rx_engine.sv:78
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_c2c_kv_quant_rx_engine
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_c2c_kv_quant_rx_engine
+Removed 0 unused modules.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371 in module groq_c2c_kv_quant_rx_engine.
+Removed 1 dead cases from process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271 in module groq_c2c_kv_quant_rx_engine.
+Marked 129 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271 in module groq_c2c_kv_quant_rx_engine.
+Marked 35 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175 in module groq_c2c_kv_quant_rx_engine.
+Marked 48 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13 in module groq_c2c_kv_quant_rx_engine.
+Removed a total of 1 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 10 redundant assignments.
+Promoted 238 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~212 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+     1/10: $0\scale_nvfp4_e4m3_q[7:0]
+     2/10: $0\compression_ratio_code_o[1:0]
+     3/10: $0\nan_inf_clamped_o[0:0]
+     4/10: $0\zero_lanes_cnt_o[4:0]
+     5/10: $0\sram_wr_addr_o[15:0]
+     6/10: $0\sram_wr_bank_o[1:0]
+     7/10: $0\sram_wr_en_o[0:0]
+     8/10: $0\scale_e8m0_o[7:0]
+     9/10: $0\quant_vec_o[127:0]
+    10/10: $0\valid_o[0:0]
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+     1/131: $1\comp_ratio_c[1:0]
+     2/131: $1\nan_inf_clamped_c[0:0]
+     3/131: $1\quant_vec_c[127:0]
+     4/131: $4\nvfp4_lane_c[15][3:0]
+     5/131: $3\nvfp4_lane_c[15][3:0]
+     6/131: $2\nvfp4_lane_c[15][3:0]
+     7/131: $1\nvfp4_lane_c[15][3:0]
+     8/131: $4\mxfp8_lane_c[15][7:0]
+     9/131: $3\mxfp8_lane_c[15][7:0]
+    10/131: $2\mxfp8_lane_c[15][7:0]
+    11/131: $1\mxfp8_lane_c[15][7:0]
+    12/131: $4\nvfp4_lane_c[14][3:0]
+    13/131: $3\nvfp4_lane_c[14][3:0]
+    14/131: $2\nvfp4_lane_c[14][3:0]
+    15/131: $1\nvfp4_lane_c[14][3:0]
+    16/131: $4\mxfp8_lane_c[14][7:0]
+    17/131: $3\mxfp8_lane_c[14][7:0]
+    18/131: $2\mxfp8_lane_c[14][7:0]
+    19/131: $1\mxfp8_lane_c[14][7:0]
+    20/131: $4\nvfp4_lane_c[13][3:0]
+    21/131: $3\nvfp4_lane_c[13][3:0]
+    22/131: $2\nvfp4_lane_c[13][3:0]
+    23/131: $1\nvfp4_lane_c[13][3:0]
+    24/131: $4\mxfp8_lane_c[13][7:0]
+    25/131: $3\mxfp8_lane_c[13][7:0]
+    26/131: $2\mxfp8_lane_c[13][7:0]
+    27/131: $1\mxfp8_lane_c[13][7:0]
+    28/131: $4\nvfp4_lane_c[12][3:0]
+    29/131: $3\nvfp4_lane_c[12][3:0]
+    30/131: $2\nvfp4_lane_c[12][3:0]
+    31/131: $1\nvfp4_lane_c[12][3:0]
+    32/131: $4\mxfp8_lane_c[12][7:0]
+    33/131: $3\mxfp8_lane_c[12][7:0]
+    34/131: $2\mxfp8_lane_c[12][7:0]
+    35/131: $1\mxfp8_lane_c[12][7:0]
+    36/131: $4\nvfp4_lane_c[11][3:0]
+    37/131: $3\nvfp4_lane_c[11][3:0]
+    38/131: $2\nvfp4_lane_c[11][3:0]
+    39/131: $1\nvfp4_lane_c[11][3:0]
+    40/131: $4\mxfp8_lane_c[11][7:0]
+    41/131: $3\mxfp8_lane_c[11][7:0]
+    42/131: $2\mxfp8_lane_c[11][7:0]
+    43/131: $1\mxfp8_lane_c[11][7:0]
+    44/131: $4\nvfp4_lane_c[10][3:0]
+    45/131: $3\nvfp4_lane_c[10][3:0]
+    46/131: $2\nvfp4_lane_c[10][3:0]
+    47/131: $1\nvfp4_lane_c[10][3:0]
+    48/131: $4\mxfp8_lane_c[10][7:0]
+    49/131: $3\mxfp8_lane_c[10][7:0]
+    50/131: $2\mxfp8_lane_c[10][7:0]
+    51/131: $1\mxfp8_lane_c[10][7:0]
+    52/131: $4\nvfp4_lane_c[9][3:0]
+    53/131: $3\nvfp4_lane_c[9][3:0]
+    54/131: $2\nvfp4_lane_c[9][3:0]
+    55/131: $1\nvfp4_lane_c[9][3:0]
+    56/131: $4\mxfp8_lane_c[9][7:0]
+    57/131: $3\mxfp8_lane_c[9][7:0]
+    58/131: $2\mxfp8_lane_c[9][7:0]
+    59/131: $1\mxfp8_lane_c[9][7:0]
+    60/131: $4\nvfp4_lane_c[8][3:0]
+    61/131: $3\nvfp4_lane_c[8][3:0]
+    62/131: $2\nvfp4_lane_c[8][3:0]
+    63/131: $1\nvfp4_lane_c[8][3:0]
+    64/131: $4\mxfp8_lane_c[8][7:0]
+    65/131: $3\mxfp8_lane_c[8][7:0]
+    66/131: $2\mxfp8_lane_c[8][7:0]
+    67/131: $1\mxfp8_lane_c[8][7:0]
+    68/131: $4\nvfp4_lane_c[7][3:0]
+    69/131: $3\nvfp4_lane_c[7][3:0]
+    70/131: $2\nvfp4_lane_c[7][3:0]
+    71/131: $1\nvfp4_lane_c[7][3:0]
+    72/131: $4\mxfp8_lane_c[7][7:0]
+    73/131: $3\mxfp8_lane_c[7][7:0]
+    74/131: $2\mxfp8_lane_c[7][7:0]
+    75/131: $1\mxfp8_lane_c[7][7:0]
+    76/131: $4\nvfp4_lane_c[6][3:0]
+    77/131: $3\nvfp4_lane_c[6][3:0]
+    78/131: $2\nvfp4_lane_c[6][3:0]
+    79/131: $1\nvfp4_lane_c[6][3:0]
+    80/131: $4\mxfp8_lane_c[6][7:0]
+    81/131: $3\mxfp8_lane_c[6][7:0]
+    82/131: $2\mxfp8_lane_c[6][7:0]
+    83/131: $1\mxfp8_lane_c[6][7:0]
+    84/131: $4\nvfp4_lane_c[5][3:0]
+    85/131: $3\nvfp4_lane_c[5][3:0]
+    86/131: $2\nvfp4_lane_c[5][3:0]
+    87/131: $1\nvfp4_lane_c[5][3:0]
+    88/131: $4\mxfp8_lane_c[5][7:0]
+    89/131: $3\mxfp8_lane_c[5][7:0]
+    90/131: $2\mxfp8_lane_c[5][7:0]
+    91/131: $1\mxfp8_lane_c[5][7:0]
+    92/131: $4\nvfp4_lane_c[4][3:0]
+    93/131: $3\nvfp4_lane_c[4][3:0]
+    94/131: $2\nvfp4_lane_c[4][3:0]
+    95/131: $1\nvfp4_lane_c[4][3:0]
+    96/131: $4\mxfp8_lane_c[4][7:0]
+    97/131: $3\mxfp8_lane_c[4][7:0]
+    98/131: $2\mxfp8_lane_c[4][7:0]
+    99/131: $1\mxfp8_lane_c[4][7:0]
+   100/131: $4\nvfp4_lane_c[3][3:0]
+   101/131: $3\nvfp4_lane_c[3][3:0]
+   102/131: $2\nvfp4_lane_c[3][3:0]
+   103/131: $1\nvfp4_lane_c[3][3:0]
+   104/131: $4\mxfp8_lane_c[3][7:0]
+   105/131: $3\mxfp8_lane_c[3][7:0]
+   106/131: $2\mxfp8_lane_c[3][7:0]
+   107/131: $1\mxfp8_lane_c[3][7:0]
+   108/131: $4\nvfp4_lane_c[2][3:0]
+   109/131: $3\nvfp4_lane_c[2][3:0]
+   110/131: $2\nvfp4_lane_c[2][3:0]
+   111/131: $1\nvfp4_lane_c[2][3:0]
+   112/131: $4\mxfp8_lane_c[2][7:0]
+   113/131: $3\mxfp8_lane_c[2][7:0]
+   114/131: $2\mxfp8_lane_c[2][7:0]
+   115/131: $1\mxfp8_lane_c[2][7:0]
+   116/131: $4\nvfp4_lane_c[1][3:0]
+   117/131: $3\nvfp4_lane_c[1][3:0]
+   118/131: $2\nvfp4_lane_c[1][3:0]
+   119/131: $1\nvfp4_lane_c[1][3:0]
+   120/131: $4\mxfp8_lane_c[1][7:0]
+   121/131: $3\mxfp8_lane_c[1][7:0]
+   122/131: $2\mxfp8_lane_c[1][7:0]
+   123/131: $1\mxfp8_lane_c[1][7:0]
+   124/131: $4\nvfp4_lane_c[0][3:0]
+   125/131: $3\nvfp4_lane_c[0][3:0]
+   126/131: $2\nvfp4_lane_c[0][3:0]
+   127/131: $1\nvfp4_lane_c[0][3:0]
+   128/131: $4\mxfp8_lane_c[0][7:0]
+   129/131: $3\mxfp8_lane_c[0][7:0]
+   130/131: $2\mxfp8_lane_c[0][7:0]
+   131/131: $1\mxfp8_lane_c[0][7:0]
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+     1/35: $2\nvfp4_e4m3_exp4_c[3:0]
+     2/35: $1\nvfp4_e4m3_exp4_c[3:0]
+     3/35: $32\max_emax_frac3_c[2:0]
+     4/35: $31\max_emax_frac3_c[2:0]
+     5/35: $30\max_emax_frac3_c[2:0]
+     6/35: $29\max_emax_frac3_c[2:0]
+     7/35: $28\max_emax_frac3_c[2:0]
+     8/35: $27\max_emax_frac3_c[2:0]
+     9/35: $26\max_emax_frac3_c[2:0]
+    10/35: $25\max_emax_frac3_c[2:0]
+    11/35: $24\max_emax_frac3_c[2:0]
+    12/35: $23\max_emax_frac3_c[2:0]
+    13/35: $22\max_emax_frac3_c[2:0]
+    14/35: $21\max_emax_frac3_c[2:0]
+    15/35: $20\max_emax_frac3_c[2:0]
+    16/35: $19\max_emax_frac3_c[2:0]
+    17/35: $18\max_emax_frac3_c[2:0]
+    18/35: $17\max_emax_frac3_c[2:0]
+    19/35: $16\max_emax_frac3_c[2:0]
+    20/35: $15\max_emax_frac3_c[2:0]
+    21/35: $14\max_emax_frac3_c[2:0]
+    22/35: $13\max_emax_frac3_c[2:0]
+    23/35: $12\max_emax_frac3_c[2:0]
+    24/35: $11\max_emax_frac3_c[2:0]
+    25/35: $10\max_emax_frac3_c[2:0]
+    26/35: $9\max_emax_frac3_c[2:0]
+    27/35: $8\max_emax_frac3_c[2:0]
+    28/35: $7\max_emax_frac3_c[2:0]
+    29/35: $6\max_emax_frac3_c[2:0]
+    30/35: $5\max_emax_frac3_c[2:0]
+    31/35: $4\max_emax_frac3_c[2:0]
+    32/35: $3\max_emax_frac3_c[2:0]
+    33/35: $2\max_emax_frac3_c[2:0]
+    34/35: $1\max_emax_frac3_c[2:0]
+    35/35: $1\scale_e8m0_c[7:0]
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+     1/64: $3\exp8_c[15][7:0]
+     2/64: $2\exp8_c[15][7:0]
+     3/64: $1\frac7_c[15][6:0]
+     4/64: $1\exp8_c[15][7:0]
+     5/64: $3\exp8_c[14][7:0]
+     6/64: $2\exp8_c[14][7:0]
+     7/64: $1\frac7_c[14][6:0]
+     8/64: $1\exp8_c[14][7:0]
+     9/64: $3\exp8_c[13][7:0]
+    10/64: $2\exp8_c[13][7:0]
+    11/64: $1\frac7_c[13][6:0]
+    12/64: $1\exp8_c[13][7:0]
+    13/64: $3\exp8_c[12][7:0]
+    14/64: $2\exp8_c[12][7:0]
+    15/64: $1\frac7_c[12][6:0]
+    16/64: $1\exp8_c[12][7:0]
+    17/64: $3\exp8_c[11][7:0]
+    18/64: $2\exp8_c[11][7:0]
+    19/64: $1\frac7_c[11][6:0]
+    20/64: $1\exp8_c[11][7:0]
+    21/64: $3\exp8_c[10][7:0]
+    22/64: $2\exp8_c[10][7:0]
+    23/64: $1\frac7_c[10][6:0]
+    24/64: $1\exp8_c[10][7:0]
+    25/64: $3\exp8_c[9][7:0]
+    26/64: $2\exp8_c[9][7:0]
+    27/64: $1\frac7_c[9][6:0]
+    28/64: $1\exp8_c[9][7:0]
+    29/64: $3\exp8_c[8][7:0]
+    30/64: $2\exp8_c[8][7:0]
+    31/64: $1\frac7_c[8][6:0]
+    32/64: $1\exp8_c[8][7:0]
+    33/64: $3\exp8_c[7][7:0]
+    34/64: $2\exp8_c[7][7:0]
+    35/64: $1\frac7_c[7][6:0]
+    36/64: $1\exp8_c[7][7:0]
+    37/64: $3\exp8_c[6][7:0]
+    38/64: $2\exp8_c[6][7:0]
+    39/64: $1\frac7_c[6][6:0]
+    40/64: $1\exp8_c[6][7:0]
+    41/64: $3\exp8_c[5][7:0]
+    42/64: $2\exp8_c[5][7:0]
+    43/64: $1\frac7_c[5][6:0]
+    44/64: $1\exp8_c[5][7:0]
+    45/64: $3\exp8_c[4][7:0]
+    46/64: $2\exp8_c[4][7:0]
+    47/64: $1\frac7_c[4][6:0]
+    48/64: $1\exp8_c[4][7:0]
+    49/64: $3\exp8_c[3][7:0]
+    50/64: $2\exp8_c[3][7:0]
+    51/64: $1\frac7_c[3][6:0]
+    52/64: $1\exp8_c[3][7:0]
+    53/64: $3\exp8_c[2][7:0]
+    54/64: $2\exp8_c[2][7:0]
+    55/64: $1\frac7_c[2][6:0]
+    56/64: $1\exp8_c[2][7:0]
+    57/64: $3\exp8_c[1][7:0]
+    58/64: $2\exp8_c[1][7:0]
+    59/64: $1\frac7_c[1][6:0]
+    60/64: $1\exp8_c[1][7:0]
+    61/64: $3\exp8_c[0][7:0]
+    62/64: $2\exp8_c[0][7:0]
+    63/64: $1\frac7_c[0][6:0]
+    64/64: $1\exp8_c[0][7:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_pack128_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_pack64_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\quant_vec_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\zero_lanes_cnt_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nan_inf_clamped_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\comp_ratio_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$11.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_tree_exp8_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\e_max_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\scale_e8m0_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_emax_frac3_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_e4m3_exp4_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\scale_nvfp4_e4m3_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$3.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$5.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$7.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$9.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl3[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl3[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\is_zero_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\is_nan_inf_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\is_finite_nz_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$1.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\valid_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1842' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\quant_vec_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1847' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\scale_e8m0_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1852' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\sram_wr_en_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1857' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\sram_wr_bank_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1862' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\sram_wr_addr_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1867' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\zero_lanes_cnt_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1872' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\nan_inf_clamped_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1877' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\compression_ratio_code_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1882' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\scale_nvfp4_e4m3_q' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+  created $adff cell `$procdff$1887' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$371'.
+Found and cleaned up 129 empty switches in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$271'.
+Found and cleaned up 35 empty switches in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$175'.
+Found and cleaned up 48 empty switches in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$13'.
+Cleaned up 212 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~72 debug messages>
+
+2.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~1 debug messages>
+
+2.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 116 unused cells and 1187 unused wires.
+<suppressed ~122 debug messages>
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module groq_c2c_kv_quant_rx_engine...
+Found and reported 0 problems.
+
+2.6. Executing OPT pass (performing simple optimizations).
+
+2.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+<suppressed ~144 debug messages>
+Removed a total of 48 cells.
+
+2.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$1001.
+    dead port 1/2 on $mux $procmux$1004.
+    dead port 1/2 on $mux $procmux$1010.
+    dead port 1/2 on $mux $procmux$1019.
+    dead port 1/2 on $mux $procmux$1022.
+    dead port 1/2 on $mux $procmux$1025.
+    dead port 1/2 on $mux $procmux$1031.
+    dead port 1/2 on $mux $procmux$1034.
+    dead port 1/2 on $mux $procmux$1040.
+    dead port 1/2 on $mux $procmux$1049.
+    dead port 1/2 on $mux $procmux$1052.
+    dead port 1/2 on $mux $procmux$1055.
+    dead port 1/2 on $mux $procmux$1061.
+    dead port 1/2 on $mux $procmux$1064.
+    dead port 1/2 on $mux $procmux$1070.
+    dead port 1/2 on $mux $procmux$1079.
+    dead port 1/2 on $mux $procmux$1082.
+    dead port 1/2 on $mux $procmux$1085.
+    dead port 1/2 on $mux $procmux$1091.
+    dead port 1/2 on $mux $procmux$1094.
+    dead port 1/2 on $mux $procmux$1100.
+    dead port 1/2 on $mux $procmux$1109.
+    dead port 1/2 on $mux $procmux$1112.
+    dead port 1/2 on $mux $procmux$1115.
+    dead port 1/2 on $mux $procmux$1121.
+    dead port 1/2 on $mux $procmux$1124.
+    dead port 1/2 on $mux $procmux$1130.
+    dead port 1/2 on $mux $procmux$1139.
+    dead port 1/2 on $mux $procmux$1142.
+    dead port 1/2 on $mux $procmux$1145.
+    dead port 1/2 on $mux $procmux$1151.
+    dead port 1/2 on $mux $procmux$1154.
+    dead port 1/2 on $mux $procmux$1160.
+    dead port 1/2 on $mux $procmux$1169.
+    dead port 1/2 on $mux $procmux$1172.
+    dead port 1/2 on $mux $procmux$1175.
+    dead port 1/2 on $mux $procmux$1181.
+    dead port 1/2 on $mux $procmux$1184.
+    dead port 1/2 on $mux $procmux$1190.
+    dead port 1/2 on $mux $procmux$1199.
+    dead port 1/2 on $mux $procmux$1202.
+    dead port 1/2 on $mux $procmux$1205.
+    dead port 1/2 on $mux $procmux$1211.
+    dead port 1/2 on $mux $procmux$1214.
+    dead port 1/2 on $mux $procmux$1220.
+    dead port 1/2 on $mux $procmux$1229.
+    dead port 1/2 on $mux $procmux$1232.
+    dead port 1/2 on $mux $procmux$1235.
+    dead port 1/2 on $mux $procmux$1241.
+    dead port 1/2 on $mux $procmux$1244.
+    dead port 1/2 on $mux $procmux$1250.
+    dead port 1/2 on $mux $procmux$1259.
+    dead port 1/2 on $mux $procmux$1262.
+    dead port 1/2 on $mux $procmux$1265.
+    dead port 1/2 on $mux $procmux$1271.
+    dead port 1/2 on $mux $procmux$1274.
+    dead port 1/2 on $mux $procmux$1280.
+    dead port 1/2 on $mux $procmux$1289.
+    dead port 1/2 on $mux $procmux$1292.
+    dead port 1/2 on $mux $procmux$1295.
+    dead port 1/2 on $mux $procmux$1301.
+    dead port 1/2 on $mux $procmux$1304.
+    dead port 1/2 on $mux $procmux$1310.
+    dead port 1/2 on $mux $procmux$1319.
+    dead port 1/2 on $mux $procmux$1322.
+    dead port 1/2 on $mux $procmux$1325.
+    dead port 1/2 on $mux $procmux$1331.
+    dead port 1/2 on $mux $procmux$1334.
+    dead port 1/2 on $mux $procmux$1340.
+    dead port 1/2 on $mux $procmux$1507.
+    dead port 2/2 on $mux $procmux$1509.
+    dead port 2/2 on $mux $procmux$1515.
+    dead port 1/2 on $mux $procmux$1528.
+    dead port 2/2 on $mux $procmux$1530.
+    dead port 2/2 on $mux $procmux$1536.
+    dead port 1/2 on $mux $procmux$1549.
+    dead port 2/2 on $mux $procmux$1551.
+    dead port 2/2 on $mux $procmux$1557.
+    dead port 1/2 on $mux $procmux$1570.
+    dead port 2/2 on $mux $procmux$1572.
+    dead port 2/2 on $mux $procmux$1578.
+    dead port 1/2 on $mux $procmux$1591.
+    dead port 2/2 on $mux $procmux$1593.
+    dead port 2/2 on $mux $procmux$1599.
+    dead port 1/2 on $mux $procmux$1612.
+    dead port 2/2 on $mux $procmux$1614.
+    dead port 2/2 on $mux $procmux$1620.
+    dead port 1/2 on $mux $procmux$1633.
+    dead port 2/2 on $mux $procmux$1635.
+    dead port 2/2 on $mux $procmux$1641.
+    dead port 1/2 on $mux $procmux$1654.
+    dead port 2/2 on $mux $procmux$1656.
+    dead port 2/2 on $mux $procmux$1662.
+    dead port 1/2 on $mux $procmux$1675.
+    dead port 2/2 on $mux $procmux$1677.
+    dead port 2/2 on $mux $procmux$1683.
+    dead port 1/2 on $mux $procmux$1696.
+    dead port 2/2 on $mux $procmux$1698.
+    dead port 2/2 on $mux $procmux$1704.
+    dead port 1/2 on $mux $procmux$1717.
+    dead port 2/2 on $mux $procmux$1719.
+    dead port 2/2 on $mux $procmux$1725.
+    dead port 1/2 on $mux $procmux$1738.
+    dead port 2/2 on $mux $procmux$1740.
+    dead port 2/2 on $mux $procmux$1746.
+    dead port 1/2 on $mux $procmux$1759.
+    dead port 2/2 on $mux $procmux$1761.
+    dead port 2/2 on $mux $procmux$1767.
+    dead port 1/2 on $mux $procmux$1780.
+    dead port 2/2 on $mux $procmux$1782.
+    dead port 2/2 on $mux $procmux$1788.
+    dead port 1/2 on $mux $procmux$1801.
+    dead port 2/2 on $mux $procmux$1803.
+    dead port 2/2 on $mux $procmux$1809.
+    dead port 1/2 on $mux $procmux$1822.
+    dead port 2/2 on $mux $procmux$1824.
+    dead port 2/2 on $mux $procmux$1830.
+    dead port 1/2 on $mux $procmux$389.
+    dead port 1/2 on $mux $procmux$392.
+    dead port 1/2 on $mux $procmux$395.
+    dead port 1/2 on $mux $procmux$401.
+    dead port 1/2 on $mux $procmux$404.
+    dead port 1/2 on $mux $procmux$410.
+    dead port 1/2 on $mux $procmux$419.
+    dead port 1/2 on $mux $procmux$422.
+    dead port 1/2 on $mux $procmux$425.
+    dead port 1/2 on $mux $procmux$431.
+    dead port 1/2 on $mux $procmux$434.
+    dead port 1/2 on $mux $procmux$440.
+    dead port 1/2 on $mux $procmux$449.
+    dead port 1/2 on $mux $procmux$452.
+    dead port 1/2 on $mux $procmux$455.
+    dead port 1/2 on $mux $procmux$461.
+    dead port 1/2 on $mux $procmux$464.
+    dead port 1/2 on $mux $procmux$470.
+    dead port 1/2 on $mux $procmux$479.
+    dead port 1/2 on $mux $procmux$482.
+    dead port 1/2 on $mux $procmux$485.
+    dead port 1/2 on $mux $procmux$491.
+    dead port 1/2 on $mux $procmux$494.
+    dead port 1/2 on $mux $procmux$500.
+    dead port 1/2 on $mux $procmux$509.
+    dead port 1/2 on $mux $procmux$512.
+    dead port 1/2 on $mux $procmux$515.
+    dead port 1/2 on $mux $procmux$521.
+    dead port 1/2 on $mux $procmux$524.
+    dead port 1/2 on $mux $procmux$530.
+    dead port 1/2 on $mux $procmux$539.
+    dead port 1/2 on $mux $procmux$542.
+    dead port 1/2 on $mux $procmux$545.
+    dead port 1/2 on $mux $procmux$551.
+    dead port 1/2 on $mux $procmux$554.
+    dead port 1/2 on $mux $procmux$560.
+    dead port 1/2 on $mux $procmux$569.
+    dead port 1/2 on $mux $procmux$572.
+    dead port 1/2 on $mux $procmux$575.
+    dead port 1/2 on $mux $procmux$581.
+    dead port 1/2 on $mux $procmux$584.
+    dead port 1/2 on $mux $procmux$590.
+    dead port 1/2 on $mux $procmux$599.
+    dead port 1/2 on $mux $procmux$602.
+    dead port 1/2 on $mux $procmux$605.
+    dead port 1/2 on $mux $procmux$611.
+    dead port 1/2 on $mux $procmux$614.
+    dead port 1/2 on $mux $procmux$620.
+    dead port 1/2 on $mux $procmux$629.
+    dead port 1/2 on $mux $procmux$632.
+    dead port 1/2 on $mux $procmux$635.
+    dead port 1/2 on $mux $procmux$641.
+    dead port 1/2 on $mux $procmux$644.
+    dead port 1/2 on $mux $procmux$650.
+    dead port 1/2 on $mux $procmux$659.
+    dead port 1/2 on $mux $procmux$662.
+    dead port 1/2 on $mux $procmux$665.
+    dead port 1/2 on $mux $procmux$671.
+    dead port 1/2 on $mux $procmux$674.
+    dead port 1/2 on $mux $procmux$680.
+    dead port 1/2 on $mux $procmux$689.
+    dead port 1/2 on $mux $procmux$692.
+    dead port 1/2 on $mux $procmux$695.
+    dead port 1/2 on $mux $procmux$701.
+    dead port 1/2 on $mux $procmux$704.
+    dead port 1/2 on $mux $procmux$710.
+    dead port 1/2 on $mux $procmux$719.
+    dead port 1/2 on $mux $procmux$722.
+    dead port 1/2 on $mux $procmux$725.
+    dead port 1/2 on $mux $procmux$731.
+    dead port 1/2 on $mux $procmux$734.
+    dead port 1/2 on $mux $procmux$740.
+    dead port 1/2 on $mux $procmux$749.
+    dead port 1/2 on $mux $procmux$752.
+    dead port 1/2 on $mux $procmux$755.
+    dead port 1/2 on $mux $procmux$761.
+    dead port 1/2 on $mux $procmux$764.
+    dead port 1/2 on $mux $procmux$770.
+    dead port 1/2 on $mux $procmux$779.
+    dead port 1/2 on $mux $procmux$782.
+    dead port 1/2 on $mux $procmux$785.
+    dead port 1/2 on $mux $procmux$791.
+    dead port 1/2 on $mux $procmux$794.
+    dead port 1/2 on $mux $procmux$800.
+    dead port 1/2 on $mux $procmux$809.
+    dead port 1/2 on $mux $procmux$812.
+    dead port 1/2 on $mux $procmux$815.
+    dead port 1/2 on $mux $procmux$821.
+    dead port 1/2 on $mux $procmux$824.
+    dead port 1/2 on $mux $procmux$830.
+    dead port 1/2 on $mux $procmux$839.
+    dead port 1/2 on $mux $procmux$842.
+    dead port 1/2 on $mux $procmux$845.
+    dead port 1/2 on $mux $procmux$851.
+    dead port 1/2 on $mux $procmux$854.
+    dead port 1/2 on $mux $procmux$860.
+    dead port 1/2 on $mux $procmux$869.
+    dead port 1/2 on $mux $procmux$872.
+    dead port 1/2 on $mux $procmux$875.
+    dead port 1/2 on $mux $procmux$881.
+    dead port 1/2 on $mux $procmux$884.
+    dead port 1/2 on $mux $procmux$890.
+    dead port 1/2 on $mux $procmux$899.
+    dead port 1/2 on $mux $procmux$902.
+    dead port 1/2 on $mux $procmux$905.
+    dead port 1/2 on $mux $procmux$911.
+    dead port 1/2 on $mux $procmux$914.
+    dead port 1/2 on $mux $procmux$920.
+    dead port 1/2 on $mux $procmux$929.
+    dead port 1/2 on $mux $procmux$932.
+    dead port 1/2 on $mux $procmux$935.
+    dead port 1/2 on $mux $procmux$941.
+    dead port 1/2 on $mux $procmux$944.
+    dead port 1/2 on $mux $procmux$950.
+    dead port 1/2 on $mux $procmux$959.
+    dead port 1/2 on $mux $procmux$962.
+    dead port 1/2 on $mux $procmux$965.
+    dead port 1/2 on $mux $procmux$971.
+    dead port 1/2 on $mux $procmux$974.
+    dead port 1/2 on $mux $procmux$980.
+    dead port 1/2 on $mux $procmux$989.
+    dead port 1/2 on $mux $procmux$992.
+    dead port 1/2 on $mux $procmux$995.
+Removed 240 multiplexer ports.
+<suppressed ~569 debug messages>
+
+2.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+    New ctrl vector for $pmux cell $procmux$377: { $auto$opt_reduce.cc:137:opt_pmux$1889 $procmux$374_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$1888: { $procmux$1501_CMP [0] $procmux$1500_CMP $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:81$105_Y }
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 2 changes.
+
+2.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 0 unused cells and 283 unused wires.
+<suppressed ~1 debug messages>
+
+2.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~329 debug messages>
+
+2.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+2.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.7. Executing FSM pass (extract and optimize FSM).
+
+2.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking groq_c2c_kv_quant_rx_engine.compression_ratio_code_o as FSM state register:
+    Register is connected to module port.
+    Users of register don't seem to benefit from recoding.
+
+2.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~329 debug messages>
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.8.9. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$18 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$18 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$28 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$28 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$38 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$38 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$48 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$48 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$58 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$58 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$68 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$68 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$78 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$78 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$88 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$88 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$98 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$98 ($add).
+Removed top 1 bits (of 2) from port B of cell groq_c2c_kv_quant_rx_engine.$eq$rtl/groq_c2c_kv_quant_rx_engine.sv:81$105 ($eq).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$108 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$108 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$118 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$118 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$128 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$128 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$138 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$138 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$148 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$148 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$158 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$158 ($add).
+Removed top 3 bits (of 8) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$168 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$168 ($add).
+Removed top 5 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$gt$rtl/groq_c2c_kv_quant_rx_engine.sv:141$212 ($gt).
+Removed top 5 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$sub$rtl/groq_c2c_kv_quant_rx_engine.sv:141$213 ($sub).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$gt$rtl/groq_c2c_kv_quant_rx_engine.sv:144$215 ($gt).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$sub$rtl/groq_c2c_kv_quant_rx_engine.sv:144$216 ($sub).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$276 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$278 ($ge).
+Removed top 4 bits (of 5) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$279 ($add).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$279 ($add).
+Removed top 3 bits (of 5) from port Y of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$279 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$282 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$284 ($ge).
+Removed top 3 bits (of 5) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$285 ($add).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$285 ($add).
+Removed top 2 bits (of 5) from port Y of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$285 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$288 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$290 ($ge).
+Removed top 2 bits (of 5) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$291 ($add).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$291 ($add).
+Removed top 1 bits (of 5) from port Y of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$291 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$294 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$296 ($ge).
+Removed top 1 bits (of 5) from port A of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$297 ($add).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$297 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$300 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$302 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$303 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$306 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$308 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$309 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$312 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$314 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$315 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$318 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$320 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$321 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$324 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$326 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$327 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$330 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$332 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$333 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$336 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$338 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$339 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$342 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$344 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$345 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$348 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$350 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$351 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$354 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$356 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$357 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$360 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$362 ($ge).
+Removed top 4 bits (of 5) from port B of cell groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$366 ($ge).
+Removed top 6 bits (of 8) from port B of cell groq_c2c_kv_quant_rx_engine.$ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$368 ($ge).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$386 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$398 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$407 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$413 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$416 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$428 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$437 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$443 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$446 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$458 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$467 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$473 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$476 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$488 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$497 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$503 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$506 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$518 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$527 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$533 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$536 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$548 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$557 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$563 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$566 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$578 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$587 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$593 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$596 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$608 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$617 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$623 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$626 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$638 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$647 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$653 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$656 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$668 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$677 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$683 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$686 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$698 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$707 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$713 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$716 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$728 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$737 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$743 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$746 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$758 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$767 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$773 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$776 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$788 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$797 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$803 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$806 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$818 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$827 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$833 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$836 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$848 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$857 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$863 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$866 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$878 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$887 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$893 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$896 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$908 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$917 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$923 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$926 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$938 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$947 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$953 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$956 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$968 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$977 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$983 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$986 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$998 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1007 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1013 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1016 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1028 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1037 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1043 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1046 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1058 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1067 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1073 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1076 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1088 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1097 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1103 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1106 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1118 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1127 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1133 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1136 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1148 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1157 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1163 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1166 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1178 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1187 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1193 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1196 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1208 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1217 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1223 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1226 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1238 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1247 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1253 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1256 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1268 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1277 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1283 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1286 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1298 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1307 ($mux).
+Removed top 1 bits (of 4) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1313 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1316 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1328 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1337 ($mux).
+Removed top 1 bits (of 8) from mux cell groq_c2c_kv_quant_rx_engine.$procmux$1343 ($mux).
+Removed top 3 bits (of 5) from wire groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$279_Y.
+Removed top 2 bits (of 5) from wire groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$285_Y.
+Removed top 1 bits (of 5) from wire groq_c2c_kv_quant_rx_engine.$add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$291_Y.
+
+2.10. Executing PEEPOPT pass (run peephole optimizers).
+
+2.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+2.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module groq_c2c_kv_quant_rx_engine:
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$279 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$285 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$291 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$297 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$303 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$309 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$315 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$321 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$327 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$333 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$339 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$345 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$351 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$357 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$108 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$118 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$128 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$138 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$148 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$158 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$168 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$18 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$28 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$38 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$48 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$58 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$68 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$78 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$88 ($add).
+  creating $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$98 ($add).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:141$213 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:144$216 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$274 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$280 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$286 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$292 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$298 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$304 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$310 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$316 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$322 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$328 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$334 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$340 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$346 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$352 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$358 ($sub).
+  creating $macc model for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$364 ($sub).
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$357 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$351 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$345 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$339 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$333 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$327 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$321 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$315 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$309 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$303 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$297 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$291 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$285 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  merging $macc model for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$279 into $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$280.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$274.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:144$216.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:141$213.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$98.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$88.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$78.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$68.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$58.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$48.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$38.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$28.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$18.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$168.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$158.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$148.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$138.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$128.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$118.
+  creating $alu model for $macc $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$108.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$286.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$292.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$298.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$304.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$310.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$316.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$322.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$328.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$334.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$340.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$346.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$352.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$358.
+  creating $alu model for $macc $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$364.
+  creating $macc cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:186$363: $auto$alumacc.cc:382:replace_macc$1893
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$180 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$182 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$184 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$186 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$188 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$190 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$192 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$194 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$196 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$198 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$200 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$202 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:130$204 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:130$206 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:133$208 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$276 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$282 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$288 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$294 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$300 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$306 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$312 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$318 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$324 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$330 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$336 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$342 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$348 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$354 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$360 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$366 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$278 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$284 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$290 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$296 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$302 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$308 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$314 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$320 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$326 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$332 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$338 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$344 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$350 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$356 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$362 ($ge): new $alu
+  creating $alu model for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$368 ($ge): new $alu
+  creating $alu model for $gt$rtl/groq_c2c_kv_quant_rx_engine.sv:141$212 ($gt): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:141$213.
+  creating $alu model for $gt$rtl/groq_c2c_kv_quant_rx_engine.sv:144$215 ($gt): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:144$216.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$275 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$274.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$281 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$280.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$287 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$286.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$293 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$292.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$299 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$298.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$305 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$304.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$311 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$310.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$317 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$316.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$323 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$322.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$329 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$328.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$335 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$334.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$341 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$340.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$347 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$346.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$353 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$352.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$359 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$358.
+  creating $alu model for $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$365 ($le): merged with $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$364.
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$368: $auto$alumacc.cc:512:replace_alu$1941
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$362: $auto$alumacc.cc:512:replace_alu$1954
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$356: $auto$alumacc.cc:512:replace_alu$1967
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$350: $auto$alumacc.cc:512:replace_alu$1980
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$344: $auto$alumacc.cc:512:replace_alu$1993
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$338: $auto$alumacc.cc:512:replace_alu$2006
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$332: $auto$alumacc.cc:512:replace_alu$2019
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$326: $auto$alumacc.cc:512:replace_alu$2032
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$320: $auto$alumacc.cc:512:replace_alu$2045
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$314: $auto$alumacc.cc:512:replace_alu$2058
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$308: $auto$alumacc.cc:512:replace_alu$2071
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$302: $auto$alumacc.cc:512:replace_alu$2084
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$296: $auto$alumacc.cc:512:replace_alu$2097
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$290: $auto$alumacc.cc:512:replace_alu$2110
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$284: $auto$alumacc.cc:512:replace_alu$2123
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:209$278: $auto$alumacc.cc:512:replace_alu$2136
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$366: $auto$alumacc.cc:512:replace_alu$2149
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$360: $auto$alumacc.cc:512:replace_alu$2162
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$354: $auto$alumacc.cc:512:replace_alu$2175
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$348: $auto$alumacc.cc:512:replace_alu$2188
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$342: $auto$alumacc.cc:512:replace_alu$2201
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$336: $auto$alumacc.cc:512:replace_alu$2214
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$330: $auto$alumacc.cc:512:replace_alu$2227
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$324: $auto$alumacc.cc:512:replace_alu$2240
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$318: $auto$alumacc.cc:512:replace_alu$2253
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$312: $auto$alumacc.cc:512:replace_alu$2266
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$306: $auto$alumacc.cc:512:replace_alu$2279
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$300: $auto$alumacc.cc:512:replace_alu$2292
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$294: $auto$alumacc.cc:512:replace_alu$2305
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$288: $auto$alumacc.cc:512:replace_alu$2318
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$282: $auto$alumacc.cc:512:replace_alu$2331
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:196$276: $auto$alumacc.cc:512:replace_alu$2344
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:133$208: $auto$alumacc.cc:512:replace_alu$2357
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:130$206: $auto$alumacc.cc:512:replace_alu$2370
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:130$204: $auto$alumacc.cc:512:replace_alu$2383
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$202: $auto$alumacc.cc:512:replace_alu$2396
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$200: $auto$alumacc.cc:512:replace_alu$2409
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$198: $auto$alumacc.cc:512:replace_alu$2422
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:126$196: $auto$alumacc.cc:512:replace_alu$2435
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$194: $auto$alumacc.cc:512:replace_alu$2448
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$192: $auto$alumacc.cc:512:replace_alu$2461
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$190: $auto$alumacc.cc:512:replace_alu$2474
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$188: $auto$alumacc.cc:512:replace_alu$2487
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$186: $auto$alumacc.cc:512:replace_alu$2500
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$184: $auto$alumacc.cc:512:replace_alu$2513
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$182: $auto$alumacc.cc:512:replace_alu$2526
+  creating $alu cell for $ge$rtl/groq_c2c_kv_quant_rx_engine.sv:122$180: $auto$alumacc.cc:512:replace_alu$2539
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$364, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$365: $auto$alumacc.cc:512:replace_alu$2552
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$358, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$359: $auto$alumacc.cc:512:replace_alu$2561
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$352, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$353: $auto$alumacc.cc:512:replace_alu$2570
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$346, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$347: $auto$alumacc.cc:512:replace_alu$2579
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$340, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$341: $auto$alumacc.cc:512:replace_alu$2588
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$334, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$335: $auto$alumacc.cc:512:replace_alu$2597
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$328, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$329: $auto$alumacc.cc:512:replace_alu$2606
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$322, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$323: $auto$alumacc.cc:512:replace_alu$2615
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$316, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$317: $auto$alumacc.cc:512:replace_alu$2624
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$310, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$311: $auto$alumacc.cc:512:replace_alu$2633
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$304, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$305: $auto$alumacc.cc:512:replace_alu$2642
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$298, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$299: $auto$alumacc.cc:512:replace_alu$2651
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$292, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$293: $auto$alumacc.cc:512:replace_alu$2660
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$286, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$287: $auto$alumacc.cc:512:replace_alu$2669
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$108: $auto$alumacc.cc:512:replace_alu$2678
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$118: $auto$alumacc.cc:512:replace_alu$2681
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$128: $auto$alumacc.cc:512:replace_alu$2684
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$138: $auto$alumacc.cc:512:replace_alu$2687
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$148: $auto$alumacc.cc:512:replace_alu$2690
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$158: $auto$alumacc.cc:512:replace_alu$2693
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$168: $auto$alumacc.cc:512:replace_alu$2696
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$18: $auto$alumacc.cc:512:replace_alu$2699
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$28: $auto$alumacc.cc:512:replace_alu$2702
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$38: $auto$alumacc.cc:512:replace_alu$2705
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$48: $auto$alumacc.cc:512:replace_alu$2708
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$58: $auto$alumacc.cc:512:replace_alu$2711
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$68: $auto$alumacc.cc:512:replace_alu$2714
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$78: $auto$alumacc.cc:512:replace_alu$2717
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$88: $auto$alumacc.cc:512:replace_alu$2720
+  creating $alu cell for $add$rtl/groq_c2c_kv_quant_rx_engine.sv:88$98: $auto$alumacc.cc:512:replace_alu$2723
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:141$213, $gt$rtl/groq_c2c_kv_quant_rx_engine.sv:141$212: $auto$alumacc.cc:512:replace_alu$2726
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:144$216, $gt$rtl/groq_c2c_kv_quant_rx_engine.sv:144$215: $auto$alumacc.cc:512:replace_alu$2737
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$274, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$275: $auto$alumacc.cc:512:replace_alu$2748
+  creating $alu cell for $sub$rtl/groq_c2c_kv_quant_rx_engine.sv:187$280, $le$rtl/groq_c2c_kv_quant_rx_engine.sv:194$281: $auto$alumacc.cc:512:replace_alu$2757
+  created 81 $alu and 1 $macc cells.
+
+2.13. Executing SHARE pass (SAT-based resource sharing).
+
+2.14. Executing OPT pass (performing simple optimizations).
+
+2.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~2 debug messages>
+
+2.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~329 debug messages>
+
+2.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+2.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 16 unused cells and 81 unused wires.
+<suppressed ~17 debug messages>
+
+2.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~329 debug messages>
+
+2.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+2.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.15. Executing MEMORY pass.
+
+2.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+2.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+2.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+2.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+2.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+2.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.17. Executing OPT pass (performing simple optimizations).
+
+2.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~36 debug messages>
+
+2.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 1 unused cells and 18 unused wires.
+<suppressed ~2 debug messages>
+
+2.17.5. Finished fast OPT passes.
+
+2.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~329 debug messages>
+
+2.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+2.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+2.19.6. Executing OPT_SHARE pass.
+
+2.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+2.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+2.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+2.20. Executing TECHMAP pass (map to technology primitives).
+
+2.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+2.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$fc16b9f758000d363d24f130038bd99b46b4fa1b\_90_pmux for cells of type $pmux.
+Using template $paramod$a1bc51c02ce12ac21eb18988e83292af48ed7d72\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$10ed987432f06055e5279101f9ec60a49861b43c\_90_alu for cells of type $alu.
+Using template $paramod$4504179771182265d0fe43701f70377fc04ca361\_90_alu for cells of type $alu.
+Using template $paramod$bfceb922395790c0ce92e9f9b5b428d4fc72cc30\_90_alu for cells of type $alu.
+Using template $paramod$df9553132937e7736c5a38f2f1f29abeed1637af\_90_alu for cells of type $alu.
+Using template $paramod$65af072f6065f0ed27ad80c8089003dcba6e1c40\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  add \is_zero_c [0] (1 bits, unsigned)
+  add \is_zero_c [15] (1 bits, unsigned)
+  add \is_zero_c [14] (1 bits, unsigned)
+  add \is_zero_c [13] (1 bits, unsigned)
+  add \is_zero_c [12] (1 bits, unsigned)
+  add \is_zero_c [11] (1 bits, unsigned)
+  add \is_zero_c [10] (1 bits, unsigned)
+  add \is_zero_c [9] (1 bits, unsigned)
+  add \is_zero_c [8] (1 bits, unsigned)
+  add \is_zero_c [7] (1 bits, unsigned)
+  add \is_zero_c [6] (1 bits, unsigned)
+  add \is_zero_c [5] (1 bits, unsigned)
+  add \is_zero_c [4] (1 bits, unsigned)
+  add \is_zero_c [3] (1 bits, unsigned)
+  add \is_zero_c [2] (1 bits, unsigned)
+  add \is_zero_c [1] (1 bits, unsigned)
+  packed 7 (7) bits / 7 words into adder tree
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$521ce43182eecb9f60c72393a788160d2c356bf5\_90_pmux for cells of type $pmux.
+Using template $paramod$78fbde73bca7bde944ff0e8753ccda25922d4d2a\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000001 for cells of type $fa.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000100 for cells of type $fa.
+Using template $paramod$b18e16801adf491a64caa0542270798e5d4ac6b6\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000111 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000111 for cells of type $lcu.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000101 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~4565 debug messages>
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~5077 debug messages>
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+<suppressed ~2997 debug messages>
+Removed a total of 999 cells.
+
+2.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 739 unused cells and 5195 unused wires.
+<suppressed ~740 debug messages>
+
+2.21.5. Finished fast OPT passes.
+
+2.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `groq_c2c_kv_quant_rx_engine'. Setting top module to groq_c2c_kv_quant_rx_engine.
+
+2.22.1. Analyzing design hierarchy..
+Top module:  \groq_c2c_kv_quant_rx_engine
+
+2.22.2. Analyzing design hierarchy..
+Top module:  \groq_c2c_kv_quant_rx_engine
+Removed 0 unused modules.
+
+2.23. Printing statistics.
+
+=== groq_c2c_kv_quant_rx_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2049 wires
+     6948 wire bits
+      172 public wires
+     2171 public wire bits
+       17 ports
+      443 port bits
+     5119 cells
+     1395   $_AND_
+      162   $_DFF_PN0_
+        1   $_DFF_PN1_
+     1419   $_MUX_
+      606   $_NOT_
+     1137   $_OR_
+      399   $_XOR_
+
+2.24. Executing CHECK pass (checking for obvious problems).
+Checking module groq_c2c_kv_quant_rx_engine...
+Found and reported 0 problems.
+
+3. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFFLQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_N_.
+  cell DFFHQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_P_.
+  cell DFFASRHQNx1_ASAP7_75t_R (inv, pins=5, area=0.38) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    \DFFLQNx1_ASAP7_75t_R _DFF_N_ (.CLK( C), .D( D), .QN(~Q));
+    \DFFHQNx1_ASAP7_75t_R _DFF_P_ (.CLK( C), .D( D), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    unmapped dff cell: $_DFF_PN0_
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFASRHQNx1_ASAP7_75t_R _DFFSR_PNN_ (.CLK( C), .D( D), .QN(~Q), .RESETN( R), .SETN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+3.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~8 debug messages>
+Mapping DFF cells in module `\groq_c2c_kv_quant_rx_engine':
+  mapped 163 $_DFFSR_PNN_ cells to \DFFASRHQNx1_ASAP7_75t_R cells.
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Extracting gate netlist of module `\groq_c2c_kv_quant_rx_engine' to `<abc-temp-dir>/input.blif'..
+
+4.1.1. Executed ABC.
+Extracted 5119 gates and 5510 wires to a netlist network with 389 inputs and 307 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.27 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFASRHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx1_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx3_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5p33DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx6p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx8DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx4_ASAP7_75t_R".
+ABC: Library "asap7_rvt_ff" from "/nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib" has 169 cells (33 skipped: 23 seq; 0 tri-state; 10 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.37 sec
+ABC: Memory =   82.23 MB. Time =     0.37 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FAx1_ASAP7_75t_R").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:   A2O1A1Ixp33_ASAP7_75t_R cells:      183
+ABC RESULTS:   A2O1A1O1Ixp25_ASAP7_75t_R cells:      148
+ABC RESULTS:   AND2x2_ASAP7_75t_R cells:        6
+ABC RESULTS:   AND3x1_ASAP7_75t_R cells:       25
+ABC RESULTS:   AND4x2_ASAP7_75t_R cells:       54
+ABC RESULTS:   AO211x2_ASAP7_75t_R cells:        5
+ABC RESULTS:   AO21x1_ASAP7_75t_R cells:       48
+ABC RESULTS:   AO22x1_ASAP7_75t_R cells:        1
+ABC RESULTS:   AO31x2_ASAP7_75t_R cells:       80
+ABC RESULTS:   AO32x1_ASAP7_75t_R cells:       30
+ABC RESULTS:   AOI211xp5_ASAP7_75t_R cells:      167
+ABC RESULTS:   AOI21xp33_ASAP7_75t_R cells:      408
+ABC RESULTS:   AOI221xp5_ASAP7_75t_R cells:       94
+ABC RESULTS:   AOI22xp33_ASAP7_75t_R cells:      110
+ABC RESULTS:   AOI311xp33_ASAP7_75t_R cells:       10
+ABC RESULTS:   AOI31xp33_ASAP7_75t_R cells:      243
+ABC RESULTS:   AOI32xp33_ASAP7_75t_R cells:       13
+ABC RESULTS:   INVx1_ASAP7_75t_R cells:      740
+ABC RESULTS:   MAJIxp5_ASAP7_75t_R cells:      169
+ABC RESULTS:   MAJx2_ASAP7_75t_R cells:       17
+ABC RESULTS:   NAND2xp33_ASAP7_75t_R cells:      347
+ABC RESULTS:   NAND3xp33_ASAP7_75t_R cells:       41
+ABC RESULTS:   NAND4xp25_ASAP7_75t_R cells:      284
+ABC RESULTS:   NAND5xp2_ASAP7_75t_R cells:      114
+ABC RESULTS:   NOR2xp33_ASAP7_75t_R cells:      482
+ABC RESULTS:   NOR3xp33_ASAP7_75t_R cells:       72
+ABC RESULTS:   NOR4xp25_ASAP7_75t_R cells:      156
+ABC RESULTS:   NOR5xp2_ASAP7_75t_R cells:       67
+ABC RESULTS:   O2A1O1Ixp33_ASAP7_75t_R cells:       78
+ABC RESULTS:   OA21x2_ASAP7_75t_R cells:       41
+ABC RESULTS:   OA22x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   OAI211xp5_ASAP7_75t_R cells:      311
+ABC RESULTS:   OAI21xp33_ASAP7_75t_R cells:      206
+ABC RESULTS:   OAI221xp5_ASAP7_75t_R cells:      190
+ABC RESULTS:   OAI22xp33_ASAP7_75t_R cells:      117
+ABC RESULTS:   OAI311xp33_ASAP7_75t_R cells:       17
+ABC RESULTS:   OAI31xp33_ASAP7_75t_R cells:      166
+ABC RESULTS:   OAI32xp33_ASAP7_75t_R cells:        4
+ABC RESULTS:   OR4x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   XNOR2x2_ASAP7_75t_R cells:       51
+ABC RESULTS:   XOR2x2_ASAP7_75t_R cells:       30
+ABC RESULTS:        internal signals:     4814
+ABC RESULTS:           input signals:      389
+ABC RESULTS:          output signals:      307
+Removing temp directory.
+Removing global temp directory.
+
+5. Printing statistics.
+
+=== groq_c2c_kv_quant_rx_engine ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     7928        - wires
+    12827        - wire bits
+      172        - public wires
+     2171        - public wire bits
+       17        - ports
+      443        - port bits
+     5490  499.234 cells
+      183   16.009   A2O1A1Ixp33_ASAP7_75t_R
+      148   19.421   A2O1A1O1Ixp25_ASAP7_75t_R
+        6    0.525   AND2x2_ASAP7_75t_R
+       25    2.187   AND3x1_ASAP7_75t_R
+       54    6.299   AND4x2_ASAP7_75t_R
+        5    1.166   AO211x2_ASAP7_75t_R
+       48    4.199   AO21x1_ASAP7_75t_R
+        1    0.131   AO22x1_ASAP7_75t_R
+       80   18.662   AO31x2_ASAP7_75t_R
+       30    3.499   AO32x1_ASAP7_75t_R
+      167   14.609   AOI211xp5_ASAP7_75t_R
+      408   29.743   AOI21xp33_ASAP7_75t_R
+       94    9.594   AOI221xp5_ASAP7_75t_R
+      110    9.623   AOI22xp33_ASAP7_75t_R
+       10    1.021   AOI311xp33_ASAP7_75t_R
+      243   21.258   AOI31xp33_ASAP7_75t_R
+       13    1.327   AOI32xp33_ASAP7_75t_R
+      163    61.79   DFFASRHQNx1_ASAP7_75t_R
+      740   32.368   INVx1_ASAP7_75t_R
+      169   17.248   MAJIxp5_ASAP7_75t_R
+       17    2.231   MAJx2_ASAP7_75t_R
+      347   20.237   NAND2xp33_ASAP7_75t_R
+       41    2.989   NAND3xp33_ASAP7_75t_R
+      284   24.844   NAND4xp25_ASAP7_75t_R
+      114   11.635   NAND5xp2_ASAP7_75t_R
+      482    28.11   NOR2xp33_ASAP7_75t_R
+       72    5.249   NOR3xp33_ASAP7_75t_R
+      156   13.647   NOR4xp25_ASAP7_75t_R
+       67    6.838   NOR5xp2_ASAP7_75t_R
+       78    6.823   O2A1O1Ixp33_ASAP7_75t_R
+       41    4.184   OA21x2_ASAP7_75t_R
+        1    0.146   OA22x2_ASAP7_75t_R
+      311   27.206   OAI211xp5_ASAP7_75t_R
+      206   15.017   OAI21xp33_ASAP7_75t_R
+      190   19.391   OAI221xp5_ASAP7_75t_R
+      117   10.235   OAI22xp33_ASAP7_75t_R
+       17    1.735   OAI311xp33_ASAP7_75t_R
+      166   14.522   OAI31xp33_ASAP7_75t_R
+        4    0.408   OAI32xp33_ASAP7_75t_R
+        1    0.117   OR4x2_ASAP7_75t_R
+       51    8.179   XNOR2x2_ASAP7_75t_R
+       30    4.811   XOR2x2_ASAP7_75t_R
+
+   Chip area for module '\groq_c2c_kv_quant_rx_engine': 499.233780
+     of which used for sequential elements: 61.790040 (12.38%)
+
+6. Executing Verilog backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Dumping module `\groq_c2c_kv_quant_rx_engine'.
+
+Warnings: 11 unique messages, 11 total
+End of script. Logfile hash: 87589fa63c, CPU: user 1.21s system 0.10s, MEM: 148.95 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 49% 1x abc (1 sec), 9% 2x stat (0 sec), ...

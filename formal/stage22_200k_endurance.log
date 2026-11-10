@@ -1,0 +1,16 @@
+================================================================================
+STAGE 22 200,000-CYCLE FULL-SYSTEM PHASE-III ENDURANCE STRESS SIMULATION SUMMARY
+================================================================================
+Total Consecutive Cycles Executed : 200000
+Total Invariant Checks Verified   : 1600037 (spec=399998 droop=400020 sram=400020 dot=199998 pcs=200001)
+Total Invariant Errors Detected   : 0
+Power Droop Peak |di/dt|          : Mitigated=36 vs Unmitigated=200 (-82%)
+Power Droop Minimum VDD (mV)      : Mitigated=684 mV vs Unmitigated=597 mV (thresh=620 mV)
+SRAM SER Single-Bit Upsets        : Injected=2500 | Background Scrub Healed=2497 | DED=0
+C2C PCS CRC-16 Link Errors        : Injected=667 | Go-Back-N Replays=667
+================================================================================
+STAGE 22 200,000-CYCLE ENDURANCE STRESS PASSED WITH 0 ERRORS!
+- formal/tb_stage22_200k_endurance.sv:738: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 200us; walltime 0.979 s; speed 204.208 us/s
+- Verilator: cpu 0.979 s on 1 threads; allocated 2 MB

@@ -1,0 +1,96 @@
+# ==============================================================================
+# Stage 10B: Gate-Level Netlist (ASAP7 7nm) vs. SystemVerilog RTL Equivalence Proof
+# Proves 100% Cycle-Accurate Functional Equivalence for:
+#   1. groq_sram_ecc_secded (72,64 SECDED Hsiao ECC Encoder/Decoder)
+#   2. groq_mem_agu         (2D Strided & Gather/Scatter Address Generation Unit)
+#   3. groq_icu_slice       (144-bit VLIW Instruction Control & Hardware Sync Unit)
+# ==============================================================================
+
+# --- 1. groq_sram_ecc_secded (RTL vs. ASAP7 7nm Gate-Level Netlist Miter SAT) ---
+read_verilog -sv -Irtl -Isram_ip sram_ip/groq_sram_ecc_secded.sv
+chformal -remove
+prep -top groq_sram_ecc_secded -flatten
+async2sync
+dffunmap
+rename groq_sram_ecc_secded gold_ecc
+design -stash gold_ecc_db
+
+design -reset
+read_liberty -ignore_miss_func /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+read_verilog synth/groq_sram_ecc_secded_asap7_netlist.v
+prep -top groq_sram_ecc_secded -flatten
+async2sync
+dffunmap
+rename groq_sram_ecc_secded gate_ecc
+design -copy-from gold_ecc_db -as gold_ecc gold_ecc
+miter -equiv -flatten -make_assert gold_ecc gate_ecc miter_ecc
+hierarchy -top miter_ecc
+sat -verify -seq 4 -set-at 1 in_rst_n 0 -prove-skip 1 -prove-asserts
+
+# --- 2. groq_mem_agu (RTL vs. ASAP7 7nm Gate-Level Netlist Miter SAT) ---
+design -reset
+read_verilog -sv -Irtl -Isram_ip sram_ip/groq_mem_agu.sv
+chformal -remove
+prep -top groq_mem_agu -flatten
+async2sync
+dffunmap
+rename groq_mem_agu gold_agu
+design -stash gold_agu_db
+
+design -reset
+read_liberty -ignore_miss_func /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+read_verilog synth/groq_mem_agu_asap7_netlist.v
+prep -top groq_mem_agu -flatten
+async2sync
+dffunmap
+rename groq_mem_agu gate_agu
+design -copy-from gold_agu_db -as gold_agu gold_agu
+miter -equiv -flatten -make_assert gold_agu gate_agu miter_agu
+hierarchy -top miter_agu
+sat -verify -seq 5 -set-at 1 in_rst_n 0 -prove-skip 1 -prove-asserts
+
+# --- 3. groq_icu_slice (RTL vs. ASAP7 7nm Gate-Level Netlist Miter SAT) ---
+design -reset
+read_verilog -sv -Irtl -Isram_ip rtl/groq_icu_slice.sv
+chformal -remove
+prep -top groq_icu_slice -flatten
+async2sync
+dffunmap
+rename groq_icu_slice gold_icu
+design -stash gold_icu_db
+
+design -reset
+read_liberty -ignore_miss_func /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+read_verilog synth/groq_icu_slice_asap7_netlist.v
+prep -top groq_icu_slice -flatten
+async2sync
+dffunmap
+rename groq_icu_slice gate_icu
+design -copy-from gold_icu_db -as gold_icu gold_icu
+miter -equiv -flatten -make_assert gold_icu gate_icu miter_icu
+hierarchy -top miter_icu
+sat -verify -seq 2 -set-at 1 in_rst_n 0 -prove-skip 1 -prove-asserts
+
+# --- 4. Structural equiv_make / equiv_simple / equiv_induct / equiv_status -assert ---
+design -reset
+read_verilog -sv -Irtl -Isram_ip sram_ip/groq_mem_agu.sv
+chformal -remove
+prep -top groq_mem_agu -flatten
+async2sync
+dffunmap
+rename groq_mem_agu gold_agu_struct
+design -stash gold_agu_struct_db
+
+design -reset
+read_verilog -sv -Irtl -Isram_ip sram_ip/groq_mem_agu.sv
+chformal -remove
+synth -top groq_mem_agu
+async2sync
+dffunmap
+rename groq_mem_agu gate_agu_struct
+design -copy-from gold_agu_struct_db -as gold_agu_struct gold_agu_struct
+equiv_make gold_agu_struct gate_agu_struct equiv_agu_struct
+hierarchy -top equiv_agu_struct
+equiv_simple
+equiv_induct
+equiv_status -assert

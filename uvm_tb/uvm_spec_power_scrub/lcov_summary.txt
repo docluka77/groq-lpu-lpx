@@ -1,0 +1,6 @@
+=== Stage 21 Phase-III RTL LCOV Line & Toggle/Branch Coverage Summary ===
+groq_power_droop_controller.sv     | Line:   95/  95 (100.00%) | Toggle/Branch:  546/ 670 ( 81.49%)
+groq_spec_decode_tree_sampler.sv   | Line:  197/ 197 (100.00%) | Toggle/Branch: 8578/8804 ( 97.43%)
+groq_sram_controller_scrubber.sv   | Line:  151/ 153 ( 98.69%) | Toggle/Branch: 4340/4674 ( 92.85%)
+groq_sram_ecc_secded.sv            | Line:   55/  55 (100.00%) | Toggle/Branch: 1070/1072 ( 99.81%)
+TOTAL (Phase-III RTL + SRAM IP)    | Line:  498/ 500 ( 99.60%) | Toggle/Branch: 14534/15220 ( 95.49%)

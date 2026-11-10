@@ -1,0 +1,19 @@
+[PREFILL->DECODE C2C] 64 C2C flits (32 KV blocks) quantized & stored in 4-bank SECDED SRAM (CRC-16 replays=8, zero_lanes=96)
+[DECODE PASS 0] Route=0 DotAccum=144104 SpecDecode: mask=0x25 leaf=5 emitted=4 kv_adv=3
+[DECODE PASS 1] Route=1 DotAccum=208776 SpecDecode: mask=0xff leaf=6 emitted=5 kv_adv=4
+[DECODE PASS 2] Route=2 DotAccum=-7838 SpecDecode: mask=0x03 leaf=1 emitted=3 kv_adv=2
+[DECODE PASS 3] Route=3 DotAccum=-599472 SpecDecode: mask=0x13 leaf=4 emitted=4 kv_adv=3
+================================================================================
+STAGE 27 FULL-SYSTEM DISAGGREGATED PREFILL->NVLINK-C2C->8-CHIP DECODE BENCHMARK
+  1. C2C Prefill Ingress : 64/64 flits rx, 8 CRC-16 injected, 8 GBN replays
+  2. KV Block Quantizer  : 32/32 256b->128b blocks (BF16/FP16->MXFP8/NVFP4), zero_lanes=96
+  3. 4-Bank SECDED SRAM  : 32/32 SER upsets healed, 4/4 eFuse spare-row hits, DED=0
+  4. L*di/dt Power Droop : Peak |di/dt| 200 -> 36 (-82.0%), Min VDD 597 -> 684 mV, Throttles 4 -> 0
+  5. 8-Chip Cluster+Dot  : 32 microscaling dot-products (zero_skip=290), 33 C2C flits, 0 deskews
+  6. Speculative Decode  : 16 tokens in 4 passes (4.00x speedup), KV ring advance=12
+  TOTAL CHECKS PASSED    : 176 | ERRORS: 0 | STATUS: PASS
+================================================================================
+- /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/benchmarks/disagg_prefill_decode_8chip/tb_disagg_prefill_decode_8chip.sv:1219: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 539ns; walltime 0.482 s; speed 1.118 us/s
+- Verilator: cpu 0.464 s on 1 threads; allocated 11 MB

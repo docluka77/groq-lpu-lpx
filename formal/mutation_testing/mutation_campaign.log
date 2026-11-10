@@ -1,0 +1,45 @@
+Stage 25B Formal Mutation Campaign Log — Wall Time: 33.194s
+Total Mutants: 42 | Killed: 42 | Survived: 0 | Kill Rate: 100.0%
+----------------------------------------------------------------------------------------------------
+MUT-001 | groq_sram_ecc_secded           | KILLED | assert_line=157 | vars=7680 | clauses=21105 | time=0.169s | SECDED Syndrome Bit Inversion
+MUT-002 | groq_sram_ecc_secded           | KILLED | assert_line=167 | vars=7635 | clauses=20990 | time=0.168s | SECDED Double-Bit Error Suppression
+MUT-003 | groq_sram_ecc_secded           | KILLED | assert_line=163 | vars=6280 | clauses=17111 | time=0.21s | SECDED Single-Bit Correction Bypass
+MUT-004 | groq_sram_macro_sp             | KILLED | assert_line=323 | vars=86797 | clauses=234430 | time=0.667s | SRAM Sleep Periphery Clamp Failure
+MUT-005 | groq_sram_macro_sp             | KILLED | assert_line=327 | vars=71629 | clauses=193258 | time=0.648s | SRAM Redundancy CAM Match Bypass
+MUT-006 | groq_mem_agu                   | KILLED | assert_line=215 | vars=9398 | clauses=25269 | time=0.062s | AGU Stride Off-By-One Error
+MUT-007 | groq_mem_agu                   | KILLED | assert_line=210 | vars=9398 | clauses=25269 | time=0.06s | AGU Base Address Offset Corruption
+MUT-008 | groq_mem_slice                 | KILLED | assert_line=302 | vars=260446 | clauses=704681 | time=1.818s | SRAM Bank-Conflict Detector Suppression
+MUT-009 | groq_mem_slice                 | KILLED | assert_line=309 | vars=260498 | clauses=704815 | time=1.915s | SRAM Conflicting Read Pipeline Admission
+MUT-010 | groq_stream_fabric             | KILLED | assert_line=249 | vars=86145 | clauses=223087 | time=1.48s | Stream Fabric Hop Shift Drop
+MUT-011 | groq_stream_fabric             | KILLED | assert_line=284 | vars=89657 | clauses=231763 | time=1.677s | Stream Collision Error Suppression
+MUT-012 | groq_icu_slice                 | KILLED | assert_line=317 | vars=202100 | clauses=530066 | time=1.133s | ICU Sync Barrier Deadlock / Suppression
+MUT-013 | groq_icu_slice                 | KILLED | assert_line=337 | vars=214624 | clauses=564838 | time=1.192s | ICU NOP_DELAY Countdown Corruption
+MUT-014 | groq_icu_slice                 | KILLED | assert_line=345 | vars=211619 | clauses=555823 | time=1.153s | ICU RealSync Cycle Counter Drift
+MUT-015 | groq_mxm_slice                 | KILLED | assert_line=346 | vars=546901 | clauses=1589749 | time=10.581s | MXM Ping-Pong Weight Bank Inversion
+MUT-016 | groq_mxm_slice                 | KILLED | assert_line=356 | vars=363826 | clauses=1057627 | time=9.066s | MXM Zero-Skip Operand Isolation Corruption
+MUT-017 | groq_sxm_slice                 | KILLED | assert_line=237 | vars=1128600 | clauses=3284290 | time=17.558s | SXM Barrel Rotate Lane Collision
+MUT-018 | groq_sxm_slice                 | KILLED | assert_line=255 | vars=1195032 | clauses=3482232 | time=12.517s | SXM 4x4 Transpose Involution Violation
+MUT-019 | groq_vxm_slice                 | KILLED | assert_line=442 | vars=270385 | clauses=761773 | time=8.0s | VXM INT8 Saturation Clamp Corruption
+MUT-020 | groq_vxm_slice                 | KILLED | assert_line=409 | vars=270369 | clauses=761725 | time=8.233s | VXM ReLU Non-Negativity Violation
+MUT-021 | groq_vxm_slice                 | KILLED | assert_line=455 | vars=268792 | clauses=757282 | time=7.407s | VXM LUT Operand Isolation Bypass
+MUT-022 | groq_nim_realsync              | KILLED | assert_line=362 | vars=152135 | clauses=405867 | time=6.847s | NIM CRC-8 Corrupted Flit Acceptance
+MUT-023 | groq_nim_realsync              | KILLED | assert_line=347 | vars=317780 | clauses=848409 | time=8.631s | NIM RealSync Release Cycle Miscalculation
+MUT-024 | groq_mxfp8_nvfp4_dot_engine    | KILLED | assert_line=533 | vars=417716 | clauses=1175900 | time=3.481s | NVFP4 E2M1 Mantissa Decode Corruption
+MUT-025 | groq_mxfp8_nvfp4_dot_engine    | KILLED | assert_line=501 | vars=835613 | clauses=2353327 | time=8.43s | MXFP8/NVFP4 E8M0 Block-Scale Zero-Skip Bypass
+MUT-026 | groq_c2c_serdes_pcs            | KILLED | assert_line=375 | vars=375061 | clauses=1008861 | time=3.583s | SerDes PCS Scrambler Invertibility Corruption
+MUT-027 | groq_c2c_serdes_pcs            | KILLED | assert_line=430 | vars=461948 | clauses=1195665 | time=7.275s | SerDes PCS CRC-16 Error Gating Bypass
+MUT-028 | groq_pcie_c2c_dma              | KILLED | assert_line=297 | vars=62474 | clauses=167581 | time=0.284s | DMA Deterministic VLIW Window Exclusion Violation
+MUT-029 | groq_pcie_c2c_dma              | KILLED | assert_line=317 | vars=76786 | clauses=206221 | time=0.362s | DMA Burst Stride Progression Error
+MUT-030 | groq_spec_decode_tree_sampler  | KILLED | assert_line=107 | vars=114494 | clauses=327150 | time=0.993s | Bitonic Sorting Comparator Inversion
+MUT-031 | groq_spec_decode_tree_sampler  | KILLED | assert_line=375 | vars=369841 | clauses=1057461 | time=3.868s | Speculative Tree Ancestor Causal Bypass
+MUT-032 | groq_spec_decode_tree_sampler  | KILLED | assert_line=360 | vars=371590 | clauses=1062324 | time=3.623s | Greedy Argmax Rank Selection Corruption
+MUT-033 | groq_power_droop_controller    | KILLED | assert_line=168 | vars=8393 | clauses=23155 | time=0.072s | L*di/dt Ramp-Down Slew-Rate Floor Bypass
+MUT-034 | groq_power_droop_controller    | KILLED | assert_line=179 | vars=4348 | clauses=12011 | time=0.051s | Emergency Droop/Thermal Throttle Polarity Inversion
+MUT-035 | groq_sram_controller_scrubber  | KILLED | assert_line=378 | vars=655855 | clauses=1797982 | time=5.15s | Scrubber Foreground Bank Busy Contention Violation
+MUT-036 | groq_sram_controller_scrubber  | KILLED | assert_line=394 | vars=656002 | clauses=1798387 | time=4.768s | Scrubber Re-Encoded Codeword Parity Corruption
+MUT-037 | groq_c2c_kv_quant_rx_engine    | KILLED | assert_line=285 | vars=26510 | clauses=72806 | time=0.497s | MXFP8 E4M3 Sign-Bit Preservation Corruption
+MUT-038 | groq_c2c_kv_quant_rx_engine    | KILLED | assert_line=281 | vars=25886 | clauses=71110 | time=0.573s | KV-Cache Zero-Input Exponent & SRAM Write Forwarding Corruption
+MUT-039 | groq_sxm_slice                 | KILLED | assert_line=259 | vars=1193560 | clauses=3478198 | time=6.35s | BUG-LIT-001 SXM RoPE Butterfly -128 Saturating Negation Regression
+MUT-040 | groq_mxfp8_nvfp4_dot_engine    | KILLED | assert_line=516 | vars=418356 | clauses=1177820 | time=3.044s | BUG-LIT-002 Native NVFP4_E4M3_SCALE NaN Scale Trap Suppression
+MUT-041 | groq_nim_realsync              | KILLED | assert_line=369 | vars=478011 | clauses=1276640 | time=9.481s | BUG-LIT-003 NIM Autonomous RealSync HAC Consensus Alignment Corruption
+MUT-042 | groq_vxm_slice                 | KILLED | assert_line=473 | vars=255443 | clauses=719919 | time=7.637s | BUG-LIT-005 VXM IEEE 754-2019 PREC_INT8_RNE Exact-Tie Rounding Bias Regression

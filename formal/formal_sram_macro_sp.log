@@ -1,0 +1,718 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `read_verilog -sv -DFORMAL /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv; prep -top groq_sram_macro_sp; memory_map; async2sync; chformal -lower; sat -verify -prove-asserts -seq 8 -set-init-zero' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv
+Generating RTLIL representation for module `\groq_sram_macro_sp'.
+Warning: Replacing memory \mem with list of registers. See /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_sram_macro_sp
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_sram_macro_sp
+Removed 0 unused modules.
+Module groq_sram_macro_sp directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236 in module groq_sram_macro_sp.
+Removed 1 dead cases from process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57 in module groq_sram_macro_sp.
+Marked 33 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57 in module groq_sram_macro_sp.
+Marked 14 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25 in module groq_sram_macro_sp.
+Marked 2 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17 in module groq_sram_macro_sp.
+Marked 3 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:60$13 in module groq_sram_macro_sp.
+Removed a total of 1 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 6 redundant assignments.
+Promoted 27 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+Found async reset \rst_n in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+Found async reset \rst_n in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~60 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:318$252'.
+     1/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN
+     2/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN
+     3/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$257_EN
+     4/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN
+Creating decoders for process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+     1/5: $0\f_was_read_req[0:0]
+     2/5: $0\f_past_wdata[71:0]
+     3/5: $0\f_was_spare_write[0:0]
+     4/5: $0\f_was_ready[0:0]
+     5/5: $0\f_past_valid[0:0]
+Creating decoders for process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+     1/225: $6$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_DATA[71:0]$234
+     2/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA[71:0]$233
+     3/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR[2:0]$232
+     4/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA[71:0]$231
+     5/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR[2:0]$230
+     6/225: $0\mem[7][71:0] [71:64]
+     7/225: $0\mem[7][71:0] [63:56]
+     8/225: $0\mem[6][71:0] [63:56]
+     9/225: $0\mem[5][71:0] [63:56]
+    10/225: $0\mem[4][71:0] [63:56]
+    11/225: $0\mem[3][71:0] [63:56]
+    12/225: $0\mem[2][71:0] [63:56]
+    13/225: $0\mem[1][71:0] [63:56]
+    14/225: $0\mem[0][71:0] [63:56]
+    15/225: $0\spare_word[71:0] [63:56]
+    16/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR[2:0]$227
+    17/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA[71:0]$226
+    18/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR[2:0]$225
+    19/225: $0\mem[6][71:0] [71:64]
+    20/225: $0\mem[7][71:0] [55:48]
+    21/225: $0\mem[6][71:0] [55:48]
+    22/225: $0\mem[5][71:0] [55:48]
+    23/225: $0\mem[4][71:0] [55:48]
+    24/225: $0\mem[3][71:0] [55:48]
+    25/225: $0\mem[2][71:0] [55:48]
+    26/225: $0\mem[1][71:0] [55:48]
+    27/225: $0\mem[0][71:0] [55:48]
+    28/225: $0\spare_word[71:0] [55:48]
+    29/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR[2:0]$222
+    30/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA[71:0]$221
+    31/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR[2:0]$220
+    32/225: $0\mem[5][71:0] [71:64]
+    33/225: $0\mem[7][71:0] [47:40]
+    34/225: $0\mem[6][71:0] [47:40]
+    35/225: $0\mem[5][71:0] [47:40]
+    36/225: $0\mem[4][71:0] [47:40]
+    37/225: $0\mem[3][71:0] [47:40]
+    38/225: $0\mem[2][71:0] [47:40]
+    39/225: $0\mem[1][71:0] [47:40]
+    40/225: $0\mem[0][71:0] [47:40]
+    41/225: $0\spare_word[71:0] [47:40]
+    42/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR[2:0]$217
+    43/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA[71:0]$216
+    44/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR[2:0]$215
+    45/225: $0\mem[4][71:0] [71:64]
+    46/225: $0\mem[7][71:0] [39:32]
+    47/225: $0\mem[6][71:0] [39:32]
+    48/225: $0\mem[5][71:0] [39:32]
+    49/225: $0\mem[4][71:0] [39:32]
+    50/225: $0\mem[3][71:0] [39:32]
+    51/225: $0\mem[2][71:0] [39:32]
+    52/225: $0\mem[1][71:0] [39:32]
+    53/225: $0\mem[0][71:0] [39:32]
+    54/225: $0\spare_word[71:0] [39:32]
+    55/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR[2:0]$212
+    56/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA[71:0]$211
+    57/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR[2:0]$210
+    58/225: $0\mem[3][71:0] [71:64]
+    59/225: $0\mem[7][71:0] [31:24]
+    60/225: $0\mem[6][71:0] [31:24]
+    61/225: $0\mem[5][71:0] [31:24]
+    62/225: $0\mem[4][71:0] [31:24]
+    63/225: $0\mem[3][71:0] [31:24]
+    64/225: $0\mem[2][71:0] [31:24]
+    65/225: $0\mem[1][71:0] [31:24]
+    66/225: $0\mem[0][71:0] [31:24]
+    67/225: $0\spare_word[71:0] [31:24]
+    68/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR[2:0]$207
+    69/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA[71:0]$206
+    70/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR[2:0]$205
+    71/225: $0\mem[2][71:0] [71:64]
+    72/225: $0\mem[7][71:0] [23:16]
+    73/225: $0\mem[6][71:0] [23:16]
+    74/225: $0\mem[5][71:0] [23:16]
+    75/225: $0\mem[4][71:0] [23:16]
+    76/225: $0\mem[3][71:0] [23:16]
+    77/225: $0\mem[2][71:0] [23:16]
+    78/225: $0\mem[1][71:0] [23:16]
+    79/225: $0\mem[0][71:0] [23:16]
+    80/225: $0\spare_word[71:0] [23:16]
+    81/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR[2:0]$202
+    82/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA[71:0]$201
+    83/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR[2:0]$200
+    84/225: $0\mem[1][71:0] [71:64]
+    85/225: $0\mem[7][71:0] [15:8]
+    86/225: $0\mem[6][71:0] [15:8]
+    87/225: $0\mem[5][71:0] [15:8]
+    88/225: $0\mem[4][71:0] [15:8]
+    89/225: $0\mem[3][71:0] [15:8]
+    90/225: $0\mem[2][71:0] [15:8]
+    91/225: $0\mem[1][71:0] [15:8]
+    92/225: $0\mem[0][71:0] [15:8]
+    93/225: $0\spare_word[71:0] [15:8]
+    94/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR[2:0]$197
+    95/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA[71:0]$196
+    96/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR[2:0]$195
+    97/225: $0\mem[0][71:0] [71:64]
+    98/225: $0\mem[7][71:0] [7:0]
+    99/225: $0\mem[6][71:0] [7:0]
+   100/225: $0\mem[5][71:0] [7:0]
+   101/225: $0\mem[4][71:0] [7:0]
+   102/225: $0\mem[3][71:0] [7:0]
+   103/225: $0\mem[2][71:0] [7:0]
+   104/225: $0\mem[1][71:0] [7:0]
+   105/225: $0\mem[0][71:0] [7:0]
+   106/225: $0\spare_word[71:0] [7:0]
+   107/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR[2:0]$192
+   108/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA[71:0]$191
+   109/225: $6$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR[2:0]$190
+   110/225: $5$fordecl_block$1.b[31:0]$168
+   111/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA[71:0]$186
+   112/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR[2:0]$185
+   113/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA[71:0]$184
+   114/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR[2:0]$183
+   115/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA[71:0]$182
+   116/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR[2:0]$181
+   117/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA[71:0]$180
+   118/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR[2:0]$179
+   119/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA[71:0]$178
+   120/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR[2:0]$177
+   121/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA[71:0]$176
+   122/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR[2:0]$175
+   123/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA[71:0]$174
+   124/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR[2:0]$173
+   125/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA[71:0]$172
+   126/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR[2:0]$171
+   127/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA[71:0]$170
+   128/225: $5$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR[2:0]$169
+   129/225: $5$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_DATA[71:0]$188
+   130/225: $5$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_ADDR[2:0]$187
+   131/225: $4$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_DATA[71:0]$166
+   132/225: $4$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_ADDR[2:0]$165
+   133/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA[71:0]$164
+   134/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR[2:0]$163
+   135/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA[71:0]$162
+   136/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR[2:0]$161
+   137/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA[71:0]$160
+   138/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR[2:0]$159
+   139/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA[71:0]$158
+   140/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR[2:0]$157
+   141/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA[71:0]$156
+   142/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR[2:0]$155
+   143/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA[71:0]$154
+   144/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR[2:0]$153
+   145/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA[71:0]$152
+   146/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR[2:0]$151
+   147/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA[71:0]$150
+   148/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR[2:0]$149
+   149/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA[71:0]$148
+   150/225: $4$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR[2:0]$147
+   151/225: $4$fordecl_block$1.b[31:0]$146
+   152/225: $3$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_DATA[71:0]$144
+   153/225: $3$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_ADDR[2:0]$143
+   154/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA[71:0]$142
+   155/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR[2:0]$141
+   156/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA[71:0]$140
+   157/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR[2:0]$139
+   158/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA[71:0]$138
+   159/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR[2:0]$137
+   160/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA[71:0]$136
+   161/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR[2:0]$135
+   162/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA[71:0]$134
+   163/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR[2:0]$133
+   164/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA[71:0]$132
+   165/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR[2:0]$131
+   166/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA[71:0]$130
+   167/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR[2:0]$129
+   168/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA[71:0]$128
+   169/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR[2:0]$127
+   170/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA[71:0]$126
+   171/225: $3$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR[2:0]$125
+   172/225: $3$fordecl_block$1.b[31:0]$124
+   173/225: $0\rvalid[0:0]
+   174/225: $2$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_DATA[71:0]$122
+   175/225: $2$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_ADDR[2:0]$121
+   176/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA[71:0]$120
+   177/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR[2:0]$119
+   178/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA[71:0]$118
+   179/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR[2:0]$117
+   180/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA[71:0]$116
+   181/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR[2:0]$115
+   182/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA[71:0]$114
+   183/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR[2:0]$113
+   184/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA[71:0]$112
+   185/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR[2:0]$111
+   186/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA[71:0]$110
+   187/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR[2:0]$109
+   188/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA[71:0]$108
+   189/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR[2:0]$107
+   190/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA[71:0]$106
+   191/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR[2:0]$105
+   192/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA[71:0]$104
+   193/225: $2$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR[2:0]$103
+   194/225: $2$fordecl_block$1.b[31:0]$102
+   195/225: $1$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_DATA[71:0]$100
+   196/225: $1$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_ADDR[2:0]$99
+   197/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA[71:0]$98
+   198/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR[2:0]$97
+   199/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA[71:0]$96
+   200/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR[2:0]$95
+   201/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA[71:0]$94
+   202/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR[2:0]$93
+   203/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA[71:0]$92
+   204/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR[2:0]$91
+   205/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA[71:0]$90
+   206/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR[2:0]$89
+   207/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA[71:0]$88
+   208/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR[2:0]$87
+   209/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA[71:0]$86
+   210/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR[2:0]$85
+   211/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA[71:0]$84
+   212/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR[2:0]$83
+   213/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA[71:0]$82
+   214/225: $1$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR[2:0]$81
+   215/225: $1$fordecl_block$1.b[31:0]$80
+   216/225: $0\spare_word[71:0] [71:64]
+   217/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA[71:0]$228
+   218/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA[71:0]$223
+   219/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA[71:0]$218
+   220/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA[71:0]$213
+   221/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA[71:0]$208
+   222/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA[71:0]$203
+   223/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA[71:0]$198
+   224/225: $7$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA[71:0]$193
+   225/225: $0\rdata[71:0]
+Creating decoders for process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+     1/5: $0\mbist_sub[0:0]
+     2/5: $0\mbist_addr[2:0]
+     3/5: $0\mbist_state[2:0]
+     4/5: $0\mbist_fail[0:0]
+     5/5: $0\mbist_done[0:0]
+Creating decoders for process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17'.
+     1/6: $2\bist_wdata_mux[71:0]
+     2/6: $2\bist_we_n[0:0]
+     3/6: $2\bist_ce_n[0:0]
+     4/6: $1\bist_wdata_mux[71:0]
+     5/6: $1\bist_we_n[0:0]
+     6/6: $1\bist_ce_n[0:0]
+Creating decoders for process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:60$13'.
+     1/6: $3\sram_ready[0:0]
+     2/6: $3\pwr_mode[1:0]
+     3/6: $2\sram_ready[0:0]
+     4/6: $2\pwr_mode[1:0]
+     5/6: $1\sram_ready[0:0]
+     6/6: $1\pwr_mode[1:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sram_macro_sp.\bist_ce_n' from process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17'.
+No latch inferred for signal `\groq_sram_macro_sp.\bist_we_n' from process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17'.
+No latch inferred for signal `\groq_sram_macro_sp.\bist_addr_mux' from process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17'.
+No latch inferred for signal `\groq_sram_macro_sp.\bist_wdata_mux' from process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17'.
+No latch inferred for signal `\groq_sram_macro_sp.\pwr_mode' from process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:60$13'.
+No latch inferred for signal `\groq_sram_macro_sp.\sram_ready' from process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:60$13'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_sram_macro_sp.\f_past_valid' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+  created $adff cell `$procdff$3655' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\f_was_ready' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+  created $adff cell `$procdff$3660' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\f_was_spare_write' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+  created $adff cell `$procdff$3665' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\f_past_wdata' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+  created $adff cell `$procdff$3670' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\f_was_read_req' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+  created $adff cell `$procdff$3675' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\rdata' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3680' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\rvalid' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3685' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\spare_word' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3690' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$fordecl_block$1.b' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3697' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[0]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3704' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[1]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3711' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[2]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3718' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[3]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3725' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[4]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3732' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[5]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3739' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[6]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3746' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.\mem[7]' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $dff cell `$procdff$3753' with positive edge clock.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3758' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$3_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3763' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3768' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$4_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3773' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3778' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$5_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3783' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3788' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$6_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3793' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3798' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$7_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3803' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3808' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$8_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3813' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3818' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$9_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3823' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3828' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$10_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3833' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3838' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_wr$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:281$11_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3843' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_ADDR' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3848' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.$mem2reg_rd$\mem$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:287$12_DATA' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+  created $adff cell `$procdff$3853' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_done' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+  created $adff cell `$procdff$3858' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_fail' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+  created $adff cell `$procdff$3863' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_state' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+  created $adff cell `$procdff$3868' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_addr' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+  created $adff cell `$procdff$3873' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_macro_sp.\mbist_sub' using process `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+  created $adff cell `$procdff$3878' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:318$252'.
+Removing empty process `groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:318$252'.
+Removing empty process `groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:302$236'.
+Found and cleaned up 32 empty switches in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+Removing empty process `groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:259$57'.
+Found and cleaned up 19 empty switches in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+Removing empty process `groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:142$25'.
+Found and cleaned up 2 empty switches in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17'.
+Removing empty process `groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:107$17'.
+Found and cleaned up 3 empty switches in `\groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:60$13'.
+Removing empty process `groq_sram_macro_sp.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:60$13'.
+Cleaned up 60 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+<suppressed ~958 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 499 unused cells and 1814 unused wires.
+<suppressed ~500 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_macro_sp...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~354 debug messages>
+Removed a total of 118 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$289.
+    dead port 1/2 on $mux $procmux$291.
+    dead port 2/2 on $mux $procmux$294.
+    dead port 2/2 on $mux $procmux$297.
+    dead port 2/2 on $mux $procmux$3586.
+    dead port 2/2 on $mux $procmux$3595.
+    dead port 2/2 on $mux $procmux$3604.
+    dead port 2/2 on $mux $procmux$3619.
+    dead port 2/2 on $mux $procmux$3622.
+    dead port 2/2 on $mux $procmux$3628.
+    dead port 2/2 on $mux $procmux$3631.
+    dead port 2/2 on $mux $procmux$3637.
+    dead port 2/2 on $mux $procmux$3643.
+Removed 13 multiplexer ports.
+<suppressed ~1031 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+    New ctrl vector for $pmux cell $procmux$3599: { $auto$opt_reduce.cc:137:opt_pmux$3880 $procmux$3407_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$3879: { $procmux$3427_CMP $procmux$3423_CMP $procmux$3419_CMP $procmux$3415_CMP $procmux$3411_CMP }
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 2 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 141 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~938 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+    New ctrl vector for $pmux cell $procmux$3406: { $procmux$3427_CMP $auto$opt_reduce.cc:137:opt_pmux$3882 }
+    New ctrl vector for $pmux cell $procmux$3534: { $auto$opt_reduce.cc:137:opt_pmux$3886 $auto$opt_reduce.cc:137:opt_pmux$3884 }
+    New ctrl vector for $pmux cell $procmux$3591: { $procmux$3427_CMP $auto$opt_reduce.cc:137:opt_pmux$3888 }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$3887: { $procmux$3423_CMP $procmux$3419_CMP $procmux$3415_CMP $procmux$3411_CMP }
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 4 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+2.7.14. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.15. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_macro_sp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~927 debug messages>
+
+2.7.16. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_macro_sp.
+Performed a total of 0 changes.
+
+2.7.17. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+2.7.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+2.7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+2.7.20. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$procmux$1030_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$procmux$1055_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell groq_sram_macro_sp.$procmux$1081_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$procmux$3415_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell groq_sram_macro_sp.$procmux$3419_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell groq_sram_macro_sp.$procmux$3423_CMP0 ($eq).
+Removed top 1 bits (of 2) from mux cell groq_sram_macro_sp.$procmux$3625 ($mux).
+Removed top 1 bits (of 2) from wire groq_sram_macro_sp.$3\pwr_mode[1:0].
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_macro_sp.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_macro_sp'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_macro_sp..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== groq_sram_macro_sp ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      655 wires
+     6780 wire bits
+       46 public wires
+     1069 public wire bits
+       19 ports
+      174 port bits
+      717 cells
+        1   $add
+       13   $adff
+        4   $check
+        8   $dff
+       17   $eq
+       11   $logic_and
+        9   $logic_not
+      636   $mux
+        1   $ne
+        1   $not
+        8   $pmux
+        1   $reduce_bool
+        6   $reduce_or
+        1   $sub
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_macro_sp...
+Found and reported 0 problems.
+
+3. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4. Executing ASYNC2SYNC pass.
+Replacing groq_sram_macro_sp.$procdff$3655 ($adff): ARST=\rst_n, D=1'1, Q=\f_past_valid
+Replacing groq_sram_macro_sp.$procdff$3660 ($adff): ARST=\rst_n, D=\sram_ready, Q=\f_was_ready
+Replacing groq_sram_macro_sp.$procdff$3665 ($adff): ARST=\rst_n, D=$0\f_was_spare_write[0:0], Q=\f_was_spare_write
+Replacing groq_sram_macro_sp.$procdff$3670 ($adff): ARST=\rst_n, D=\wdata, Q=\f_past_wdata
+Replacing groq_sram_macro_sp.$procdff$3675 ($adff): ARST=\rst_n, D=$0\f_was_read_req[0:0], Q=\f_was_read_req
+Replacing groq_sram_macro_sp.$procdff$3680 ($adff): ARST=\rst_n, D=$0\rdata[71:0], Q=\rdata
+Replacing groq_sram_macro_sp.$procdff$3685 ($adff): ARST=\rst_n, D=$0\rvalid[0:0], Q=\rvalid
+Replacing groq_sram_macro_sp.$procdff$3690 ($adff): ARST=\rst_n, D=$0\spare_word[71:0], Q=\spare_word
+Replacing groq_sram_macro_sp.$procdff$3858 ($adff): ARST=\rst_n, D=$0\mbist_done[0:0], Q=\mbist_done
+Replacing groq_sram_macro_sp.$procdff$3863 ($adff): ARST=\rst_n, D=$0\mbist_fail[0:0], Q=\mbist_fail
+Replacing groq_sram_macro_sp.$procdff$3868 ($adff): ARST=\rst_n, D=$0\mbist_state[2:0], Q=\mbist_state
+Replacing groq_sram_macro_sp.$procdff$3873 ($adff): ARST=\rst_n, D=$0\mbist_addr[2:0], Q=\mbist_addr
+Replacing groq_sram_macro_sp.$procdff$3878 ($adff): ARST=\rst_n, D=$0\mbist_sub[0:0], Q=\mbist_sub
+
+5. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Final init constraint equation: { \mem[7] \mem[6] \mem[5] \mem[4] \mem[3] \mem[2] \mem[1] \mem[0] $auto$async2sync.cc:234:execute$3890 $auto$async2sync.cc:234:execute$3892 $auto$async2sync.cc:234:execute$3894 $auto$async2sync.cc:234:execute$3896 $auto$async2sync.cc:234:execute$3898 $auto$async2sync.cc:234:execute$3900 $auto$async2sync.cc:234:execute$3902 $auto$async2sync.cc:234:execute$3904 $auto$async2sync.cc:234:execute$3906 $auto$async2sync.cc:234:execute$3908 $auto$async2sync.cc:234:execute$3910 $auto$async2sync.cc:234:execute$3912 $auto$async2sync.cc:234:execute$3914 } = 806'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Imported 738 cells to SAT database.
+Import proof for assert: \f_was_read_req when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:331$261_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$260_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:327$259_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:323$258_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$256_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv:322$255_EN.
+
+Solving problem with 379266 variables and 1026801 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: 3b2788d6a1, CPU: user 3.17s system 0.18s, MEM: 333.36 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 92% 1x sat (3 sec), 1% 6x opt_clean (0 sec), ...

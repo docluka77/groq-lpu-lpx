@@ -1,0 +1,20 @@
+# Yosys 0.60 Compositional Formal Verification Script for Stage 13 8-Chip Dragonfly Cluster
+read_verilog -sv -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pkg.sv
+read_verilog -sv -lib -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_lpu_top.sv
+read_verilog -sv -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_c2c_serdes_pcs.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_dragonfly_8chip_cluster.sv
+hierarchy -check -top groq_dragonfly_8chip_cluster
+proc
+chformal -remove A:top %n
+flatten
+delete t:groq_lpu_top t:$scopeinfo
+opt_clean -purge
+memory
+async2sync
+chformal -lower
+dffunmap
+opt -fast
+abc -g AND,XOR
+opt -fast
+stat
+sat -verify -seq 3 -set-init-zero -prove-asserts

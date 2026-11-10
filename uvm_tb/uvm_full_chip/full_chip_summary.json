@@ -1,0 +1,13 @@
+{
+  "suite": "uvm_full_chip",
+  "dut": ["groq_lpu_cluster_top", "groq_lpu_top"],
+  "total_cycles": 3666,
+  "total_transactions": 256,
+  "pipeline_waves": 108,
+  "ecc_inject_waves": 48,
+  "barrier_sync_waves": 36,
+  "c2c_transfers": 64,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

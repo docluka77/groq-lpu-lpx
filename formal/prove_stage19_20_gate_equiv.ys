@@ -1,0 +1,52 @@
+# =============================================================================
+# Stage 19 & Stage 20 RTL vs. ASAP7 7nm Gate-Level Netlist Formal Equivalence
+# Modules: groq_power_droop_controller, groq_sram_controller_scrubber
+# =============================================================================
+
+# --- 1. groq_power_droop_controller (RTL vs. ASAP7 7nm Gate-Level Netlist Miter SAT) ---
+design -reset
+read_verilog -sv -Irtl rtl/groq_power_droop_controller.sv
+chformal -remove
+prep -top groq_power_droop_controller -flatten
+async2sync
+dffunmap
+rename groq_power_droop_controller gold_droop
+design -stash gold_droop_db
+
+design -reset
+read_liberty -ignore_miss_func /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+read_verilog synth/groq_power_droop_controller_asap7_netlist.v
+prep -top groq_power_droop_controller -flatten
+async2sync
+dffunmap
+rename groq_power_droop_controller gate_droop
+design -copy-from gold_droop_db -as gold_droop gold_droop
+miter -equiv -flatten -make_assert gold_droop gate_droop miter_droop
+hierarchy -top miter_droop
+opt -fast
+sat -verify -seq 4 -set-at 1 in_rst_n 0 -prove-skip 1 -prove-asserts
+
+# --- 2. groq_sram_controller_scrubber (RTL vs. ASAP7 7nm Gate-Level Netlist Miter SAT) ---
+design -reset
+read_verilog -sv -Irtl -Isram_ip sram_ip/groq_sram_ecc_secded.sv sram_ip/groq_sram_controller_scrubber.sv
+chparam -set P_ADDR_W 2 groq_sram_controller_scrubber
+chformal -remove
+prep -top groq_sram_controller_scrubber -flatten
+async2sync
+dffunmap
+rename groq_sram_controller_scrubber gold_scrubber
+design -stash gold_scrubber_db
+
+design -reset
+read_liberty -ignore_miss_func /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+read_verilog synth/groq_sram_controller_scrubber_asap7_netlist.v
+prep -top groq_sram_controller_scrubber -flatten
+async2sync
+dffunmap
+rename groq_sram_controller_scrubber gate_scrubber
+design -copy-from gold_scrubber_db -as gold_scrubber gold_scrubber
+miter -equiv -flatten -make_assert gold_scrubber gate_scrubber miter_scrubber
+hierarchy -top miter_scrubber
+opt -fast
+sat -verify -seq 2 -set-at 1 in_rst_n 0 -prove-skip 1 -prove-asserts
+

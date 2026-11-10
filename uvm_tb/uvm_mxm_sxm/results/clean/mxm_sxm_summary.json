@@ -1,0 +1,15 @@
+{
+  "suite": "uvm_mxm_sxm",
+  "dut": ["groq_mxm_slice", "groq_sxm_slice"],
+  "driven_cycles": 3200,
+  "observed_cycles": 3200,
+  "checked_cycles": 3200,
+  "dpi_calls": 3200,
+  "mxm_slice_checks": 3200,
+  "sxm_slice_checks": 3200,
+  "zero_skip_events": 774,
+  "ping_pong_swaps": 221,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

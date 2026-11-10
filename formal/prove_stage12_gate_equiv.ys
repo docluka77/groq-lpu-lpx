@@ -1,0 +1,60 @@
+# =============================================================================
+# Stage 12 RTL vs. ASAP7 7nm Gate-Level Netlist Formal Equivalence Proof
+# Modules: groq_pcie_c2c_dma, groq_c2c_serdes_pcs
+# =============================================================================
+
+# --- 1. groq_pcie_c2c_dma (Full 128-Bit RTL vs. ASAP7 7nm Gate-Level Netlist Miter SAT) ---
+design -reset
+read_verilog -sv -Irtl rtl/groq_pcie_c2c_dma.sv
+chformal -remove
+prep -top groq_pcie_c2c_dma -flatten
+async2sync
+dffunmap
+rename groq_pcie_c2c_dma gold_dma
+design -stash gold_dma_db
+
+design -reset
+read_liberty -ignore_miss_func /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+read_verilog synth/groq_pcie_c2c_dma_asap7_netlist.v
+prep -top groq_pcie_c2c_dma -flatten
+async2sync
+dffunmap
+rename groq_pcie_c2c_dma gate_dma
+design -copy-from gold_dma_db -as gold_dma gold_dma
+miter -equiv -flatten -make_assert gold_dma gate_dma miter_dma
+hierarchy -top miter_dma
+opt -fast
+sat -verify -seq 3 -set-at 1 in_rst_n 0 -prove-skip 1 -prove-asserts
+
+# --- 2. groq_c2c_serdes_pcs (RTL vs. ASAP7 7nm Gate-Level Netlist Miter SAT) ---
+design -reset
+read_verilog -sv -Irtl rtl/groq_c2c_serdes_pcs.sv
+chparam -set P_STREAM_WIDTH 8 groq_c2c_serdes_pcs
+chformal -remove
+prep -top groq_c2c_serdes_pcs -flatten
+async2sync
+dffunmap
+rename groq_c2c_serdes_pcs gold_pcs
+design -stash gold_pcs_db
+
+design -reset
+read_verilog -sv -Irtl rtl/groq_c2c_serdes_pcs.sv
+chparam -set P_STREAM_WIDTH 8 groq_c2c_serdes_pcs
+chformal -remove
+synth -top groq_c2c_serdes_pcs -noabc
+dfflibmap -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+abc -fast -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+write_verilog -noattr synth/groq_c2c_serdes_pcs_equiv_asap7.v
+
+design -reset
+read_liberty -ignore_miss_func /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+read_verilog synth/groq_c2c_serdes_pcs_equiv_asap7.v
+prep -top groq_c2c_serdes_pcs -flatten
+async2sync
+dffunmap
+rename groq_c2c_serdes_pcs gate_pcs
+design -copy-from gold_pcs_db -as gold_pcs gold_pcs
+miter -equiv -flatten -make_assert gold_pcs gate_pcs miter_pcs
+hierarchy -top miter_pcs
+opt -fast
+sat -verify -seq 3 -set-at 1 in_rst_n 0 -prove-skip 1 -prove-asserts

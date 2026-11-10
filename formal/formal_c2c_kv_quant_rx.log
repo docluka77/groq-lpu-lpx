@@ -1,0 +1,2030 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Executing script file `formal/prove_c2c_kv_quant_rx.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/groq_c2c_kv_quant_rx_engine.sv
+Parsing SystemVerilog input from `rtl/groq_c2c_kv_quant_rx_engine.sv' to AST representation.
+verilog frontend filename rtl/groq_c2c_kv_quant_rx_engine.sv
+Generating RTLIL representation for module `\groq_c2c_kv_quant_rx_engine'.
+Warning: Replacing memory \nvfp4_lane_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:216, rtl/groq_c2c_kv_quant_rx_engine.sv:204
+Warning: Replacing memory \mxfp8_lane_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:215, rtl/groq_c2c_kv_quant_rx_engine.sv:191
+Warning: Replacing memory \rel_exp_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:196, rtl/groq_c2c_kv_quant_rx_engine.sv:187
+Warning: Replacing memory \max_lvl3 with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:133, rtl/groq_c2c_kv_quant_rx_engine.sv:130
+Warning: Replacing memory \max_lvl2 with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:130, rtl/groq_c2c_kv_quant_rx_engine.sv:126
+Warning: Replacing memory \max_lvl1 with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:126, rtl/groq_c2c_kv_quant_rx_engine.sv:122
+Warning: Replacing memory \finite_exp8_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:100
+Warning: Replacing memory \frac7_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:90
+Warning: Replacing memory \exp8_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:97, rtl/groq_c2c_kv_quant_rx_engine.sv:84
+Warning: Replacing memory \sign_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:79
+Warning: Replacing memory \raw16_c with list of registers. See rtl/groq_c2c_kv_quant_rx_engine.sv:79, rtl/groq_c2c_kv_quant_rx_engine.sv:78
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \groq_c2c_kv_quant_rx_engine
+
+2.2. Analyzing design hierarchy..
+Top module:  \groq_c2c_kv_quant_rx_engine
+Removed 0 unused modules.
+Module groq_c2c_kv_quant_rx_engine directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 18 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:300$415 in module groq_c2c_kv_quant_rx_engine.
+Marked 1 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379 in module groq_c2c_kv_quant_rx_engine.
+Marked 1 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377 in module groq_c2c_kv_quant_rx_engine.
+Removed 1 dead cases from process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277 in module groq_c2c_kv_quant_rx_engine.
+Marked 129 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277 in module groq_c2c_kv_quant_rx_engine.
+Marked 35 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181 in module groq_c2c_kv_quant_rx_engine.
+Marked 48 switch rules as full_case in process $proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19 in module groq_c2c_kv_quant_rx_engine.
+Removed a total of 1 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 48 redundant assignments.
+Promoted 274 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+Found async reset \rst_n in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~375 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:300$415'.
+     1/198: $2$fordecl_block$17.k[31:0]$843
+     2/198: $1$fordecl_block$17.k[31:0]$836
+     3/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1163_EN
+     4/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1161_EN
+     5/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1159_EN
+     6/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1154_EN
+     7/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1152_EN
+     8/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1150_EN
+     9/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1143_EN
+    10/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1141_EN
+    11/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1139_EN
+    12/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1134_EN
+    13/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1132_EN
+    14/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1130_EN
+    15/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1123_EN
+    16/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1121_EN
+    17/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1119_EN
+    18/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1114_EN
+    19/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1112_EN
+    20/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1110_EN
+    21/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1103_EN
+    22/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1101_EN
+    23/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1099_EN
+    24/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1094_EN
+    25/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1092_EN
+    26/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1090_EN
+    27/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1083_EN
+    28/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1081_EN
+    29/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1079_EN
+    30/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1074_EN
+    31/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1072_EN
+    32/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1070_EN
+    33/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1063_EN
+    34/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1061_EN
+    35/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1059_EN
+    36/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1054_EN
+    37/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1052_EN
+    38/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1050_EN
+    39/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1043_EN
+    40/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1041_EN
+    41/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1039_EN
+    42/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1034_EN
+    43/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1032_EN
+    44/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1030_EN
+    45/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1023_EN
+    46/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1021_EN
+    47/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN
+    48/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1014_EN
+    49/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1012_EN
+    50/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN
+    51/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1003_EN
+    52/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1001_EN
+    53/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$999_EN
+    54/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$994_EN
+    55/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$992_EN
+    56/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$990_EN
+    57/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$983_EN
+    58/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$981_EN
+    59/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$979_EN
+    60/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$974_EN
+    61/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$972_EN
+    62/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$970_EN
+    63/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$963_EN
+    64/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$961_EN
+    65/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$959_EN
+    66/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$954_EN
+    67/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$952_EN
+    68/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$950_EN
+    69/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$943_EN
+    70/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$941_EN
+    71/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$939_EN
+    72/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$934_EN
+    73/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$932_EN
+    74/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$930_EN
+    75/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$923_EN
+    76/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$921_EN
+    77/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$919_EN
+    78/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$914_EN
+    79/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$912_EN
+    80/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$910_EN
+    81/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$903_EN
+    82/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$901_EN
+    83/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$899_EN
+    84/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$894_EN
+    85/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$892_EN
+    86/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$890_EN
+    87/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$883_EN
+    88/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$881_EN
+    89/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$879_EN
+    90/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$874_EN
+    91/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$872_EN
+    92/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$870_EN
+    93/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$863_EN
+    94/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$861_EN
+    95/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$859_EN
+    96/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$854_EN
+    97/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$852_EN
+    98/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$850_EN
+    99/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:335$845_EN
+   100/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:331$841_EN
+   101/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:329$839_EN
+   102/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN
+   103/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$834_EN
+   104/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$830_EN
+   105/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$827_EN
+   106/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$823_EN
+   107/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$812_EN
+   108/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$810_EN
+   109/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$808_EN
+   110/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$804_EN
+   111/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$801_EN
+   112/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$797_EN
+   113/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$786_EN
+   114/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$784_EN
+   115/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$782_EN
+   116/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$778_EN
+   117/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$775_EN
+   118/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$771_EN
+   119/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$760_EN
+   120/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$758_EN
+   121/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$756_EN
+   122/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$752_EN
+   123/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$749_EN
+   124/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$745_EN
+   125/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$734_EN
+   126/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$732_EN
+   127/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$730_EN
+   128/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$726_EN
+   129/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$723_EN
+   130/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$719_EN
+   131/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$708_EN
+   132/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$706_EN
+   133/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$704_EN
+   134/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$700_EN
+   135/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$697_EN
+   136/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$693_EN
+   137/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$682_EN
+   138/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$680_EN
+   139/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$678_EN
+   140/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$674_EN
+   141/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$671_EN
+   142/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$667_EN
+   143/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$656_EN
+   144/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$654_EN
+   145/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$652_EN
+   146/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$648_EN
+   147/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$645_EN
+   148/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$641_EN
+   149/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$630_EN
+   150/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$628_EN
+   151/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$626_EN
+   152/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$622_EN
+   153/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$619_EN
+   154/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$615_EN
+   155/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$604_EN
+   156/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$602_EN
+   157/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$600_EN
+   158/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$596_EN
+   159/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$593_EN
+   160/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$589_EN
+   161/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$578_EN
+   162/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$576_EN
+   163/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$574_EN
+   164/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$570_EN
+   165/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$567_EN
+   166/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$563_EN
+   167/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$552_EN
+   168/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$550_EN
+   169/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$548_EN
+   170/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$544_EN
+   171/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$541_EN
+   172/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$537_EN
+   173/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$526_EN
+   174/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$524_EN
+   175/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$522_EN
+   176/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$518_EN
+   177/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$515_EN
+   178/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$511_EN
+   179/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$500_EN
+   180/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$498_EN
+   181/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$496_EN
+   182/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$492_EN
+   183/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$489_EN
+   184/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$485_EN
+   185/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$474_EN
+   186/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$472_EN
+   187/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$470_EN
+   188/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$466_EN
+   189/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$463_EN
+   190/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$459_EN
+   191/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$448_EN
+   192/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$446_EN
+   193/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:322$444_EN
+   194/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$440_EN
+   195/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:318$437_EN
+   196/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$433_EN
+   197/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:308$422_EN
+   198/198: $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$420_EN
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+     1/51: $1$fordecl_block$13.k[31:0]$382
+     2/51: $0\f_past_is_emax[15:0] [15]
+     3/51: $0\f_past_is_zero[15:0] [15]
+     4/51: $0\f_past_sign[15:0] [15]
+     5/51: $0\f_past_is_emax[15:0] [14]
+     6/51: $0\f_past_is_zero[15:0] [14]
+     7/51: $0\f_past_sign[15:0] [14]
+     8/51: $0\f_past_is_emax[15:0] [13]
+     9/51: $0\f_past_is_zero[15:0] [13]
+    10/51: $0\f_past_sign[15:0] [13]
+    11/51: $0\f_past_is_emax[15:0] [12]
+    12/51: $0\f_past_is_zero[15:0] [12]
+    13/51: $0\f_past_sign[15:0] [12]
+    14/51: $0\f_past_is_emax[15:0] [11]
+    15/51: $0\f_past_is_zero[15:0] [11]
+    16/51: $0\f_past_sign[15:0] [11]
+    17/51: $0\f_past_is_emax[15:0] [10]
+    18/51: $0\f_past_is_zero[15:0] [10]
+    19/51: $0\f_past_sign[15:0] [10]
+    20/51: $0\f_past_is_emax[15:0] [9]
+    21/51: $0\f_past_is_zero[15:0] [9]
+    22/51: $0\f_past_sign[15:0] [9]
+    23/51: $0\f_past_is_emax[15:0] [8]
+    24/51: $0\f_past_is_zero[15:0] [8]
+    25/51: $0\f_past_sign[15:0] [8]
+    26/51: $0\f_past_is_emax[15:0] [7]
+    27/51: $0\f_past_is_zero[15:0] [7]
+    28/51: $0\f_past_sign[15:0] [7]
+    29/51: $0\f_past_is_emax[15:0] [6]
+    30/51: $0\f_past_is_zero[15:0] [6]
+    31/51: $0\f_past_sign[15:0] [6]
+    32/51: $0\f_past_is_emax[15:0] [5]
+    33/51: $0\f_past_is_zero[15:0] [5]
+    34/51: $0\f_past_sign[15:0] [5]
+    35/51: $0\f_past_is_emax[15:0] [4]
+    36/51: $0\f_past_is_zero[15:0] [4]
+    37/51: $0\f_past_sign[15:0] [4]
+    38/51: $0\f_past_is_emax[15:0] [3]
+    39/51: $0\f_past_is_zero[15:0] [3]
+    40/51: $0\f_past_sign[15:0] [3]
+    41/51: $0\f_past_is_emax[15:0] [2]
+    42/51: $0\f_past_is_zero[15:0] [2]
+    43/51: $0\f_past_sign[15:0] [2]
+    44/51: $0\f_past_is_emax[15:0] [1]
+    45/51: $0\f_past_is_zero[15:0] [1]
+    46/51: $0\f_past_sign[15:0] [1]
+    47/51: $0\f_past_is_emax[15:0] [0]
+    48/51: $0\f_past_is_zero[15:0] [0]
+    49/51: $0\f_past_sign[15:0] [0]
+    50/51: $0\f_past_mode[1:0]
+    51/51: $0\f_past_valid[0:0]
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+     1/10: $0\scale_nvfp4_e4m3_q[7:0]
+     2/10: $0\compression_ratio_code_o[1:0]
+     3/10: $0\nan_inf_clamped_o[0:0]
+     4/10: $0\zero_lanes_cnt_o[4:0]
+     5/10: $0\sram_wr_addr_o[15:0]
+     6/10: $0\sram_wr_bank_o[1:0]
+     7/10: $0\sram_wr_en_o[0:0]
+     8/10: $0\scale_e8m0_o[7:0]
+     9/10: $0\quant_vec_o[127:0]
+    10/10: $0\valid_o[0:0]
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+     1/131: $1\comp_ratio_c[1:0]
+     2/131: $1\nan_inf_clamped_c[0:0]
+     3/131: $1\quant_vec_c[127:0]
+     4/131: $4\nvfp4_lane_c[15][3:0]
+     5/131: $3\nvfp4_lane_c[15][3:0]
+     6/131: $2\nvfp4_lane_c[15][3:0]
+     7/131: $1\nvfp4_lane_c[15][3:0]
+     8/131: $4\mxfp8_lane_c[15][7:0]
+     9/131: $3\mxfp8_lane_c[15][7:0]
+    10/131: $2\mxfp8_lane_c[15][7:0]
+    11/131: $1\mxfp8_lane_c[15][7:0]
+    12/131: $4\nvfp4_lane_c[14][3:0]
+    13/131: $3\nvfp4_lane_c[14][3:0]
+    14/131: $2\nvfp4_lane_c[14][3:0]
+    15/131: $1\nvfp4_lane_c[14][3:0]
+    16/131: $4\mxfp8_lane_c[14][7:0]
+    17/131: $3\mxfp8_lane_c[14][7:0]
+    18/131: $2\mxfp8_lane_c[14][7:0]
+    19/131: $1\mxfp8_lane_c[14][7:0]
+    20/131: $4\nvfp4_lane_c[13][3:0]
+    21/131: $3\nvfp4_lane_c[13][3:0]
+    22/131: $2\nvfp4_lane_c[13][3:0]
+    23/131: $1\nvfp4_lane_c[13][3:0]
+    24/131: $4\mxfp8_lane_c[13][7:0]
+    25/131: $3\mxfp8_lane_c[13][7:0]
+    26/131: $2\mxfp8_lane_c[13][7:0]
+    27/131: $1\mxfp8_lane_c[13][7:0]
+    28/131: $4\nvfp4_lane_c[12][3:0]
+    29/131: $3\nvfp4_lane_c[12][3:0]
+    30/131: $2\nvfp4_lane_c[12][3:0]
+    31/131: $1\nvfp4_lane_c[12][3:0]
+    32/131: $4\mxfp8_lane_c[12][7:0]
+    33/131: $3\mxfp8_lane_c[12][7:0]
+    34/131: $2\mxfp8_lane_c[12][7:0]
+    35/131: $1\mxfp8_lane_c[12][7:0]
+    36/131: $4\nvfp4_lane_c[11][3:0]
+    37/131: $3\nvfp4_lane_c[11][3:0]
+    38/131: $2\nvfp4_lane_c[11][3:0]
+    39/131: $1\nvfp4_lane_c[11][3:0]
+    40/131: $4\mxfp8_lane_c[11][7:0]
+    41/131: $3\mxfp8_lane_c[11][7:0]
+    42/131: $2\mxfp8_lane_c[11][7:0]
+    43/131: $1\mxfp8_lane_c[11][7:0]
+    44/131: $4\nvfp4_lane_c[10][3:0]
+    45/131: $3\nvfp4_lane_c[10][3:0]
+    46/131: $2\nvfp4_lane_c[10][3:0]
+    47/131: $1\nvfp4_lane_c[10][3:0]
+    48/131: $4\mxfp8_lane_c[10][7:0]
+    49/131: $3\mxfp8_lane_c[10][7:0]
+    50/131: $2\mxfp8_lane_c[10][7:0]
+    51/131: $1\mxfp8_lane_c[10][7:0]
+    52/131: $4\nvfp4_lane_c[9][3:0]
+    53/131: $3\nvfp4_lane_c[9][3:0]
+    54/131: $2\nvfp4_lane_c[9][3:0]
+    55/131: $1\nvfp4_lane_c[9][3:0]
+    56/131: $4\mxfp8_lane_c[9][7:0]
+    57/131: $3\mxfp8_lane_c[9][7:0]
+    58/131: $2\mxfp8_lane_c[9][7:0]
+    59/131: $1\mxfp8_lane_c[9][7:0]
+    60/131: $4\nvfp4_lane_c[8][3:0]
+    61/131: $3\nvfp4_lane_c[8][3:0]
+    62/131: $2\nvfp4_lane_c[8][3:0]
+    63/131: $1\nvfp4_lane_c[8][3:0]
+    64/131: $4\mxfp8_lane_c[8][7:0]
+    65/131: $3\mxfp8_lane_c[8][7:0]
+    66/131: $2\mxfp8_lane_c[8][7:0]
+    67/131: $1\mxfp8_lane_c[8][7:0]
+    68/131: $4\nvfp4_lane_c[7][3:0]
+    69/131: $3\nvfp4_lane_c[7][3:0]
+    70/131: $2\nvfp4_lane_c[7][3:0]
+    71/131: $1\nvfp4_lane_c[7][3:0]
+    72/131: $4\mxfp8_lane_c[7][7:0]
+    73/131: $3\mxfp8_lane_c[7][7:0]
+    74/131: $2\mxfp8_lane_c[7][7:0]
+    75/131: $1\mxfp8_lane_c[7][7:0]
+    76/131: $4\nvfp4_lane_c[6][3:0]
+    77/131: $3\nvfp4_lane_c[6][3:0]
+    78/131: $2\nvfp4_lane_c[6][3:0]
+    79/131: $1\nvfp4_lane_c[6][3:0]
+    80/131: $4\mxfp8_lane_c[6][7:0]
+    81/131: $3\mxfp8_lane_c[6][7:0]
+    82/131: $2\mxfp8_lane_c[6][7:0]
+    83/131: $1\mxfp8_lane_c[6][7:0]
+    84/131: $4\nvfp4_lane_c[5][3:0]
+    85/131: $3\nvfp4_lane_c[5][3:0]
+    86/131: $2\nvfp4_lane_c[5][3:0]
+    87/131: $1\nvfp4_lane_c[5][3:0]
+    88/131: $4\mxfp8_lane_c[5][7:0]
+    89/131: $3\mxfp8_lane_c[5][7:0]
+    90/131: $2\mxfp8_lane_c[5][7:0]
+    91/131: $1\mxfp8_lane_c[5][7:0]
+    92/131: $4\nvfp4_lane_c[4][3:0]
+    93/131: $3\nvfp4_lane_c[4][3:0]
+    94/131: $2\nvfp4_lane_c[4][3:0]
+    95/131: $1\nvfp4_lane_c[4][3:0]
+    96/131: $4\mxfp8_lane_c[4][7:0]
+    97/131: $3\mxfp8_lane_c[4][7:0]
+    98/131: $2\mxfp8_lane_c[4][7:0]
+    99/131: $1\mxfp8_lane_c[4][7:0]
+   100/131: $4\nvfp4_lane_c[3][3:0]
+   101/131: $3\nvfp4_lane_c[3][3:0]
+   102/131: $2\nvfp4_lane_c[3][3:0]
+   103/131: $1\nvfp4_lane_c[3][3:0]
+   104/131: $4\mxfp8_lane_c[3][7:0]
+   105/131: $3\mxfp8_lane_c[3][7:0]
+   106/131: $2\mxfp8_lane_c[3][7:0]
+   107/131: $1\mxfp8_lane_c[3][7:0]
+   108/131: $4\nvfp4_lane_c[2][3:0]
+   109/131: $3\nvfp4_lane_c[2][3:0]
+   110/131: $2\nvfp4_lane_c[2][3:0]
+   111/131: $1\nvfp4_lane_c[2][3:0]
+   112/131: $4\mxfp8_lane_c[2][7:0]
+   113/131: $3\mxfp8_lane_c[2][7:0]
+   114/131: $2\mxfp8_lane_c[2][7:0]
+   115/131: $1\mxfp8_lane_c[2][7:0]
+   116/131: $4\nvfp4_lane_c[1][3:0]
+   117/131: $3\nvfp4_lane_c[1][3:0]
+   118/131: $2\nvfp4_lane_c[1][3:0]
+   119/131: $1\nvfp4_lane_c[1][3:0]
+   120/131: $4\mxfp8_lane_c[1][7:0]
+   121/131: $3\mxfp8_lane_c[1][7:0]
+   122/131: $2\mxfp8_lane_c[1][7:0]
+   123/131: $1\mxfp8_lane_c[1][7:0]
+   124/131: $4\nvfp4_lane_c[0][3:0]
+   125/131: $3\nvfp4_lane_c[0][3:0]
+   126/131: $2\nvfp4_lane_c[0][3:0]
+   127/131: $1\nvfp4_lane_c[0][3:0]
+   128/131: $4\mxfp8_lane_c[0][7:0]
+   129/131: $3\mxfp8_lane_c[0][7:0]
+   130/131: $2\mxfp8_lane_c[0][7:0]
+   131/131: $1\mxfp8_lane_c[0][7:0]
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+     1/35: $2\nvfp4_e4m3_exp4_c[3:0]
+     2/35: $1\nvfp4_e4m3_exp4_c[3:0]
+     3/35: $32\max_emax_frac3_c[2:0]
+     4/35: $31\max_emax_frac3_c[2:0]
+     5/35: $30\max_emax_frac3_c[2:0]
+     6/35: $29\max_emax_frac3_c[2:0]
+     7/35: $28\max_emax_frac3_c[2:0]
+     8/35: $27\max_emax_frac3_c[2:0]
+     9/35: $26\max_emax_frac3_c[2:0]
+    10/35: $25\max_emax_frac3_c[2:0]
+    11/35: $24\max_emax_frac3_c[2:0]
+    12/35: $23\max_emax_frac3_c[2:0]
+    13/35: $22\max_emax_frac3_c[2:0]
+    14/35: $21\max_emax_frac3_c[2:0]
+    15/35: $20\max_emax_frac3_c[2:0]
+    16/35: $19\max_emax_frac3_c[2:0]
+    17/35: $18\max_emax_frac3_c[2:0]
+    18/35: $17\max_emax_frac3_c[2:0]
+    19/35: $16\max_emax_frac3_c[2:0]
+    20/35: $15\max_emax_frac3_c[2:0]
+    21/35: $14\max_emax_frac3_c[2:0]
+    22/35: $13\max_emax_frac3_c[2:0]
+    23/35: $12\max_emax_frac3_c[2:0]
+    24/35: $11\max_emax_frac3_c[2:0]
+    25/35: $10\max_emax_frac3_c[2:0]
+    26/35: $9\max_emax_frac3_c[2:0]
+    27/35: $8\max_emax_frac3_c[2:0]
+    28/35: $7\max_emax_frac3_c[2:0]
+    29/35: $6\max_emax_frac3_c[2:0]
+    30/35: $5\max_emax_frac3_c[2:0]
+    31/35: $4\max_emax_frac3_c[2:0]
+    32/35: $3\max_emax_frac3_c[2:0]
+    33/35: $2\max_emax_frac3_c[2:0]
+    34/35: $1\max_emax_frac3_c[2:0]
+    35/35: $1\scale_e8m0_c[7:0]
+Creating decoders for process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+     1/64: $3\exp8_c[15][7:0]
+     2/64: $2\exp8_c[15][7:0]
+     3/64: $1\frac7_c[15][6:0]
+     4/64: $1\exp8_c[15][7:0]
+     5/64: $3\exp8_c[14][7:0]
+     6/64: $2\exp8_c[14][7:0]
+     7/64: $1\frac7_c[14][6:0]
+     8/64: $1\exp8_c[14][7:0]
+     9/64: $3\exp8_c[13][7:0]
+    10/64: $2\exp8_c[13][7:0]
+    11/64: $1\frac7_c[13][6:0]
+    12/64: $1\exp8_c[13][7:0]
+    13/64: $3\exp8_c[12][7:0]
+    14/64: $2\exp8_c[12][7:0]
+    15/64: $1\frac7_c[12][6:0]
+    16/64: $1\exp8_c[12][7:0]
+    17/64: $3\exp8_c[11][7:0]
+    18/64: $2\exp8_c[11][7:0]
+    19/64: $1\frac7_c[11][6:0]
+    20/64: $1\exp8_c[11][7:0]
+    21/64: $3\exp8_c[10][7:0]
+    22/64: $2\exp8_c[10][7:0]
+    23/64: $1\frac7_c[10][6:0]
+    24/64: $1\exp8_c[10][7:0]
+    25/64: $3\exp8_c[9][7:0]
+    26/64: $2\exp8_c[9][7:0]
+    27/64: $1\frac7_c[9][6:0]
+    28/64: $1\exp8_c[9][7:0]
+    29/64: $3\exp8_c[8][7:0]
+    30/64: $2\exp8_c[8][7:0]
+    31/64: $1\frac7_c[8][6:0]
+    32/64: $1\exp8_c[8][7:0]
+    33/64: $3\exp8_c[7][7:0]
+    34/64: $2\exp8_c[7][7:0]
+    35/64: $1\frac7_c[7][6:0]
+    36/64: $1\exp8_c[7][7:0]
+    37/64: $3\exp8_c[6][7:0]
+    38/64: $2\exp8_c[6][7:0]
+    39/64: $1\frac7_c[6][6:0]
+    40/64: $1\exp8_c[6][7:0]
+    41/64: $3\exp8_c[5][7:0]
+    42/64: $2\exp8_c[5][7:0]
+    43/64: $1\frac7_c[5][6:0]
+    44/64: $1\exp8_c[5][7:0]
+    45/64: $3\exp8_c[4][7:0]
+    46/64: $2\exp8_c[4][7:0]
+    47/64: $1\frac7_c[4][6:0]
+    48/64: $1\exp8_c[4][7:0]
+    49/64: $3\exp8_c[3][7:0]
+    50/64: $2\exp8_c[3][7:0]
+    51/64: $1\frac7_c[3][6:0]
+    52/64: $1\exp8_c[3][7:0]
+    53/64: $3\exp8_c[2][7:0]
+    54/64: $2\exp8_c[2][7:0]
+    55/64: $1\frac7_c[2][6:0]
+    56/64: $1\exp8_c[2][7:0]
+    57/64: $3\exp8_c[1][7:0]
+    58/64: $2\exp8_c[1][7:0]
+    59/64: $1\frac7_c[1][6:0]
+    60/64: $1\exp8_c[1][7:0]
+    61/64: $3\exp8_c[0][7:0]
+    62/64: $2\exp8_c[0][7:0]
+    63/64: $1\frac7_c[0][6:0]
+    64/64: $1\exp8_c[0][7:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$15.k' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:300$415'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$17.k' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:300$415'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_pack128_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_pack64_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\quant_vec_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\zero_lanes_cnt_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nan_inf_clamped_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\comp_ratio_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$11.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\rel_exp_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\mxfp8_lane_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_lane_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_tree_exp8_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\e_max_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\scale_e8m0_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_emax_frac3_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\nvfp4_e4m3_exp4_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\scale_nvfp4_e4m3_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$3.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$5.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$7.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$9.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl1[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl2[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl3[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\max_lvl3[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\is_zero_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\is_nan_inf_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\is_finite_nz_c' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$1.i' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\raw16_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\sign_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\exp8_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\frac7_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[0]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[1]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[2]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[3]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[4]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[5]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[6]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[7]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[8]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[9]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[10]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[11]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[12]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[13]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[14]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+No latch inferred for signal `\groq_c2c_kv_quant_rx_engine.\finite_exp8_c[15]' from process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\f_past_valid' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+  created $adff cell `$procdff$4070' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\f_past_mode' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+  created $adff cell `$procdff$4075' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\f_past_sign' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+  created $adff cell `$procdff$4080' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\f_past_is_zero' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+  created $adff cell `$procdff$4085' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\f_past_is_emax' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+  created $adff cell `$procdff$4090' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.$fordecl_block$13.k' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+  created $dff cell `$procdff$4097' with positive edge clock.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\valid_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4102' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\quant_vec_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4107' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\scale_e8m0_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4112' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\sram_wr_en_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4117' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\sram_wr_bank_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4122' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\sram_wr_addr_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4127' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\zero_lanes_cnt_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4132' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\nan_inf_clamped_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4137' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\compression_ratio_code_o' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4142' with positive edge clock and positive level reset.
+Creating register for signal `\groq_c2c_kv_quant_rx_engine.\scale_nvfp4_e4m3_q' using process `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+  created $adff cell `$procdff$4147' with positive edge clock and positive level reset.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 163 empty switches in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:300$415'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:300$415'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:281$379'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:247$377'.
+Found and cleaned up 129 empty switches in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:183$277'.
+Found and cleaned up 35 empty switches in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:120$181'.
+Found and cleaned up 48 empty switches in `\groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+Removing empty process `groq_c2c_kv_quant_rx_engine.$proc$rtl/groq_c2c_kv_quant_rx_engine.sv:76$19'.
+Cleaned up 375 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~182 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~1 debug messages>
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+<suppressed ~756 debug messages>
+Removed a total of 252 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$3418.
+    dead port 1/2 on $mux $procmux$3412.
+    dead port 1/2 on $mux $procmux$3409.
+    dead port 1/2 on $mux $procmux$3403.
+    dead port 1/2 on $mux $procmux$3400.
+    dead port 1/2 on $mux $procmux$3397.
+    dead port 1/2 on $mux $procmux$3388.
+    dead port 1/2 on $mux $procmux$3382.
+    dead port 1/2 on $mux $procmux$3379.
+    dead port 1/2 on $mux $procmux$3373.
+    dead port 1/2 on $mux $procmux$3370.
+    dead port 1/2 on $mux $procmux$3367.
+    dead port 1/2 on $mux $procmux$3358.
+    dead port 1/2 on $mux $procmux$3352.
+    dead port 1/2 on $mux $procmux$3349.
+    dead port 1/2 on $mux $procmux$3343.
+    dead port 1/2 on $mux $procmux$3340.
+    dead port 1/2 on $mux $procmux$3337.
+    dead port 1/2 on $mux $procmux$3328.
+    dead port 1/2 on $mux $procmux$3322.
+    dead port 1/2 on $mux $procmux$3319.
+    dead port 1/2 on $mux $procmux$3313.
+    dead port 1/2 on $mux $procmux$3310.
+    dead port 1/2 on $mux $procmux$3307.
+    dead port 1/2 on $mux $procmux$3298.
+    dead port 1/2 on $mux $procmux$3292.
+    dead port 1/2 on $mux $procmux$3289.
+    dead port 1/2 on $mux $procmux$3283.
+    dead port 1/2 on $mux $procmux$3280.
+    dead port 1/2 on $mux $procmux$3277.
+    dead port 1/2 on $mux $procmux$3268.
+    dead port 1/2 on $mux $procmux$3262.
+    dead port 1/2 on $mux $procmux$3259.
+    dead port 1/2 on $mux $procmux$3253.
+    dead port 1/2 on $mux $procmux$3250.
+    dead port 1/2 on $mux $procmux$3247.
+    dead port 1/2 on $mux $procmux$3238.
+    dead port 1/2 on $mux $procmux$3232.
+    dead port 1/2 on $mux $procmux$3229.
+    dead port 1/2 on $mux $procmux$3223.
+    dead port 1/2 on $mux $procmux$3220.
+    dead port 1/2 on $mux $procmux$3217.
+    dead port 1/2 on $mux $procmux$3208.
+    dead port 1/2 on $mux $procmux$3202.
+    dead port 1/2 on $mux $procmux$3199.
+    dead port 1/2 on $mux $procmux$3193.
+    dead port 1/2 on $mux $procmux$3190.
+    dead port 1/2 on $mux $procmux$3187.
+    dead port 1/2 on $mux $procmux$3178.
+    dead port 1/2 on $mux $procmux$3172.
+    dead port 1/2 on $mux $procmux$3169.
+    dead port 1/2 on $mux $procmux$3163.
+    dead port 1/2 on $mux $procmux$3160.
+    dead port 1/2 on $mux $procmux$3157.
+    dead port 1/2 on $mux $procmux$3148.
+    dead port 1/2 on $mux $procmux$3142.
+    dead port 1/2 on $mux $procmux$3139.
+    dead port 1/2 on $mux $procmux$3133.
+    dead port 1/2 on $mux $procmux$3130.
+    dead port 1/2 on $mux $procmux$3127.
+    dead port 1/2 on $mux $procmux$3118.
+    dead port 1/2 on $mux $procmux$3112.
+    dead port 1/2 on $mux $procmux$3109.
+    dead port 1/2 on $mux $procmux$3103.
+    dead port 1/2 on $mux $procmux$3100.
+    dead port 1/2 on $mux $procmux$3097.
+    dead port 1/2 on $mux $procmux$3088.
+    dead port 1/2 on $mux $procmux$3082.
+    dead port 1/2 on $mux $procmux$3079.
+    dead port 1/2 on $mux $procmux$3073.
+    dead port 1/2 on $mux $procmux$3070.
+    dead port 1/2 on $mux $procmux$3067.
+    dead port 1/2 on $mux $procmux$3058.
+    dead port 1/2 on $mux $procmux$3052.
+    dead port 1/2 on $mux $procmux$3049.
+    dead port 1/2 on $mux $procmux$3043.
+    dead port 1/2 on $mux $procmux$3040.
+    dead port 1/2 on $mux $procmux$3037.
+    dead port 1/2 on $mux $procmux$3028.
+    dead port 1/2 on $mux $procmux$3022.
+    dead port 1/2 on $mux $procmux$3019.
+    dead port 1/2 on $mux $procmux$3013.
+    dead port 1/2 on $mux $procmux$3010.
+    dead port 1/2 on $mux $procmux$3007.
+    dead port 1/2 on $mux $procmux$2998.
+    dead port 1/2 on $mux $procmux$2992.
+    dead port 1/2 on $mux $procmux$2989.
+    dead port 1/2 on $mux $procmux$2983.
+    dead port 1/2 on $mux $procmux$2980.
+    dead port 1/2 on $mux $procmux$2977.
+    dead port 1/2 on $mux $procmux$2968.
+    dead port 1/2 on $mux $procmux$2962.
+    dead port 1/2 on $mux $procmux$2959.
+    dead port 1/2 on $mux $procmux$2953.
+    dead port 1/2 on $mux $procmux$2950.
+    dead port 1/2 on $mux $procmux$2947.
+    dead port 1/2 on $mux $procmux$2938.
+    dead port 1/2 on $mux $procmux$2932.
+    dead port 1/2 on $mux $procmux$2929.
+    dead port 1/2 on $mux $procmux$2923.
+    dead port 1/2 on $mux $procmux$2920.
+    dead port 1/2 on $mux $procmux$2917.
+    dead port 1/2 on $mux $procmux$2908.
+    dead port 1/2 on $mux $procmux$2902.
+    dead port 1/2 on $mux $procmux$2899.
+    dead port 1/2 on $mux $procmux$2893.
+    dead port 1/2 on $mux $procmux$2890.
+    dead port 1/2 on $mux $procmux$2887.
+    dead port 1/2 on $mux $procmux$2878.
+    dead port 1/2 on $mux $procmux$2872.
+    dead port 1/2 on $mux $procmux$2869.
+    dead port 1/2 on $mux $procmux$2863.
+    dead port 1/2 on $mux $procmux$2860.
+    dead port 1/2 on $mux $procmux$2857.
+    dead port 1/2 on $mux $procmux$2848.
+    dead port 1/2 on $mux $procmux$2842.
+    dead port 1/2 on $mux $procmux$2839.
+    dead port 1/2 on $mux $procmux$2833.
+    dead port 1/2 on $mux $procmux$2830.
+    dead port 1/2 on $mux $procmux$2827.
+    dead port 1/2 on $mux $procmux$2818.
+    dead port 1/2 on $mux $procmux$2812.
+    dead port 1/2 on $mux $procmux$2809.
+    dead port 1/2 on $mux $procmux$2803.
+    dead port 1/2 on $mux $procmux$2800.
+    dead port 1/2 on $mux $procmux$2797.
+    dead port 1/2 on $mux $procmux$2788.
+    dead port 1/2 on $mux $procmux$2782.
+    dead port 1/2 on $mux $procmux$2779.
+    dead port 1/2 on $mux $procmux$2773.
+    dead port 1/2 on $mux $procmux$2770.
+    dead port 1/2 on $mux $procmux$2767.
+    dead port 1/2 on $mux $procmux$2758.
+    dead port 1/2 on $mux $procmux$2752.
+    dead port 1/2 on $mux $procmux$2749.
+    dead port 1/2 on $mux $procmux$2743.
+    dead port 1/2 on $mux $procmux$2740.
+    dead port 1/2 on $mux $procmux$2737.
+    dead port 1/2 on $mux $procmux$2728.
+    dead port 1/2 on $mux $procmux$2722.
+    dead port 1/2 on $mux $procmux$2719.
+    dead port 1/2 on $mux $procmux$2713.
+    dead port 1/2 on $mux $procmux$2710.
+    dead port 1/2 on $mux $procmux$2707.
+    dead port 1/2 on $mux $procmux$2698.
+    dead port 1/2 on $mux $procmux$2692.
+    dead port 1/2 on $mux $procmux$2689.
+    dead port 1/2 on $mux $procmux$2683.
+    dead port 1/2 on $mux $procmux$2680.
+    dead port 1/2 on $mux $procmux$2677.
+    dead port 1/2 on $mux $procmux$2668.
+    dead port 1/2 on $mux $procmux$2662.
+    dead port 1/2 on $mux $procmux$2659.
+    dead port 1/2 on $mux $procmux$2653.
+    dead port 1/2 on $mux $procmux$2650.
+    dead port 1/2 on $mux $procmux$2647.
+    dead port 1/2 on $mux $procmux$2638.
+    dead port 1/2 on $mux $procmux$2632.
+    dead port 1/2 on $mux $procmux$2629.
+    dead port 1/2 on $mux $procmux$2623.
+    dead port 1/2 on $mux $procmux$2620.
+    dead port 1/2 on $mux $procmux$2617.
+    dead port 2/2 on $mux $procmux$3613.
+    dead port 1/2 on $mux $procmux$1174.
+    dead port 2/2 on $mux $procmux$1174.
+    dead port 1/2 on $mux $procmux$1171.
+    dead port 2/2 on $mux $procmux$1171.
+    dead port 1/2 on $mux $procmux$1169.
+    dead port 2/2 on $mux $procmux$1169.
+    dead port 2/2 on $mux $procmux$3604.
+    dead port 2/2 on $mux $procmux$4058.
+    dead port 2/2 on $mux $procmux$4052.
+    dead port 1/2 on $mux $procmux$4050.
+    dead port 2/2 on $mux $procmux$3595.
+    dead port 2/2 on $mux $procmux$4037.
+    dead port 2/2 on $mux $procmux$4031.
+    dead port 1/2 on $mux $procmux$4029.
+    dead port 2/2 on $mux $procmux$3586.
+    dead port 2/2 on $mux $procmux$4016.
+    dead port 2/2 on $mux $procmux$4010.
+    dead port 1/2 on $mux $procmux$4008.
+    dead port 2/2 on $mux $procmux$3995.
+    dead port 1/2 on $mux $procmux$3577.
+    dead port 2/2 on $mux $procmux$3989.
+    dead port 1/2 on $mux $procmux$3987.
+    dead port 2/2 on $mux $procmux$3974.
+    dead port 2/2 on $mux $procmux$3968.
+    dead port 1/2 on $mux $procmux$3966.
+    dead port 1/2 on $mux $procmux$3568.
+    dead port 2/2 on $mux $procmux$3953.
+    dead port 2/2 on $mux $procmux$3947.
+    dead port 1/2 on $mux $procmux$3945.
+    dead port 1/2 on $mux $procmux$3562.
+    dead port 2/2 on $mux $procmux$3932.
+    dead port 1/2 on $mux $procmux$3559.
+    dead port 2/2 on $mux $procmux$3926.
+    dead port 1/2 on $mux $procmux$3924.
+    dead port 2/2 on $mux $procmux$3911.
+    dead port 1/2 on $mux $procmux$3553.
+    dead port 2/2 on $mux $procmux$3905.
+    dead port 1/2 on $mux $procmux$3903.
+    dead port 1/2 on $mux $procmux$3550.
+    dead port 1/2 on $mux $procmux$3547.
+    dead port 2/2 on $mux $procmux$3890.
+    dead port 2/2 on $mux $procmux$3884.
+    dead port 1/2 on $mux $procmux$3882.
+    dead port 2/2 on $mux $procmux$3869.
+    dead port 1/2 on $mux $procmux$3538.
+    dead port 2/2 on $mux $procmux$3863.
+    dead port 1/2 on $mux $procmux$3861.
+    dead port 2/2 on $mux $procmux$3848.
+    dead port 1/2 on $mux $procmux$3532.
+    dead port 2/2 on $mux $procmux$3842.
+    dead port 1/2 on $mux $procmux$3840.
+    dead port 1/2 on $mux $procmux$3529.
+    dead port 2/2 on $mux $procmux$3827.
+    dead port 2/2 on $mux $procmux$3821.
+    dead port 1/2 on $mux $procmux$3523.
+    dead port 1/2 on $mux $procmux$3819.
+    dead port 1/2 on $mux $procmux$3520.
+    dead port 2/2 on $mux $procmux$3806.
+    dead port 1/2 on $mux $procmux$3517.
+    dead port 2/2 on $mux $procmux$3800.
+    dead port 1/2 on $mux $procmux$3798.
+    dead port 1/2 on $mux $procmux$3508.
+    dead port 1/2 on $mux $procmux$3502.
+    dead port 1/2 on $mux $procmux$3499.
+    dead port 2/2 on $mux $procmux$3785.
+    dead port 1/2 on $mux $procmux$3493.
+    dead port 2/2 on $mux $procmux$3779.
+    dead port 1/2 on $mux $procmux$3490.
+    dead port 1/2 on $mux $procmux$3777.
+    dead port 1/2 on $mux $procmux$3487.
+    dead port 1/2 on $mux $procmux$3478.
+    dead port 2/2 on $mux $procmux$3764.
+    dead port 1/2 on $mux $procmux$3472.
+    dead port 2/2 on $mux $procmux$3758.
+    dead port 1/2 on $mux $procmux$3756.
+    dead port 2/2 on $mux $procmux$3743.
+    dead port 2/2 on $mux $procmux$3737.
+    dead port 1/2 on $mux $procmux$3735.
+    dead port 1/2 on $mux $procmux$3469.
+    dead port 2/2 on $mux $procmux$3721.
+    dead port 2/2 on $mux $procmux$3712.
+    dead port 1/2 on $mux $procmux$3463.
+    dead port 1/2 on $mux $procmux$3460.
+    dead port 1/2 on $mux $procmux$3457.
+    dead port 2/2 on $mux $procmux$3703.
+    dead port 1/2 on $mux $procmux$3448.
+    dead port 2/2 on $mux $procmux$3694.
+    dead port 1/2 on $mux $procmux$3442.
+    dead port 1/2 on $mux $procmux$3439.
+    dead port 2/2 on $mux $procmux$3685.
+    dead port 1/2 on $mux $procmux$3433.
+    dead port 1/2 on $mux $procmux$3430.
+    dead port 2/2 on $mux $procmux$3676.
+    dead port 1/2 on $mux $procmux$3427.
+    dead port 2/2 on $mux $procmux$3667.
+    dead port 2/2 on $mux $procmux$3658.
+    dead port 2/2 on $mux $procmux$3649.
+    dead port 2/2 on $mux $procmux$3640.
+    dead port 2/2 on $mux $procmux$3631.
+    dead port 2/2 on $mux $procmux$3622.
+Removed 263 multiplexer ports.
+<suppressed ~1401 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+    New ctrl vector for $pmux cell $procmux$2605: { $auto$opt_reduce.cc:137:opt_pmux$4149 $procmux$2610_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4148: { $procmux$3729_CMP $procmux$3728_CMP }
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 2 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+<suppressed ~747 debug messages>
+Removed a total of 249 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$4097 ($dff) from module groq_c2c_kv_quant_rx_engine (D = 16, Q = $fordecl_block$13.k).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 2 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 1-bit at position 4 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$4150 ($dffe) from module groq_c2c_kv_quant_rx_engine.
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 3 unused cells and 2663 unused wires.
+<suppressed ~5 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~1 debug messages>
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~943 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~943 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+4.23. Finished fast OPT passes. (There is nothing left to do.)
+
+5. Executing ASYNC2SYNC pass.
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4070 ($adff): ARST=\rst_n, D=1'1, Q=\f_past_valid
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4075 ($adff): ARST=\rst_n, D=\quant_mode_i, Q=\f_past_mode
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4080 ($adff): ARST=\rst_n, D={ \kv_in_hi_i [127] \kv_in_hi_i [111] \kv_in_hi_i [95] \kv_in_hi_i [79] \kv_in_hi_i [63] \kv_in_hi_i [47] \kv_in_hi_i [31] \kv_in_hi_i [15] \kv_in_lo_i [127] \kv_in_lo_i [111] \kv_in_lo_i [95] \kv_in_lo_i [79] \kv_in_lo_i [63] \kv_in_lo_i [47] \kv_in_lo_i [31] \kv_in_lo_i [15] }, Q=\f_past_sign
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4085 ($adff): ARST=\rst_n, D=\is_zero_c, Q=\f_past_is_zero
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4090 ($adff): ARST=\rst_n, D=$0\f_past_is_emax[15:0], Q=\f_past_is_emax
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4107 ($adff): ARST=\rst_n, D=\quant_vec_c, Q=\quant_vec_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4112 ($adff): ARST=\rst_n, D=\scale_e8m0_c, Q=\scale_e8m0_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4117 ($adff): ARST=\rst_n, D=\valid_i, Q=\sram_wr_en_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4122 ($adff): ARST=\rst_n, D=\target_sram_bank_i, Q=\sram_wr_bank_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4127 ($adff): ARST=\rst_n, D=\target_sram_addr_i, Q=\sram_wr_addr_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4132 ($adff): ARST=\rst_n, D=\zero_lanes_cnt_c, Q=\zero_lanes_cnt_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4137 ($adff): ARST=\rst_n, D=\nan_inf_clamped_c, Q=\nan_inf_clamped_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4142 ($adff): ARST=\rst_n, D=\comp_ratio_c, Q=\compression_ratio_code_o
+Replacing groq_c2c_kv_quant_rx_engine.$procdff$4147 ($adff): ARST=\rst_n, D=\scale_nvfp4_e4m3_c, Q=\scale_nvfp4_e4m3_q
+
+6. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+<suppressed ~36 debug messages>
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~995 debug messages>
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$4080 ($dff) from module groq_c2c_kv_quant_rx_engine (D = { \kv_in_hi_i [127] \kv_in_hi_i [111] \kv_in_hi_i [95] \kv_in_hi_i [79] \kv_in_hi_i [63] \kv_in_hi_i [47] \kv_in_hi_i [31] \kv_in_hi_i [15] \kv_in_lo_i [127] \kv_in_lo_i [111] \kv_in_lo_i [95] \kv_in_lo_i [79] \kv_in_lo_i [63] \kv_in_lo_i [47] \kv_in_lo_i [31] \kv_in_lo_i [15] }, Q = $auto$async2sync.cc:234:execute$4155, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$4085 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \is_zero_c, Q = $auto$async2sync.cc:234:execute$4157, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$4090 ($dff) from module groq_c2c_kv_quant_rx_engine (D = $0\f_past_is_emax[15:0], Q = $auto$async2sync.cc:234:execute$4159, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$4107 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \quant_vec_c, Q = $auto$async2sync.cc:234:execute$4161, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding SRST signal on $procdff$4112 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \scale_e8m0_c, Q = $auto$async2sync.cc:234:execute$4163, rval = 8'00000000).
+Adding SRST signal on $procdff$4117 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \valid_i, Q = $auto$async2sync.cc:234:execute$4165, rval = 1'0).
+Adding SRST signal on $procdff$4122 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \target_sram_bank_i, Q = $auto$async2sync.cc:234:execute$4167, rval = 2'00).
+Adding SRST signal on $procdff$4127 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \target_sram_addr_i, Q = $auto$async2sync.cc:234:execute$4169, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$4132 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \zero_lanes_cnt_c, Q = $auto$async2sync.cc:234:execute$4171, rval = 5'00000).
+Adding SRST signal on $procdff$4137 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \nan_inf_clamped_c, Q = $auto$async2sync.cc:234:execute$4173, rval = 1'0).
+Adding SRST signal on $procdff$4142 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \comp_ratio_c, Q = $auto$async2sync.cc:234:execute$4175, rval = 2'01).
+Adding SRST signal on $procdff$4147 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \scale_nvfp4_e4m3_c [7], Q = $auto$async2sync.cc:234:execute$4177 [7], rval = 1'0).
+Adding SRST signal on $procdff$4147 ($dff) from module groq_c2c_kv_quant_rx_engine (D = { \nvfp4_e4m3_exp4_c [0] \max_emax_frac3_c }, Q = $auto$async2sync.cc:234:execute$4177 [3:0], rval = 4'0000).
+Adding SRST signal on $procdff$4147 ($dff) from module groq_c2c_kv_quant_rx_engine (D = $2\nvfp4_e4m3_exp4_c[3:0] [3:1], Q = $auto$async2sync.cc:234:execute$4177 [6:4], rval = 3'000).
+Adding SRST signal on $procdff$4075 ($dff) from module groq_c2c_kv_quant_rx_engine (D = \quant_mode_i, Q = $auto$async2sync.cc:234:execute$4153, rval = 2'00).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+Removed 435 unused cells and 472 unused wires.
+<suppressed ~436 debug messages>
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_c2c_kv_quant_rx_engine..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~974 debug messages>
+
+7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_c2c_kv_quant_rx_engine.
+Performed a total of 0 changes.
+
+7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_c2c_kv_quant_rx_engine'.
+Removed a total of 0 cells.
+
+7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_c2c_kv_quant_rx_engine..
+
+7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_c2c_kv_quant_rx_engine.
+
+7.16. Finished fast OPT passes. (There is nothing left to do.)
+
+8. Printing statistics.
+
+=== groq_c2c_kv_quant_rx_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1245 wires
+     4500 wire bits
+      181 public wires
+     2245 public wire bits
+       17 ports
+      443 port bits
+     1492 cells
+       31   $add
+      229   $assert
+        1   $dff
+      149   $eq
+      112   $ge
+       18   $gt
+       83   $le
+       96   $logic_and
+       99   $logic_not
+        2   $logic_or
+      592   $mux
+       16   $ne
+        3   $not
+        4   $pmux
+        2   $reduce_and
+       16   $reduce_bool
+        5   $reduce_or
+       15   $sdff
+       19   $sub
+
+9. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Import set-constraint for this timestep: \rst_n = 1'1
+Final constraint equation: \rst_n = 1'1
+Imported 1492 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:234:execute$4151 $auto$async2sync.cc:234:execute$4153 $auto$async2sync.cc:234:execute$4177 [6:0] $auto$async2sync.cc:234:execute$4177 [7] $auto$async2sync.cc:234:execute$4175 $auto$async2sync.cc:234:execute$4173 $auto$async2sync.cc:234:execute$4171 $auto$async2sync.cc:234:execute$4169 $auto$async2sync.cc:234:execute$4167 $auto$async2sync.cc:234:execute$4165 $auto$async2sync.cc:234:execute$4163 $auto$async2sync.cc:234:execute$4161 $auto$async2sync.cc:234:execute$4159 $auto$async2sync.cc:234:execute$4157 $auto$async2sync.cc:234:execute$4155 } = 222'000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+Import proof for assert: $le$rtl/groq_c2c_kv_quant_rx_engine.sv:302$419_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$421_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$420_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$447_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$446_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$473_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$472_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$499_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$498_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$525_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$524_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$551_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$550_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$577_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$576_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$603_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$602_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$629_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$628_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$655_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$654_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$681_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$680_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$707_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$706_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$733_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$732_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$759_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$758_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$785_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$784_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$811_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$810_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$423_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$420_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$449_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$446_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$475_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$472_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$501_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$498_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$527_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$524_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$553_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$550_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$579_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$576_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$605_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$602_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$631_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$628_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$657_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$654_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$683_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$680_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$709_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$706_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$735_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$732_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$761_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$758_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$787_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$784_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$813_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$810_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$425_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$451_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$477_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$503_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$529_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$555_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$581_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$607_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$633_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$659_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$685_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$711_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$737_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$763_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$789_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$815_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$427_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$453_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$479_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$505_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$531_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$557_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$583_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$609_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$635_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$661_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$687_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$713_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$739_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$765_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$791_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$817_Y when 1'1.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$436_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$433_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$462_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$459_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$488_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$485_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$514_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$511_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$540_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$537_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$566_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$563_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$592_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$589_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$618_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$615_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$644_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$641_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$670_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$667_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$696_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$693_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$722_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$719_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$748_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$745_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$774_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$771_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$800_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$797_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$826_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$823_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$438_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$433_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$464_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$459_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$490_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$485_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$516_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$511_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$542_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$537_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$568_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$563_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$594_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$589_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$620_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$615_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$646_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$641_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$672_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$667_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$698_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$693_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$724_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$719_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$750_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$745_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$776_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$771_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$802_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$797_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$828_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$823_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$443_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$440_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$469_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$466_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$495_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$492_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$521_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$518_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$547_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$544_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$573_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$570_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$599_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$596_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$625_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$622_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$651_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$648_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$677_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$674_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$703_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$700_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$729_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$726_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$755_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$752_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$781_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$778_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$807_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$804_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$833_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$830_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$445_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$440_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$471_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$466_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$497_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$492_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$523_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$518_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$549_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$544_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$575_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$570_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$601_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$596_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$627_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$622_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$653_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$648_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$679_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$674_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$705_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$700_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$731_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$726_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$757_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$752_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$783_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$778_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$809_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$804_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$835_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$830_EN.
+Import proof for assert: $le$rtl/groq_c2c_kv_quant_rx_engine.sv:328$838_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: 1'1 when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:331$842_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:335$846_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:335$845_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1011_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1031_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1051_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1071_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1091_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1111_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1131_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1151_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$851_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$871_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$891_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$911_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$931_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$951_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$971_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$991_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1013_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1012_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1033_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1032_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1053_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1052_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1073_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1072_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1093_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1092_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1113_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1112_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1133_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1132_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1153_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1152_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$853_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$852_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$873_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$872_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$893_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$892_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$913_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$912_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$933_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$932_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$953_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$952_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$973_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$972_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$993_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$992_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1017_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1014_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1037_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1034_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1057_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1054_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1077_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1074_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1097_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1094_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1117_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1114_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1137_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1134_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1157_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1154_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$857_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$854_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$877_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$874_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$897_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$894_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$917_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$914_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$937_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$934_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$957_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$954_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$977_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$974_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$997_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$994_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1020_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1040_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1060_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1080_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1100_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1120_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1140_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1160_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$860_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$880_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$900_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$920_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$940_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$960_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$980_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1000_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1002_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1001_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1022_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1021_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1042_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1041_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1062_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1061_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1082_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1081_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1102_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1101_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1122_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1121_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1142_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1141_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1162_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1161_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$862_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$861_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$882_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$881_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$902_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$901_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$922_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$921_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$942_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$941_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$962_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$961_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$982_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$981_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1006_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1003_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1026_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1023_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1046_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1043_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1066_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1063_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1086_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1083_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1106_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1103_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1126_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1123_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1146_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1143_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1166_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1163_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$866_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$863_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$886_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$883_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$906_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$903_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$926_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$923_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$946_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$943_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$966_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$963_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$986_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$983_EN.
+
+Setting up time step 2:
+Import set-constraint for this timestep: \rst_n = 1'1
+Final constraint equation: \rst_n = 1'1
+Imported 1492 cells to SAT database.
+Import proof for assert: $le$rtl/groq_c2c_kv_quant_rx_engine.sv:302$419_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$421_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$420_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$447_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$446_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$473_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$472_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$499_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$498_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$525_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$524_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$551_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$550_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$577_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$576_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$603_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$602_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$629_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$628_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$655_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$654_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$681_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$680_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$707_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$706_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$733_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$732_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$759_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$758_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$785_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$784_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$811_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$810_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$423_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$420_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$449_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$446_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$475_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$472_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$501_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$498_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$527_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$524_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$553_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$550_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$579_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$576_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$605_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$602_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$631_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$628_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$657_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$654_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$683_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$680_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$709_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$706_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$735_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$732_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$761_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$758_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$787_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$784_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$813_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$810_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$425_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$451_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$477_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$503_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$529_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$555_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$581_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$607_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$633_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$659_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$685_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$711_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$737_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$763_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$789_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$815_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$427_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$453_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$479_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$505_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$531_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$557_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$583_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$609_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$635_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$661_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$687_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$713_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$739_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$765_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$791_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$817_Y when 1'1.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$436_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$433_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$462_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$459_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$488_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$485_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$514_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$511_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$540_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$537_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$566_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$563_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$592_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$589_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$618_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$615_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$644_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$641_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$670_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$667_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$696_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$693_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$722_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$719_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$748_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$745_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$774_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$771_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$800_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$797_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$826_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$823_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$438_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$433_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$464_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$459_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$490_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$485_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$516_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$511_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$542_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$537_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$568_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$563_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$594_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$589_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$620_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$615_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$646_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$641_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$672_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$667_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$698_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$693_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$724_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$719_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$750_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$745_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$776_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$771_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$802_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$797_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$828_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$823_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$443_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$440_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$469_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$466_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$495_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$492_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$521_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$518_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$547_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$544_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$573_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$570_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$599_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$596_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$625_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$622_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$651_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$648_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$677_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$674_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$703_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$700_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$729_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$726_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$755_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$752_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$781_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$778_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$807_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$804_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$833_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$830_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$445_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$440_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$471_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$466_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$497_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$492_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$523_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$518_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$549_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$544_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$575_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$570_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$601_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$596_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$627_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$622_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$653_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$648_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$679_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$674_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$705_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$700_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$731_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$726_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$757_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$752_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$783_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$778_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$809_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$804_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$835_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$830_EN.
+Import proof for assert: $le$rtl/groq_c2c_kv_quant_rx_engine.sv:328$838_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: 1'1 when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:331$842_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:335$846_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:335$845_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1011_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1031_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1051_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1071_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1091_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1111_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1131_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1151_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$851_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$871_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$891_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$911_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$931_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$951_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$971_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$991_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1013_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1012_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1033_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1032_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1053_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1052_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1073_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1072_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1093_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1092_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1113_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1112_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1133_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1132_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1153_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1152_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$853_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$852_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$873_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$872_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$893_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$892_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$913_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$912_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$933_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$932_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$953_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$952_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$973_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$972_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$993_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$992_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1017_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1014_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1037_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1034_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1057_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1054_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1077_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1074_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1097_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1094_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1117_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1114_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1137_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1134_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1157_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1154_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$857_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$854_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$877_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$874_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$897_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$894_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$917_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$914_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$937_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$934_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$957_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$954_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$977_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$974_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$997_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$994_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1020_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1040_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1060_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1080_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1100_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1120_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1140_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1160_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$860_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$880_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$900_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$920_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$940_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$960_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$980_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1000_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1002_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1001_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1022_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1021_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1042_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1041_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1062_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1061_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1082_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1081_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1102_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1101_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1122_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1121_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1142_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1141_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1162_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1161_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$862_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$861_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$882_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$881_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$902_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$901_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$922_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$921_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$942_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$941_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$962_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$961_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$982_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$981_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1006_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1003_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1026_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1023_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1046_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1043_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1066_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1063_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1086_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1083_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1106_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1103_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1126_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1123_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1146_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1143_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1166_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1163_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$866_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$863_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$886_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$883_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$906_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$903_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$926_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$923_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$946_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$943_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$966_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$963_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$986_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$983_EN.
+
+Setting up time step 3:
+Import set-constraint for this timestep: \rst_n = 1'1
+Final constraint equation: \rst_n = 1'1
+Imported 1492 cells to SAT database.
+Import proof for assert: $le$rtl/groq_c2c_kv_quant_rx_engine.sv:302$419_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$421_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$420_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$447_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$446_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$473_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$472_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$499_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$498_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$525_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$524_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$551_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$550_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$577_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$576_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$603_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$602_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$629_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$628_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$655_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$654_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$681_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$680_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$707_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$706_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$733_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$732_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$759_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$758_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$785_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$784_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:307$811_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$810_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$423_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$420_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$449_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$446_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$475_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$472_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$501_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$498_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$527_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$524_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$553_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$550_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$579_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$576_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$605_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$602_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$631_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$628_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$657_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$654_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$683_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$680_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$709_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$706_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$735_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$732_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$761_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$758_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$787_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$784_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:308$813_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:307$810_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$425_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$451_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$477_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$503_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$529_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$555_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$581_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$607_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$633_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$659_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$685_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$711_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$737_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$763_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$789_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:311$815_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$427_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$453_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$479_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$505_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$531_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$557_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$583_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$609_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$635_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$661_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$687_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$713_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$739_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$765_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$791_Y when 1'1.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:312$817_Y when 1'1.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$436_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$433_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$462_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$459_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$488_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$485_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$514_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$511_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$540_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$537_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$566_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$563_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$592_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$589_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$618_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$615_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$644_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$641_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$670_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$667_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$696_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$693_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$722_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$719_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$748_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$745_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$774_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$771_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$800_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$797_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:317$826_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$823_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$438_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$433_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$464_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$459_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$490_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$485_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$516_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$511_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$542_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$537_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$568_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$563_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$594_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$589_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$620_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$615_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$646_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$641_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$672_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$667_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$698_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$693_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$724_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$719_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$750_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$745_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$776_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$771_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$802_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$797_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:318$828_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:317$823_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$443_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$440_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$469_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$466_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$495_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$492_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$521_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$518_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$547_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$544_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$573_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$570_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$599_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$596_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$625_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$622_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$651_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$648_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$677_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$674_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$703_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$700_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$729_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$726_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$755_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$752_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$781_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$778_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$807_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$804_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:321$833_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$830_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$445_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$440_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$471_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$466_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$497_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$492_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$523_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$518_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$549_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$544_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$575_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$570_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$601_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$596_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$627_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$622_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$653_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$648_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$679_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$674_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$705_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$700_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$731_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$726_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$757_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$752_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$783_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$778_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$809_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$804_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:322$835_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:321$830_EN.
+Import proof for assert: $le$rtl/groq_c2c_kv_quant_rx_engine.sv:328$838_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: 1'1 when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:331$842_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:328$837_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:335$846_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:335$845_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1011_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1031_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1051_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1071_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1091_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1111_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1131_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1151_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$851_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$871_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$891_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$911_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$931_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$951_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$971_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:339$991_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:339$1010_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1013_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1012_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1033_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1032_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1053_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1052_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1073_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1072_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1093_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1092_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1113_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1112_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1133_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1132_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1153_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$1152_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$853_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$852_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$873_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$872_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$893_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$892_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$913_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$912_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$933_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$932_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$953_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$952_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$973_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$972_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:340$993_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:340$992_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1017_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1014_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1037_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1034_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1057_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1054_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1077_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1074_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1097_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1094_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1117_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1114_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1137_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1134_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1157_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$1154_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$857_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$854_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$877_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$874_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$897_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$894_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$917_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$914_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$937_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$934_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$957_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$954_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$977_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$974_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:341$997_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:341$994_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1020_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1040_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1060_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1080_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1100_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1120_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1140_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1160_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$860_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$880_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$900_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$920_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$940_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$960_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$980_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1000_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:343$1019_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1002_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1001_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1022_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1021_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1042_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1041_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1062_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1061_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1082_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1081_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1102_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1101_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1122_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1121_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1142_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1141_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1162_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$1161_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$862_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$861_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$882_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$881_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$902_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$901_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$922_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$921_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$942_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$941_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$962_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$961_EN.
+Import proof for assert: $eq$rtl/groq_c2c_kv_quant_rx_engine.sv:344$982_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:344$981_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1006_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1003_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1026_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1023_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1046_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1043_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1066_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1063_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1086_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1083_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1106_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1103_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1126_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1123_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1146_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1143_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1166_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$1163_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$866_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$863_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$886_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$883_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$906_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$903_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$926_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$923_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$946_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$943_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$966_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$963_EN.
+Import proof for assert: $logic_and$rtl/groq_c2c_kv_quant_rx_engine.sv:345$986_Y when $assert$rtl/groq_c2c_kv_quant_rx_engine.sv:345$983_EN.
+
+Solving problem with 82505 variables and 226822 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+Warnings: 11 unique messages, 11 total
+End of script. Logfile hash: f3ccd662c8, CPU: user 2.85s system 0.05s, MEM: 100.10 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 89% 1x sat (2 sec), 2% 2x read_verilog (0 sec), ...

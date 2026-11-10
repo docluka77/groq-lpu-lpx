@@ -1,0 +1,9 @@
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_c2c_serdes_pcs.sv
+prep -top groq_c2c_serdes_pcs -flatten
+async2sync
+chformal -lower
+techmap
+opt -fast
+abc -g AND,XOR
+opt -fast
+sat -verify -seq 6 -set-init-zero -prove-asserts

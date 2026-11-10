@@ -1,0 +1,1702 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `read_verilog -sv -Irtl -Isram_ip rtl/groq_sxm_slice.sv; chformal -remove; synth -top groq_sxm_slice -noabc; dfflibmap -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib; abc -fast -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib; stat -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib; write_verilog -noattr synth/groq_sxm_slice_asap7_netlist.v' --
+
+1. Executing Verilog-2005 frontend: rtl/groq_sxm_slice.sv
+Parsing SystemVerilog input from `rtl/groq_sxm_slice.sv' to AST representation.
+verilog frontend filename rtl/groq_sxm_slice.sv
+Generating RTLIL representation for module `\groq_sxm_slice'.
+Warning: Replacing memory \transpose_buf with list of registers. See rtl/groq_sxm_slice.sv:144
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_sxm_slice
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_sxm_slice
+Removed 0 unused modules.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 16 switch rules as full_case in process $proc$rtl/groq_sxm_slice.sv:115$192 in module groq_sxm_slice.
+Marked 18 switch rules as full_case in process $proc$rtl/groq_sxm_slice.sv:139$83 in module groq_sxm_slice.
+Marked 16 switch rules as full_case in process $proc$rtl/groq_sxm_slice.sv:124$33 in module groq_sxm_slice.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 147 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~66 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+     1/32: $32\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[127:120]$601
+     2/32: $31\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[127:120]$589
+     3/32: $30\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[119:112]$576
+     4/32: $29\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[119:112]$564
+     5/32: $28\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[111:104]$551
+     6/32: $27\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[111:104]$539
+     7/32: $26\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[103:96]$526
+     8/32: $25\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[103:96]$514
+     9/32: $24\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[95:88]$501
+    10/32: $23\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[95:88]$489
+    11/32: $22\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[87:80]$476
+    12/32: $21\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[87:80]$464
+    13/32: $20\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[79:72]$451
+    14/32: $19\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[79:72]$439
+    15/32: $18\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[71:64]$426
+    16/32: $17\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[71:64]$414
+    17/32: $16\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[63:56]$401
+    18/32: $15\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[63:56]$389
+    19/32: $14\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[55:48]$376
+    20/32: $13\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[55:48]$364
+    21/32: $12\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[47:40]$351
+    22/32: $11\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[47:40]$339
+    23/32: $10\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[39:32]$326
+    24/32: $9\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[39:32]$314
+    25/32: $8\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[31:24]$301
+    26/32: $7\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[31:24]$289
+    27/32: $6\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[23:16]$276
+    28/32: $5\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[23:16]$264
+    29/32: $4\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[15:8]$251
+    30/32: $3\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[15:8]$239
+    31/32: $2\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[7:0]$226
+    32/32: $1\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst[7:0]$214
+Creating decoders for process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+     1/325: $0\transpose_buf[15][127:0] [127:120]
+     2/325: $0\transpose_buf[15][127:0] [119:112]
+     3/325: $0\transpose_buf[14][127:0] [119:112]
+     4/325: $0\transpose_buf[13][127:0] [119:112]
+     5/325: $0\transpose_buf[12][127:0] [119:112]
+     6/325: $0\transpose_buf[11][127:0] [119:112]
+     7/325: $0\transpose_buf[10][127:0] [119:112]
+     8/325: $0\transpose_buf[9][127:0] [119:112]
+     9/325: $0\transpose_buf[8][127:0] [119:112]
+    10/325: $0\transpose_buf[7][127:0] [119:112]
+    11/325: $0\transpose_buf[6][127:0] [119:112]
+    12/325: $0\transpose_buf[5][127:0] [119:112]
+    13/325: $0\transpose_buf[4][127:0] [119:112]
+    14/325: $0\transpose_buf[3][127:0] [119:112]
+    15/325: $0\transpose_buf[2][127:0] [119:112]
+    16/325: $0\transpose_buf[1][127:0] [119:112]
+    17/325: $0\transpose_buf[0][127:0] [119:112]
+    18/325: $0\transpose_buf[15][127:0] [111:104]
+    19/325: $0\transpose_buf[14][127:0] [111:104]
+    20/325: $0\transpose_buf[13][127:0] [111:104]
+    21/325: $0\transpose_buf[12][127:0] [111:104]
+    22/325: $0\transpose_buf[11][127:0] [111:104]
+    23/325: $0\transpose_buf[10][127:0] [111:104]
+    24/325: $0\transpose_buf[9][127:0] [111:104]
+    25/325: $0\transpose_buf[8][127:0] [111:104]
+    26/325: $0\transpose_buf[7][127:0] [111:104]
+    27/325: $0\transpose_buf[6][127:0] [111:104]
+    28/325: $0\transpose_buf[5][127:0] [111:104]
+    29/325: $0\transpose_buf[4][127:0] [111:104]
+    30/325: $0\transpose_buf[3][127:0] [111:104]
+    31/325: $0\transpose_buf[2][127:0] [111:104]
+    32/325: $0\transpose_buf[1][127:0] [111:104]
+    33/325: $0\transpose_buf[0][127:0] [111:104]
+    34/325: $0\transpose_buf[15][127:0] [103:96]
+    35/325: $0\transpose_buf[14][127:0] [103:96]
+    36/325: $0\transpose_buf[13][127:0] [103:96]
+    37/325: $0\transpose_buf[12][127:0] [103:96]
+    38/325: $0\transpose_buf[11][127:0] [103:96]
+    39/325: $0\transpose_buf[10][127:0] [103:96]
+    40/325: $0\transpose_buf[9][127:0] [103:96]
+    41/325: $0\transpose_buf[8][127:0] [103:96]
+    42/325: $0\transpose_buf[7][127:0] [103:96]
+    43/325: $0\transpose_buf[6][127:0] [103:96]
+    44/325: $0\transpose_buf[5][127:0] [103:96]
+    45/325: $0\transpose_buf[4][127:0] [103:96]
+    46/325: $0\transpose_buf[3][127:0] [103:96]
+    47/325: $0\transpose_buf[2][127:0] [103:96]
+    48/325: $0\transpose_buf[1][127:0] [103:96]
+    49/325: $0\transpose_buf[0][127:0] [103:96]
+    50/325: $0\transpose_buf[15][127:0] [95:88]
+    51/325: $0\transpose_buf[14][127:0] [95:88]
+    52/325: $0\transpose_buf[13][127:0] [95:88]
+    53/325: $0\transpose_buf[12][127:0] [95:88]
+    54/325: $0\transpose_buf[11][127:0] [95:88]
+    55/325: $0\transpose_buf[10][127:0] [95:88]
+    56/325: $0\transpose_buf[9][127:0] [95:88]
+    57/325: $0\transpose_buf[8][127:0] [95:88]
+    58/325: $0\transpose_buf[7][127:0] [95:88]
+    59/325: $0\transpose_buf[6][127:0] [95:88]
+    60/325: $0\transpose_buf[5][127:0] [95:88]
+    61/325: $0\transpose_buf[4][127:0] [95:88]
+    62/325: $0\transpose_buf[3][127:0] [95:88]
+    63/325: $0\transpose_buf[2][127:0] [95:88]
+    64/325: $0\transpose_buf[1][127:0] [95:88]
+    65/325: $0\transpose_buf[0][127:0] [95:88]
+    66/325: $0\transpose_buf[15][127:0] [87:80]
+    67/325: $0\transpose_buf[14][127:0] [87:80]
+    68/325: $0\transpose_buf[13][127:0] [87:80]
+    69/325: $0\transpose_buf[12][127:0] [87:80]
+    70/325: $0\transpose_buf[11][127:0] [87:80]
+    71/325: $0\transpose_buf[10][127:0] [87:80]
+    72/325: $0\transpose_buf[9][127:0] [87:80]
+    73/325: $0\transpose_buf[8][127:0] [87:80]
+    74/325: $0\transpose_buf[7][127:0] [87:80]
+    75/325: $0\transpose_buf[6][127:0] [87:80]
+    76/325: $0\transpose_buf[5][127:0] [87:80]
+    77/325: $0\transpose_buf[4][127:0] [87:80]
+    78/325: $0\transpose_buf[3][127:0] [87:80]
+    79/325: $0\transpose_buf[2][127:0] [87:80]
+    80/325: $0\transpose_buf[1][127:0] [87:80]
+    81/325: $0\transpose_buf[0][127:0] [87:80]
+    82/325: $0\transpose_buf[15][127:0] [79:72]
+    83/325: $0\transpose_buf[14][127:0] [79:72]
+    84/325: $0\transpose_buf[13][127:0] [79:72]
+    85/325: $0\transpose_buf[12][127:0] [79:72]
+    86/325: $0\transpose_buf[11][127:0] [79:72]
+    87/325: $0\transpose_buf[10][127:0] [79:72]
+    88/325: $0\transpose_buf[9][127:0] [79:72]
+    89/325: $0\transpose_buf[8][127:0] [79:72]
+    90/325: $0\transpose_buf[7][127:0] [79:72]
+    91/325: $0\transpose_buf[6][127:0] [79:72]
+    92/325: $0\transpose_buf[5][127:0] [79:72]
+    93/325: $0\transpose_buf[4][127:0] [79:72]
+    94/325: $0\transpose_buf[3][127:0] [79:72]
+    95/325: $0\transpose_buf[2][127:0] [79:72]
+    96/325: $0\transpose_buf[1][127:0] [79:72]
+    97/325: $0\transpose_buf[0][127:0] [79:72]
+    98/325: $0\transpose_buf[15][127:0] [71:64]
+    99/325: $0\transpose_buf[14][127:0] [71:64]
+   100/325: $0\transpose_buf[13][127:0] [71:64]
+   101/325: $0\transpose_buf[12][127:0] [71:64]
+   102/325: $0\transpose_buf[11][127:0] [71:64]
+   103/325: $0\transpose_buf[10][127:0] [71:64]
+   104/325: $0\transpose_buf[9][127:0] [71:64]
+   105/325: $0\transpose_buf[8][127:0] [71:64]
+   106/325: $0\transpose_buf[7][127:0] [71:64]
+   107/325: $0\transpose_buf[6][127:0] [71:64]
+   108/325: $0\transpose_buf[5][127:0] [71:64]
+   109/325: $0\transpose_buf[4][127:0] [71:64]
+   110/325: $0\transpose_buf[3][127:0] [71:64]
+   111/325: $0\transpose_buf[2][127:0] [71:64]
+   112/325: $0\transpose_buf[1][127:0] [71:64]
+   113/325: $0\transpose_buf[0][127:0] [71:64]
+   114/325: $0\transpose_buf[15][127:0] [63:56]
+   115/325: $0\transpose_buf[14][127:0] [63:56]
+   116/325: $0\transpose_buf[13][127:0] [63:56]
+   117/325: $0\transpose_buf[12][127:0] [63:56]
+   118/325: $0\transpose_buf[11][127:0] [63:56]
+   119/325: $0\transpose_buf[10][127:0] [63:56]
+   120/325: $0\transpose_buf[9][127:0] [63:56]
+   121/325: $0\transpose_buf[8][127:0] [63:56]
+   122/325: $0\transpose_buf[7][127:0] [63:56]
+   123/325: $0\transpose_buf[6][127:0] [63:56]
+   124/325: $0\transpose_buf[5][127:0] [63:56]
+   125/325: $0\transpose_buf[4][127:0] [63:56]
+   126/325: $0\transpose_buf[3][127:0] [63:56]
+   127/325: $0\transpose_buf[2][127:0] [63:56]
+   128/325: $0\transpose_buf[1][127:0] [63:56]
+   129/325: $0\transpose_buf[0][127:0] [63:56]
+   130/325: $0\transpose_buf[15][127:0] [55:48]
+   131/325: $0\transpose_buf[14][127:0] [55:48]
+   132/325: $0\transpose_buf[13][127:0] [55:48]
+   133/325: $0\transpose_buf[12][127:0] [55:48]
+   134/325: $0\transpose_buf[11][127:0] [55:48]
+   135/325: $0\transpose_buf[10][127:0] [55:48]
+   136/325: $0\transpose_buf[9][127:0] [55:48]
+   137/325: $0\transpose_buf[8][127:0] [55:48]
+   138/325: $0\transpose_buf[7][127:0] [55:48]
+   139/325: $0\transpose_buf[6][127:0] [55:48]
+   140/325: $0\transpose_buf[5][127:0] [55:48]
+   141/325: $0\transpose_buf[4][127:0] [55:48]
+   142/325: $0\transpose_buf[3][127:0] [55:48]
+   143/325: $0\transpose_buf[2][127:0] [55:48]
+   144/325: $0\transpose_buf[1][127:0] [55:48]
+   145/325: $0\transpose_buf[0][127:0] [55:48]
+   146/325: $0\transpose_buf[15][127:0] [47:40]
+   147/325: $0\transpose_buf[14][127:0] [47:40]
+   148/325: $0\transpose_buf[13][127:0] [47:40]
+   149/325: $0\transpose_buf[12][127:0] [47:40]
+   150/325: $0\transpose_buf[11][127:0] [47:40]
+   151/325: $0\transpose_buf[10][127:0] [47:40]
+   152/325: $0\transpose_buf[9][127:0] [47:40]
+   153/325: $0\transpose_buf[8][127:0] [47:40]
+   154/325: $0\transpose_buf[7][127:0] [47:40]
+   155/325: $0\transpose_buf[6][127:0] [47:40]
+   156/325: $0\transpose_buf[5][127:0] [47:40]
+   157/325: $0\transpose_buf[4][127:0] [47:40]
+   158/325: $0\transpose_buf[3][127:0] [47:40]
+   159/325: $0\transpose_buf[2][127:0] [47:40]
+   160/325: $0\transpose_buf[1][127:0] [47:40]
+   161/325: $0\transpose_buf[0][127:0] [47:40]
+   162/325: $0\transpose_buf[15][127:0] [39:32]
+   163/325: $0\transpose_buf[14][127:0] [39:32]
+   164/325: $0\transpose_buf[13][127:0] [39:32]
+   165/325: $0\transpose_buf[12][127:0] [39:32]
+   166/325: $0\transpose_buf[11][127:0] [39:32]
+   167/325: $0\transpose_buf[10][127:0] [39:32]
+   168/325: $0\transpose_buf[9][127:0] [39:32]
+   169/325: $0\transpose_buf[8][127:0] [39:32]
+   170/325: $0\transpose_buf[7][127:0] [39:32]
+   171/325: $0\transpose_buf[6][127:0] [39:32]
+   172/325: $0\transpose_buf[5][127:0] [39:32]
+   173/325: $0\transpose_buf[4][127:0] [39:32]
+   174/325: $0\transpose_buf[3][127:0] [39:32]
+   175/325: $0\transpose_buf[2][127:0] [39:32]
+   176/325: $0\transpose_buf[1][127:0] [39:32]
+   177/325: $0\transpose_buf[0][127:0] [39:32]
+   178/325: $0\transpose_buf[15][127:0] [31:24]
+   179/325: $0\transpose_buf[14][127:0] [31:24]
+   180/325: $0\transpose_buf[13][127:0] [31:24]
+   181/325: $0\transpose_buf[12][127:0] [31:24]
+   182/325: $0\transpose_buf[11][127:0] [31:24]
+   183/325: $0\transpose_buf[10][127:0] [31:24]
+   184/325: $0\transpose_buf[9][127:0] [31:24]
+   185/325: $0\transpose_buf[8][127:0] [31:24]
+   186/325: $0\transpose_buf[7][127:0] [31:24]
+   187/325: $0\transpose_buf[6][127:0] [31:24]
+   188/325: $0\transpose_buf[5][127:0] [31:24]
+   189/325: $0\transpose_buf[4][127:0] [31:24]
+   190/325: $0\transpose_buf[3][127:0] [31:24]
+   191/325: $0\transpose_buf[2][127:0] [31:24]
+   192/325: $0\transpose_buf[1][127:0] [31:24]
+   193/325: $0\transpose_buf[0][127:0] [31:24]
+   194/325: $0\transpose_buf[15][127:0] [23:16]
+   195/325: $0\transpose_buf[14][127:0] [23:16]
+   196/325: $0\transpose_buf[13][127:0] [23:16]
+   197/325: $0\transpose_buf[12][127:0] [23:16]
+   198/325: $0\transpose_buf[11][127:0] [23:16]
+   199/325: $0\transpose_buf[10][127:0] [23:16]
+   200/325: $0\transpose_buf[9][127:0] [23:16]
+   201/325: $0\transpose_buf[8][127:0] [23:16]
+   202/325: $0\transpose_buf[7][127:0] [23:16]
+   203/325: $0\transpose_buf[6][127:0] [23:16]
+   204/325: $0\transpose_buf[5][127:0] [23:16]
+   205/325: $0\transpose_buf[4][127:0] [23:16]
+   206/325: $0\transpose_buf[3][127:0] [23:16]
+   207/325: $0\transpose_buf[2][127:0] [23:16]
+   208/325: $0\transpose_buf[1][127:0] [23:16]
+   209/325: $0\transpose_buf[0][127:0] [23:16]
+   210/325: $0\transpose_buf[15][127:0] [15:8]
+   211/325: $0\transpose_buf[14][127:0] [15:8]
+   212/325: $0\transpose_buf[13][127:0] [15:8]
+   213/325: $0\transpose_buf[12][127:0] [15:8]
+   214/325: $0\transpose_buf[11][127:0] [15:8]
+   215/325: $0\transpose_buf[10][127:0] [15:8]
+   216/325: $0\transpose_buf[9][127:0] [15:8]
+   217/325: $0\transpose_buf[8][127:0] [15:8]
+   218/325: $0\transpose_buf[7][127:0] [15:8]
+   219/325: $0\transpose_buf[6][127:0] [15:8]
+   220/325: $0\transpose_buf[5][127:0] [15:8]
+   221/325: $0\transpose_buf[4][127:0] [15:8]
+   222/325: $0\transpose_buf[3][127:0] [15:8]
+   223/325: $0\transpose_buf[2][127:0] [15:8]
+   224/325: $0\transpose_buf[1][127:0] [15:8]
+   225/325: $0\transpose_buf[0][127:0] [15:8]
+   226/325: $0\transpose_buf[15][127:0] [7:0]
+   227/325: $0\transpose_buf[14][127:0] [7:0]
+   228/325: $0\transpose_buf[13][127:0] [7:0]
+   229/325: $0\transpose_buf[12][127:0] [7:0]
+   230/325: $0\transpose_buf[11][127:0] [7:0]
+   231/325: $0\transpose_buf[10][127:0] [7:0]
+   232/325: $0\transpose_buf[9][127:0] [7:0]
+   233/325: $0\transpose_buf[8][127:0] [7:0]
+   234/325: $0\transpose_buf[7][127:0] [7:0]
+   235/325: $0\transpose_buf[6][127:0] [7:0]
+   236/325: $0\transpose_buf[5][127:0] [7:0]
+   237/325: $0\transpose_buf[4][127:0] [7:0]
+   238/325: $0\transpose_buf[3][127:0] [7:0]
+   239/325: $0\transpose_buf[2][127:0] [7:0]
+   240/325: $0\transpose_buf[1][127:0] [7:0]
+   241/325: $0\transpose_buf[0][127:0] [7:0]
+   242/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$30_ADDR[3:0]$186
+   243/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$30_DATA[127:0]$187
+   244/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$29_ADDR[3:0]$184
+   245/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$29_DATA[127:0]$185
+   246/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$28_ADDR[3:0]$182
+   247/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$28_DATA[127:0]$183
+   248/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$27_ADDR[3:0]$180
+   249/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$27_DATA[127:0]$181
+   250/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$26_ADDR[3:0]$178
+   251/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$26_DATA[127:0]$179
+   252/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$25_ADDR[3:0]$176
+   253/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$25_DATA[127:0]$177
+   254/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$24_ADDR[3:0]$174
+   255/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$24_DATA[127:0]$175
+   256/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$23_ADDR[3:0]$172
+   257/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$23_DATA[127:0]$173
+   258/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$22_ADDR[3:0]$170
+   259/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$22_DATA[127:0]$171
+   260/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$21_ADDR[3:0]$168
+   261/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$21_DATA[127:0]$169
+   262/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$20_ADDR[3:0]$166
+   263/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$20_DATA[127:0]$167
+   264/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$19_ADDR[3:0]$164
+   265/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$19_DATA[127:0]$165
+   266/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$18_ADDR[3:0]$162
+   267/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$18_DATA[127:0]$163
+   268/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$17_ADDR[3:0]$160
+   269/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$17_DATA[127:0]$161
+   270/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$16_ADDR[3:0]$158
+   271/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$16_DATA[127:0]$159
+   272/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$15_ADDR[3:0]$156
+   273/325: $2$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$15_DATA[127:0]$157
+   274/325: $0\stream_out_valid_o[0:0]
+   275/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$30_DATA[127:0]$152
+   276/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$30_ADDR[3:0]$151
+   277/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$29_DATA[127:0]$150
+   278/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$29_ADDR[3:0]$149
+   279/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$28_DATA[127:0]$148
+   280/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$28_ADDR[3:0]$147
+   281/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$27_DATA[127:0]$146
+   282/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$27_ADDR[3:0]$145
+   283/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$26_DATA[127:0]$144
+   284/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$26_ADDR[3:0]$143
+   285/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$25_DATA[127:0]$142
+   286/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$25_ADDR[3:0]$141
+   287/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$24_DATA[127:0]$140
+   288/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$24_ADDR[3:0]$139
+   289/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$23_DATA[127:0]$138
+   290/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$23_ADDR[3:0]$137
+   291/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$22_DATA[127:0]$136
+   292/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$22_ADDR[3:0]$135
+   293/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$21_DATA[127:0]$134
+   294/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$21_ADDR[3:0]$133
+   295/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$20_DATA[127:0]$132
+   296/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$20_ADDR[3:0]$131
+   297/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$19_DATA[127:0]$130
+   298/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$19_ADDR[3:0]$129
+   299/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$18_DATA[127:0]$128
+   300/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$18_ADDR[3:0]$127
+   301/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$17_DATA[127:0]$126
+   302/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$17_ADDR[3:0]$125
+   303/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$16_DATA[127:0]$124
+   304/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$16_ADDR[3:0]$123
+   305/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$15_DATA[127:0]$122
+   306/325: $1$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$15_ADDR[3:0]$121
+   307/325: $1$fordecl_block$11.c[31:0]$120
+   308/325: $1$fordecl_block$9.r[31:0]$119
+   309/325: $0\transpose_buf[0][127:0] [127:120]
+   310/325: $0\transpose_buf[14][127:0] [127:120]
+   311/325: $0\transpose_buf[13][127:0] [127:120]
+   312/325: $0\transpose_buf[12][127:0] [127:120]
+   313/325: $0\transpose_buf[11][127:0] [127:120]
+   314/325: $0\transpose_buf[10][127:0] [127:120]
+   315/325: $0\transpose_buf[9][127:0] [127:120]
+   316/325: $0\transpose_buf[8][127:0] [127:120]
+   317/325: $0\transpose_buf[7][127:0] [127:120]
+   318/325: $0\transpose_buf[6][127:0] [127:120]
+   319/325: $0\transpose_buf[5][127:0] [127:120]
+   320/325: $0\transpose_buf[4][127:0] [127:120]
+   321/325: $0\transpose_buf[3][127:0] [127:120]
+   322/325: $0\transpose_buf[2][127:0] [127:120]
+   323/325: $0\transpose_buf[1][127:0] [127:120]
+   324/325: $2$fordecl_block$11.c[31:0]$155
+   325/325: $0\stream_out_data_o[127:0]
+Creating decoders for process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:124$33'.
+     1/16: $16\out_lane_comb[127:120]
+     2/16: $15\out_lane_comb[119:112]
+     3/16: $14\out_lane_comb[111:104]
+     4/16: $13\out_lane_comb[103:96]
+     5/16: $12\out_lane_comb[95:88]
+     6/16: $11\out_lane_comb[87:80]
+     7/16: $10\out_lane_comb[79:72]
+     8/16: $9\out_lane_comb[71:64]
+     9/16: $8\out_lane_comb[63:56]
+    10/16: $7\out_lane_comb[55:48]
+    11/16: $6\out_lane_comb[47:40]
+    12/16: $5\out_lane_comb[39:32]
+    13/16: $4\out_lane_comb[31:24]
+    14/16: $3\out_lane_comb[23:16]
+    15/16: $2\out_lane_comb[15:8]
+    16/16: $1\out_lane_comb[7:0]
+Creating decoders for process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:57$31'.
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$13.$result' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.$result' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.vec_in' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.op' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.shamt' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.bcast_idx' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.bfly_mask' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.rope_neg' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.src' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.dst' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.vec_out' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_r' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_bitrev' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_bfly' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_t4' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.$fordecl_block$3.k' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.$fordecl_block$5.i' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+No latch inferred for signal `\groq_sxm_slice.\perm_comb_data_o' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:124$33'.
+No latch inferred for signal `\groq_sxm_slice.\out_lane_comb' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:124$33'.
+No latch inferred for signal `\groq_sxm_slice.$fordecl_block$7.i' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:124$33'.
+No latch inferred for signal `\groq_sxm_slice.\in_lane' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:57$31'.
+No latch inferred for signal `\groq_sxm_slice.$fordecl_block$1.i' from process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:57$31'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_sxm_slice.\stream_out_valid_o' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4218' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\stream_out_data_o' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4223' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$fordecl_block$9.r' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4228' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$fordecl_block$11.c' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $dff cell `$procdff$4235' with positive edge clock.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[0]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4240' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[1]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4245' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[2]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4250' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[3]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4255' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[4]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4260' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[5]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4265' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[6]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4270' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[7]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4275' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[8]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4280' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[9]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4285' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[10]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4290' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[11]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4295' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[12]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4300' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[13]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4305' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[14]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4310' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[15]' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4315' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$15_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4320' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$15_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4325' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$16_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4330' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$16_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4335' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$17_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4340' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$17_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4345' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$18_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4350' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$18_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4355' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$19_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4360' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$19_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4365' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$20_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4370' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$20_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4375' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$21_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4380' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$21_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4385' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$22_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4390' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$22_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4395' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$23_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4400' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$23_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4405' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$24_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4410' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$24_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4415' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$25_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4420' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$25_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4425' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$26_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4430' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$26_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4435' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$27_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4440' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$27_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4445' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$28_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4450' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$28_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4455' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$29_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4460' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$29_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4465' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$30_ADDR' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4470' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$rtl/groq_sxm_slice.sv:149$30_DATA' using process `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+  created $adff cell `$procdff$4475' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 32 empty switches in `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+Removing empty process `groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:115$192'.
+Found and cleaned up 18 empty switches in `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+Removing empty process `groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:139$83'.
+Found and cleaned up 16 empty switches in `\groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:124$33'.
+Removing empty process `groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:124$33'.
+Removing empty process `groq_sxm_slice.$proc$rtl/groq_sxm_slice.sv:57$31'.
+Cleaned up 66 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+<suppressed ~226 debug messages>
+
+2.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+<suppressed ~225 debug messages>
+
+2.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 161 unused cells and 1219 unused wires.
+<suppressed ~163 debug messages>
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sxm_slice...
+Found and reported 0 problems.
+
+2.6. Executing OPT pass (performing simple optimizations).
+
+2.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+<suppressed ~1356 debug messages>
+Removed a total of 452 cells.
+
+2.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$615.
+    dead port 2/2 on $mux $procmux$630.
+    dead port 2/2 on $mux $procmux$646.
+    dead port 2/2 on $mux $procmux$662.
+    dead port 2/2 on $mux $procmux$678.
+    dead port 2/2 on $mux $procmux$694.
+    dead port 2/2 on $mux $procmux$710.
+    dead port 2/2 on $mux $procmux$726.
+    dead port 2/2 on $mux $procmux$742.
+    dead port 2/2 on $mux $procmux$758.
+    dead port 2/2 on $mux $procmux$774.
+    dead port 2/2 on $mux $procmux$790.
+    dead port 2/2 on $mux $procmux$806.
+    dead port 2/2 on $mux $procmux$822.
+    dead port 2/2 on $mux $procmux$838.
+    dead port 2/2 on $mux $procmux$854.
+Removed 16 multiplexer ports.
+<suppressed ~850 debug messages>
+
+2.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+    New ctrl vector for $pmux cell $procmux$618: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $procmux$622_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$649: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4507 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$665: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4509 $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$697: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4511 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$713: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4513 $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$729: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4515 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$745: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4517 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$761: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4519 $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$777: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4521 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$809: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4523 $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$825: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4525 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$857: { $procmux$625_CTRL $procmux$624_CMP $procmux$623_CMP $procmux$622_CMP $procmux$616_CMP }
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 12 changes.
+
+2.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+2.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 0 unused cells and 459 unused wires.
+<suppressed ~1 debug messages>
+
+2.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~834 debug messages>
+
+2.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 0 changes.
+
+2.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.7. Executing FSM pass (extract and optimize FSM).
+
+2.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+2.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~834 debug messages>
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 0 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$4315 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[15]).
+Adding EN signal on $procdff$4310 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[14]).
+Adding EN signal on $procdff$4305 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[13]).
+Adding EN signal on $procdff$4300 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[12]).
+Adding EN signal on $procdff$4295 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[11]).
+Adding EN signal on $procdff$4290 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[10]).
+Adding EN signal on $procdff$4285 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[9]).
+Adding EN signal on $procdff$4280 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[8]).
+Adding EN signal on $procdff$4275 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[7]).
+Adding EN signal on $procdff$4270 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[6]).
+Adding EN signal on $procdff$4265 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[5]).
+Adding EN signal on $procdff$4260 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[4]).
+Adding EN signal on $procdff$4255 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[3]).
+Adding EN signal on $procdff$4250 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[2]).
+Adding EN signal on $procdff$4245 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[1]).
+Adding EN signal on $procdff$4240 ($adff) from module groq_sxm_slice (D = \stream_in_data_i, Q = \transpose_buf[0]).
+Adding EN signal on $procdff$4223 ($adff) from module groq_sxm_slice (D = \perm_comb_data_o, Q = \stream_out_data_o).
+
+2.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 513 unused cells and 273 unused wires.
+<suppressed ~514 debug messages>
+
+2.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~64 debug messages>
+
+2.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 0 changes.
+
+2.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$37 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$40 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$43 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$46 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$49 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$52 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$55 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$58 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$61 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$64 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$67 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$70 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$73 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$76 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$79 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:128$82 ($shiftx).
+Removed top 3 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$211 ($sub).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$216 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$218 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:91$220 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$235 ($shiftx).
+Removed top 3 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$236 ($sub).
+Removed top 3 bits (of 4) from port A of cell groq_sxm_slice.$add$rtl/groq_sxm_slice.sv:82$237 ($add).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$241 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$243 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$260 ($shiftx).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$261 ($sub).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$add$rtl/groq_sxm_slice.sv:82$262 ($add).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$266 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$268 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$285 ($shiftx).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$286 ($sub).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$add$rtl/groq_sxm_slice.sv:82$287 ($add).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$291 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$293 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$310 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$311 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$rtl/groq_sxm_slice.sv:82$312 ($add).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$316 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$318 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$335 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$336 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$rtl/groq_sxm_slice.sv:82$337 ($add).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$341 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$343 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$360 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$361 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$rtl/groq_sxm_slice.sv:82$362 ($add).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$366 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$368 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$385 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$rtl/groq_sxm_slice.sv:81$386 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$rtl/groq_sxm_slice.sv:82$387 ($add).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$391 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$393 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$410 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$416 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$418 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$435 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$441 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$443 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$460 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$466 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$468 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$485 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$491 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$493 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$510 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$516 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$518 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$535 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$541 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$543 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$560 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$566 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$568 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$585 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:89$591 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:90$593 ($shiftx).
+Removed top 24 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$rtl/groq_sxm_slice.sv:100$610 ($shiftx).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$procmux$620_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$621_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$623_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$procmux$625_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$625_CMP1 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$635_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$procmux$1010_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$procmux$1028_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sxm_slice.$procmux$1047_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$1148_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$1162_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$1177_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$1193_CMP0 ($eq).
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$215_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$240_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$265_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$290_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$315_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$340_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$365_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$390_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$415_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$440_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$465_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$490_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$515_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$540_Y.
+Removed top 25 bits (of 32) from wire groq_sxm_slice.$mul$rtl/groq_sxm_slice.sv:89$565_Y.
+
+2.10. Executing PEEPOPT pass (run peephole optimizers).
+
+2.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 0 unused cells and 15 unused wires.
+<suppressed ~1 debug messages>
+
+2.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module groq_sxm_slice:
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$237 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$262 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$287 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$312 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$337 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$362 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$387 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$412 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$437 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$462 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$487 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$512 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$537 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$562 ($add).
+  creating $macc model for $add$rtl/groq_sxm_slice.sv:82$587 ($add).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$232 ($neg).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$282 ($neg).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$332 ($neg).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$382 ($neg).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$432 ($neg).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$482 ($neg).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$532 ($neg).
+  creating $macc model for $neg$rtl/groq_sxm_slice.sv:98$582 ($neg).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$211 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$236 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$261 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$286 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$311 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$336 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$361 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$386 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$411 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$436 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$461 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$486 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$511 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$536 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$561 ($sub).
+  creating $macc model for $sub$rtl/groq_sxm_slice.sv:81$586 ($sub).
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$586.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$561.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$536.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$511.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$486.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$461.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$436.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$411.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$386.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$361.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$336.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$311.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$286.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$261.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$236.
+  creating $alu model for $macc $sub$rtl/groq_sxm_slice.sv:81$211.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$582.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$532.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$482.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$432.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$382.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$332.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$282.
+  creating $alu model for $macc $neg$rtl/groq_sxm_slice.sv:98$232.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$587.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$562.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$537.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$512.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$487.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$462.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$437.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$412.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$387.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$362.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$337.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$312.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$287.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$262.
+  creating $alu model for $macc $add$rtl/groq_sxm_slice.sv:82$237.
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$232: $auto$alumacc.cc:512:replace_alu$4590
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$282: $auto$alumacc.cc:512:replace_alu$4593
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$332: $auto$alumacc.cc:512:replace_alu$4596
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$382: $auto$alumacc.cc:512:replace_alu$4599
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$432: $auto$alumacc.cc:512:replace_alu$4602
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$482: $auto$alumacc.cc:512:replace_alu$4605
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$532: $auto$alumacc.cc:512:replace_alu$4608
+  creating $alu cell for $neg$rtl/groq_sxm_slice.sv:98$582: $auto$alumacc.cc:512:replace_alu$4611
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$211: $auto$alumacc.cc:512:replace_alu$4614
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$237: $auto$alumacc.cc:512:replace_alu$4617
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$236: $auto$alumacc.cc:512:replace_alu$4620
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$262: $auto$alumacc.cc:512:replace_alu$4623
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$261: $auto$alumacc.cc:512:replace_alu$4626
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$287: $auto$alumacc.cc:512:replace_alu$4629
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$286: $auto$alumacc.cc:512:replace_alu$4632
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$312: $auto$alumacc.cc:512:replace_alu$4635
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$311: $auto$alumacc.cc:512:replace_alu$4638
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$337: $auto$alumacc.cc:512:replace_alu$4641
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$336: $auto$alumacc.cc:512:replace_alu$4644
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$362: $auto$alumacc.cc:512:replace_alu$4647
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$361: $auto$alumacc.cc:512:replace_alu$4650
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$387: $auto$alumacc.cc:512:replace_alu$4653
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$386: $auto$alumacc.cc:512:replace_alu$4656
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$412: $auto$alumacc.cc:512:replace_alu$4659
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$411: $auto$alumacc.cc:512:replace_alu$4662
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$437: $auto$alumacc.cc:512:replace_alu$4665
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$436: $auto$alumacc.cc:512:replace_alu$4668
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$462: $auto$alumacc.cc:512:replace_alu$4671
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$461: $auto$alumacc.cc:512:replace_alu$4674
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$487: $auto$alumacc.cc:512:replace_alu$4677
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$486: $auto$alumacc.cc:512:replace_alu$4680
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$512: $auto$alumacc.cc:512:replace_alu$4683
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$511: $auto$alumacc.cc:512:replace_alu$4686
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$537: $auto$alumacc.cc:512:replace_alu$4689
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$536: $auto$alumacc.cc:512:replace_alu$4692
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$562: $auto$alumacc.cc:512:replace_alu$4695
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$561: $auto$alumacc.cc:512:replace_alu$4698
+  creating $alu cell for $add$rtl/groq_sxm_slice.sv:82$587: $auto$alumacc.cc:512:replace_alu$4701
+  creating $alu cell for $sub$rtl/groq_sxm_slice.sv:81$586: $auto$alumacc.cc:512:replace_alu$4704
+  created 39 $alu and 0 $macc cells.
+
+2.13. Executing SHARE pass (SAT-based resource sharing).
+
+2.14. Executing OPT pass (performing simple optimizations).
+
+2.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~64 debug messages>
+
+2.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 0 changes.
+
+2.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+2.15. Executing MEMORY pass.
+
+2.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+2.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+2.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+2.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+2.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+2.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.17. Executing OPT pass (performing simple optimizations).
+
+2.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+<suppressed ~18 debug messages>
+
+2.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+<suppressed ~33 debug messages>
+Removed a total of 11 cells.
+
+2.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 0 unused cells and 18 unused wires.
+<suppressed ~1 debug messages>
+
+2.17.5. Finished fast OPT passes.
+
+2.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~64 debug messages>
+
+2.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 0 changes.
+
+2.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.19.6. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$618 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$610
+        $shiftx$rtl/groq_sxm_slice.sv:90$593
+        $shiftx$rtl/groq_sxm_slice.sv:89$591
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$633 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$568
+        $shiftx$rtl/groq_sxm_slice.sv:89$566
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$649 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$560
+        $shiftx$rtl/groq_sxm_slice.sv:90$543
+        $shiftx$rtl/groq_sxm_slice.sv:89$541
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$665 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$518
+        $shiftx$rtl/groq_sxm_slice.sv:89$516
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$681 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$510
+        $shiftx$rtl/groq_sxm_slice.sv:90$493
+        $shiftx$rtl/groq_sxm_slice.sv:89$491
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$697 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$468
+        $shiftx$rtl/groq_sxm_slice.sv:89$466
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$713 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$460
+        $shiftx$rtl/groq_sxm_slice.sv:90$443
+        $shiftx$rtl/groq_sxm_slice.sv:89$441
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$729 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$418
+        $shiftx$rtl/groq_sxm_slice.sv:89$416
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$745 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$410
+        $shiftx$rtl/groq_sxm_slice.sv:90$393
+        $shiftx$rtl/groq_sxm_slice.sv:89$391
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$761 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$368
+        $shiftx$rtl/groq_sxm_slice.sv:89$366
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$777 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$360
+        $shiftx$rtl/groq_sxm_slice.sv:90$343
+        $shiftx$rtl/groq_sxm_slice.sv:89$341
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$793 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$318
+        $shiftx$rtl/groq_sxm_slice.sv:89$316
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$809 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$310
+        $shiftx$rtl/groq_sxm_slice.sv:90$293
+        $shiftx$rtl/groq_sxm_slice.sv:89$291
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$825 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$268
+        $shiftx$rtl/groq_sxm_slice.sv:89$266
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$841 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:100$260
+        $shiftx$rtl/groq_sxm_slice.sv:90$243
+        $shiftx$rtl/groq_sxm_slice.sv:89$241
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$857 in front of them:
+        $shiftx$rtl/groq_sxm_slice.sv:90$218
+        $shiftx$rtl/groq_sxm_slice.sv:89$216
+
+2.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 0 unused cells and 40 unused wires.
+<suppressed ~1 debug messages>
+
+2.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+<suppressed ~16 debug messages>
+
+2.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~96 debug messages>
+
+2.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4740:
+      Old ports: A={ 1'0 $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 3'000 }, B={ 1'0 $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_r[3:0]$205 4'0000 $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_bfly[3:0]$207 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4741
+      New ports: A=$0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204, B={ $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_r[3:0]$205 $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_bfly[3:0]$207 }, Y=$auto$rtlil.cc:3471:Pmux$4741 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4741 [7] $auto$rtlil.cc:3471:Pmux$4741 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4743:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4589 [6:3] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$562_Y [3:1] \shift_amt_i [0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4744
+      New ports: A=$auto$wreduce.cc:514:run$4589 [6:3], B={ $add$rtl/groq_sxm_slice.sv:82$562_Y [3:1] \shift_amt_i [0] }, Y=$auto$rtlil.cc:3471:Pmux$4744 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4744 [7] $auto$rtlil.cc:3471:Pmux$4744 [2:0] } = 4'0000
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4746:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4588 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$537_Y 4'0000 $auto$rtlil.cc:3334:Not$4501 [2:1] \butterfly_mask_i [1] $auto$rtlil.cc:3334:Not$4501 [0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4747
+      New ports: A={ $auto$wreduce.cc:514:run$4588 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] }, B={ $add$rtl/groq_sxm_slice.sv:82$537_Y $auto$rtlil.cc:3334:Not$4501 [2:1] \butterfly_mask_i [1] $auto$rtlil.cc:3334:Not$4501 [0] }, Y=$auto$rtlil.cc:3471:Pmux$4747 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4747 [7] $auto$rtlil.cc:3471:Pmux$4747 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4749:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4587 [6:3] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$512_Y [3:2] \shift_amt_i [1:0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4750
+      New ports: A=$auto$wreduce.cc:514:run$4587 [6:3], B={ $add$rtl/groq_sxm_slice.sv:82$512_Y [3:2] \shift_amt_i [1:0] }, Y=$auto$rtlil.cc:3471:Pmux$4750 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4750 [7] $auto$rtlil.cc:3471:Pmux$4750 [2:0] } = 4'0000
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4752:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4586 [6:5] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [1:0] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$487_Y 4'0000 $auto$rtlil.cc:3334:Not$4497 [2] \butterfly_mask_i [2] $auto$rtlil.cc:3334:Not$4497 [1:0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4753
+      New ports: A={ $auto$wreduce.cc:514:run$4586 [6:5] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [1:0] }, B={ $add$rtl/groq_sxm_slice.sv:82$487_Y $auto$rtlil.cc:3334:Not$4497 [2] \butterfly_mask_i [2] $auto$rtlil.cc:3334:Not$4497 [1:0] }, Y=$auto$rtlil.cc:3471:Pmux$4753 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4753 [7] $auto$rtlil.cc:3471:Pmux$4753 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4755:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4585 [6:3] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$462_Y [3:1] \shift_amt_i [0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4756
+      New ports: A=$auto$wreduce.cc:514:run$4585 [6:3], B={ $add$rtl/groq_sxm_slice.sv:82$462_Y [3:1] \shift_amt_i [0] }, Y=$auto$rtlil.cc:3471:Pmux$4756 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4756 [7] $auto$rtlil.cc:3471:Pmux$4756 [2:0] } = 4'0000
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4758:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4584 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$437_Y 4'0000 $auto$rtlil.cc:3334:Not$4493 [1] \butterfly_mask_i [2:1] $auto$rtlil.cc:3334:Not$4493 [0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4759
+      New ports: A={ $auto$wreduce.cc:514:run$4584 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] }, B={ $add$rtl/groq_sxm_slice.sv:82$437_Y $auto$rtlil.cc:3334:Not$4493 [1] \butterfly_mask_i [2:1] $auto$rtlil.cc:3334:Not$4493 [0] }, Y=$auto$rtlil.cc:3471:Pmux$4759 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4759 [7] $auto$rtlil.cc:3471:Pmux$4759 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4761:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4583 [6:3] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$412_Y [3] \shift_amt_i [2:0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4762
+      New ports: A=$auto$wreduce.cc:514:run$4583 [6:3], B={ $add$rtl/groq_sxm_slice.sv:82$412_Y [3] \shift_amt_i [2:0] }, Y=$auto$rtlil.cc:3471:Pmux$4762 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4762 [7] $auto$rtlil.cc:3471:Pmux$4762 [2:0] } = 4'0000
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4764:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4582 [6] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [2:0] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$387_Y 4'0000 \butterfly_mask_i [3] $auto$rtlil.cc:3334:Not$4489 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4765
+      New ports: A={ $auto$wreduce.cc:514:run$4582 [6] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [2:0] }, B={ $add$rtl/groq_sxm_slice.sv:82$387_Y \butterfly_mask_i [3] $auto$rtlil.cc:3334:Not$4489 }, Y=$auto$rtlil.cc:3471:Pmux$4765 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4765 [7] $auto$rtlil.cc:3471:Pmux$4765 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4767:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4581 [6:3] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$362_Y [3:1] \shift_amt_i [0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4768
+      New ports: A=$auto$wreduce.cc:514:run$4581 [6:3], B={ $add$rtl/groq_sxm_slice.sv:82$362_Y [3:1] \shift_amt_i [0] }, Y=$auto$rtlil.cc:3471:Pmux$4768 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4768 [7] $auto$rtlil.cc:3471:Pmux$4768 [2:0] } = 4'0000
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4770:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4580 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$337_Y 4'0000 \butterfly_mask_i [3] $auto$rtlil.cc:3334:Not$4485 [1] \butterfly_mask_i [1] $auto$rtlil.cc:3334:Not$4485 [0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4771
+      New ports: A={ $auto$wreduce.cc:514:run$4580 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] }, B={ $add$rtl/groq_sxm_slice.sv:82$337_Y \butterfly_mask_i [3] $auto$rtlil.cc:3334:Not$4485 [1] \butterfly_mask_i [1] $auto$rtlil.cc:3334:Not$4485 [0] }, Y=$auto$rtlil.cc:3471:Pmux$4771 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4771 [7] $auto$rtlil.cc:3471:Pmux$4771 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4773:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4579 [6:3] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$312_Y [3:2] \shift_amt_i [1:0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4774
+      New ports: A=$auto$wreduce.cc:514:run$4579 [6:3], B={ $add$rtl/groq_sxm_slice.sv:82$312_Y [3:2] \shift_amt_i [1:0] }, Y=$auto$rtlil.cc:3471:Pmux$4774 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4774 [7] $auto$rtlil.cc:3471:Pmux$4774 [2:0] } = 4'0000
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4776:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4578 [6:5] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [1:0] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$287_Y 4'0000 \butterfly_mask_i [3:2] $auto$rtlil.cc:3334:Not$4481 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4777
+      New ports: A={ $auto$wreduce.cc:514:run$4578 [6:5] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [1:0] }, B={ $add$rtl/groq_sxm_slice.sv:82$287_Y \butterfly_mask_i [3:2] $auto$rtlil.cc:3334:Not$4481 }, Y=$auto$rtlil.cc:3471:Pmux$4777 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4777 [7] $auto$rtlil.cc:3471:Pmux$4777 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4779:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4577 [6:3] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$262_Y [3:1] \shift_amt_i [0] 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4780
+      New ports: A=$auto$wreduce.cc:514:run$4577 [6:3], B={ $add$rtl/groq_sxm_slice.sv:82$262_Y [3:1] \shift_amt_i [0] }, Y=$auto$rtlil.cc:3471:Pmux$4780 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4780 [7] $auto$rtlil.cc:3471:Pmux$4780 [2:0] } = 4'0000
+    Consolidated identical input bits for $pmux cell $auto$opt_share.cc:246:merge_operators$4782:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4576 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] 3'000 }, B={ 1'0 $add$rtl/groq_sxm_slice.sv:82$237_Y 4'0000 \butterfly_mask_i [3:1] $auto$rtlil.cc:3334:Not$4477 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4783
+      New ports: A={ $auto$wreduce.cc:514:run$4576 [6:4] $0\apply_sxm_perm$func$rtl/groq_sxm_slice.sv:115$14.idx_rot_l[3:0]$204 [0] }, B={ $add$rtl/groq_sxm_slice.sv:82$237_Y \butterfly_mask_i [3:1] $auto$rtlil.cc:3334:Not$4477 }, Y=$auto$rtlil.cc:3471:Pmux$4783 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4783 [7] $auto$rtlil.cc:3471:Pmux$4783 [2:0] } = 4'0000
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:246:merge_operators$4785:
+      Old ports: A={ 1'0 $auto$wreduce.cc:514:run$4575 [6:3] 3'000 }, B={ 1'0 \shift_amt_i 3'000 }, Y=$auto$rtlil.cc:3471:Pmux$4786
+      New ports: A=$auto$wreduce.cc:514:run$4575 [6:3], B=\shift_amt_i, Y=$auto$rtlil.cc:3471:Pmux$4786 [6:3]
+      New connections: { $auto$rtlil.cc:3471:Pmux$4786 [7] $auto$rtlil.cc:3471:Pmux$4786 [2:0] } = 4'0000
+    New ctrl vector for $pmux cell $procmux$618: { $procmux$623_CMP $procmux$622_CMP $auto$opt_reduce.cc:137:opt_pmux$4788 }
+    New ctrl vector for $pmux cell $procmux$633: { $auto$opt_reduce.cc:137:opt_pmux$4790 $procmux$623_CMP $procmux$622_CMP $procmux$621_CMP $procmux$620_CMP $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$649: { $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4507 $auto$opt_reduce.cc:137:opt_pmux$4792 }
+    New ctrl vector for $pmux cell $procmux$665: { $auto$opt_reduce.cc:137:opt_pmux$4794 $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4509 $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$681: { $procmux$623_CMP $procmux$622_CMP $procmux$621_CMP $procmux$620_CMP $procmux$635_CMP $auto$opt_reduce.cc:137:opt_pmux$4796 }
+    New ctrl vector for $pmux cell $procmux$697: { $auto$opt_reduce.cc:137:opt_pmux$4798 $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4511 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$713: { $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4513 $procmux$635_CMP $auto$opt_reduce.cc:137:opt_pmux$4800 }
+    New ctrl vector for $pmux cell $procmux$729: { $auto$opt_reduce.cc:137:opt_pmux$4802 $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4507 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$745: { $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4507 $auto$opt_reduce.cc:137:opt_pmux$4804 }
+    New ctrl vector for $pmux cell $procmux$761: { $auto$opt_reduce.cc:137:opt_pmux$4806 $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4513 $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$777: { $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4511 $auto$opt_reduce.cc:137:opt_pmux$4808 }
+    New ctrl vector for $pmux cell $procmux$793: { $auto$opt_reduce.cc:137:opt_pmux$4810 $procmux$623_CMP $procmux$622_CMP $procmux$621_CMP $procmux$620_CMP $procmux$635_CMP $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$809: { $procmux$623_CMP $auto$opt_reduce.cc:137:opt_pmux$4509 $procmux$635_CMP $auto$opt_reduce.cc:137:opt_pmux$4812 }
+    New ctrl vector for $pmux cell $procmux$825: { $auto$opt_reduce.cc:137:opt_pmux$4814 $procmux$623_CMP $procmux$622_CMP $procmux$620_CMP $auto$opt_reduce.cc:137:opt_pmux$4507 $procmux$616_CMP }
+    New ctrl vector for $pmux cell $procmux$841: { $procmux$623_CMP $procmux$622_CMP $procmux$621_CMP $procmux$620_CMP $procmux$635_CMP $auto$opt_reduce.cc:137:opt_pmux$4816 }
+    New ctrl vector for $pmux cell $procmux$857: { $auto$opt_reduce.cc:137:opt_pmux$4818 $procmux$623_CMP $procmux$622_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4787: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4789: { $procmux$625_CMP $procmux$624_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4791: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4793: { $procmux$625_CMP $procmux$624_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4795: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4797: { $procmux$625_CMP $procmux$624_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4799: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4801: { $procmux$625_CMP $procmux$624_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4803: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4805: { $procmux$625_CMP $procmux$624_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4807: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4809: { $procmux$625_CMP $procmux$624_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4811: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4813: { $procmux$625_CMP $procmux$624_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4815: { $procmux$625_CMP $procmux$624_CMP $procmux$616_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:131:opt_pmux$4817: { $procmux$625_CMP $procmux$624_CMP }
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 48 changes.
+
+2.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+<suppressed ~42 debug messages>
+Removed a total of 14 cells.
+
+2.19.14. Executing OPT_SHARE pass.
+
+2.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 1 unused cells and 15 unused wires.
+<suppressed ~2 debug messages>
+
+2.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~96 debug messages>
+
+2.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 0 changes.
+
+2.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.19.22. Executing OPT_SHARE pass.
+
+2.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.19.26. Finished fast OPT passes. (There is nothing left to do.)
+
+2.20. Executing TECHMAP pass (map to technology primitives).
+
+2.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+2.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$7af24cf7f572852703f08ef7a936c59efa2c57af\_90_alu for cells of type $alu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using template $paramod$bf2533632d512eac76dd186c0da49367e29b8e98\_90_pmux for cells of type $pmux.
+Using template $paramod$d1615bf4e5e328245ffd1550e5fe105901cda77b\_90_alu for cells of type $alu.
+Using template $paramod$f85408ed1aa3d09e465edae8a7bf590332ae9f7b\_90_alu for cells of type $alu.
+Using template $paramod$79fc7abbb3333dbd5736999d565fd903198fb1eb\_90_alu for cells of type $alu.
+Using template $paramod$1a3a0c35c4a4896fbfd612699525c057298e72d2\_90_alu for cells of type $alu.
+Using template $paramod$adbaf76fa5a3091a329503792521395f8ff4d1a4\_90_alu for cells of type $alu.
+Using template $paramod$78e969f2586efcf3a5b0b0440bcca0db83d5cca2\_90_alu for cells of type $alu.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_90_alu for cells of type $alu.
+Using template $paramod$7e708ae28ab761f11d0fb59d3ffc72f6a4baf5d9\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$fc972a7a46956c1788f3cb5257b53c8f1df2d0cc\_90_alu for cells of type $alu.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using template $paramod$constmap:b932cf6f5b744e7a22fe56014111479eed600561$paramod$6b401fce98938c3da90dba3992a2381126d14c86\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$fd7bfb1a4f3a7c2ac1a35670d0fa64ccc7b91841\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using template $paramod$645fe0cc96ae5edb83bff90cc2c78f4a20ca3e3c\_90_pmux for cells of type $pmux.
+Using template $paramod$d7387fdb214042e5ef2d69a3f74948694b4bb65e\_90_pmux for cells of type $pmux.
+Using template $paramod$f42569e367821ad1b7d52f2d157a44ce80c766dc\_90_pmux for cells of type $pmux.
+Using template $paramod$e830d104b5de63a966ae948f6aff012e63986700\_90_pmux for cells of type $pmux.
+Using template $paramod$ee721315a7b0169d82611b9aea01747035b97792\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000001 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000001 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~2908 debug messages>
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+<suppressed ~25798 debug messages>
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+<suppressed ~21342 debug messages>
+Removed a total of 7114 cells.
+
+2.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 11735 unused cells and 3141 unused wires.
+<suppressed ~11736 debug messages>
+
+2.21.5. Finished fast OPT passes.
+
+2.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `groq_sxm_slice'. Setting top module to groq_sxm_slice.
+
+2.22.1. Analyzing design hierarchy..
+Top module:  \groq_sxm_slice
+
+2.22.2. Analyzing design hierarchy..
+Top module:  \groq_sxm_slice
+Removed 0 unused modules.
+
+2.23. Printing statistics.
+
+=== groq_sxm_slice ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      697 wires
+    29908 wire bits
+       47 public wires
+     3518 public wire bits
+       13 ports
+      409 port bits
+     6921 cells
+      640   $_AND_
+     2176   $_DFFE_PN0P_
+        1   $_DFF_PN0_
+     3221   $_MUX_
+      106   $_NOT_
+      677   $_OR_
+      100   $_XOR_
+
+2.24. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sxm_slice...
+Found and reported 0 problems.
+
+3. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFFLQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_N_.
+  cell DFFHQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_P_.
+  cell DFFASRHQNx1_ASAP7_75t_R (inv, pins=5, area=0.38) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    \DFFLQNx1_ASAP7_75t_R _DFF_N_ (.CLK( C), .D( D), .QN(~Q));
+    \DFFHQNx1_ASAP7_75t_R _DFF_P_ (.CLK( C), .D( D), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    unmapped dff cell: $_DFF_PN0_
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFASRHQNx1_ASAP7_75t_R _DFFSR_PNN_ (.CLK( C), .D( D), .QN(~Q), .RESETN( R), .SETN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+3.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~8 debug messages>
+Mapping DFF cells in module `\groq_sxm_slice':
+  mapped 2177 $_DFFSR_PNN_ cells to \DFFASRHQNx1_ASAP7_75t_R cells.
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Extracting gate netlist of module `\groq_sxm_slice' to `<abc-temp-dir>/input.blif'..
+
+4.1.1. Executed ABC.
+Extracted 9097 gates and 11426 wires to a netlist network with 2327 inputs and 2434 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.27 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFASRHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx1_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx3_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5p33DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx6p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx8DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx4_ASAP7_75t_R".
+ABC: Library "asap7_rvt_ff" from "/nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib" has 169 cells (33 skipped: 23 seq; 0 tri-state; 10 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.37 sec
+ABC: Memory =   82.23 MB. Time =     0.37 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FAx1_ASAP7_75t_R").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:   A2O1A1Ixp33_ASAP7_75t_R cells:     1515
+ABC RESULTS:   A2O1A1O1Ixp25_ASAP7_75t_R cells:       60
+ABC RESULTS:   AND2x2_ASAP7_75t_R cells:       12
+ABC RESULTS:   AND3x1_ASAP7_75t_R cells:        1
+ABC RESULTS:   AO21x1_ASAP7_75t_R cells:      217
+ABC RESULTS:   AO31x2_ASAP7_75t_R cells:        2
+ABC RESULTS:   AOI211xp5_ASAP7_75t_R cells:        6
+ABC RESULTS:   AOI21xp33_ASAP7_75t_R cells:      930
+ABC RESULTS:   AOI221xp5_ASAP7_75t_R cells:        3
+ABC RESULTS:   AOI22xp33_ASAP7_75t_R cells:       74
+ABC RESULTS:   AOI31xp33_ASAP7_75t_R cells:      126
+ABC RESULTS:   INVx1_ASAP7_75t_R cells:     2416
+ABC RESULTS:   NAND2xp33_ASAP7_75t_R cells:     2546
+ABC RESULTS:   NAND3xp33_ASAP7_75t_R cells:       18
+ABC RESULTS:   NAND4xp25_ASAP7_75t_R cells:       47
+ABC RESULTS:   NAND5xp2_ASAP7_75t_R cells:       16
+ABC RESULTS:   NOR2xp33_ASAP7_75t_R cells:     1422
+ABC RESULTS:   NOR3xp33_ASAP7_75t_R cells:       17
+ABC RESULTS:   NOR4xp25_ASAP7_75t_R cells:       28
+ABC RESULTS:   O2A1O1Ixp33_ASAP7_75t_R cells:      423
+ABC RESULTS:   OA21x2_ASAP7_75t_R cells:        6
+ABC RESULTS:   OA22x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   OAI211xp5_ASAP7_75t_R cells:       32
+ABC RESULTS:   OAI21xp33_ASAP7_75t_R cells:     2761
+ABC RESULTS:   OAI221xp5_ASAP7_75t_R cells:        6
+ABC RESULTS:   OAI22xp33_ASAP7_75t_R cells:        3
+ABC RESULTS:   OAI31xp33_ASAP7_75t_R cells:       14
+ABC RESULTS:   OR2x4_ASAP7_75t_R cells:        2
+ABC RESULTS:   OR4x2_ASAP7_75t_R cells:        2
+ABC RESULTS:   XNOR2x2_ASAP7_75t_R cells:       11
+ABC RESULTS:   XOR2x2_ASAP7_75t_R cells:        2
+ABC RESULTS:        internal signals:     6665
+ABC RESULTS:           input signals:     2327
+ABC RESULTS:          output signals:     2434
+Removing temp directory.
+Removing global temp directory.
+
+5. Printing statistics.
+
+=== groq_sxm_slice ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+    20096        - wires
+    49307        - wire bits
+       47        - public wires
+     3518        - public wire bits
+       13        - ports
+      409        - port bits
+    14896 1.67E+03 cells
+     1515  132.532   A2O1A1Ixp33_ASAP7_75t_R
+       60    7.873   A2O1A1O1Ixp25_ASAP7_75t_R
+       12     1.05   AND2x2_ASAP7_75t_R
+        1    0.087   AND3x1_ASAP7_75t_R
+      217   18.983   AO21x1_ASAP7_75t_R
+        2    0.467   AO31x2_ASAP7_75t_R
+        6    0.525   AOI211xp5_ASAP7_75t_R
+      930   67.797   AOI21xp33_ASAP7_75t_R
+        3    0.306   AOI221xp5_ASAP7_75t_R
+       74    6.474   AOI22xp33_ASAP7_75t_R
+      126   11.022   AOI31xp33_ASAP7_75t_R
+     2177  825.257   DFFASRHQNx1_ASAP7_75t_R
+     2416  105.676   INVx1_ASAP7_75t_R
+     2546  148.483   NAND2xp33_ASAP7_75t_R
+       18    1.312   NAND3xp33_ASAP7_75t_R
+       47    4.112   NAND4xp25_ASAP7_75t_R
+       16    1.633   NAND5xp2_ASAP7_75t_R
+     1422   82.931   NOR2xp33_ASAP7_75t_R
+       17    1.239   NOR3xp33_ASAP7_75t_R
+       28    2.449   NOR4xp25_ASAP7_75t_R
+      423   37.004   O2A1O1Ixp33_ASAP7_75t_R
+        6    0.612   OA21x2_ASAP7_75t_R
+        1    0.146   OA22x2_ASAP7_75t_R
+       32    2.799   OAI211xp5_ASAP7_75t_R
+     2761  201.277   OAI21xp33_ASAP7_75t_R
+        6    0.612   OAI221xp5_ASAP7_75t_R
+        3    0.262   OAI22xp33_ASAP7_75t_R
+       14    1.225   OAI31xp33_ASAP7_75t_R
+        2    0.233   OR2x4_ASAP7_75t_R
+        2    0.233   OR4x2_ASAP7_75t_R
+       11    1.764   XNOR2x2_ASAP7_75t_R
+        2    0.321   XOR2x2_ASAP7_75t_R
+
+   Chip area for module '\groq_sxm_slice': 1666.698120
+     of which used for sequential elements: 825.257160 (49.51%)
+
+6. Executing Verilog backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Dumping module `\groq_sxm_slice'.
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: 06da4856b8, CPU: user 2.47s system 0.29s, MEM: 167.04 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 32% 1x abc (1 sec), 13% 2x write_verilog (0 sec), ...

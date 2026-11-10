@@ -1,0 +1,9 @@
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv
+prep -top groq_power_droop_controller
+flatten
+opt -fast
+async2sync
+chformal -lower
+opt -fast
+sat -verify -seq 8 -set-at 1 rst_n 0 -prove-skip 1 -prove-asserts
+sat -verify -tempinduct -set-init-zero -prove-asserts

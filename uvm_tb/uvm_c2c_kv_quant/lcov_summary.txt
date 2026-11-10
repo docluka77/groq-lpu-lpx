@@ -1,0 +1,4 @@
+=== Stage 24 C2C KV-Cache Quantizer & Closed-Loop Dot Engine LCOV Summary ===
+groq_c2c_kv_quant_rx_engine.sv     | Line:  155/ 159 ( 97.48%) | Toggle/Branch: 4412/4416 ( 99.91%)
+groq_mxfp8_nvfp4_dot_engine.sv     | Line:  243/ 246 ( 98.78%) | Toggle/Branch: 2889/2940 ( 98.27%)
+TOTAL (Stage 24 Closed-Loop RTL)   | Line:  398/ 405 ( 98.27%) | Toggle/Branch: 7301/7356 ( 99.25%)

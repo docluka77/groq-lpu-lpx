@@ -1,0 +1,50 @@
+{
+  "benchmark": "Stage 27 Full-System Disaggregated Rubin Prefill -> NVLink-C2C -> 8-Chip Groq 3 LPX Decode",
+  "total_cycles": 535,
+  "pass_checks": 176,
+  "errors": 0,
+  "status": "PASS",
+  "c2c_prefill_ingress": {
+    "flits_transmitted_with_replays": 72,
+    "flits_received": 64,
+    "crc16_errors_injected": 8,
+    "gbn_nacks_received": 8,
+    "gbn_replays_completed": 8
+  },
+  "kv_quant_engine": {
+    "blocks_quantized": 32,
+    "zero_lanes_detected": 96,
+    "modes_verified": ["BF16_TO_MXFP8_E4M3", "FP16_TO_MXFP8_E4M3", "BF16_TO_NVFP4_E2M1", "RAW128_BYPASS"]
+  },
+  "sram_scrubber": {
+    "efuse_repaired_banks": 4,
+    "repaired_row_read_hits": 4,
+    "ser_injected": 32,
+    "ser_corrected": 32,
+    "uncorrectable_ded_alerts": 0
+  },
+  "power_droop": {
+    "unmitigated_peak_didt": 200,
+    "mitigated_peak_didt": 36,
+    "didt_reduction_pct": 82.0,
+    "unmitigated_min_vdd_mv": 597,
+    "mitigated_min_vdd_mv": 684,
+    "unmitigated_emerg_throttle_cycles": 4,
+    "mitigated_emerg_throttle_cycles": 0
+  },
+  "dragonfly_and_dot_engine": {
+    "microscaling_dot_products": 32,
+    "dot_zero_skip_lanes": 290,
+    "pass_dot_accum": [144104, 208776, -7838, -599472],
+    "cluster_c2c_flits_tx": 33,
+    "cluster_crc16_injected": 8,
+    "cluster_deskew_releases": 0
+  },
+  "speculative_decoding": {
+    "target_passes": 4,
+    "pass_emitted_tokens": [4, 5, 3, 4],
+    "total_emitted_tokens": 16,
+    "total_kv_ring_advance": 12,
+    "effective_speedup_x": 4.00
+  }
+}

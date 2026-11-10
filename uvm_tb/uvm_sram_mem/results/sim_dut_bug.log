@@ -1,0 +1,55 @@
+UVM_INFO /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_root.svh(476) @ 0: reporter [UVM/RELNOTES] 
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  This implementation of the UVM Library deviates from the 1800.2-2020
+  standard.  See the DEVIATIONS.md file contained in the release
+  for more details.
+
+----------------------------------------------------------------
+Accellera:1800.2:UVM:2020.3.1
+
+All copyright owners for this kit are listed in NOTICE.txt
+All Rights Reserved Worldwide
+----------------------------------------------------------------
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_WARNING /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_root.svh(549) @ 0: reporter [NO_DPI_USED] We are thinking of removing support for UVM_NO_DPI.  Please try this test without it and evaluate the impact
+UVM_INFO @ 0: reporter [RNTST] Running test sram_mem_test...
+UVM_INFO /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_traversal.svh(345) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_WARNING /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_traversal.svh(314) @ 0: reporter [NO_VISIT_CHECK] Because UVM_REGEX_NO_DPI is defined, no uvm component name constraints will be checked
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 695001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=64 ph=1 rd_addr=0 wr_addr=0 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=0ecb6b6b88a81a129e3779b97f4ac2fa exp=0ecb6b6b88a8c4bf_9e3779b97f4a7c15
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 705001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=65 ph=1 rd_addr=7 wr_addr=7 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=a5fb2126bdf90809216f3ed463ae2743 exp=a5fb2126bdf9d6a4_216f3ed463ae99ac
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 715001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=66 ph=1 rd_addr=14 wr_addr=14 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=d8abfefdae0e7e3ce087f76346830988 exp=d8abfefdae0ea091_e087f7634683b767
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 725001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=67 ph=1 rd_addr=21 wr_addr=21 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=4c5bb4b8435f6cd3a03faffe29e473d1 exp=4c5bb4b8435fb27e_a03faffe29e4cd3e
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 735001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=68 ph=1 rd_addr=28 wr_addr=28 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=e30a0277746c42c66356640d0cd9541e exp=e30a0277746c9c6b_6356640d0cd9eaf1
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 745001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=69 ph=1 rd_addr=35 wr_addr=35 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=163ad83268bdb0fd228e1c98ef32be67 exp=163ad83268bd6e50_228e1c98ef320088
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 755001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=70 ph=1 rd_addr=42 wr_addr=42 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=8dea91891df2a690e226d537d217a0ac exp=8dea91891df2783d_e226d537d2171e43
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 765001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=71 ph=1 rd_addr=49 wr_addr=49 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=20856f440e039487a55e8a42b5088af5 exp=20856f440e034a2a_a55e8a42b508341a
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 775001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=72 ph=1 rd_addr=56 wr_addr=56 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=57b5250323508aba64f542d1986def32 exp=57b5250323505417_64f542d1986d51dd
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 785001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=73 ph=1 rd_addr=63 wr_addr=63 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=cb65f2dfd461f951242dfb6f7b46d17b exp=cb65f2dfd46127fc_242dfb6f7b466f94
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 795001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=74 ph=1 rd_addr=70 wr_addr=70 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=7e14489ac8b6ef44e745b3fa5fba3bc0 exp=7e14489ac8b631e9_e745b3fa5fba852f
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 805001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=75 ph=1 rd_addr=77 wr_addr=77 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=95c40651fdc7dd7ba6fc6809429f1c09 exp=95c40651fdc703d6_a6fc6809429fa2e6
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 815001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=76 ph=1 rd_addr=84 wr_addr=84 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=08f4dc2cee15336e661420a425f00656 exp=08f4dc2cee15edc3_661420a425f0b8b9
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 825001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=77 ph=1 rd_addr=91 wr_addr=91 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=bfa495eb832a2105294cd93308d5689f exp=bfa495eb832affa8_294cd93308d5d670
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 835001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=78 ph=1 rd_addr=98 wr_addr=98 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=d35763a6b47b1738e8e49e4eebce52e4 exp=d35763a6b47bc995_e8e49e4eebceec0b
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(764) @ 845001: uvm_test_top.env.scoreboard [DPI_MISMATCH] tx=79 ph=1 rd_addr=105 wr_addr=105 out_val=1/1 conf=0/0 sec=0/0 ded=0/0 syn=0000/0000 rdata=4607397da888052fa81b56ddce23b72d exp=4607397da888db82_a81b56ddce2309c2
+UVM_FATAL /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_sram_mem/groq_sram_mem_uvm_pkg.sv(856) @ 140010000: uvm_test_top [UVM_SRAM_REJECTED] UVM SRAM qualification failed: driven=2729 checked=2729 mismatches=16 cov=100.00%
+UVM_INFO /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_report_server.svh(1009) @ 140010000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :    3
+UVM_WARNING :    2
+UVM_ERROR :   16
+UVM_FATAL :    1
+** Report counts by id
+[DPI_MISMATCH]    16
+[NO_DPI_USED]     1
+[NO_VISIT_CHECK]     1
+[RNTST]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+[UVM_SRAM_REJECTED]     1
+
+- /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_root.svh:183: Verilog $finish

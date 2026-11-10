@@ -1,0 +1,1258 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `
+        read_verilog -sv -Irtl -Isram_ip rtl/groq_icu_slice.sv;
+        
+        chformal -remove;
+        synth -top groq_icu_slice -noabc;
+        dfflibmap -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+        abc -fast -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+        stat -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+        write_verilog -noattr synth/groq_icu_slice_asap7_netlist.v
+    ' --
+
+1. Executing Verilog-2005 frontend: rtl/groq_icu_slice.sv
+Parsing SystemVerilog input from `rtl/groq_icu_slice.sv' to AST representation.
+verilog frontend filename rtl/groq_icu_slice.sv
+Generating RTLIL representation for module `\groq_icu_slice'.
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_icu_slice
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_icu_slice
+Removed 0 unused modules.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 51 switch rules as full_case in process $proc$rtl/groq_icu_slice.sv:143$308 in module groq_icu_slice.
+Marked 8 switch rules as full_case in process $proc$rtl/groq_icu_slice.sv:89$9 in module groq_icu_slice.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 124 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~91 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+     1/63: $0\slice_halted_q[7:0] [7]
+     2/63: $0\slice_halted_q[7:0] [6]
+     3/63: $0\sync_mask_q[63:0] [55:48]
+     4/63: $0\barrier_waiting_q[7:0] [6]
+     5/63: $0\nop_active_q[7:0] [6]
+     6/63: $0\nop_timer_q[127:0] [111:96]
+     7/63: $0\pc_slice_q[127:0] [111:96]
+     8/63: $0\slice_halted_q[7:0] [5]
+     9/63: $0\sync_mask_q[63:0] [47:40]
+    10/63: $0\barrier_waiting_q[7:0] [5]
+    11/63: $0\nop_active_q[7:0] [5]
+    12/63: $0\nop_timer_q[127:0] [95:80]
+    13/63: $0\pc_slice_q[127:0] [95:80]
+    14/63: $0\slice_halted_q[7:0] [4]
+    15/63: $0\sync_mask_q[63:0] [39:32]
+    16/63: $0\barrier_waiting_q[7:0] [4]
+    17/63: $0\nop_active_q[7:0] [4]
+    18/63: $0\nop_timer_q[127:0] [79:64]
+    19/63: $0\pc_slice_q[127:0] [79:64]
+    20/63: $0\slice_halted_q[7:0] [3]
+    21/63: $0\sync_mask_q[63:0] [31:24]
+    22/63: $0\barrier_waiting_q[7:0] [3]
+    23/63: $0\nop_active_q[7:0] [3]
+    24/63: $0\nop_timer_q[127:0] [63:48]
+    25/63: $0\pc_slice_q[127:0] [63:48]
+    26/63: $0\slice_halted_q[7:0] [2]
+    27/63: $0\sync_mask_q[63:0] [23:16]
+    28/63: $0\barrier_waiting_q[7:0] [2]
+    29/63: $0\nop_active_q[7:0] [2]
+    30/63: $0\nop_timer_q[127:0] [47:32]
+    31/63: $0\pc_slice_q[127:0] [47:32]
+    32/63: $0\slice_halted_q[7:0] [1]
+    33/63: $0\sync_mask_q[63:0] [15:8]
+    34/63: $0\barrier_waiting_q[7:0] [1]
+    35/63: $0\nop_active_q[7:0] [1]
+    36/63: $0\nop_timer_q[127:0] [31:16]
+    37/63: $0\pc_slice_q[127:0] [31:16]
+    38/63: $0\slice_halted_q[7:0] [0]
+    39/63: $0\sync_mask_q[63:0] [7:0]
+    40/63: $0\barrier_waiting_q[7:0] [0]
+    41/63: $0\nop_active_q[7:0] [0]
+    42/63: $0\nop_timer_q[127:0] [15:0]
+    43/63: $0\pc_slice_q[127:0] [15:0]
+    44/63: $0\notify_latched_q[7:0] [6]
+    45/63: $0\notify_latched_q[7:0] [5]
+    46/63: $0\notify_latched_q[7:0] [4]
+    47/63: $0\notify_latched_q[7:0] [3]
+    48/63: $0\notify_latched_q[7:0] [2]
+    49/63: $0\notify_latched_q[7:0] [1]
+    50/63: $0\notify_latched_q[7:0] [0]
+    51/63: $1$fordecl_block$7.s[31:0]$315
+    52/63: $1$fordecl_block$5.s[31:0]$314
+    53/63: $0\realsync_cycle_cnt_q[63:0]
+    54/63: $1$fordecl_block$3.s[31:0]$313
+    55/63: $0\barrier_release_cnt_q[15:0]
+    56/63: $0\realsync_deskew_q[15:0]
+    57/63: $0\barrier_waiting_q[7:0] [7]
+    58/63: $2$fordecl_block$5.s[31:0]$317
+    59/63: $0\nop_active_q[7:0] [7]
+    60/63: $0\nop_timer_q[127:0] [127:112]
+    61/63: $0\sync_mask_q[63:0] [63:56]
+    62/63: $0\pc_slice_q[127:0] [127:112]
+    63/63: $0\notify_latched_q[7:0] [7]
+Creating decoders for process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+     1/8: $8\active_sync_mask[7:0]
+     2/8: $7\active_sync_mask[7:0]
+     3/8: $6\active_sync_mask[7:0]
+     4/8: $5\active_sync_mask[7:0]
+     5/8: $4\active_sync_mask[7:0]
+     6/8: $3\active_sync_mask[7:0]
+     7/8: $2\active_sync_mask[7:0]
+     8/8: $1\active_sync_mask[7:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_icu_slice.\imem_fetch_en_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\pc_slice_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_vliw_valid_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_vliw_bundle_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_nop_timer_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_halted_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_waiting_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_ready_mask_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_release_pulse_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_release_cnt_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_cycle_cnt_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_deskew_offset_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_aligned_time_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_drift_fault_o' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\s_icu_op' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\s_sync_mask' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\s_nop_cnt' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\s_imm16' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_entering_sync' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_sync_active' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\active_sync_mask' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.\abs_deskew' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+No latch inferred for signal `\groq_icu_slice.$fordecl_block$1.s' from process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_icu_slice.\pc_slice_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1415' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\nop_active_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1420' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\nop_timer_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1425' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\barrier_waiting_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1430' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\sync_mask_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1435' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\notify_latched_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1440' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\slice_halted_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1445' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\realsync_cycle_cnt_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1450' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\realsync_deskew_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1455' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\barrier_release_cnt_q' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1460' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.$fordecl_block$3.s' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $adff cell `$procdff$1465' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.$fordecl_block$5.s' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $dff cell `$procdff$1472' with positive edge clock.
+Creating register for signal `\groq_icu_slice.$fordecl_block$7.s' using process `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+  created $dff cell `$procdff$1479' with positive edge clock.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 83 empty switches in `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+Removing empty process `groq_icu_slice.$proc$rtl/groq_icu_slice.sv:143$308'.
+Found and cleaned up 8 empty switches in `\groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+Removing empty process `groq_icu_slice.$proc$rtl/groq_icu_slice.sv:89$9'.
+Cleaned up 91 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~44 debug messages>
+
+2.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 28 unused cells and 478 unused wires.
+<suppressed ~29 debug messages>
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module groq_icu_slice...
+Found and reported 0 problems.
+
+2.6. Executing OPT pass (performing simple optimizations).
+
+2.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~564 debug messages>
+Removed a total of 188 cells.
+
+2.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $procmux$1035: \slice_halted_q [1] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1032: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1029: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1026: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1024: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1078: \nop_active_q [1] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1074: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1071: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1069: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1067: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1144: \slice_halted_q [0] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1141: \slice_halted_q [0] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1138: \slice_halted_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1135: \slice_halted_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1133: \slice_halted_q [0] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1187: \nop_active_q [0] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1183: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1180: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1178: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1176: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1314: \nop_active_q [7] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1310: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1307: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1305: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1303: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port B of cell $procmux$476: \slice_halted_q [7] -> 1'1
+      Replacing known input bits on port B of cell $procmux$473: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port B of cell $procmux$470: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$467: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$465: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port B of cell $procmux$490: \slice_halted_q [6] -> 1'1
+      Replacing known input bits on port B of cell $procmux$487: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port B of cell $procmux$484: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$481: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$479: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port B of cell $procmux$533: \nop_active_q [6] -> 1'1
+      Replacing known input bits on port B of cell $procmux$529: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$526: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$524: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$522: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port B of cell $procmux$599: \slice_halted_q [5] -> 1'1
+      Replacing known input bits on port B of cell $procmux$596: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port B of cell $procmux$593: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$590: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$588: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port B of cell $procmux$642: \nop_active_q [5] -> 1'1
+      Replacing known input bits on port B of cell $procmux$638: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$635: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$633: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$631: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port B of cell $procmux$708: \slice_halted_q [4] -> 1'1
+      Replacing known input bits on port B of cell $procmux$705: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port B of cell $procmux$702: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$699: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$697: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port B of cell $procmux$751: \nop_active_q [4] -> 1'1
+      Replacing known input bits on port B of cell $procmux$747: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$744: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$742: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$740: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port B of cell $procmux$817: \slice_halted_q [3] -> 1'1
+      Replacing known input bits on port B of cell $procmux$814: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port B of cell $procmux$811: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$808: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$806: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port B of cell $procmux$860: \nop_active_q [3] -> 1'1
+      Replacing known input bits on port B of cell $procmux$856: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$853: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$851: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$849: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port B of cell $procmux$926: \slice_halted_q [2] -> 1'1
+      Replacing known input bits on port B of cell $procmux$923: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port B of cell $procmux$920: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$917: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$915: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port B of cell $procmux$969: \nop_active_q [2] -> 1'1
+      Replacing known input bits on port B of cell $procmux$965: \nop_active_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$962: \nop_active_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$960: \nop_active_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$958: \nop_active_q [2] -> 1'0
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~414 debug messages>
+
+2.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+2.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 0 unused cells and 203 unused wires.
+<suppressed ~1 debug messages>
+
+2.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~411 debug messages>
+
+2.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.7. Executing FSM pass (extract and optimize FSM).
+
+2.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking groq_icu_slice.slice_halted_q as FSM state register:
+    Register is connected to module port.
+    Users of register don't seem to benefit from recoding.
+
+2.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~411 debug messages>
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$1460 ($adff) from module groq_icu_slice (D = $add$rtl/groq_icu_slice.sv:161$318_Y, Q = \barrier_release_cnt_q).
+Adding EN signal on $procdff$1455 ($adff) from module groq_icu_slice (D = $0\realsync_deskew_q[15:0], Q = \realsync_deskew_q).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [0], Q = \notify_latched_q [0]).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [1], Q = \notify_latched_q [1]).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [2], Q = \notify_latched_q [2]).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [3], Q = \notify_latched_q [3]).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [4], Q = \notify_latched_q [4]).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [5], Q = \notify_latched_q [5]).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [6], Q = \notify_latched_q [6]).
+Adding EN signal on $procdff$1440 ($adff) from module groq_icu_slice (D = $0\notify_latched_q[7:0] [7], Q = \notify_latched_q [7]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$1150_Y [7:1], Q = \sync_mask_q [7:1]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = { $procmux$1041_Y [7:2] $procmux$1041_Y [0] }, Q = { \sync_mask_q [15:10] \sync_mask_q [8] }).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = { $procmux$932_Y [7:3] $procmux$932_Y [1:0] }, Q = { \sync_mask_q [23:19] \sync_mask_q [17:16] }).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = { $procmux$823_Y [7:4] $procmux$823_Y [2:0] }, Q = { \sync_mask_q [31:28] \sync_mask_q [26:24] }).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = { $procmux$714_Y [7:5] $procmux$714_Y [3:0] }, Q = { \sync_mask_q [39:37] \sync_mask_q [35:32] }).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = { $procmux$605_Y [7:6] $procmux$605_Y [4:0] }, Q = { \sync_mask_q [47:46] \sync_mask_q [44:40] }).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = { $procmux$496_Y [7] $procmux$496_Y [5:0] }, Q = { \sync_mask_q [55] \sync_mask_q [53:48] }).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$1347_Y [6:0], Q = \sync_mask_q [62:56]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$1150_Y [0], Q = \sync_mask_q [0]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$1041_Y [1], Q = \sync_mask_q [9]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$932_Y [2], Q = \sync_mask_q [18]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$823_Y [3], Q = \sync_mask_q [27]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$714_Y [4], Q = \sync_mask_q [36]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$605_Y [5], Q = \sync_mask_q [45]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$496_Y [6], Q = \sync_mask_q [54]).
+Adding EN signal on $procdff$1435 ($adff) from module groq_icu_slice (D = $procmux$1347_Y [7], Q = \sync_mask_q [63]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [0]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [1]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [2]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [3]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [4]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [5]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [6]).
+Adding EN signal on $procdff$1430 ($adff) from module groq_icu_slice (D = $procmux$1053_Y, Q = \barrier_waiting_q [7]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$1211_Y, Q = \nop_timer_q [15:0]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$1102_Y, Q = \nop_timer_q [31:16]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$993_Y, Q = \nop_timer_q [47:32]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$884_Y, Q = \nop_timer_q [63:48]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$775_Y, Q = \nop_timer_q [79:64]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$666_Y, Q = \nop_timer_q [95:80]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$557_Y, Q = \nop_timer_q [111:96]).
+Adding EN signal on $procdff$1425 ($adff) from module groq_icu_slice (D = $procmux$1338_Y, Q = \nop_timer_q [127:112]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$1189_Y, Q = \nop_active_q [0]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$1080_Y, Q = \nop_active_q [1]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$971_Y, Q = \nop_active_q [2]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$862_Y, Q = \nop_active_q [3]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$753_Y, Q = \nop_active_q [4]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$644_Y, Q = \nop_active_q [5]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$535_Y, Q = \nop_active_q [6]).
+Adding EN signal on $procdff$1420 ($adff) from module groq_icu_slice (D = $procmux$1316_Y, Q = \nop_active_q [7]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$1236_Y, Q = \pc_slice_q [15:0]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$1127_Y, Q = \pc_slice_q [31:16]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$1018_Y, Q = \pc_slice_q [47:32]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$909_Y, Q = \pc_slice_q [63:48]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$800_Y, Q = \pc_slice_q [79:64]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$691_Y, Q = \pc_slice_q [95:80]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$582_Y, Q = \pc_slice_q [111:96]).
+Adding EN signal on $procdff$1415 ($adff) from module groq_icu_slice (D = $procmux$1377_Y, Q = \pc_slice_q [127:112]).
+
+2.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 113 unused cells and 70 unused wires.
+<suppressed ~114 debug messages>
+
+2.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~41 debug messages>
+
+2.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~321 debug messages>
+
+2.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~168 debug messages>
+Removed a total of 56 cells.
+
+2.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 0 unused cells and 56 unused wires.
+<suppressed ~1 debug messages>
+
+2.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~321 debug messages>
+
+2.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$17 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$31 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$53 ($eq).
+Removed top 24 bits (of 32) from port B of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$58 ($or).
+Removed top 24 bits (of 32) from port Y of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$58 ($or).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$67 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$89 ($eq).
+Removed top 24 bits (of 32) from port B of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$94 ($or).
+Removed top 24 bits (of 32) from port Y of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$94 ($or).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$103 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$125 ($eq).
+Removed top 24 bits (of 32) from port B of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$130 ($or).
+Removed top 24 bits (of 32) from port Y of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$130 ($or).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$139 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$161 ($eq).
+Removed top 24 bits (of 32) from port B of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$166 ($or).
+Removed top 24 bits (of 32) from port Y of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$166 ($or).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$175 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$197 ($eq).
+Removed top 24 bits (of 32) from port B of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$202 ($or).
+Removed top 24 bits (of 32) from port Y of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$202 ($or).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$211 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$233 ($eq).
+Removed top 24 bits (of 32) from port B of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$238 ($or).
+Removed top 24 bits (of 32) from port Y of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$238 ($or).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$247 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:99$269 ($eq).
+Removed top 24 bits (of 32) from port B of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$274 ($or).
+Removed top 24 bits (of 32) from port Y of cell groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$274 ($or).
+Removed top 2 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:112$283 ($eq).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$lt$rtl/groq_icu_slice.sv:135$304 ($lt).
+Removed top 8 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:136$307 ($gt).
+Removed top 63 bits (of 64) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:158$316 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:161$318 ($add).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$eq$rtl/groq_icu_slice.sv:179$398 ($eq).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$400 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$401 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$402 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$405 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$408 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$409 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$410 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$413 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$416 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$417 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$418 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$421 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$424 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$425 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$426 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$429 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$432 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$433 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$434 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$437 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$440 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$441 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$442 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$445 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$448 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$449 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$450 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$453 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:188$456 ($gt).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$sub$rtl/groq_icu_slice.sv:189$457 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$add$rtl/groq_icu_slice.sv:194$458 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_icu_slice.$gt$rtl/groq_icu_slice.sv:211$461 ($gt).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$480_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$525_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$565_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$589_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$634_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$674_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$698_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$743_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$783_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$807_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$852_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$892_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1000_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1001_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$1005_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1025_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$1070_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1110_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1134_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$1179_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1219_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_icu_slice.$procmux$1306_CMP0 ($eq).
+Removed top 1 bits (of 8) from mux cell groq_icu_slice.$procmux$1347 ($mux).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1359_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_icu_slice.$procmux$1360_CMP0 ($eq).
+Removed top 1 bits (of 8) from mux cell groq_icu_slice.$procmux$1344 ($mux).
+Removed top 24 bits (of 32) from wire groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$130_Y.
+Removed top 24 bits (of 32) from wire groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$166_Y.
+Removed top 24 bits (of 32) from wire groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$202_Y.
+Removed top 24 bits (of 32) from wire groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$238_Y.
+Removed top 24 bits (of 32) from wire groq_icu_slice.$or$rtl/groq_icu_slice.sv:103$274_Y.
+Removed top 6 bits (of 8) from wire groq_icu_slice.$procmux$1038_Y.
+Removed top 7 bits (of 8) from wire groq_icu_slice.$procmux$1147_Y.
+Removed top 1 bits (of 8) from wire groq_icu_slice.$procmux$1347_Y.
+Removed top 1 bits (of 8) from wire groq_icu_slice.$procmux$493_Y.
+Removed top 2 bits (of 8) from wire groq_icu_slice.$procmux$602_Y.
+Removed top 3 bits (of 8) from wire groq_icu_slice.$procmux$711_Y.
+Removed top 4 bits (of 8) from wire groq_icu_slice.$procmux$820_Y.
+Removed top 5 bits (of 8) from wire groq_icu_slice.$procmux$929_Y.
+Removed top 29 bits (of 64) from wire groq_icu_slice.realsync_cycle_cnt_q.
+Removed top 1 bits (of 8) from wire groq_icu_slice.slice_halted_q.
+Removed top 1 bits (of 64) from wire groq_icu_slice.sync_mask_q.
+
+2.10. Executing PEEPOPT pass (run peephole optimizers).
+
+2.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 0 unused cells and 24 unused wires.
+<suppressed ~1 debug messages>
+
+2.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module groq_icu_slice:
+  creating $macc model for $add$rtl/groq_icu_slice.sv:133$303 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:158$316 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:161$318 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$402 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$410 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$418 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$426 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$434 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$442 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$450 ($add).
+  creating $macc model for $add$rtl/groq_icu_slice.sv:194$458 ($add).
+  creating $macc model for $neg$rtl/groq_icu_slice.sv:135$305 ($neg).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$401 ($sub).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$409 ($sub).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$417 ($sub).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$425 ($sub).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$433 ($sub).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$441 ($sub).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$449 ($sub).
+  creating $macc model for $sub$rtl/groq_icu_slice.sv:189$457 ($sub).
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$457.
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$449.
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$441.
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$433.
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$425.
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$417.
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$409.
+  creating $alu model for $macc $sub$rtl/groq_icu_slice.sv:189$401.
+  creating $alu model for $macc $neg$rtl/groq_icu_slice.sv:135$305.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$458.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$450.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$442.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$434.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$426.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$418.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$410.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:194$402.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:161$318.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:158$316.
+  creating $alu model for $macc $add$rtl/groq_icu_slice.sv:133$303.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:136$307 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$400 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$401.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$408 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$409.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$416 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$417.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$424 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$425.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$432 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$433.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$440 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$441.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$448 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$449.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:188$456 ($gt): merged with $sub$rtl/groq_icu_slice.sv:189$457.
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$405 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$413 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$421 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$429 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$437 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$445 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$453 ($gt): new $alu
+  creating $alu model for $gt$rtl/groq_icu_slice.sv:211$461 ($gt): new $alu
+  creating $alu model for $lt$rtl/groq_icu_slice.sv:135$304 ($lt): new $alu
+  creating $alu cell for $lt$rtl/groq_icu_slice.sv:135$304: $auto$alumacc.cc:512:replace_alu$1950
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$461: $auto$alumacc.cc:512:replace_alu$1957
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$453: $auto$alumacc.cc:512:replace_alu$1968
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$445: $auto$alumacc.cc:512:replace_alu$1979
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$437: $auto$alumacc.cc:512:replace_alu$1990
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$429: $auto$alumacc.cc:512:replace_alu$2001
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$421: $auto$alumacc.cc:512:replace_alu$2012
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$413: $auto$alumacc.cc:512:replace_alu$2023
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:211$405: $auto$alumacc.cc:512:replace_alu$2034
+  creating $alu cell for $gt$rtl/groq_icu_slice.sv:136$307: $auto$alumacc.cc:512:replace_alu$2045
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:133$303: $auto$alumacc.cc:512:replace_alu$2058
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:158$316: $auto$alumacc.cc:512:replace_alu$2061
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:161$318: $auto$alumacc.cc:512:replace_alu$2064
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$402: $auto$alumacc.cc:512:replace_alu$2067
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$410: $auto$alumacc.cc:512:replace_alu$2070
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$418: $auto$alumacc.cc:512:replace_alu$2073
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$426: $auto$alumacc.cc:512:replace_alu$2076
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$434: $auto$alumacc.cc:512:replace_alu$2079
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$442: $auto$alumacc.cc:512:replace_alu$2082
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$450: $auto$alumacc.cc:512:replace_alu$2085
+  creating $alu cell for $add$rtl/groq_icu_slice.sv:194$458: $auto$alumacc.cc:512:replace_alu$2088
+  creating $alu cell for $neg$rtl/groq_icu_slice.sv:135$305: $auto$alumacc.cc:512:replace_alu$2091
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$401, $gt$rtl/groq_icu_slice.sv:188$400: $auto$alumacc.cc:512:replace_alu$2094
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$409, $gt$rtl/groq_icu_slice.sv:188$408: $auto$alumacc.cc:512:replace_alu$2105
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$417, $gt$rtl/groq_icu_slice.sv:188$416: $auto$alumacc.cc:512:replace_alu$2116
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$425, $gt$rtl/groq_icu_slice.sv:188$424: $auto$alumacc.cc:512:replace_alu$2127
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$433, $gt$rtl/groq_icu_slice.sv:188$432: $auto$alumacc.cc:512:replace_alu$2138
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$441, $gt$rtl/groq_icu_slice.sv:188$440: $auto$alumacc.cc:512:replace_alu$2149
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$449, $gt$rtl/groq_icu_slice.sv:188$448: $auto$alumacc.cc:512:replace_alu$2160
+  creating $alu cell for $sub$rtl/groq_icu_slice.sv:189$457, $gt$rtl/groq_icu_slice.sv:188$456: $auto$alumacc.cc:512:replace_alu$2171
+  created 30 $alu and 0 $macc cells.
+
+2.13. Executing SHARE pass (SAT-based resource sharing).
+
+2.14. Executing OPT pass (performing simple optimizations).
+
+2.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~75 debug messages>
+
+2.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~321 debug messages>
+
+2.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 1 unused cells and 64 unused wires.
+<suppressed ~11 debug messages>
+
+2.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $ternary$rtl/groq_icu_slice.sv:135$306: \realsync_deskew_q -> { 1'0 \realsync_deskew_q [14:0] }
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~321 debug messages>
+
+2.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.15. Executing MEMORY pass.
+
+2.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+2.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+2.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+2.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+2.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+2.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.17. Executing OPT pass (performing simple optimizations).
+
+2.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~202 debug messages>
+
+2.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~69 debug messages>
+Removed a total of 23 cells.
+
+2.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 0 unused cells and 117 unused wires.
+<suppressed ~1 debug messages>
+
+2.17.5. Finished fast OPT passes.
+
+2.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~1 debug messages>
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+2.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~174 debug messages>
+
+2.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+    New ctrl vector for $pmux cell $procmux$1108: $procmux$1110_CMP
+    New ctrl vector for $pmux cell $procmux$1217: $procmux$1219_CMP
+    New ctrl vector for $pmux cell $procmux$1358: $procmux$1360_CMP
+    New ctrl vector for $pmux cell $procmux$563: $procmux$565_CMP
+    New ctrl vector for $pmux cell $procmux$672: $procmux$674_CMP
+    New ctrl vector for $pmux cell $procmux$781: $procmux$783_CMP
+    New ctrl vector for $pmux cell $procmux$890: $procmux$892_CMP
+    New ctrl vector for $pmux cell $procmux$999: $procmux$1001_CMP
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 8 changes.
+
+2.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.19.6. Executing OPT_SHARE pass.
+
+2.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+2.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~174 debug messages>
+
+2.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+2.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+2.19.14. Executing OPT_SHARE pass.
+
+2.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+2.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+2.19.18. Finished fast OPT passes. (There is nothing left to do.)
+
+2.20. Executing TECHMAP pass (map to technology primitives).
+
+2.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+2.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$a1665ef28c749ebcdbe9aecd466e644647b56463\_90_alu for cells of type $alu.
+Using template $paramod$02488ff6fa51b28bbfa470bdd9b0e548b3357746\_90_alu for cells of type $alu.
+Using template $paramod$2af30114e9bd4ccb04dad757b3f0a8f6bf0615b0\_90_alu for cells of type $alu.
+Using template $paramod$cc80a4e89b0341cb117f5d28b0e7244620640141\_90_alu for cells of type $alu.
+Using template $paramod$039520c137afc9cd69dd56c3fb11a4e1fbe5f664\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$f969c13a21667a9c7a4135f0c027e5d916b33590\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001010 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000001000000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000001000000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~3299 debug messages>
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~3636 debug messages>
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~1026 debug messages>
+Removed a total of 342 cells.
+
+2.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 301 unused cells and 2102 unused wires.
+<suppressed ~302 debug messages>
+
+2.21.5. Finished fast OPT passes.
+
+2.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `groq_icu_slice'. Setting top module to groq_icu_slice.
+
+2.22.1. Analyzing design hierarchy..
+Top module:  \groq_icu_slice
+
+2.22.2. Analyzing design hierarchy..
+Top module:  \groq_icu_slice
+Removed 0 unused modules.
+
+2.23. Printing statistics.
+
+=== groq_icu_slice ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1392 wires
+     7438 wire bits
+       39 public wires
+     3599 public wire bits
+       21 ports
+     2790 port bits
+     5197 cells
+     1198   $_AND_
+        8   $_DFFE_PN0N_
+      360   $_DFFE_PN0P_
+       72   $_DFF_PN0_
+     2030   $_MUX_
+      412   $_NOT_
+      646   $_OR_
+      471   $_XOR_
+
+2.24. Executing CHECK pass (checking for obvious problems).
+Checking module groq_icu_slice...
+Found and reported 0 problems.
+
+3. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFFLQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_N_.
+  cell DFFHQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_P_.
+  cell DFFASRHQNx1_ASAP7_75t_R (inv, pins=5, area=0.38) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    \DFFLQNx1_ASAP7_75t_R _DFF_N_ (.CLK( C), .D( D), .QN(~Q));
+    \DFFHQNx1_ASAP7_75t_R _DFF_P_ (.CLK( C), .D( D), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    unmapped dff cell: $_DFF_PN0_
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFASRHQNx1_ASAP7_75t_R _DFFSR_PNN_ (.CLK( C), .D( D), .QN(~Q), .RESETN( R), .SETN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+3.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~8 debug messages>
+Mapping DFF cells in module `\groq_icu_slice':
+  mapped 440 $_DFFSR_PNN_ cells to \DFFASRHQNx1_ASAP7_75t_R cells.
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Extracting gate netlist of module `\groq_icu_slice' to `<abc-temp-dir>/input.blif'..
+
+4.1.1. Executed ABC.
+Extracted 5565 gates and 7185 wires to a netlist network with 1618 inputs and 2050 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.28 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFASRHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx1_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx3_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5p33DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx6p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx8DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx4_ASAP7_75t_R".
+ABC: Library "asap7_rvt_ff" from "/nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib" has 169 cells (33 skipped: 23 seq; 0 tri-state; 10 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.38 sec
+ABC: Memory =   82.23 MB. Time =     0.38 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FAx1_ASAP7_75t_R").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:   A2O1A1Ixp33_ASAP7_75t_R cells:      491
+ABC RESULTS:   A2O1A1O1Ixp25_ASAP7_75t_R cells:        3
+ABC RESULTS:   AND2x2_ASAP7_75t_R cells:        8
+ABC RESULTS:   AND3x1_ASAP7_75t_R cells:     1051
+ABC RESULTS:   AND4x2_ASAP7_75t_R cells:        9
+ABC RESULTS:   AO211x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   AO21x1_ASAP7_75t_R cells:       49
+ABC RESULTS:   AO32x1_ASAP7_75t_R cells:        5
+ABC RESULTS:   AOI211xp5_ASAP7_75t_R cells:        3
+ABC RESULTS:   AOI21xp33_ASAP7_75t_R cells:      137
+ABC RESULTS:   AOI221xp5_ASAP7_75t_R cells:        8
+ABC RESULTS:   AOI22xp33_ASAP7_75t_R cells:        1
+ABC RESULTS:   AOI311xp33_ASAP7_75t_R cells:        8
+ABC RESULTS:   AOI31xp33_ASAP7_75t_R cells:       21
+ABC RESULTS:   AOI32xp33_ASAP7_75t_R cells:        2
+ABC RESULTS:   HB1xp67_ASAP7_75t_R cells:        1
+ABC RESULTS:   INVx1_ASAP7_75t_R cells:      672
+ABC RESULTS:   MAJIxp5_ASAP7_75t_R cells:       28
+ABC RESULTS:   MAJx2_ASAP7_75t_R cells:        1
+ABC RESULTS:   NAND2xp33_ASAP7_75t_R cells:      649
+ABC RESULTS:   NAND3xp33_ASAP7_75t_R cells:      144
+ABC RESULTS:   NAND4xp25_ASAP7_75t_R cells:       31
+ABC RESULTS:   NAND5xp2_ASAP7_75t_R cells:      150
+ABC RESULTS:   NOR2xp33_ASAP7_75t_R cells:      520
+ABC RESULTS:   NOR3xp33_ASAP7_75t_R cells:      130
+ABC RESULTS:   NOR4xp25_ASAP7_75t_R cells:      121
+ABC RESULTS:   NOR5xp2_ASAP7_75t_R cells:       37
+ABC RESULTS:   O2A1O1Ixp33_ASAP7_75t_R cells:       15
+ABC RESULTS:   OA21x2_ASAP7_75t_R cells:       32
+ABC RESULTS:   OAI211xp5_ASAP7_75t_R cells:      114
+ABC RESULTS:   OAI21xp33_ASAP7_75t_R cells:      295
+ABC RESULTS:   OAI221xp5_ASAP7_75t_R cells:       16
+ABC RESULTS:   OAI311xp33_ASAP7_75t_R cells:        8
+ABC RESULTS:   OAI31xp33_ASAP7_75t_R cells:        7
+ABC RESULTS:   OR3x1_ASAP7_75t_R cells:       37
+ABC RESULTS:   OR4x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   XNOR2x2_ASAP7_75t_R cells:      232
+ABC RESULTS:   XOR2x2_ASAP7_75t_R cells:       53
+ABC RESULTS:        internal signals:     3517
+ABC RESULTS:           input signals:     1618
+ABC RESULTS:          output signals:     2050
+Removing temp directory.
+Removing global temp directory.
+
+5. Printing statistics.
+
+=== groq_icu_slice ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     8909        - wires
+    14955        - wire bits
+       39        - public wires
+     3599        - public wire bits
+       21        - ports
+     2790        - port bits
+     5531    564.1 cells
+      491   42.953   A2O1A1Ixp33_ASAP7_75t_R
+        3    0.394   A2O1A1O1Ixp25_ASAP7_75t_R
+        8      0.7   AND2x2_ASAP7_75t_R
+     1051   91.941   AND3x1_ASAP7_75t_R
+        9     1.05   AND4x2_ASAP7_75t_R
+        1    0.233   AO211x2_ASAP7_75t_R
+       49    4.287   AO21x1_ASAP7_75t_R
+        5    0.583   AO32x1_ASAP7_75t_R
+        3    0.262   AOI211xp5_ASAP7_75t_R
+      137    9.987   AOI21xp33_ASAP7_75t_R
+        8    0.816   AOI221xp5_ASAP7_75t_R
+        1    0.087   AOI22xp33_ASAP7_75t_R
+        8    0.816   AOI311xp33_ASAP7_75t_R
+       21    1.837   AOI31xp33_ASAP7_75t_R
+        2    0.204   AOI32xp33_ASAP7_75t_R
+      440  166.795   DFFASRHQNx1_ASAP7_75t_R
+        1    0.058   HB1xp67_ASAP7_75t_R
+      672   29.393   INVx1_ASAP7_75t_R
+       28    2.858   MAJIxp5_ASAP7_75t_R
+        1    0.131   MAJx2_ASAP7_75t_R
+      649    37.85   NAND2xp33_ASAP7_75t_R
+      144   10.498   NAND3xp33_ASAP7_75t_R
+       31    2.712   NAND4xp25_ASAP7_75t_R
+      150   15.309   NAND5xp2_ASAP7_75t_R
+      520   30.326   NOR2xp33_ASAP7_75t_R
+      130    9.477   NOR3xp33_ASAP7_75t_R
+      121   10.585   NOR4xp25_ASAP7_75t_R
+       37    3.776   NOR5xp2_ASAP7_75t_R
+       15    1.312   O2A1O1Ixp33_ASAP7_75t_R
+       32    3.266   OA21x2_ASAP7_75t_R
+      114    9.973   OAI211xp5_ASAP7_75t_R
+      295   21.506   OAI21xp33_ASAP7_75t_R
+       16    1.633   OAI221xp5_ASAP7_75t_R
+        8    0.816   OAI311xp33_ASAP7_75t_R
+        7    0.612   OAI31xp33_ASAP7_75t_R
+       37    3.237   OR3x1_ASAP7_75t_R
+        1    0.117   OR4x2_ASAP7_75t_R
+      232   37.208   XNOR2x2_ASAP7_75t_R
+       53      8.5   XOR2x2_ASAP7_75t_R
+
+   Chip area for module '\groq_icu_slice': 564.100200
+     of which used for sequential elements: 166.795200 (29.57%)
+
+6. Executing Verilog backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Dumping module `\groq_icu_slice'.
+
+End of script. Logfile hash: 94b2281d50, CPU: user 1.24s system 0.08s, MEM: 149.17 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 44% 1x abc (0 sec), 10% 2x stat (0 sec), ...

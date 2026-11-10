@@ -1,0 +1,29 @@
+================================================================================
+Stage 15: Groq LPU Deterministic Spatial VLIW Compiler & Static Verifier Suite
+================================================================================
+[PASS] workload1_attention_rope_kv_ring (w1): nodes=14, edges=11, cycles=30, unrolled_bundles=240, nop_delay_compressed=41 (5.85x), collisions=0, bank_conflicts=0, uninit_reads=0, flight_eq_violations=0, gm_collisions=0
+[PASS] workload2_swiglu_fp8_realsync_allreduce (w2): nodes=16, edges=13, cycles=47, unrolled_bundles=752, nop_delay_compressed=62 (12.13x), collisions=0, bank_conflicts=0, uninit_reads=0, flight_eq_violations=0, gm_collisions=0
+[PASS] workload3_deepseek_mla_moe_dispatch (w3): nodes=19, edges=15, cycles=44, unrolled_bundles=704, nop_delay_compressed=67 (10.51x), collisions=0, bank_conflicts=0, uninit_reads=0, flight_eq_violations=0, gm_collisions=0
+--------------------------------------------------------------------------------
+[NEGATIVE HAZARD INJECTION QUALIFICATION]
+  [PASS] Negative Hazard Test 1 (Injected Stream Write Collision): REJECTED as expected (collisions=1) -> [UNINIT_READ] Chip 0 Cycle 1 Hop 2 (SLICE_SXM): SXM_OP(7) read uninitialized East stream 0!
+  [PASS] Negative Hazard Test 2 (Injected Same-Bank SRAM Conflict): REJECTED as expected (bank_conflicts=2) -> [BANK_CONFLICT] Chip 0 Cycle 0 Hop 1 (SLICE_MEM_W): Simultaneous SRAM Read/Write on Bank 0!
+  [PASS] Negative Hazard Test 3 (Injected +1-Cycle Timing Skew): REJECTED as expected (flight_violations=2, uninit_reads=2) -> [FLIGHT_EQ] Edge 1 (w1_rmsnorm -> w1_q_proj): t_consume(5) - t_issue(4) = 1 != L_slice(1) + |4 - 3|(1) = 2!
+  [PASS] Negative Hazard Test 4 (Injected Uninitialized Stream Read): REJECTED as expected (uninit_reads=2) -> [UNINIT_READ] Chip 0 Cycle 1 Hop 3 (SLICE_VXM): VXM_OP_A(1) read uninitialized East stream 15!
+--------------------------------------------------------------------------------
+[VERILATOR] Compiling tb_compiler_rtl_cosim.sv with Verilator 5.054...
+[VERILATOR] Executing RTL co-simulation binary compiler_rtl_cosim_sim...
+  [RTL-COSIM-DONE] total_rtl_cycles=775 runtime_faults=0
+- /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/compiler/tb_compiler_rtl_cosim.sv:357: Verilog $finish
+  [MATCH] W1_C0_E_B0_R8: DAG_Spec/Golden=6e3236fafec2464aced2165a5ea2a62a | RTL_Verilator=6e3236fafec2464aced2165a5ea2a62a
+  [MATCH] W1_C0_E_B1_R9: DAG_Spec/Golden=d88878a898487868180838e8d808f8a8 | RTL_Verilator=d88878a898487868180838e8d808f8a8
+  [MATCH] W1_C0_W_B2_R10: DAG_Spec/Golden=7f01017f7f7f7f7f7f371f7f5f011f01 | RTL_Verilator=7f01017f7f7f7f7f7f371f7f5f011f01
+  [MATCH] W2_C0_E_B0_R11: DAG_Spec/Golden=d7c0aa64ae346dc688504884609d4292 | RTL_Verilator=d7c0aa64ae346dc688504884609d4292
+  [MATCH] W2_C0_W_B3_R12: DAG_Spec/Golden=ecd7c430e01a28cfd537242132e3c2c9 | RTL_Verilator=ecd7c430e01a28cfd537242132e3c2c9
+  [MATCH] W2_C1_E_B2_R12: DAG_Spec/Golden=26f2c27fe65062a6a86232227f12c6ca | RTL_Verilator=26f2c27fe65062a6a86232227f12c6ca
+  [MATCH] W3_C0_E_B2_R13: DAG_Spec/Golden=f0486078906800187088a07890284098 | RTL_Verilator=f0486078906800187088a07890284098
+  [MATCH] W3_C0_E_B3_R14: DAG_Spec/Golden=ee874d4cd0790a2d7064c29fb8969b00 | RTL_Verilator=ee874d4cd0790a2d7064c29fb8969b00
+  [MATCH] W3_C1_E_B3_R15: DAG_Spec/Golden=b4239241b09f0ebd2c1b4ab928970675 | RTL_Verilator=b4239241b09f0ebd2c1b4ab928970675
+================================================================================
+STAGE 15 VERIFICATION RESULT: PASS (3/3 Workloads, 4/4 Negative Hazard Tests, 9/9 128-bit Vectors = 144 Lanes Bit-Exact, 0 Mismatches)
+================================================================================

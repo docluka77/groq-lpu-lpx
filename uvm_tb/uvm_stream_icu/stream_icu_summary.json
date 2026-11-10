@@ -1,0 +1,16 @@
+{
+  "suite": "uvm_stream_icu",
+  "dut": ["groq_stream_fabric", "groq_icu_slice"],
+  "driven_cycles": 2200,
+  "observed_cycles": 2200,
+  "checked_cycles": 2200,
+  "dpi_calls": 2200,
+  "stream_slice_checks": 35200,
+  "icu_slice_checks": 35200,
+  "collision_events": 2198,
+  "barrier_releases": 89,
+  "realsync_drift_events": 10,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

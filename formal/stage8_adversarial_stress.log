@@ -1,0 +1,5 @@
+STAGE 8 100,000-CYCLE ADVERSARIAL STRESS PASSED: 0 errors (mxm=100017 sxm=100017 vxm=100017 nim=100017 lpu=100017)
+- formal/tb_stage8_adversarial_stress.sv:492: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 100us; walltime 1.871 s; speed 53.461 us/s
+- Verilator: cpu 1.865 s on 1 threads; allocated 4 MB

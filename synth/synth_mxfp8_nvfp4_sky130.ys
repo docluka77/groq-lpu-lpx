@@ -1,0 +1,7 @@
+read_verilog -sv -Irtl rtl/groq_mxfp8_nvfp4_dot_engine.sv
+chformal -remove
+synth -top groq_mxfp8_nvfp4_dot_engine -noshare -noabc
+dfflibmap -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -fast -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+stat -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr synth/groq_mxfp8_nvfp4_dot_engine_sky130_netlist.v

@@ -1,0 +1,6 @@
+STAGE 23 C2C KV QUANT SIM COMPLETE: 1008 beats verified, 0 errors (0 errors expected)
+PASS: ALL STAGE 23 TESTS PASSED (0 ERRORS)
+- formal/tb_stage23_c2c_kv_quant.sv:212: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 5us; walltime 0.001 s; speed 4.034 ms/s
+- Verilator: cpu 0.001 s on 1 threads; allocated 2 MB

@@ -1,0 +1,17 @@
+{
+  "suite": "uvm_c2c_kv_quant",
+  "dut": ["groq_c2c_kv_quant_rx_engine", "groq_mxfp8_nvfp4_dot_engine"],
+  "driven_cycles": 3600,
+  "observed_cycles": 3600,
+  "checked_cycles": 3600,
+  "quant_checks": 3600,
+  "dot_checks": 3600,
+  "nan_clamped_events": 511,
+  "all_zero_vec_events": 21,
+  "closed_loop_dots": 3125,
+  "quant_mismatches": 0,
+  "dot_mismatches": 0,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

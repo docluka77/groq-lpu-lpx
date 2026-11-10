@@ -1,0 +1,14 @@
+{
+  "total_exec_cycles": 1206,
+  "total_tensor_checks": 704,
+  "total_bit_errors": 0,
+  "ecc_corrected_count": 4672,
+  "ecc_double_err_count": 0,
+  "stream_mismatch_vs_ecc_dut": 0,
+  "pcs_crc16_injected_count": 64,
+  "pcs_nack_replay_count": 64,
+  "total_c2c_flits_tx": 128,
+  "total_deskew_releases": 128,
+  "total_zero_skip_lanes": 597,
+  "dma_beats_transferred": 1040
+}

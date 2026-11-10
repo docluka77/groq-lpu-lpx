@@ -1,0 +1,19 @@
+{
+  "suite": "uvm_dragonfly_8chip",
+  "dut": "groq_dragonfly_8chip_cluster",
+  "driven_cycles": 3102,
+  "observed_cycles": 3102,
+  "checked_cycles": 3102,
+  "dpi_calls": 3102,
+  "c2c_payload_checks": 2145,
+  "dma_window_stall_events": 31,
+  "dma_parity_err_events": 11,
+  "crc16_err_events": 92,
+  "gbn_replay_recoveries": 288,
+  "ecc_sec_events": 75,
+  "ecc_ded_events": 75,
+  "deskew_release_events": 314,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

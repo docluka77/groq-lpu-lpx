@@ -1,0 +1,11 @@
+Coverage Summary:
+  line       :  19.0% ( 5229/27516)
+  toggle     :  99.3% (13363/13456)
+  branch     :   0.0% (    0/    0)
+  expr       :   0.0% (    0/    0)
+  fsm_state  :   0.0% (    0/    0)
+  fsm_arc    :   0.0% (    0/    0)
+  covergroup : 100.0% (   53/   53)
+Annotation Summary:
+  lines with all attached points covered : 11.4%  (2455/21447)
+See lines with '%00' in annotated_cov

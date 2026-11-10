@@ -1,0 +1,8 @@
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv
+prep -top groq_pcie_c2c_dma
+flatten
+opt -fast
+async2sync
+chformal -lower
+opt -fast
+sat -verify -seq 6 -set-init-zero -prove-asserts

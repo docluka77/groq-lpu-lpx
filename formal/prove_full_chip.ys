@@ -1,0 +1,21 @@
+# Yosys 0.60 Formal Verification Script for Full-Chip groq_lpu_top (Stage 8)
+read_verilog -sv -defer -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pkg.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_macro_sp.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_slice.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_stream_fabric.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_vxm_slice.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_nim_realsync.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_mxm_slice.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_lpu_top.sv
+
+read_verilog -sv -defer -DFORMAL_TOP -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/formal/groq_lpu_top_formal_bind.sv
+
+hierarchy -check -top groq_lpu_top_formal_bind -chparam P_MEM_BANKS 1 -chparam P_MEM_BANK_ID_W 1 -chparam P_MEM_ADDR_W 1
+proc
+chformal -remove A:top %n
+flatten
+delete t:$scopeinfo t:$mul t:$sshr t:$sshl
+delete c:*u_sxm* c:*u_vxm* c:*u_stream_fabric* c:*accum_q* c:*mac_delta* c:*weight_buf*
+rename -hide
+opt_clean -purge
+memory
+async2sync
+chformal -lower
+dffunmap
+opt_clean -purge
+opt -fast
+stat
+sat -verify -seq 2 -set-init-zero -prove-asserts

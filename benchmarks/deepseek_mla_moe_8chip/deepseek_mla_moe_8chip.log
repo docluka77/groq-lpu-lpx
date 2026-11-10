@@ -1,0 +1,50 @@
+================================================================================
+ STAGE 16: 8-CHIP DRAGONFLY DEEPSEEK-V3/R1 MLA + ROUTED MOE 4-TOKEN RTL LOG
+================================================================================
+[TOKEN 0 | CHIP 0 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=4f02fb5133e744b1b12aa024cc5fa8e2 -> h_peer=1e16ed2c2b01f30ef409e1e80bf2ccff -> y_final=29d7a918802a8019f480bc8005db017f | W4A8_FP32=7fc00000 NVFP4_FP32=42de0000 | bit_errs=0
+[TOKEN 0 | CHIP 1 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=1825d81cedcf47de18ceaf31ec02d022 -> h_peer=19f500f0f8eefcf70825f918180202ea -> y_final=7f992c2280b3899b1c807f807faa8016 | W4A8_FP32=c9e80f00 NVFP4_FP32=c2f80000 | bit_errs=0
+[TOKEN 0 | CHIP 2 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=2444cc94523804f0cf0e18371f360908 -> h_peer=efe126173401eabfd30fd9e2ea362f14 -> y_final=7faa3408f79f808080ebd4803f808008 | W4A8_FP32=7fc00000 NVFP4_FP32=c39f8000 | bit_errs=0
+[TOKEN 0 | CHIP 3 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=ee2b06146334e90ef6fd6f1167e2a3de -> h_peer=df35f0fc0cd7db1907ff00de182ce226 -> y_final=7f8b7f97eb8080808cb27fcaf780f080 | W4A8_FP32=7fc00000 NVFP4_FP32=42380000 | bit_errs=0
+[TOKEN 0 | CHIP 4 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=e6c9e8f8050939b3ec3807fe1d0407f7 -> h_peer=fd0ce515fdeae3c8fef3e7ff11f3f81e -> y_final=d7800e80ef80cb808e20fe348080c89c | W4A8_FP32=4a004890 NVFP4_FP32=c2920000 | bit_errs=0
+[TOKEN 0 | CHIP 5 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=f2eac905b20558dae763c0f3eb062815 -> h_peer=04e31a28fcfce425253914f4f7e80c0c -> y_final=e5d9168080f3355ce8807f7f8a80bd80 | W4A8_FP32=7fc00000 NVFP4_FP32=c36e0000 | bit_errs=0
+[TOKEN 0 | CHIP 6 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=3ae8e0c62ee6e2b4bfce9b171c22d6fa -> h_peer=0915d1f038eaca2d270bf30fed20f323 -> y_final=80b2e496823cff6f0880eb7f80829de3 | W4A8_FP32=7fc00000 NVFP4_FP32=438a8000 | bit_errs=0
+[TOKEN 0 | CHIP 7 | seq_len=1] x_in=ff02ff0203fe0001fe0201fd0002fe03 -> c_kv=ccaae131fc14242c581828e73e0c1621 -> h_peer=ff15e0f82af321d9da0c0115fc0ee81c -> y_final=1b561a9f804c937f5680712d1db2a0bd | W4A8_FP32=7fc00000 NVFP4_FP32=41900000 | bit_errs=0
+[TOKEN 1 | CHIP 0 | seq_len=2] x_in=29d7a918802a8019f480bc8005db017f -> c_kv=3df0dded1a50edb6a680430d26c0337d -> h_peer=1d102f220ff4dffefed6c9e00c1aeef6 -> y_final=78807f7f3c1e178b6be47f29037f7f7f | W4A8_FP32=7fc00000 NVFP4_FP32=c2860000 | bit_errs=0
+[TOKEN 1 | CHIP 1 | seq_len=2] x_in=7f992c2280b3899b1c807f807faa8016 -> c_kv=2040b080a03000f04040b0e0e0002010 -> h_peer=00d0201030d0308000f0f020e0502050 -> y_final=1f803a7f7f4b5bbef02c7f3b80537f7f | W4A8_FP32=4a20aaa0 NVFP4_FP32=c2860000 | bit_errs=0
+[TOKEN 1 | CHIP 2 | seq_len=2] x_in=7faa3408f79f808080ebd4803f808008 -> c_kv=6020c0909080f030e0802010607020f0 -> h_peer=fd0ff8000c0fed00dfd8e9f0100c02f0 -> y_final=f58033147f3654e4291f7f7f80097f20 | W4A8_FP32=7fc00000 NVFP4_FP32=c1a80000 | bit_errs=0
+[TOKEN 1 | CHIP 3 | seq_len=2] x_in=7f8b7f97eb8080808cb27fcaf780f080 -> c_kv=1000504030b0c0f03010a090f050f0f0 -> h_peer=45e020f0fafffbf42be0e6005ac1e035 -> y_final=80b780bb7f1d257f5e2d7f7fe580630b | W4A8_FP32=7fc00000 NVFP4_FP32=42960000 | bit_errs=0
+[TOKEN 1 | CHIP 4 | seq_len=2] x_in=d7800e80ef80cb808e20fe348080c89c -> c_kv=24f08cecfa20a6e6e0b03c14e6d014aa -> h_peer=d801f3dec80b00c119a106faffe8edfe -> y_final=8075aad17ff47f7f7f5f7f629de53b4a | W4A8_FP32=7fc00000 NVFP4_FP32=c1d80000 | bit_errs=0
+[TOKEN 1 | CHIP 5 | seq_len=2] x_in=e5d9168080f3355ce8807f7f8a80bd80 -> c_kv=c0e0003030f0f0409030c0c090e01090 -> h_peer=3a2c29d0cdf8ed3b191633d41c001ee7 -> y_final=807f841555807f7ff97f7ff980ce8c07 | W4A8_FP32=ca431ff0 NVFP4_FP32=c2fc0000 | bit_errs=0
+[TOKEN 1 | CHIP 6 | seq_len=2] x_in=80b2e496823cff6f0880eb7f80829de3 -> c_kv=e6b6fac0bada70503afa96f00a9d6300 -> h_peer=00da1ff41c14d6d408dafdfeec2215ca -> y_final=ec281d123fe735c3012a7f80da59cbd9 | W4A8_FP32=7fc00000 NVFP4_FP32=c2100000 | bit_errs=0
+[TOKEN 1 | CHIP 7 | seq_len=2] x_in=1b561a9f804c937f5680712d1db2a0bd -> c_kv=5050a0d00050a0f0d060309060c0e0f0 -> h_peer=e0d33d220b2f05f3e1eff65404e8d8db -> y_final=07c96c46c868f30cdb807f80b22a10d1 | W4A8_FP32=7fc00000 NVFP4_FP32=43750000 | bit_errs=0
+[TOKEN 2 | CHIP 0 | seq_len=3] x_in=78807f7f3c1e178b6be47f29037f7f7f -> c_kv=02b0f780198260302e0e37404ed90e70 -> h_peer=d627f31016e00700f3000d33d006130a -> y_final=0f7f7fe36b63c97fbf68a38001ee7fae | W4A8_FP32=7fc00000 NVFP4_FP32=426c0000 | bit_errs=0
+[TOKEN 2 | CHIP 1 | seq_len=3] x_in=1f803a7f7f4b5bbef02c7f3b80537f7f -> c_kv=8000f0a0001060f0e0a0504080a04070 -> h_peer=fb21e515dc14fa01f600e1fa0bf40b1a -> y_final=80f049257f9f807fed7f80b1677f7f91 | W4A8_FP32=ca1d6020 NVFP4_FP32=42fc0000 | bit_errs=0
+[TOKEN 2 | CHIP 2 | seq_len=3] x_in=f58033147f3654e4291f7f7f80097f20 -> c_kv=6060e0107000d090402040f0a010e0f0 -> h_peer=c60ae63630f436eef1e60610fa10d6ec -> y_final=cca9c0bb572480541d1580dbc27f7f58 | W4A8_FP32=7fc00000 NVFP4_FP32=c3870000 | bit_errs=0
+[TOKEN 2 | CHIP 3 | seq_len=3] x_in=80b780bb7f1d257f5e2d7f7fe580630b -> c_kv=108010a0f0b06090f050e010b030f050 -> h_peer=24f6ebf6f5f5c60af5db1b13e63f0ada -> y_final=8080f18082c4c8b31e7280b16f7f2d7f | W4A8_FP32=7fc00000 NVFP4_FP32=c3220000 | bit_errs=0
+[TOKEN 2 | CHIP 4 | seq_len=3] x_in=8075aad17ff47f7f7f5f7f629de53b4a -> c_kv=f0b0c060100010106030b000b0702020 -> h_peer=031025fc2b0d15e30dd3f727072b16fd -> y_final=14801c808014a783c476808cb37f017f | W4A8_FP32=7fc00000 NVFP4_FP32=c31c0000 | bit_errs=0
+[TOKEN 2 | CHIP 5 | seq_len=3] x_in=807f841555807f7ff97f7ff980ce8c07 -> c_kv=a0a0803090b090c0f0b0c0c0302090d0 -> h_peer=40d02010103000c01020e03030e0f020 -> y_final=7f8000e980396480ac7fabac6456c63f | W4A8_FP32=7fc00000 NVFP4_FP32=431e0000 | bit_errs=0
+[TOKEN 2 | CHIP 6 | seq_len=3] x_in=ec281d123fe735c3012a7f80da59cbd9 -> c_kv=fa107a862d4023e3ad20d66a4a109d73 -> h_peer=c7f7fbfee7f81611231b20012c221b19 -> y_final=7f2942b0807f6ffb807f00f07fad390f | W4A8_FP32=cb0788a0 NVFP4_FP32=c31a0000 | bit_errs=0
+[TOKEN 2 | CHIP 7 | seq_len=3] x_in=07c96c46c868f30cdb807f80b22a10d1 -> c_kv=f0d0c01040f000d0f0a010f020a0c090 -> h_peer=f0f0f0001010e0d020f00000f0000000 -> y_final=ff727fa2ad261f55807feab67f9b7f9a | W4A8_FP32=c80f3c00 NVFP4_FP32=c35c0000 | bit_errs=0
+[TOKEN 3 | CHIP 0 | seq_len=4] x_in=0f7f7fe36b63c97fbf68a38001ee7fae -> c_kv=36907de0d39600703a5a3d803af39a70 -> h_peer=e0d0001030d030802010d02000704070 -> y_final=bc807f4f28f3694b0d7f5634fb809e7f | W4A8_FP32=7fc00000 NVFP4_FP32=431f0000 | bit_errs=0
+[TOKEN 3 | CHIP 1 | seq_len=4] x_in=80f049257f9f807fed7f80b1677f7f91 -> c_kv=0000f0e0e0f000500040f04040c02030 -> h_peer=d82cf0d907d0b643222203e108350014 -> y_final=0dea16576fe7f325e97f32fe7f809c7f | W4A8_FP32=caca3f70 NVFP4_FP32=c1000000 | bit_errs=0
+[TOKEN 3 | CHIP 2 | seq_len=4] x_in=cca9c0bb572480541d1580dbc27f7f58 -> c_kv=60e00030104070f000206010a0f08010 -> h_peer=00f010f040f010f000f0d000102010e0 -> y_final=588048071d3b04421ab029d11d80087f | W4A8_FP32=7fc00000 NVFP4_FP32=43590000 | bit_errs=0
+[TOKEN 3 | CHIP 3 | seq_len=4] x_in=8080f18082c4c8b31e7280b16f7f2d7f -> c_kv=10c0b0c0503000d0301040f01090b070 -> h_peer=040c34021824eadc00debeb6d7141ece -> y_final=2cc3bf884f65c09cb7b5cd89f00cbc7f | W4A8_FP32=ca9b05a0 NVFP4_FP32=c1200000 | bit_errs=0
+[TOKEN 3 | CHIP 4 | seq_len=4] x_in=14801c808014a783c476808cb37f017f -> c_kv=a310cdc6362003162df02a061030ad33 -> h_peer=f60fffe8d6d2f1100627eee01ff72f00 -> y_final=bc8090ba1a7f7fa080c29980fb36b87f | W4A8_FP32=7fc00000 NVFP4_FP32=431a0000 | bit_errs=0
+[TOKEN 3 | CHIP 5 | seq_len=4] x_in=7f8000e980396480ac7fabac6456c63f -> c_kv=4030e020f06040201030e0d0d0705060 -> h_peer=fdf33018f22230fdcb1240d617fb4017 -> y_final=809080eb347fee8080def4803419807f | W4A8_FP32=7fc00000 NVFP4_FP32=c2000000 | bit_errs=0
+[TOKEN 3 | CHIP 6 | seq_len=4] x_in=7f2942b0807f6ffb807f00f07fad390f -> c_kv=d0d06080e0b070d0a05070b030f0b0e0 -> h_peer=10e00010a04010c0f0f0d0803040a020 -> y_final=8294db39e1560080fb2021889cbd807f | W4A8_FP32=7fc00000 NVFP4_FP32=c3490000 | bit_errs=0
+[TOKEN 3 | CHIP 7 | seq_len=4] x_in=ff727fa2ad261f55807feab67f9b7f9a -> c_kv=b01da616008a5a70b0d34abd00da401d -> h_peer=10dce3fd1d24e3d6f2f60df7e2362336 -> y_final=80a20e1de827a9f1a56d7f80b080807f | W4A8_FP32=7fc00000 NVFP4_FP32=c3000000 | bit_errs=0
+--------------------------------------------------------------------------------
+Total Execution Cycles            : 1206
+Total Tensor & Co-Proc Checks     : 704 (32 token-chip pairs x 22 checks)
+Total Bit Errors                  : 0
+Live SRAM SECDED 1-Bit Corrected  : 4672
+Live SRAM SECDED 2-Bit Uncorr     : 0
+ECC Shadow vs Primary Mismatches  : 0
+Live PCS CRC-16 Errors Injected   : 64
+Live PCS Go-Back-N Replays        : 64
+Total C2C Flits Transmitted       : 128
+Total RealSync Deskew Releases    : 128
+Total MXM Zero-Skip Lanes         : 597
+Cluster RealSync/CRC8 Faults      : 0
+OVERALL VERIFICATION STATUS       : PASS (100% BIT-EXACT)
+================================================================================

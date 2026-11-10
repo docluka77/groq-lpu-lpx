@@ -1,0 +1,1014 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `
+  read_verilog -sv -Irtl rtl/groq_pcie_c2c_dma.sv;
+  chformal -remove;
+  synth -top groq_pcie_c2c_dma -noabc;
+  dfflibmap -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib;
+  abc -fast -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib;
+  stat -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib;
+  write_verilog -noattr synth/groq_pcie_c2c_dma_sky130_netlist.v
+' --
+
+1. Executing Verilog-2005 frontend: rtl/groq_pcie_c2c_dma.sv
+Parsing SystemVerilog input from `rtl/groq_pcie_c2c_dma.sv' to AST representation.
+verilog frontend filename rtl/groq_pcie_c2c_dma.sv
+Generating RTLIL representation for module `\groq_pcie_c2c_dma'.
+Warning: Replacing memory \desc_ring_q with list of registers. See rtl/groq_pcie_c2c_dma.sv:232
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_pcie_c2c_dma
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_pcie_c2c_dma
+Removed 0 unused modules.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$rtl/groq_pcie_c2c_dma.sv:136$95 in module groq_pcie_c2c_dma.
+Marked 1 switch rules as full_case in process $proc$rtl/groq_pcie_c2c_dma.sv:136$95 in module groq_pcie_c2c_dma.
+Marked 5 switch rules as full_case in process $proc$rtl/groq_pcie_c2c_dma.sv:216$54 in module groq_pcie_c2c_dma.
+Removed a total of 1 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 24 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~8 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:136$95'.
+     1/1: $1$mem2reg_rd$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:136$7_DATA[127:0]$97
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:180$73'.
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+     1/22: $0\desc_count_q[2:0]
+     2/22: $2$mem2reg_wr$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:239$8_ADDR[1:0]$62
+     3/22: $2$mem2reg_wr$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:239$8_DATA[127:0]$63
+     4/22: $1$mem2reg_wr$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:239$8_DATA[127:0]$61
+     5/22: $1$mem2reg_wr$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:239$8_ADDR[1:0]$60
+     6/22: $0\dma_done_irq_q[0:0]
+     7/22: $1$fordecl_block$3.i[31:0]$59
+     8/22: $0\desc_ring_q[3][127:0]
+     9/22: $0\desc_ring_q[2][127:0]
+    10/22: $0\desc_ring_q[1][127:0]
+    11/22: $0\desc_ring_q[0][127:0]
+    12/22: $0\beats_transferred_q[15:0]
+    13/22: $0\completed_desc_cnt_q[7:0]
+    14/22: $0\imem_upper_q[15:0]
+    15/22: $0\rem_beats_q[7:0]
+    16/22: $0\stride_q[7:0]
+    17/22: $0\addr_q[15:0]
+    18/22: $0\dma_sel_q[2:0]
+    19/22: $0\dma_target_q[1:0]
+    20/22: $0\dma_active_q[0:0]
+    21/22: $0\tail_ptr_q[1:0]
+    22/22: $0\head_ptr_q[1:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_pcie_c2c_dma.$mem2reg_rd$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:136$7_DATA' from process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:136$95'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$rtl/groq_pcie_c2c_dma.sv:180$5.$result' from process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:180$73'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$rtl/groq_pcie_c2c_dma.sv:180$6.$result' from process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:180$73'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$rtl/groq_pcie_c2c_dma.sv:180$6.data_in' from process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:180$73'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$rtl/groq_pcie_c2c_dma.sv:180$6.p' from process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:180$73'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$rtl/groq_pcie_c2c_dma.sv:180$6.$fordecl_block$1.i' from process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:180$73'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_pcie_c2c_dma.\head_ptr_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$205' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\tail_ptr_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$210' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_count_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$215' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_active_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$220' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_target_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$225' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_sel_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$230' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\addr_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$235' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\stride_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$240' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\rem_beats_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$245' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\imem_upper_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$250' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_done_irq_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$255' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\completed_desc_cnt_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$260' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\beats_transferred_q' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$265' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.$fordecl_block$3.i' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$270' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[0]' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$275' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[1]' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$280' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[2]' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$285' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[3]' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$290' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.$mem2reg_wr$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:239$8_ADDR' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$295' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.$mem2reg_wr$\desc_ring_q$rtl/groq_pcie_c2c_dma.sv:239$8_DATA' using process `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+  created $adff cell `$procdff$300' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:136$95'.
+Removing empty process `groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:136$95'.
+Removing empty process `groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:180$73'.
+Found and cleaned up 7 empty switches in `\groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+Removing empty process `groq_pcie_c2c_dma.$proc$rtl/groq_pcie_c2c_dma.sv:216$54'.
+Cleaned up 8 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~46 debug messages>
+
+2.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 26 unused cells and 148 unused wires.
+<suppressed ~27 debug messages>
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module groq_pcie_c2c_dma...
+Found and reported 0 problems.
+
+2.6. Executing OPT pass (performing simple optimizations).
+
+2.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+2.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~52 debug messages>
+
+2.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+2.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~52 debug messages>
+
+2.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.7. Executing FSM pass (extract and optimize FSM).
+
+2.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+2.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~52 debug messages>
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$290 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[3]).
+Adding EN signal on $procdff$285 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[2]).
+Adding EN signal on $procdff$280 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[1]).
+Adding EN signal on $procdff$275 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[0]).
+Adding EN signal on $procdff$265 ($adff) from module groq_pcie_c2c_dma (D = $add$rtl/groq_pcie_c2c_dma.sv:261$68_Y, Q = \beats_transferred_q).
+Adding EN signal on $procdff$260 ($adff) from module groq_pcie_c2c_dma (D = $add$rtl/groq_pcie_c2c_dma.sv:266$70_Y, Q = \completed_desc_cnt_q).
+Adding EN signal on $procdff$250 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [71:56], Q = \imem_upper_q).
+Adding EN signal on $procdff$245 ($adff) from module groq_pcie_c2c_dma (D = $0\rem_beats_q[7:0], Q = \rem_beats_q).
+Adding EN signal on $procdff$240 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [31:24], Q = \stride_q).
+Adding EN signal on $procdff$235 ($adff) from module groq_pcie_c2c_dma (D = $0\addr_q[15:0], Q = \addr_q).
+Adding EN signal on $procdff$230 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [4:2], Q = \dma_sel_q).
+Adding EN signal on $procdff$225 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [1:0], Q = \dma_target_q).
+Adding EN signal on $procdff$220 ($adff) from module groq_pcie_c2c_dma (D = $0\dma_active_q[0:0], Q = \dma_active_q).
+Adding EN signal on $procdff$215 ($adff) from module groq_pcie_c2c_dma (D = $0\desc_count_q[2:0], Q = \desc_count_q).
+Adding EN signal on $procdff$210 ($adff) from module groq_pcie_c2c_dma (D = $add$rtl/groq_pcie_c2c_dma.sv:240$64_Y, Q = \tail_ptr_q).
+Adding EN signal on $procdff$205 ($adff) from module groq_pcie_c2c_dma (D = $add$rtl/groq_pcie_c2c_dma.sv:243$65_Y, Q = \head_ptr_q).
+
+2.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 19 unused cells and 19 unused wires.
+<suppressed ~20 debug messages>
+
+2.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~5 debug messages>
+
+2.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+2.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+2.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+2.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+2.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$eq$rtl/groq_pcie_c2c_dma.sv:170$22 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$add$rtl/groq_pcie_c2c_dma.sv:240$64 ($add).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$add$rtl/groq_pcie_c2c_dma.sv:243$65 ($add).
+Removed top 2 bits (of 3) from port B of cell groq_pcie_c2c_dma.$add$rtl/groq_pcie_c2c_dma.sv:246$66 ($add).
+Removed top 2 bits (of 3) from port B of cell groq_pcie_c2c_dma.$sub$rtl/groq_pcie_c2c_dma.sv:247$67 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_pcie_c2c_dma.$add$rtl/groq_pcie_c2c_dma.sv:261$68 ($add).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$le$rtl/groq_pcie_c2c_dma.sv:262$69 ($le).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$add$rtl/groq_pcie_c2c_dma.sv:266$70 ($add).
+Removed top 8 bits (of 16) from port B of cell groq_pcie_c2c_dma.$add$rtl/groq_pcie_c2c_dma.sv:268$71 ($add).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$sub$rtl/groq_pcie_c2c_dma.sv:269$72 ($sub).
+Removed top 56 bits (of 128) from mux cell groq_pcie_c2c_dma.$procmux$98 ($pmux).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$procmux$101_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$procmux$105_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$procmux$136_CMP0 ($eq).
+Removed top 56 bits (of 128) from FF cell groq_pcie_c2c_dma.$auto$ff.cc:337:slice$310 ($adffe).
+Removed top 56 bits (of 128) from FF cell groq_pcie_c2c_dma.$auto$ff.cc:337:slice$307 ($adffe).
+Removed top 56 bits (of 128) from FF cell groq_pcie_c2c_dma.$auto$ff.cc:337:slice$304 ($adffe).
+Removed top 56 bits (of 128) from FF cell groq_pcie_c2c_dma.$auto$ff.cc:337:slice$301 ($adffe).
+Removed top 56 bits (of 128) from wire groq_pcie_c2c_dma.desc_ring_q[0].
+Removed top 56 bits (of 128) from wire groq_pcie_c2c_dma.desc_ring_q[1].
+Removed top 56 bits (of 128) from wire groq_pcie_c2c_dma.desc_ring_q[2].
+Removed top 56 bits (of 128) from wire groq_pcie_c2c_dma.desc_ring_q[3].
+
+2.10. Executing PEEPOPT pass (run peephole optimizers).
+
+2.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+2.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module groq_pcie_c2c_dma:
+  creating $macc model for $add$rtl/groq_pcie_c2c_dma.sv:240$64 ($add).
+  creating $macc model for $add$rtl/groq_pcie_c2c_dma.sv:243$65 ($add).
+  creating $macc model for $add$rtl/groq_pcie_c2c_dma.sv:246$66 ($add).
+  creating $macc model for $add$rtl/groq_pcie_c2c_dma.sv:261$68 ($add).
+  creating $macc model for $add$rtl/groq_pcie_c2c_dma.sv:266$70 ($add).
+  creating $macc model for $add$rtl/groq_pcie_c2c_dma.sv:268$71 ($add).
+  creating $macc model for $sub$rtl/groq_pcie_c2c_dma.sv:247$67 ($sub).
+  creating $macc model for $sub$rtl/groq_pcie_c2c_dma.sv:269$72 ($sub).
+  creating $alu model for $macc $sub$rtl/groq_pcie_c2c_dma.sv:269$72.
+  creating $alu model for $macc $sub$rtl/groq_pcie_c2c_dma.sv:247$67.
+  creating $alu model for $macc $add$rtl/groq_pcie_c2c_dma.sv:268$71.
+  creating $alu model for $macc $add$rtl/groq_pcie_c2c_dma.sv:266$70.
+  creating $alu model for $macc $add$rtl/groq_pcie_c2c_dma.sv:261$68.
+  creating $alu model for $macc $add$rtl/groq_pcie_c2c_dma.sv:246$66.
+  creating $alu model for $macc $add$rtl/groq_pcie_c2c_dma.sv:243$65.
+  creating $alu model for $macc $add$rtl/groq_pcie_c2c_dma.sv:240$64.
+  creating $alu model for $ge$rtl/groq_pcie_c2c_dma.sv:145$16 ($ge): new $alu
+  creating $alu model for $le$rtl/groq_pcie_c2c_dma.sv:262$69 ($le): merged with $sub$rtl/groq_pcie_c2c_dma.sv:269$72.
+  creating $alu cell for $ge$rtl/groq_pcie_c2c_dma.sv:145$16: $auto$alumacc.cc:512:replace_alu$354
+  creating $alu cell for $add$rtl/groq_pcie_c2c_dma.sv:240$64: $auto$alumacc.cc:512:replace_alu$367
+  creating $alu cell for $add$rtl/groq_pcie_c2c_dma.sv:243$65: $auto$alumacc.cc:512:replace_alu$370
+  creating $alu cell for $add$rtl/groq_pcie_c2c_dma.sv:246$66: $auto$alumacc.cc:512:replace_alu$373
+  creating $alu cell for $add$rtl/groq_pcie_c2c_dma.sv:261$68: $auto$alumacc.cc:512:replace_alu$376
+  creating $alu cell for $add$rtl/groq_pcie_c2c_dma.sv:266$70: $auto$alumacc.cc:512:replace_alu$379
+  creating $alu cell for $add$rtl/groq_pcie_c2c_dma.sv:268$71: $auto$alumacc.cc:512:replace_alu$382
+  creating $alu cell for $sub$rtl/groq_pcie_c2c_dma.sv:247$67: $auto$alumacc.cc:512:replace_alu$385
+  creating $alu cell for $sub$rtl/groq_pcie_c2c_dma.sv:269$72, $le$rtl/groq_pcie_c2c_dma.sv:262$69: $auto$alumacc.cc:512:replace_alu$388
+  created 9 $alu and 0 $macc cells.
+
+2.13. Executing SHARE pass (SAT-based resource sharing).
+
+2.14. Executing OPT pass (performing simple optimizations).
+
+2.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+2.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+2.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+2.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.15. Executing MEMORY pass.
+
+2.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+2.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+2.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+2.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+2.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+2.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.17. Executing OPT pass (performing simple optimizations).
+
+2.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~11 debug messages>
+
+2.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 1 unused cells and 8 unused wires.
+<suppressed ~2 debug messages>
+
+2.17.5. Finished fast OPT passes.
+
+2.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~12 debug messages>
+
+2.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.19.6. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $mux $procmux$104 in front of them:
+        $auto$alumacc.cc:512:replace_alu$385
+        $auto$alumacc.cc:512:replace_alu$373
+
+2.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+2.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~2 debug messages>
+
+2.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~12 debug messages>
+
+2.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:244:merge_operators$400:
+      Old ports: A=3'111, B=3'001, Y=$auto$rtlil.cc:3469:Mux$401
+      New ports: A=1'1, B=1'0, Y=$auto$rtlil.cc:3469:Mux$401 [1]
+      New connections: { $auto$rtlil.cc:3469:Mux$401 [2] $auto$rtlil.cc:3469:Mux$401 [0] } = { $auto$rtlil.cc:3469:Mux$401 [1] 1'1 }
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 1 changes.
+
+2.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.19.14. Executing OPT_SHARE pass.
+
+2.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+2.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~1 debug messages>
+
+2.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~10 debug messages>
+
+2.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.19.22. Executing OPT_SHARE pass.
+
+2.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.19.26. Finished fast OPT passes. (There is nothing left to do.)
+
+2.20. Executing TECHMAP pass (map to technology primitives).
+
+2.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+2.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$403a3c2fa431a154c52a6a5429d7a6260b5d144f\_90_alu for cells of type $alu.
+Using template $paramod$78e969f2586efcf3a5b0b0440bcca0db83d5cca2\_90_alu for cells of type $alu.
+Using template $paramod$1f812f0514ea3255703342654e053e2c502325cc\_90_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_90_alu for cells of type $alu.
+Using template $paramod$2af30114e9bd4ccb04dad757b3f0a8f6bf0615b0\_90_alu for cells of type $alu.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$5bfa7e7ca42aa3e7db008016d1da79df2e92656a\_90_pmux for cells of type $pmux.
+Using template $paramod$6df0329addda9228fcc2546de2aaf14ad26c98e1\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $reduce_xor.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1271 debug messages>
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~528 debug messages>
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~102 debug messages>
+Removed a total of 34 cells.
+
+2.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 123 unused cells and 747 unused wires.
+<suppressed ~124 debug messages>
+
+2.21.5. Finished fast OPT passes.
+
+2.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `groq_pcie_c2c_dma'. Setting top module to groq_pcie_c2c_dma.
+
+2.22.1. Analyzing design hierarchy..
+Top module:  \groq_pcie_c2c_dma
+
+2.22.2. Analyzing design hierarchy..
+Top module:  \groq_pcie_c2c_dma
+Removed 0 unused modules.
+
+2.23. Printing statistics.
+
+=== groq_pcie_c2c_dma ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      365 wires
+     2473 wire bits
+       75 public wires
+     1534 public wire bits
+       37 ports
+      793 port bits
+     1327 cells
+      362   $_AND_
+      361   $_DFFE_PN0P_
+        1   $_DFF_PN0_
+      110   $_MUX_
+       60   $_NOT_
+      231   $_OR_
+      202   $_XOR_
+
+2.24. Executing CHECK pass (checking for obvious problems).
+Checking module groq_pcie_c2c_dma...
+Found and reported 0 problems.
+
+3. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+3.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~24 debug messages>
+Mapping DFF cells in module `\groq_pcie_c2c_dma':
+  mapped 362 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_1 cells.
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Extracting gate netlist of module `\groq_pcie_c2c_dma' to `<abc-temp-dir>/input.blif'..
+
+4.1.1. Executed ABC.
+Extracted 1326 gates and 1924 wires to a netlist network with 596 inputs and 371 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.08 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_bleeder_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__lpflow_inputisolatch_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib" has 334 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.10 sec
+ABC: Memory =   19.81 MB. Time =     0.10 sec
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_0 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:       82
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:       72
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:      147
+ABC RESULTS:   sky130_fd_sc_hd__maj3_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:      552
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:      121
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_1 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:       25
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:       57
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:       34
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o211a_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:      385
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__or2b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:       93
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:       76
+ABC RESULTS:        internal signals:      957
+ABC RESULTS:           input signals:      596
+ABC RESULTS:          output signals:      371
+Removing temp directory.
+Removing global temp directory.
+
+5. Printing statistics.
+
+=== groq_pcie_c2c_dma ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     3029        - wires
+     5137        - wire bits
+       75        - public wires
+     1534        - public wire bits
+       37        - ports
+      793        - port bits
+     2069 1.76E+04 cells
+        1    10.01   sky130_fd_sc_hd__a211o_2
+        5   37.536   sky130_fd_sc_hd__a211oi_1
+        1    7.507   sky130_fd_sc_hd__a21boi_0
+       82  410.394   sky130_fd_sc_hd__a21oi_1
+        3   22.522   sky130_fd_sc_hd__a22oi_1
+       72  450.432   sky130_fd_sc_hd__a31oi_1
+        2   15.014   sky130_fd_sc_hd__and2_2
+        2   15.014   sky130_fd_sc_hd__and3_2
+      147  551.779   sky130_fd_sc_hd__clkinv_1
+      362 9.06E+03   sky130_fd_sc_hd__dfrtp_1
+        1    10.01   sky130_fd_sc_hd__maj3_1
+      552 2.07E+03   sky130_fd_sc_hd__nand2_1
+      121  605.581   sky130_fd_sc_hd__nand3_1
+        9   67.565   sky130_fd_sc_hd__nand3b_1
+       25    156.4   sky130_fd_sc_hd__nand4_1
+       57  213.955   sky130_fd_sc_hd__nor2_1
+       34  170.163   sky130_fd_sc_hd__nor3_1
+        4   25.024   sky130_fd_sc_hd__nor4_1
+        2   20.019   sky130_fd_sc_hd__o211a_1
+        6   45.043   sky130_fd_sc_hd__o211ai_1
+        4   30.029   sky130_fd_sc_hd__o21a_1
+      385 1.93E+03   sky130_fd_sc_hd__o21ai_0
+        3   22.522   sky130_fd_sc_hd__o21bai_1
+        1    6.256   sky130_fd_sc_hd__o22ai_1
+        1    8.758   sky130_fd_sc_hd__o2bb2ai_1
+        4   30.029   sky130_fd_sc_hd__o31ai_1
+       12   75.072   sky130_fd_sc_hd__or2_2
+        2   17.517   sky130_fd_sc_hd__or2b_2
+       93  814.531   sky130_fd_sc_hd__xnor2_1
+       76  665.638   sky130_fd_sc_hd__xor2_1
+
+   Chip area for module '\groq_pcie_c2c_dma': 17561.843200
+     of which used for sequential elements: 9058.688000 (51.58%)
+
+6. Executing Verilog backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Dumping module `\groq_pcie_c2c_dma'.
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: 3f7ec9a0d9, CPU: user 0.34s system 0.02s, MEM: 51.35 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 46% 1x abc (0 sec), 10% 2x write_verilog (0 sec), ...

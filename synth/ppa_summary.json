@@ -1,0 +1,1049 @@
+{
+  "project": "Groq LPU (14nm TSP) & NVIDIA Groq 3 LPX (4nm) Spatial Architecture",
+  "stage": "Stage 10A: Gate-Level Synthesis (ASAP7 7nm & Sky130 130nm) + PPA & Joules/Token Analyzer",
+  "yosys_version": "Yosys 0.60 (git sha1 5bafeb77d)",
+  "libraries": {
+    "asap7_7nm": "/nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib",
+    "sky130_130nm": "/nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+  },
+  "modules": {
+    "groq_sram_ecc_secded": {
+      "module": "groq_sram_ecc_secded",
+      "rtl_file": "sram_ip/groq_sram_ecc_secded.sv",
+      "description": "SECDED Hamming(72,64) Codec",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 1978,
+        "raw_dff": 0,
+        "raw_comb": 1978,
+        "raw_area_um2": 156.618,
+        "scale_factor": 1.0,
+        "total_cells": 1978,
+        "dff_cells": 0,
+        "comb_cells": 1978,
+        "total_area_um2": 156.618,
+        "seq_area_um2": 0.0,
+        "comb_area_um2": 156.618,
+        "seq_area_pct": 0.0,
+        "comb_families": {
+          "xor_xnor": 189,
+          "nand_nor": 880,
+          "aoi_oai": 718,
+          "inv_buf": 191,
+          "mux_other": 0
+        }
+      },
+      "sky130": {
+        "raw_cells": 768,
+        "raw_dff": 0,
+        "raw_comb": 768,
+        "raw_area_um2": 8471.875,
+        "scale_factor": 1.0,
+        "total_cells": 768,
+        "dff_cells": 0,
+        "comb_cells": 768,
+        "total_area_um2": 8471.875,
+        "seq_area_um2": 0.0,
+        "comb_area_um2": 8471.875,
+        "seq_area_pct": 0.0,
+        "comb_families": {
+          "xor_xnor": 364,
+          "nand_nor": 315,
+          "aoi_oai": 0,
+          "inv_buf": 84,
+          "mux_other": 5
+        }
+      },
+      "asap7_netlist": "synth/groq_sram_ecc_secded_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_sram_ecc_secded_sky130_netlist.v"
+    },
+    "groq_mem_agu": {
+      "module": "groq_mem_agu",
+      "rtl_file": "sram_ip/groq_mem_agu.sv",
+      "description": "Deterministic Tensor AGU (4-Mode)",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 1003,
+        "raw_dff": 93,
+        "raw_comb": 910,
+        "raw_area_um2": 107.979,
+        "scale_factor": 1.0,
+        "total_cells": 1003,
+        "dff_cells": 93,
+        "comb_cells": 910,
+        "total_area_um2": 107.979,
+        "seq_area_um2": 35.254,
+        "comb_area_um2": 72.725,
+        "seq_area_pct": 32.65,
+        "comb_families": {
+          "xor_xnor": 84,
+          "nand_nor": 337,
+          "aoi_oai": 291,
+          "inv_buf": 141,
+          "mux_other": 57
+        }
+      },
+      "sky130": {
+        "raw_cells": 916,
+        "raw_dff": 0,
+        "raw_comb": 916,
+        "raw_area_um2": 6799.021,
+        "scale_factor": 1.0,
+        "total_cells": 916,
+        "dff_cells": 0,
+        "comb_cells": 916,
+        "total_area_um2": 6799.021,
+        "seq_area_um2": 2329.734,
+        "comb_area_um2": 4469.286,
+        "seq_area_pct": 34.27,
+        "comb_families": {
+          "xor_xnor": 110,
+          "nand_nor": 407,
+          "aoi_oai": 0,
+          "inv_buf": 116,
+          "mux_other": 283
+        }
+      },
+      "asap7_netlist": "synth/groq_mem_agu_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_mem_agu_sky130_netlist.v"
+    },
+    "groq_sram_macro_sp": {
+      "module": "groq_sram_macro_sp",
+      "rtl_file": "sram_ip/groq_sram_macro_sp.sv",
+      "description": "Foundry 72b SRAM Macro Periphery+MBIST",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 6921,
+        "raw_dff": 1311,
+        "raw_comb": 5610,
+        "raw_area_um2": 800.048,
+        "scale_factor": 1.0,
+        "total_cells": 6921,
+        "dff_cells": 1311,
+        "comb_cells": 5610,
+        "total_area_um2": 800.048,
+        "seq_area_um2": 396.197,
+        "comb_area_um2": 403.851,
+        "seq_area_pct": 49.52,
+        "comb_families": {
+          "xor_xnor": 3,
+          "nand_nor": 1095,
+          "aoi_oai": 3092,
+          "inv_buf": 1262,
+          "mux_other": 158
+        }
+      },
+      "sky130": {
+        "raw_cells": 4131,
+        "raw_dff": 1152,
+        "raw_comb": 2979,
+        "raw_area_um2": 53905.45,
+        "scale_factor": 1.0,
+        "total_cells": 4131,
+        "dff_cells": 1152,
+        "comb_cells": 2979,
+        "total_area_um2": 53905.45,
+        "seq_area_um2": 38573.245,
+        "comb_area_um2": 15332.205,
+        "seq_area_pct": 71.56,
+        "comb_families": {
+          "xor_xnor": 3,
+          "nand_nor": 1759,
+          "aoi_oai": 0,
+          "inv_buf": 473,
+          "mux_other": 744
+        }
+      },
+      "asap7_netlist": "synth/groq_sram_macro_sp_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_sram_macro_sp_sky130_netlist.v"
+    },
+    "groq_mem_slice": {
+      "module": "groq_mem_slice",
+      "rtl_file": "sram_ip/groq_mem_slice.sv",
+      "description": "Superlane Memory Slice (Dual AGU+ECC+Banks)",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 63280,
+        "raw_dff": 10569,
+        "raw_comb": 52711,
+        "raw_area_um2": 6996.752,
+        "scale_factor": 1.0,
+        "total_cells": 63280,
+        "dff_cells": 10569,
+        "comb_cells": 52711,
+        "total_area_um2": 6996.752,
+        "seq_area_um2": 3200.281,
+        "comb_area_um2": 3796.472,
+        "seq_area_pct": 45.74,
+        "comb_families": {
+          "xor_xnor": 452,
+          "nand_nor": 12378,
+          "aoi_oai": 27151,
+          "inv_buf": 11282,
+          "mux_other": 1448
+        }
+      },
+      "sky130": {
+        "raw_cells": 37371,
+        "raw_dff": 9216,
+        "raw_comb": 28155,
+        "raw_area_um2": 464255.258,
+        "scale_factor": 1.0,
+        "total_cells": 37371,
+        "dff_cells": 9216,
+        "comb_cells": 28155,
+        "total_area_um2": 464255.258,
+        "seq_area_um2": 310617.907,
+        "comb_area_um2": 153637.35,
+        "seq_area_pct": 66.91,
+        "comb_families": {
+          "xor_xnor": 839,
+          "nand_nor": 16342,
+          "aoi_oai": 0,
+          "inv_buf": 4323,
+          "mux_other": 6651
+        }
+      },
+      "asap7_netlist": "synth/groq_mem_slice_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_mem_slice_sky130_netlist.v"
+    },
+    "groq_stream_fabric": {
+      "module": "groq_stream_fabric",
+      "rtl_file": "rtl/groq_stream_fabric.sv",
+      "description": "8-Hop x 32-Ch Bidirectional Stream Fabric",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 165303,
+        "raw_dff": 28913,
+        "raw_comb": 136390,
+        "raw_area_um2": 19275.795,
+        "scale_factor": 1.0,
+        "total_cells": 165303,
+        "dff_cells": 28913,
+        "comb_cells": 136390,
+        "total_area_um2": 19275.795,
+        "seq_area_um2": 10960.34,
+        "comb_area_um2": 8315.455,
+        "seq_area_pct": 56.86,
+        "comb_families": {
+          "xor_xnor": 1,
+          "nand_nor": 78168,
+          "aoi_oai": 4296,
+          "inv_buf": 29334,
+          "mux_other": 24591
+        }
+      },
+      "sky130": {
+        "raw_cells": 120467,
+        "raw_dff": 0,
+        "raw_comb": 120467,
+        "raw_area_um2": 1237503.114,
+        "scale_factor": 1.0,
+        "total_cells": 120467,
+        "dff_cells": 0,
+        "comb_cells": 120467,
+        "total_area_um2": 1237503.114,
+        "seq_area_um2": 723518.912,
+        "comb_area_um2": 513984.202,
+        "seq_area_pct": 58.47,
+        "comb_families": {
+          "xor_xnor": 4,
+          "nand_nor": 33149,
+          "aoi_oai": 0,
+          "inv_buf": 4908,
+          "mux_other": 82406
+        }
+      },
+      "asap7_netlist": "synth/groq_stream_fabric_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_stream_fabric_sky130_netlist.v"
+    },
+    "groq_icu_slice": {
+      "module": "groq_icu_slice",
+      "rtl_file": "rtl/groq_icu_slice.sv",
+      "description": "8-Slice 144b VLIW ICU + SYNC + RealSync",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 5531,
+        "raw_dff": 440,
+        "raw_comb": 5091,
+        "raw_area_um2": 564.1,
+        "scale_factor": 1.0,
+        "total_cells": 5531,
+        "dff_cells": 440,
+        "comb_cells": 5091,
+        "total_area_um2": 564.1,
+        "seq_area_um2": 166.795,
+        "comb_area_um2": 397.305,
+        "seq_area_pct": 29.57,
+        "comb_families": {
+          "xor_xnor": 285,
+          "nand_nor": 2888,
+          "aoi_oai": 707,
+          "inv_buf": 673,
+          "mux_other": 538
+        }
+      },
+      "sky130": {
+        "raw_cells": 6738,
+        "raw_dff": 0,
+        "raw_comb": 6738,
+        "raw_area_um2": 39846.966,
+        "scale_factor": 1.0,
+        "total_cells": 6738,
+        "dff_cells": 0,
+        "comb_cells": 6738,
+        "total_area_um2": 39846.966,
+        "seq_area_um2": 11010.56,
+        "comb_area_um2": 28836.406,
+        "seq_area_pct": 27.63,
+        "comb_families": {
+          "xor_xnor": 385,
+          "nand_nor": 3139,
+          "aoi_oai": 0,
+          "inv_buf": 1551,
+          "mux_other": 1663
+        }
+      },
+      "asap7_netlist": "synth/groq_icu_slice_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_icu_slice_sky130_netlist.v"
+    },
+    "groq_mxm_slice": {
+      "module": "groq_mxm_slice",
+      "rtl_file": "rtl/groq_mxm_slice.sv",
+      "description": "16x16 Multi-Precision Systolic MXM Slice",
+      "superlane_scale_factor": 4.0,
+      "asap7": {
+        "raw_cells": 221761,
+        "raw_dff": 1797,
+        "raw_comb": 219964,
+        "raw_area_um2": 17246.755,
+        "scale_factor": 4.0,
+        "total_cells": 887044,
+        "dff_cells": 7188,
+        "comb_cells": 879856,
+        "total_area_um2": 68987.02,
+        "seq_area_um2": 2724.827,
+        "comb_area_um2": 66262.193,
+        "seq_area_pct": 3.95,
+        "comb_families": {
+          "xor_xnor": 38056,
+          "nand_nor": 314840,
+          "aoi_oai": 330252,
+          "inv_buf": 106776,
+          "mux_other": 89932
+        }
+      },
+      "sky130": {
+        "raw_cells": 174259,
+        "raw_dff": 0,
+        "raw_comb": 174259,
+        "raw_area_um2": 967411.574,
+        "scale_factor": 4.0,
+        "total_cells": 697036,
+        "dff_cells": 0,
+        "comb_cells": 697036,
+        "total_area_um2": 3869646.298,
+        "seq_area_um2": 179872.512,
+        "comb_area_um2": 3689773.786,
+        "seq_area_pct": 4.65,
+        "comb_families": {
+          "xor_xnor": 81912,
+          "nand_nor": 354632,
+          "aoi_oai": 0,
+          "inv_buf": 68720,
+          "mux_other": 191772
+        }
+      },
+      "asap7_netlist": "synth/groq_mxm_slice_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_mxm_slice_sky130_netlist.v"
+    },
+    "groq_sxm_slice": {
+      "module": "groq_sxm_slice",
+      "rtl_file": "rtl/groq_sxm_slice.sv",
+      "description": "16x16 Crossbar + Transpose SXM Slice",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 14896,
+        "raw_dff": 2177,
+        "raw_comb": 12719,
+        "raw_area_um2": 1666.698,
+        "scale_factor": 1.0,
+        "total_cells": 14896,
+        "dff_cells": 2177,
+        "comb_cells": 12719,
+        "total_area_um2": 1666.698,
+        "seq_area_um2": 825.257,
+        "comb_area_um2": 841.441,
+        "seq_area_pct": 49.51,
+        "comb_families": {
+          "xor_xnor": 13,
+          "nand_nor": 4111,
+          "aoi_oai": 4181,
+          "inv_buf": 2416,
+          "mux_other": 1998
+        }
+      },
+      "sky130": {
+        "raw_cells": 14043,
+        "raw_dff": 0,
+        "raw_comb": 14043,
+        "raw_area_um2": 114823.875,
+        "scale_factor": 1.0,
+        "total_cells": 14043,
+        "dff_cells": 0,
+        "comb_cells": 14043,
+        "total_area_um2": 114823.875,
+        "seq_area_um2": 54477.248,
+        "comb_area_um2": 60346.627,
+        "seq_area_pct": 47.44,
+        "comb_families": {
+          "xor_xnor": 25,
+          "nand_nor": 4889,
+          "aoi_oai": 0,
+          "inv_buf": 1212,
+          "mux_other": 7917
+        }
+      },
+      "asap7_netlist": "synth/groq_sxm_slice_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_sxm_slice_sky130_netlist.v"
+    },
+    "groq_vxm_slice": {
+      "module": "groq_vxm_slice",
+      "rtl_file": "rtl/groq_vxm_slice.sv",
+      "description": "16-Lane SIMD + LUT + Reduction VXM Slice",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 55295,
+        "raw_dff": 641,
+        "raw_comb": 54654,
+        "raw_area_um2": 4294.495,
+        "scale_factor": 1.0,
+        "total_cells": 55295,
+        "dff_cells": 641,
+        "comb_cells": 54654,
+        "total_area_um2": 4294.495,
+        "seq_area_um2": 242.99,
+        "comb_area_um2": 4051.505,
+        "seq_area_pct": 5.66,
+        "comb_families": {
+          "xor_xnor": 2023,
+          "nand_nor": 21565,
+          "aoi_oai": 17973,
+          "inv_buf": 7569,
+          "mux_other": 5524
+        }
+      },
+      "sky130": {
+        "raw_cells": 50763,
+        "raw_dff": 0,
+        "raw_comb": 50763,
+        "raw_area_um2": 279827.126,
+        "scale_factor": 1.0,
+        "total_cells": 50763,
+        "dff_cells": 0,
+        "comb_cells": 50763,
+        "total_area_um2": 279827.126,
+        "seq_area_um2": 16040.384,
+        "comb_area_um2": 263786.742,
+        "seq_area_pct": 5.73,
+        "comb_families": {
+          "xor_xnor": 3035,
+          "nand_nor": 26728,
+          "aoi_oai": 0,
+          "inv_buf": 5229,
+          "mux_other": 15771
+        }
+      },
+      "asap7_netlist": "synth/groq_vxm_slice_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_vxm_slice_sky130_netlist.v"
+    },
+    "groq_nim_realsync": {
+      "module": "groq_nim_realsync",
+      "rtl_file": "rtl/groq_nim_realsync.sv",
+      "description": "RealSync Deskew + Dragonfly UGAL NIM Slice",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 13417,
+        "raw_dff": 887,
+        "raw_comb": 12530,
+        "raw_area_um2": 1281.669,
+        "scale_factor": 1.0,
+        "total_cells": 13417,
+        "dff_cells": 887,
+        "comb_cells": 12530,
+        "total_area_um2": 1281.669,
+        "seq_area_um2": 336.244,
+        "comb_area_um2": 945.426,
+        "seq_area_pct": 26.23,
+        "comb_families": {
+          "xor_xnor": 536,
+          "nand_nor": 3463,
+          "aoi_oai": 5848,
+          "inv_buf": 1713,
+          "mux_other": 970
+        }
+      },
+      "sky130": {
+        "raw_cells": 11568,
+        "raw_dff": 0,
+        "raw_comb": 11568,
+        "raw_area_um2": 85480.733,
+        "scale_factor": 1.0,
+        "total_cells": 11568,
+        "dff_cells": 0,
+        "comb_cells": 11568,
+        "total_area_um2": 85480.733,
+        "seq_area_um2": 22196.288,
+        "comb_area_um2": 63284.445,
+        "seq_area_pct": 25.97,
+        "comb_families": {
+          "xor_xnor": 1074,
+          "nand_nor": 4765,
+          "aoi_oai": 0,
+          "inv_buf": 1044,
+          "mux_other": 4685
+        }
+      },
+      "asap7_netlist": "synth/groq_nim_realsync_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_nim_realsync_sky130_netlist.v"
+    },
+    "groq_lpu_top_parameterized": {
+      "rtl_file": "rtl/groq_lpu_top.sv",
+      "asap7_netlist": "synth/groq_lpu_top_asap7_netlist.v",
+      "asap7_7nm": {
+        "parameterization": "P_MEM_ADDR_W=3 (8-Slice Full-Chip Top-Level Integration)",
+        "chip_area": 187232.714999,
+        "sequential_area": 20515.89708,
+        "sequential_pct": 10.96,
+        "netlist_file": "synth/groq_lpu_top_asap7_netlist.v",
+        "log_file": "synth/synth_groq_lpu_top_asap7.log"
+      }
+    }
+  },
+  "lpx_extension_modules": {
+    "groq_mxfp8_nvfp4_dot_engine": {
+      "module": "groq_mxfp8_nvfp4_dot_engine",
+      "rtl_file": "rtl/groq_mxfp8_nvfp4_dot_engine.sv",
+      "description": "OCP MXFP8 (E4M3/E5M2) & NVFP4 (E2M1) Block-Scaled Dot Engine",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 47671,
+        "raw_dff": 164,
+        "raw_comb": 47507,
+        "raw_area_um2": 3643.907,
+        "scale_factor": 1.0,
+        "total_cells": 47671,
+        "dff_cells": 164,
+        "comb_cells": 47507,
+        "total_area_um2": 3643.907,
+        "seq_area_um2": 62.169,
+        "comb_area_um2": 3581.737,
+        "seq_area_pct": 1.71,
+        "comb_families": {
+          "xor_xnor": 1713,
+          "nand_nor": 17568,
+          "aoi_oai": 17095,
+          "inv_buf": 5721,
+          "mux_other": 5410
+        }
+      },
+      "sky130": {
+        "raw_cells": 42426,
+        "raw_dff": 0,
+        "raw_comb": 42426,
+        "raw_area_um2": 227635.821,
+        "scale_factor": 1.0,
+        "total_cells": 42426,
+        "dff_cells": 0,
+        "comb_cells": 42426,
+        "total_area_um2": 227635.821,
+        "seq_area_um2": 4103.936,
+        "comb_area_um2": 223531.885,
+        "seq_area_pct": 1.8,
+        "comb_families": {
+          "xor_xnor": 2443,
+          "nand_nor": 22900,
+          "aoi_oai": 0,
+          "inv_buf": 3940,
+          "mux_other": 13143
+        }
+      },
+      "asap7_netlist": "synth/groq_mxfp8_nvfp4_dot_engine_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_mxfp8_nvfp4_dot_engine_sky130_netlist.v"
+    },
+    "groq_c2c_serdes_pcs": {
+      "module": "groq_c2c_serdes_pcs",
+      "rtl_file": "rtl/groq_c2c_serdes_pcs.sv",
+      "description": "112G PAM4 64B/66B Scrambler + Gearbox + RS(72,64) FEC + Elastic Buffer PCS",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 11746,
+        "raw_dff": 632,
+        "raw_comb": 11114,
+        "raw_area_um2": 1041.551,
+        "scale_factor": 1.0,
+        "total_cells": 11746,
+        "dff_cells": 632,
+        "comb_cells": 11114,
+        "total_area_um2": 1041.551,
+        "seq_area_um2": 239.579,
+        "comb_area_um2": 801.973,
+        "seq_area_pct": 23.0,
+        "comb_families": {
+          "xor_xnor": 504,
+          "nand_nor": 4082,
+          "aoi_oai": 3719,
+          "inv_buf": 1866,
+          "mux_other": 943
+        }
+      },
+      "sky130": {
+        "raw_cells": 8762,
+        "raw_dff": 0,
+        "raw_comb": 8762,
+        "raw_area_um2": 69437.846,
+        "scale_factor": 1.0,
+        "total_cells": 8762,
+        "dff_cells": 0,
+        "comb_cells": 8762,
+        "total_area_um2": 69437.846,
+        "seq_area_um2": 15835.187,
+        "comb_area_um2": 53602.659,
+        "seq_area_pct": 22.8,
+        "comb_families": {
+          "xor_xnor": 1470,
+          "nand_nor": 3376,
+          "aoi_oai": 0,
+          "inv_buf": 865,
+          "mux_other": 3051
+        }
+      },
+      "asap7_netlist": "synth/groq_c2c_serdes_pcs_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_c2c_serdes_pcs_sky130_netlist.v"
+    },
+    "groq_pcie_c2c_dma": {
+      "module": "groq_pcie_c2c_dma",
+      "rtl_file": "rtl/groq_pcie_c2c_dma.sv",
+      "description": "PCIe Gen5 / NVLink-C2C Scatter-Gather Descriptor Ring DMA Engine",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 2361,
+        "raw_dff": 362,
+        "raw_comb": 1999,
+        "raw_area_um2": 281.627,
+        "scale_factor": 1.0,
+        "total_cells": 2361,
+        "dff_cells": 362,
+        "comb_cells": 1999,
+        "total_area_um2": 281.627,
+        "seq_area_um2": 137.227,
+        "comb_area_um2": 144.4,
+        "seq_area_pct": 48.73,
+        "comb_families": {
+          "xor_xnor": 125,
+          "nand_nor": 592,
+          "aoi_oai": 631,
+          "inv_buf": 501,
+          "mux_other": 150
+        }
+      },
+      "sky130": {
+        "raw_cells": 2069,
+        "raw_dff": 0,
+        "raw_comb": 2069,
+        "raw_area_um2": 17561.843,
+        "scale_factor": 1.0,
+        "total_cells": 2069,
+        "dff_cells": 0,
+        "comb_cells": 2069,
+        "total_area_um2": 17561.843,
+        "seq_area_um2": 9058.688,
+        "comb_area_um2": 8503.155,
+        "seq_area_pct": 51.58,
+        "comb_families": {
+          "xor_xnor": 169,
+          "nand_nor": 820,
+          "aoi_oai": 0,
+          "inv_buf": 147,
+          "mux_other": 933
+        }
+      },
+      "asap7_netlist": "synth/groq_pcie_c2c_dma_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_pcie_c2c_dma_sky130_netlist.v"
+    },
+    "groq_spec_decode_tree_sampler": {
+      "module": "groq_spec_decode_tree_sampler",
+      "rtl_file": "rtl/groq_spec_decode_tree_sampler.sv",
+      "description": "16-Lane Bitonic Top-K/Top-P + 8-Node EAGLE-2 Speculative Tree Verifier",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 39110,
+        "raw_dff": 376,
+        "raw_comb": 38734,
+        "raw_area_um2": 3075.578,
+        "scale_factor": 1.0,
+        "total_cells": 39110,
+        "dff_cells": 376,
+        "comb_cells": 38734,
+        "total_area_um2": 3075.578,
+        "seq_area_um2": 142.534,
+        "comb_area_um2": 2933.044,
+        "seq_area_pct": 4.63,
+        "comb_families": {
+          "xor_xnor": 2658,
+          "nand_nor": 15053,
+          "aoi_oai": 12596,
+          "inv_buf": 4971,
+          "mux_other": 3456
+        }
+      },
+      "sky130": {
+        "raw_cells": 33149,
+        "raw_dff": 0,
+        "raw_comb": 33149,
+        "raw_area_um2": 183323.322,
+        "scale_factor": 1.0,
+        "total_cells": 33149,
+        "dff_cells": 0,
+        "comb_cells": 33149,
+        "total_area_um2": 183323.322,
+        "seq_area_um2": 9436.55,
+        "comb_area_um2": 173886.771,
+        "seq_area_pct": 5.15,
+        "comb_families": {
+          "xor_xnor": 3844,
+          "nand_nor": 17148,
+          "aoi_oai": 0,
+          "inv_buf": 3392,
+          "mux_other": 8765
+        }
+      },
+      "asap7_netlist": "synth/groq_spec_decode_tree_sampler_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_spec_decode_tree_sampler_sky130_netlist.v"
+    },
+    "groq_power_droop_controller": {
+      "module": "groq_power_droop_controller",
+      "rtl_file": "rtl/groq_power_droop_controller.sv",
+      "description": "Deterministic VLIW Pre-Warm Bleeder & L*di/dt Voltage Droop Controller",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 1623,
+        "raw_dff": 35,
+        "raw_comb": 1588,
+        "raw_area_um2": 136.833,
+        "scale_factor": 1.0,
+        "total_cells": 1623,
+        "dff_cells": 35,
+        "comb_cells": 1588,
+        "total_area_um2": 136.833,
+        "seq_area_um2": 13.268,
+        "comb_area_um2": 123.566,
+        "seq_area_pct": 9.7,
+        "comb_families": {
+          "xor_xnor": 54,
+          "nand_nor": 471,
+          "aoi_oai": 605,
+          "inv_buf": 228,
+          "mux_other": 230
+        }
+      },
+      "sky130": {
+        "raw_cells": 1409,
+        "raw_dff": 0,
+        "raw_comb": 1409,
+        "raw_area_um2": 8141.558,
+        "scale_factor": 1.0,
+        "total_cells": 1409,
+        "dff_cells": 0,
+        "comb_cells": 1409,
+        "total_area_um2": 8141.558,
+        "seq_area_um2": 880.845,
+        "comb_area_um2": 7260.714,
+        "seq_area_pct": 10.82,
+        "comb_families": {
+          "xor_xnor": 105,
+          "nand_nor": 672,
+          "aoi_oai": 0,
+          "inv_buf": 199,
+          "mux_other": 433
+        }
+      },
+      "asap7_netlist": "synth/groq_power_droop_controller_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_power_droop_controller_sky130_netlist.v"
+    },
+    "groq_sram_controller_scrubber": {
+      "module": "groq_sram_controller_scrubber",
+      "rtl_file": "sram_ip/groq_sram_controller_scrubber.sv",
+      "description": "4-Bank 72b SECDED Patrol Scrubber + eFuse Redundancy Remapper",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 111688,
+        "raw_dff": 2637,
+        "raw_comb": 109051,
+        "raw_area_um2": 5032.01,
+        "scale_factor": 1.0,
+        "total_cells": 111688,
+        "dff_cells": 2637,
+        "comb_cells": 109051,
+        "total_area_um2": 5032.01,
+        "seq_area_um2": 999.634,
+        "comb_area_um2": 4032.376,
+        "seq_area_pct": 19.87,
+        "comb_families": {
+          "xor_xnor": 1298,
+          "nand_nor": 18907,
+          "aoi_oai": 21650,
+          "inv_buf": 4124,
+          "mux_other": 63072
+        }
+      },
+      "sky130": {
+        "raw_cells": 130126,
+        "raw_dff": 0,
+        "raw_comb": 130126,
+        "raw_area_um2": 413671.744,
+        "scale_factor": 1.0,
+        "total_cells": 130126,
+        "dff_cells": 0,
+        "comb_cells": 130126,
+        "total_area_um2": 413671.744,
+        "seq_area_um2": 65988.288,
+        "comb_area_um2": 347683.456,
+        "seq_area_pct": 15.95,
+        "comb_families": {
+          "xor_xnor": 2352,
+          "nand_nor": 22461,
+          "aoi_oai": 0,
+          "inv_buf": 5956,
+          "mux_other": 99357
+        }
+      },
+      "asap7_netlist": "synth/groq_sram_controller_scrubber_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_sram_controller_scrubber_sky130_netlist.v"
+    },
+    "groq_c2c_kv_quant_rx_engine": {
+      "module": "groq_c2c_kv_quant_rx_engine",
+      "rtl_file": "rtl/groq_c2c_kv_quant_rx_engine.sv",
+      "description": "NVLink-C2C Disaggregated Prefill FP16/BF16 -> MXFP8/NVFP4 KV Quant RX Engine",
+      "superlane_scale_factor": 1.0,
+      "asap7": {
+        "raw_cells": 5490,
+        "raw_dff": 163,
+        "raw_comb": 5327,
+        "raw_area_um2": 499.234,
+        "scale_factor": 1.0,
+        "total_cells": 5490,
+        "dff_cells": 163,
+        "comb_cells": 5327,
+        "total_area_um2": 499.234,
+        "seq_area_um2": 61.79,
+        "comb_area_um2": 437.444,
+        "seq_area_pct": 12.38,
+        "comb_families": {
+          "xor_xnor": 81,
+          "nand_nor": 1649,
+          "aoi_oai": 2262,
+          "inv_buf": 740,
+          "mux_other": 595
+        }
+      },
+      "sky130": {
+        "raw_cells": 5100,
+        "raw_dff": 0,
+        "raw_comb": 5100,
+        "raw_area_um2": 30526.778,
+        "scale_factor": 1.0,
+        "total_cells": 5100,
+        "dff_cells": 0,
+        "comb_cells": 5100,
+        "total_area_um2": 30526.778,
+        "seq_area_um2": 4080.163,
+        "comb_area_um2": 26446.614,
+        "seq_area_pct": 13.37,
+        "comb_families": {
+          "xor_xnor": 82,
+          "nand_nor": 2415,
+          "aoi_oai": 0,
+          "inv_buf": 510,
+          "mux_other": 2093
+        }
+      },
+      "asap7_netlist": "synth/groq_c2c_kv_quant_rx_engine_asap7_netlist.v",
+      "sky130_netlist": "synth/groq_c2c_kv_quant_rx_engine_sky130_netlist.v"
+    }
+  },
+  "all_17_synthesized_modules_totals": {
+    "module_count": 17,
+    "asap7_raw_total_cells": 769074,
+    "asap7_raw_dff_cells": 51197,
+    "asap7_raw_total_area_um2": 66101.65,
+    "sky130_raw_total_cells": 644065,
+    "sky130_raw_total_area_um2": 4208623.9
+  },
+  "single_superlane_asap7": {
+    "total_stdcell_area_um2": 179050.3,
+    "total_stdcell_area_mm2": 0.17905,
+    "total_cells": 2155090,
+    "total_dffs": 68572
+  },
+  "configurations": {
+    "config_a_groq_tsp_lpu_v1_14nm": {
+      "process_node": "14nm GF 14LPP",
+      "clock_mhz": 900.0,
+      "superlanes": 20,
+      "total_lanes": 320,
+      "on_chip_sram_mb": 220,
+      "on_chip_sram_bw_tbps": 80.0,
+      "peak_int8_tops": 750.0,
+      "peak_fp16_tflops": 188.0,
+      "sram_macro_area_mm2": 446.38,
+      "compute_and_stream_area_mm2": 198.4,
+      "io_c2c_clock_area_mm2": 80.0,
+      "total_die_area_mm2": 724.78,
+      "active_power_unoptimized_w": 533.7,
+      "active_power_rtl_optimized_w": 185.0,
+      "tdp_envelope_w": 275.0
+    },
+    "config_b_nvidia_groq3_lpx_4nm": {
+      "process_node": "Samsung SF4X 4nm FinFET (4nm N4P-Class Density Calibration)",
+      "clock_mhz": 1500.0,
+      "boost_clock_mhz": 1850.0,
+      "superlanes": 32,
+      "total_lanes": 512,
+      "on_chip_sram_mb": 512,
+      "gtc_2026_nominal_sram_mb": 500,
+      "rack_total_sram_gb": 128.0,
+      "on_chip_sram_bw_tbps": 150.0,
+      "peak_fp8_int8_tops": 1536.0,
+      "peak_fp16_bf16_tflops": 384.0,
+      "lpus_per_rack": 256,
+      "rack_sram_bw_pbps": 38.4,
+      "gtc_2026_nominal_rack_sram_bw_pbps": 40.0,
+      "gtc_2026_rack_fp8_pflops": 315.0,
+      "rack_c2c_bw_tbps": 640.0,
+      "sram_macro_area_mm2": 396.21,
+      "compute_and_stream_area_mm2": 148.5,
+      "io_c2c_clock_area_mm2": 69.2,
+      "total_die_area_mm2": 613.91,
+      "active_power_unoptimized_w": 872.0,
+      "active_power_rtl_optimized_w": 242.0,
+      "tdp_envelope_w": 320.0
+    }
+  },
+  "low_power_mechanisms": [
+    {
+      "id": 1,
+      "name": "On-Chip 1-Hop Superlane SRAM vs. Off-Chip HBM3e Elimination",
+      "rtl_modules": [
+        "sram_ip/groq_mem_slice.sv",
+        "rtl/groq_stream_fabric.sv"
+      ],
+      "baseline_pj_per_bit": 4.2,
+      "optimized_pj_per_bit_14nm": 0.35,
+      "optimized_pj_per_bit_4nm": 0.21,
+      "energy_reduction_factor_14nm": 12.0,
+      "energy_reduction_factor_4nm": 20.0,
+      "power_saved_per_chip_w_14nm": 246.4,
+      "power_saved_per_chip_w_4nm": 478.8,
+      "description": "Replaces off-chip HBM3e PHY/TSV/interposer DRAM accesses (4.20 pJ/bit = 33.6 pJ/B) with 1-hop spatial stream reads from 44-bank local SRAM slices (0.35 pJ/bit in 14nm, 0.21 pJ/bit in 4nm), eliminating 91.7%-95.0% of weight streaming energy."
+    },
+    {
+      "id": 2,
+      "name": "Multi-Bank SRAM Sleep/Retention & Unaddressed Bank Clock Gating",
+      "rtl_modules": [
+        "sram_ip/groq_sram_macro_sp.sv",
+        "sram_ip/groq_mem_slice.sv"
+      ],
+      "active_banks_per_cycle": 2,
+      "total_banks_per_slice": 44,
+      "bank_sram_power_reduction_pct": 78.4,
+      "power_saved_per_chip_w_14nm": 38.2,
+      "power_saved_per_chip_w_4nm": 51.6,
+      "description": "Deasserts bank_ce_n (gating icg_en_latched periphery clock) on the 42 unaddressed banks per slice each cycle and asserts slp_n/ds_n source-biased retention on inactive hemisphere weight banks, cutting SRAM leakage and idle periphery power by 78.4%."
+    },
+    {
+      "id": 3,
+      "name": "Stream Register valid-Driven Clock Gating & ICU NOP_DELAY Fetch Gating",
+      "rtl_modules": [
+        "rtl/groq_stream_fabric.sv",
+        "rtl/groq_icu_slice.sv"
+      ],
+      "gated_dffs_per_superlane": 4096,
+      "stream_icu_power_reduction_pct": 61.5,
+      "power_saved_per_chip_w_14nm": 29.5,
+      "power_saved_per_chip_w_4nm": 41.2,
+      "description": "Gates all 32x128-bit (4,096 DFFs/hop) East/West stream registers when east_valid_i/west_valid_i is low and deasserts imem_fetch_en_o during deterministic NOP_DELAY(N) countdown cycles, saving 61.5% of stream fabric and VLIW instruction fetch dynamic power."
+    },
+    {
+      "id": 4,
+      "name": "MXM & VXM Zero-Skip Operand Isolation (act_zero_gate_en_i)",
+      "rtl_modules": [
+        "rtl/groq_mxm_slice.sv",
+        "rtl/groq_vxm_slice.sv"
+      ],
+      "mean_activation_sparsity_pct": 46.5,
+      "datapath_switching_reduction_pct": 34.8,
+      "power_saved_per_chip_w_14nm": 34.6,
+      "power_saved_per_chip_w_4nm": 58.4,
+      "description": "Detects zero INT8/FP8/FP16 activations per row (lane_is_zero[r]) and isolates multiplier inputs (iso_act_lane[r]=0, iso_wt_mat[r][c]=0) plus VXM mul_op_en/lut_op_en trees, reducing MXM+VXM combinational switching power by 34.8%."
+    }
+  ],
+  "joules_per_token_models": {
+    "llama3_8b_fp8_int8": {
+      "active_params_b": 8.03,
+      "weight_bytes_gb": 8.03,
+      "ops_per_token_gops": 16.06,
+      "hbm_gpu_baseline_j_per_token": 3.42,
+      "groq_lpu_v1_14nm": {
+        "chips_required": 38,
+        "tokens_per_sec": 1850.0,
+        "latency_ms_per_token": 0.541,
+        "unoptimized_j_per_token": 1.68,
+        "after_onchip_sram_j_per_token": 0.49,
+        "after_bank_sleep_j_per_token": 0.4,
+        "after_stream_icg_j_per_token": 0.35,
+        "final_rtl_j_per_token": 0.31,
+        "vs_gpu_efficiency_gain_x": 11.03
+      },
+      "nvidia_groq3_lpx_4nm": {
+        "chips_required": 16,
+        "tokens_per_sec": 3650.0,
+        "latency_ms_per_token": 0.274,
+        "unoptimized_j_per_token": 1.15,
+        "after_onchip_sram_j_per_token": 0.31,
+        "after_bank_sleep_j_per_token": 0.25,
+        "after_stream_icg_j_per_token": 0.22,
+        "final_rtl_j_per_token": 0.19,
+        "vs_gpu_efficiency_gain_x": 18.0
+      }
+    },
+    "llama3_70b_fp8_int8": {
+      "active_params_b": 70.6,
+      "weight_bytes_gb": 70.6,
+      "ops_per_token_gops": 141.2,
+      "hbm_gpu_baseline_j_per_token": 28.5,
+      "groq_lpu_v1_14nm": {
+        "chips_required": 320,
+        "tokens_per_sec": 310.0,
+        "latency_ms_per_token": 3.226,
+        "unoptimized_j_per_token": 11.85,
+        "after_onchip_sram_j_per_token": 3.52,
+        "after_bank_sleep_j_per_token": 2.91,
+        "after_stream_icg_j_per_token": 2.54,
+        "final_rtl_j_per_token": 2.24,
+        "vs_gpu_efficiency_gain_x": 12.72
+      },
+      "nvidia_groq3_lpx_4nm": {
+        "chips_required": 144,
+        "tokens_per_sec": 815.0,
+        "latency_ms_per_token": 1.227,
+        "unoptimized_j_per_token": 7.64,
+        "after_onchip_sram_j_per_token": 1.89,
+        "after_bank_sleep_j_per_token": 1.54,
+        "after_stream_icg_j_per_token": 1.34,
+        "final_rtl_j_per_token": 1.18,
+        "vs_gpu_efficiency_gain_x": 24.15
+      }
+    }
+  }
+}

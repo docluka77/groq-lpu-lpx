@@ -1,0 +1,50 @@
+UVM_INFO /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_root.svh(476) @ 0: reporter [UVM/RELNOTES] 
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  This implementation of the UVM Library deviates from the 1800.2-2020
+  standard.  See the DEVIATIONS.md file contained in the release
+  for more details.
+
+----------------------------------------------------------------
+Accellera:1800.2:UVM:2020.3.1
+
+All copyright owners for this kit are listed in NOTICE.txt
+All Rights Reserved Worldwide
+----------------------------------------------------------------
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_WARNING /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_root.svh(549) @ 0: reporter [NO_DPI_USED] We are thinking of removing support for UVM_NO_DPI.  Please try this test without it and evaluate the impact
+UVM_INFO @ 0: reporter [RNTST] Running test c2c_kv_quant_test...
+UVM_INFO /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_traversal.svh(345) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_WARNING /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_traversal.svh(314) @ 0: reporter [NO_VISIT_CHECK] Because UVM_REGEX_NO_DPI is defined, no uvm component name constraints will be checked
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(895) @ 45001: uvm_test_top.env.scoreboard [KV_QUANT_MISMATCH] tx=0 mode=0 act_vec=619a11c855e935be9234d6781abc5ef0 exp_vec=bf37af279f178f008000800080008000 act_scale=25 exp_scale=80 act_zcnt=0 exp_zcnt=0
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(913) @ 45001: uvm_test_top.env.scoreboard [DOT_ROUNDTRIP_MISMATCH] tx=0 act_fp32=3f800001 exp_fp32=00000000 act_int32=65537 exp_int32=0 act_zskip=0 exp_zskip=0
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(895) @ 55001: uvm_test_top.env.scoreboard [KV_QUANT_MISMATCH] tx=1 mode=1 act_vec=c13ab16fca7e85093d9349ef953cde70 exp_vec=1f970f8000803fb72fa71f970f800080 act_scale=d9 exp_scale=7c act_zcnt=0 exp_zcnt=0
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(913) @ 55001: uvm_test_top.env.scoreboard [DOT_ROUNDTRIP_MISMATCH] tx=1 act_fp32=3f800001 exp_fp32=00000000 act_int32=65537 exp_int32=0 act_zskip=16 exp_zskip=16
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(895) @ 65001: uvm_test_top.env.scoreboard [KV_QUANT_MISMATCH] tx=2 mode=2 act_vec=0d2d3e6f4a7e3a3ec1b4d6f81a3c5e70 exp_vec=d380808080808080d380808080808080 act_scale=20 exp_scale=85 act_zcnt=0 exp_zcnt=0
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(913) @ 65001: uvm_test_top.env.scoreboard [DOT_ROUNDTRIP_MISMATCH] tx=2 act_fp32=fc8f7001 exp_fp32=c30f7000 act_int32=-65680 exp_int32=-143 act_zskip=9 exp_zskip=9
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(895) @ 75001: uvm_test_top.env.scoreboard [KV_QUANT_MISMATCH] tx=3 mode=3 act_vec=e1520190f40104c12fcbeb07a643628f exp_vec=3fffbf7f3effbe7f3dffbd7f3cffbc7f act_scale=da exp_scale=7f act_zcnt=0 exp_zcnt=0
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(913) @ 75001: uvm_test_top.env.scoreboard [DOT_ROUNDTRIP_MISMATCH] tx=3 act_fp32=fdf25801 exp_fp32=c2725800 act_int32=-66164 exp_int32=-627 act_zskip=6 exp_zskip=6
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(895) @ 85001: uvm_test_top.env.scoreboard [KV_QUANT_MISMATCH] tx=4 mode=0 act_vec=619a11c855e935be9234d6781abc5ef0 exp_vec=bf37af279f178f008000800080008000 act_scale=25 exp_scale=80 act_zcnt=1 exp_zcnt=1
+UVM_ERROR /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(913) @ 85001: uvm_test_top.env.scoreboard [DOT_ROUNDTRIP_MISMATCH] tx=4 act_fp32=7e580001 exp_fp32=41d80000 act_int32=-66135 exp_int32=-600 act_zskip=28 exp_zskip=28
+UVM_FATAL /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/uvm_tb/uvm_c2c_kv_quant/uvm_c2c_kv_quant_pkg.sv(1012) @ 36060000: uvm_test_top [UVM_C2C_KV_QUANT_FAIL] Gate failed: driven=3600 checked=3600 mismatches=7200 (quant=3600 dot=3600) cov=100.00%
+UVM_INFO /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_report_server.svh(1009) @ 36060000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :    3
+UVM_WARNING :    2
+UVM_ERROR :   10
+UVM_FATAL :    1
+** Report counts by id
+[DOT_ROUNDTRIP_MISMATCH]     5
+[KV_QUANT_MISMATCH]     5
+[NO_DPI_USED]     1
+[NO_VISIT_CHECK]     1
+[RNTST]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+[UVM_C2C_KV_QUANT_FAIL]     1
+
+- /nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gate0_20261104_221700/toolchain/uvm-core-2020.3.1/src/base/uvm_root.svh:183: Verilog $finish

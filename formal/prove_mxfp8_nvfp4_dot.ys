@@ -1,0 +1,9 @@
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_mxfp8_nvfp4_dot_engine.sv
+hierarchy -top groq_mxfp8_nvfp4_dot_engine
+proc
+opt
+async2sync
+dffunmap
+opt
+stat
+sat -verify -seq 6 -set-init-zero -prove-asserts

@@ -1,0 +1,5 @@
+=== Stage 14A RTL LCOV Line & Toggle/Branch Coverage Summary ===
+groq_c2c_serdes_pcs.sv           | Line:  185/ 186 ( 99.46%) | Toggle/Branch: 2830/2846 ( 99.44%)
+groq_mxfp8_nvfp4_dot_engine.sv   | Line:  246/ 246 (100.00%) | Toggle/Branch: 2906/2940 ( 98.84%)
+groq_pcie_c2c_dma.sv             | Line:  119/ 119 (100.00%) | Toggle/Branch: 2162/2184 ( 98.99%)
+TOTAL (3 Phase-II RTL Modules)   | Line:  550/ 551 ( 99.82%) | Toggle/Branch: 7898/7970 ( 99.10%)

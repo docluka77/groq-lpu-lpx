@@ -1,0 +1,1590 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `
+    read_verilog -sv -Irtl -Isram_ip sram_ip/groq_sram_ecc_secded.sv sram_ip/groq_sram_controller_scrubber.sv;
+    chparam -set P_ADDR_W 2 groq_sram_controller_scrubber;
+    chformal -remove;
+    synth -top groq_sram_controller_scrubber -noabc;
+    dfflibmap -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+    abc -fast -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+    stat -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib;
+    write_verilog -noattr synth/groq_sram_controller_scrubber_asap7_netlist.v
+' --
+
+1. Executing Verilog-2005 frontend: sram_ip/groq_sram_ecc_secded.sv
+Parsing SystemVerilog input from `sram_ip/groq_sram_ecc_secded.sv' to AST representation.
+verilog frontend filename sram_ip/groq_sram_ecc_secded.sv
+Generating RTLIL representation for module `\groq_sram_ecc_secded'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: sram_ip/groq_sram_controller_scrubber.sv
+Parsing SystemVerilog input from `sram_ip/groq_sram_controller_scrubber.sv' to AST representation.
+verilog frontend filename sram_ip/groq_sram_controller_scrubber.sv
+Generating RTLIL representation for module `\groq_sram_controller_scrubber'.
+Warning: Replacing memory \mem_q with list of registers. See sram_ip/groq_sram_controller_scrubber.sv:277
+Successfully finished Verilog frontend.
+Parameter \P_ADDR_W = 2
+
+3. Executing AST frontend in derive mode using pre-parsed AST for module `\groq_sram_controller_scrubber'.
+Parameter \P_ADDR_W = 2
+Generating RTLIL representation for module `$paramod\groq_sram_controller_scrubber\P_ADDR_W=32'00000000000000000000000000000010'.
+Warning: Replacing memory \mem_q with list of registers. See sram_ip/groq_sram_controller_scrubber.sv:277
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     \groq_sram_ecc_secded
+Parameter \PIPELINE = 1'0
+
+4.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\groq_sram_ecc_secded'.
+Parameter \PIPELINE = 1'0
+Generating RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+
+4.1.3. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+4.1.4. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+Removing unused module `\groq_sram_ecc_secded'.
+Removed 1 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 448 empty switches in `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+Found and cleaned up 448 empty switches in `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+Cleaned up 896 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$sram_ip/groq_sram_controller_scrubber.sv:75$839 in module groq_sram_controller_scrubber.
+Removed 1 dead cases from process $proc$sram_ip/groq_sram_controller_scrubber.sv:226$869 in module groq_sram_controller_scrubber.
+Marked 6 switch rules as full_case in process $proc$sram_ip/groq_sram_controller_scrubber.sv:226$869 in module groq_sram_controller_scrubber.
+Removed 2 dead cases from process $proc$sram_ip/groq_sram_controller_scrubber.sv:273$937 in module groq_sram_controller_scrubber.
+Marked 13 switch rules as full_case in process $proc$sram_ip/groq_sram_controller_scrubber.sv:273$937 in module groq_sram_controller_scrubber.
+Marked 64 switch rules as full_case in process $proc$sram_ip/groq_sram_ecc_secded.sv:73$1226 in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Removed a total of 3 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 3 redundant assignments.
+Promoted 563 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+Found async reset \rst_n in `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~88 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+     1/9: $2$lookahead\bank_repair_addr_o$838[7:0]$852
+     2/9: $2$bitselwrite$pos$sram_ip/groq_sram_controller_scrubber.sv:84$829[31:0]$850
+     3/9: $2$lookahead\bank_repair_en_o$837[3:0]$851
+     4/9: $2$bitselwrite$pos$sram_ip/groq_sram_controller_scrubber.sv:83$828[1:0]$849
+     5/9: $1$lookahead\bank_repair_addr_o$838[7:0]$848
+     6/9: $1$lookahead\bank_repair_en_o$837[3:0]$847
+     7/9: $1$bitselwrite$pos$sram_ip/groq_sram_controller_scrubber.sv:84$829[31:0]$846
+     8/9: $1$bitselwrite$pos$sram_ip/groq_sram_controller_scrubber.sv:83$828[1:0]$845
+     9/9: $0\efuse_load_ack_o[0:0]
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+     1/14: $4\scrub_rd_fire_o[0:0]
+     2/14: $3\scrub_rd_fire_o[0:0]
+     3/14: $3\scrub_active_addr_o[1:0]
+     4/14: $3\scrub_active_bank_o[1:0]
+     5/14: $3\scrub_wb_fire_o[0:0]
+     6/14: $2\scrub_wb_fire_o[0:0]
+     7/14: $2\scrub_active_addr_o[1:0]
+     8/14: $2\scrub_active_bank_o[1:0]
+     9/14: $2\scrub_rd_fire_o[0:0]
+    10/14: $1\scrub_active_addr_o[1:0]
+    11/14: $1\scrub_active_bank_o[1:0]
+    12/14: $1\scrub_wb_fire_o[0:0]
+    13/14: $1\scrub_rd_fire_o[0:0]
+    14/14: $1$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:240$830_DATA[143:0]$921
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+     1/60: $3$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:346$836_DATA[143:0]$1005
+     2/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:345$835_ADDR[3:0]$999
+     3/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:345$835_DATA[143:0]$1000
+     4/60: $2$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:346$836_DATA[143:0]$1002
+     5/60: $2$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:346$836_ADDR[3:0]$1001
+     6/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:340$834_ADDR[3:0]$995
+     7/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:340$834_DATA[143:0]$996
+     8/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:335$833_ADDR[3:0]$991
+     9/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:335$833_DATA[143:0]$992
+    10/60: $0\scrub_addr_q[1:0]
+    11/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:307$832_DATA[143:0]$984
+    12/60: $3$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_DATA[143:0]$977
+    13/60: $0\vliw_rd_repaired_row_hit_o[0:0]
+    14/60: $2$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_DATA[143:0]$974
+    15/60: $2$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_ADDR[3:0]$973
+    16/60: $1$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:346$836_DATA[143:0]$972
+    17/60: $1$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:346$836_ADDR[3:0]$971
+    18/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:345$835_DATA[143:0]$970
+    19/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:345$835_ADDR[3:0]$969
+    20/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:340$834_DATA[143:0]$968
+    21/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:340$834_ADDR[3:0]$967
+    22/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:335$833_DATA[143:0]$966
+    23/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:335$833_ADDR[3:0]$965
+    24/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:307$832_DATA[143:0]$964
+    25/60: $1$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:307$832_ADDR[3:0]$963
+    26/60: $1$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_DATA[143:0]$962
+    27/60: $1$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_ADDR[3:0]$961
+    28/60: $0\vliw_rd_valid_o[0:0]
+    29/60: $1$fordecl_block$643.$for_loop$644[3].$fordecl_block$645.a[31:0]$960
+    30/60: $1$fordecl_block$643.$for_loop$644[2].$fordecl_block$645.a[31:0]$959
+    31/60: $1$fordecl_block$643.$for_loop$644[1].$fordecl_block$645.a[31:0]$958
+    32/60: $1$fordecl_block$643.$for_loop$644[0].$fordecl_block$645.a[31:0]$957
+    33/60: $1$fordecl_block$643.b[31:0]$956
+    34/60: $0\mem_q[15][143:0]
+    35/60: $0\mem_q[14][143:0]
+    36/60: $0\mem_q[13][143:0]
+    37/60: $0\mem_q[12][143:0]
+    38/60: $0\mem_q[11][143:0]
+    39/60: $0\mem_q[10][143:0]
+    40/60: $0\mem_q[9][143:0]
+    41/60: $0\mem_q[8][143:0]
+    42/60: $0\mem_q[7][143:0]
+    43/60: $0\mem_q[6][143:0]
+    44/60: $0\mem_q[5][143:0]
+    45/60: $0\mem_q[4][143:0]
+    46/60: $0\mem_q[3][143:0]
+    47/60: $0\mem_q[2][143:0]
+    48/60: $0\mem_q[1][143:0]
+    49/60: $0\mem_q[0][143:0]
+    50/60: $0\wb_clean_codeword_q[143:0]
+    51/60: $0\wb_addr_q[1:0]
+    52/60: $0\wb_bank_q[1:0]
+    53/60: $0\wb_pending_q[0:0]
+    54/60: $0\scrub_bank_q[1:0]
+    55/60: $2$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:307$832_ADDR[3:0]$983
+    56/60: $0\vliw_rd_raw_cw_q[143:0]
+    57/60: $0\first_ded_addr_o[1:0]
+    58/60: $0\first_ded_bank_o[1:0]
+    59/60: $0\scrub_ded_alert_o[0:0]
+    60/60: $0\scrub_corrected_cnt_o[15:0]
+Creating decoders for process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+Creating decoders for process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+     1/64: $64\data_corr_comb[63:63]
+     2/64: $63\data_corr_comb[62:62]
+     3/64: $62\data_corr_comb[61:61]
+     4/64: $61\data_corr_comb[60:60]
+     5/64: $60\data_corr_comb[59:59]
+     6/64: $59\data_corr_comb[58:58]
+     7/64: $58\data_corr_comb[57:57]
+     8/64: $57\data_corr_comb[56:56]
+     9/64: $56\data_corr_comb[55:55]
+    10/64: $55\data_corr_comb[54:54]
+    11/64: $54\data_corr_comb[53:53]
+    12/64: $53\data_corr_comb[52:52]
+    13/64: $52\data_corr_comb[51:51]
+    14/64: $51\data_corr_comb[50:50]
+    15/64: $50\data_corr_comb[49:49]
+    16/64: $49\data_corr_comb[48:48]
+    17/64: $48\data_corr_comb[47:47]
+    18/64: $47\data_corr_comb[46:46]
+    19/64: $46\data_corr_comb[45:45]
+    20/64: $45\data_corr_comb[44:44]
+    21/64: $44\data_corr_comb[43:43]
+    22/64: $43\data_corr_comb[42:42]
+    23/64: $42\data_corr_comb[41:41]
+    24/64: $41\data_corr_comb[40:40]
+    25/64: $40\data_corr_comb[39:39]
+    26/64: $39\data_corr_comb[38:38]
+    27/64: $38\data_corr_comb[37:37]
+    28/64: $37\data_corr_comb[36:36]
+    29/64: $36\data_corr_comb[35:35]
+    30/64: $35\data_corr_comb[34:34]
+    31/64: $34\data_corr_comb[33:33]
+    32/64: $33\data_corr_comb[32:32]
+    33/64: $32\data_corr_comb[31:31]
+    34/64: $31\data_corr_comb[30:30]
+    35/64: $30\data_corr_comb[29:29]
+    36/64: $29\data_corr_comb[28:28]
+    37/64: $28\data_corr_comb[27:27]
+    38/64: $27\data_corr_comb[26:26]
+    39/64: $26\data_corr_comb[25:25]
+    40/64: $25\data_corr_comb[24:24]
+    41/64: $24\data_corr_comb[23:23]
+    42/64: $23\data_corr_comb[22:22]
+    43/64: $22\data_corr_comb[21:21]
+    44/64: $21\data_corr_comb[20:20]
+    45/64: $20\data_corr_comb[19:19]
+    46/64: $19\data_corr_comb[18:18]
+    47/64: $18\data_corr_comb[17:17]
+    48/64: $17\data_corr_comb[16:16]
+    49/64: $16\data_corr_comb[15:15]
+    50/64: $15\data_corr_comb[14:14]
+    51/64: $14\data_corr_comb[13:13]
+    52/64: $13\data_corr_comb[12:12]
+    53/64: $12\data_corr_comb[11:11]
+    54/64: $11\data_corr_comb[10:10]
+    55/64: $10\data_corr_comb[9:9]
+    56/64: $9\data_corr_comb[8:8]
+    57/64: $8\data_corr_comb[7:7]
+    58/64: $7\data_corr_comb[6:6]
+    59/64: $6\data_corr_comb[5:5]
+    60/64: $5\data_corr_comb[4:4]
+    61/64: $4\data_corr_comb[3:3]
+    62/64: $3\data_corr_comb[2:2]
+    63/64: $2\data_corr_comb[1:1]
+    64/64: $1\data_corr_comb[0:0]
+Creating decoders for process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_rd_data_o' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_rd_sec_err_o' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_rd_ded_err_o' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_rd_fire_o' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_wb_fire_o' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_active_bank_o' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_active_addr_o' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_wr_cw_c' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\dma_wr_cw_c' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_raw_cw_c' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\fg_bank_busy_c' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\fg_overwrites_wb_c' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_sec_any_c' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_ded_any_c' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$fordecl_block$641.b' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:240$830_ADDR' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:240$830_DATA' from process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\ecc_out' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\codeword_out' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\valid_out' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\data_corrected' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\syndrome' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\single_err_detected' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\double_err_detected' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\data_raw' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\ecc_raw' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\syn_low' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\overall_par' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\syndrome_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\data_corr_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\single_err_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\double_err_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.k' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[0].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[1].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[2].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[3].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[4].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[5].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[6].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$9.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\ecc_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\codeword_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.k' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[0].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[1].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[2].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[3].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[4].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[5].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[6].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_sram_controller_scrubber.\bank_repair_en_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+  created $adff cell `$procdff$2893' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\bank_repair_addr_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+  created $adff cell `$procdff$2898' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\efuse_load_ack_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+  created $adff cell `$procdff$2903' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$bitselwrite$pos$sram_ip/groq_sram_controller_scrubber.sv:83$828' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+  created $adff cell `$procdff$2908' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$bitselwrite$pos$sram_ip/groq_sram_controller_scrubber.sv:84$829' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+  created $adff cell `$procdff$2913' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$lookahead\bank_repair_en_o$837' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+  created $adff cell `$procdff$2918' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$lookahead\bank_repair_addr_o$838' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+  created $adff cell `$procdff$2923' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\vliw_rd_valid_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2928' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\vliw_rd_repaired_row_hit_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2933' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_corrected_cnt_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2938' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_ded_alert_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2943' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\first_ded_bank_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2948' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\first_ded_addr_o' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2953' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\vliw_rd_raw_cw_q' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2958' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_bank_q' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2963' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_addr_q' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2968' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_pending_q' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2973' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_bank_q' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2978' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_addr_q' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2983' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_clean_codeword_q' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2988' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.b' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2993' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[0].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$2998' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[1].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3003' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[2].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3008' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[3].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3013' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[0]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3018' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[1]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3023' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[2]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3028' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[3]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3033' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[4]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3038' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[5]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3043' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[6]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3048' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[7]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3053' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[8]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3058' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[9]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3063' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[10]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3068' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[11]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3073' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[12]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3078' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[13]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3083' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[14]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3088' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[15]' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3093' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_ADDR' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3098' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_DATA' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3103' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:307$832_ADDR' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3108' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:307$832_DATA' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3113' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:335$833_ADDR' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3118' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:335$833_DATA' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3123' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:340$834_ADDR' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3128' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:340$834_DATA' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3133' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:345$835_ADDR' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3138' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:345$835_DATA' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3143' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:346$836_ADDR' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3148' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:346$836_DATA' using process `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+  created $adff cell `$procdff$3153' with positive edge clock and positive level reset.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+Removing empty process `groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:75$839'.
+Found and cleaned up 6 empty switches in `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+Removing empty process `groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:226$869'.
+Found and cleaned up 17 empty switches in `\groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+Removing empty process `groq_sram_controller_scrubber.$proc$sram_ip/groq_sram_controller_scrubber.sv:273$937'.
+Removing empty process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:128$1638'.
+Found and cleaned up 64 empty switches in `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+Removing empty process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:73$1226'.
+Removing empty process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$sram_ip/groq_sram_ecc_secded.sv:47$1009'.
+Cleaned up 88 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+<suppressed ~123 debug messages>
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+<suppressed ~8 debug messages>
+
+4.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+<suppressed ~18 debug messages>
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+
+4.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Removed 94 unused cells and 1112 unused wires.
+<suppressed ~96 debug messages>
+
+4.5. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\groq_sram_ecc_secded\PIPELINE=1'0...
+Checking module groq_sram_controller_scrubber...
+Found and reported 0 problems.
+
+4.6. Executing OPT pass (performing simple optimizations).
+
+4.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+<suppressed ~60 debug messages>
+Removed a total of 20 cells.
+
+4.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$1656.
+    dead port 1/2 on $mux $procmux$1659.
+    dead port 2/2 on $mux $procmux$1661.
+    dead port 1/2 on $mux $procmux$1668.
+    dead port 2/2 on $mux $procmux$1670.
+    dead port 1/2 on $mux $procmux$1676.
+    dead port 2/2 on $mux $procmux$1678.
+    dead port 1/2 on $mux $procmux$1684.
+    dead port 2/2 on $mux $procmux$1686.
+    dead port 2/2 on $mux $procmux$1693.
+    dead port 2/2 on $mux $procmux$1695.
+    dead port 2/2 on $mux $procmux$1701.
+    dead port 2/2 on $mux $procmux$1707.
+    dead port 2/2 on $mux $procmux$1713.
+    dead port 2/2 on $mux $procmux$1719.
+    dead port 2/2 on $mux $procmux$1817.
+Removed 16 multiplexer ports.
+<suppressed ~1114 debug messages>
+
+4.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 0 unused cells and 36 unused wires.
+<suppressed ~1 debug messages>
+
+4.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1098 debug messages>
+
+4.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+4.7. Executing FSM pass (extract and optimize FSM).
+
+4.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.8. Executing OPT pass (performing simple optimizations).
+
+4.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1098 debug messages>
+
+4.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$2988 ($adff) from module groq_sram_controller_scrubber (D = { \scrub_clean_hi_c \scrub_clean_lo_c }, Q = \wb_clean_codeword_q).
+Adding EN signal on $procdff$2983 ($adff) from module groq_sram_controller_scrubber (D = \scrub_addr_q, Q = \wb_addr_q).
+Adding EN signal on $procdff$2978 ($adff) from module groq_sram_controller_scrubber (D = \scrub_bank_q, Q = \wb_bank_q).
+Adding EN signal on $procdff$2968 ($adff) from module groq_sram_controller_scrubber (D = $add$sram_ip/groq_sram_controller_scrubber.sv:315$987_Y [3:2], Q = \scrub_addr_q).
+Adding EN signal on $procdff$2963 ($adff) from module groq_sram_controller_scrubber (D = $add$sram_ip/groq_sram_controller_scrubber.sv:315$987_Y [1:0], Q = \scrub_bank_q).
+Adding EN signal on $procdff$2958 ($adff) from module groq_sram_controller_scrubber (D = $3$mem2reg_rd$\mem_q$sram_ip/groq_sram_controller_scrubber.sv:298$831_DATA[143:0]$977, Q = \vliw_rd_raw_cw_q).
+Adding EN signal on $procdff$2953 ($adff) from module groq_sram_controller_scrubber (D = \scrub_addr_q, Q = \first_ded_addr_o).
+Adding EN signal on $procdff$2948 ($adff) from module groq_sram_controller_scrubber (D = \scrub_bank_q, Q = \first_ded_bank_o).
+Adding EN signal on $procdff$2943 ($adff) from module groq_sram_controller_scrubber (D = 1'1, Q = \scrub_ded_alert_o).
+Adding EN signal on $procdff$2938 ($adff) from module groq_sram_controller_scrubber (D = $add$sram_ip/groq_sram_controller_scrubber.sv:328$990_Y, Q = \scrub_corrected_cnt_o).
+Adding EN signal on $procdff$2898 ($adff) from module groq_sram_controller_scrubber (D = $or$sram_ip/groq_sram_controller_scrubber.sv:84$867_Y, Q = \bank_repair_addr_o).
+Adding EN signal on $procdff$2893 ($adff) from module groq_sram_controller_scrubber (D = $or$sram_ip/groq_sram_controller_scrubber.sv:83$859_Y, Q = \bank_repair_en_o).
+
+4.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 26 unused cells and 26 unused wires.
+<suppressed ~27 debug messages>
+
+4.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1061 debug messages>
+
+4.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+<suppressed ~21 debug messages>
+Removed a total of 7 cells.
+
+4.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+4.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1061 debug messages>
+
+4.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+4.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 5 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1445 ($eq).
+Removed top 4 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1448 ($eq).
+Removed top 4 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1451 ($eq).
+Removed top 4 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1454 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1457 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1460 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1463 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1466 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1469 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1472 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1475 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1478 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1481 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1484 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1487 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1490 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1493 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1496 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1499 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1502 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1505 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1508 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1511 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1514 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1517 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1520 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1523 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1526 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1529 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1532 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1535 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1538 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1541 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1544 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1547 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1550 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1553 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1556 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1559 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1562 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1565 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1568 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1571 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1574 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1577 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1580 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1583 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1586 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1589 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1592 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1595 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1598 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1601 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1604 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1607 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1610 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$sram_ip/groq_sram_ecc_secded.sv:92$1613 ($eq).
+Converting cell groq_sram_controller_scrubber.$neg$sram_ip/groq_sram_controller_scrubber.sv:83$853 ($neg) from signed to unsigned.
+Removed top 1 bits (of 3) from port A of cell groq_sram_controller_scrubber.$neg$sram_ip/groq_sram_controller_scrubber.sv:83$853 ($neg).
+Removed top 29 bits (of 33) from port A of cell groq_sram_controller_scrubber.$neg$sram_ip/groq_sram_controller_scrubber.sv:84$861 ($neg).
+Converting cell groq_sram_controller_scrubber.$neg$sram_ip/groq_sram_controller_scrubber.sv:84$861 ($neg) from signed to unsigned.
+Removed top 1 bits (of 4) from port A of cell groq_sram_controller_scrubber.$neg$sram_ip/groq_sram_controller_scrubber.sv:84$861 ($neg).
+Removed top 1 bits (of 2) from port B of cell groq_sram_controller_scrubber.$eq$sram_ip/groq_sram_controller_scrubber.sv:231$881 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_sram_controller_scrubber.$eq$sram_ip/groq_sram_controller_scrubber.sv:232$883 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_sram_controller_scrubber.$eq$sram_ip/groq_sram_controller_scrubber.sv:233$886 ($eq).
+Removed top 28 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:240$920 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:240$920 ($add).
+Removed top 28 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:298$976 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:298$976 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sram_controller_scrubber.$shiftx$sram_ip/groq_sram_controller_scrubber.sv:300$980 ($shiftx).
+Removed top 28 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:307$986 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:307$986 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:328$990 ($add).
+Removed top 28 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:335$994 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:335$994 ($add).
+Removed top 28 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:340$998 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:340$998 ($add).
+Removed top 28 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:345$1008 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:345$1008 ($add).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1742_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1743_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1744_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1745_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1746_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1747_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1748_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1760_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1761_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1762_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1763_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1764_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1765_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1766_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1809_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1810_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1811_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1812_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1813_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1814_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1815_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2110_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2123_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2136_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2163_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2177_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2191_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2220_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2235_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2250_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2281_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2297_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2313_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2346_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2363_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2380_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2415_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2433_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2451_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2488_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2507_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2526_CMP0 ($eq).
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:298$976_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:307$986_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:335$994_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:340$998_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$sram_ip/groq_sram_controller_scrubber.sv:345$1008_Y.
+Removed top 139 bits (of 144) from wire groq_sram_controller_scrubber.$xor$sram_ip/groq_sram_controller_scrubber.sv:346$1006_Y.
+
+4.10. Executing PEEPOPT pass (run peephole optimizers).
+
+4.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+4.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module groq_sram_controller_scrubber:
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:240$920 ($add).
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:298$976 ($add).
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:307$986 ($add).
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:315$987 ($add).
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:328$990 ($add).
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:335$994 ($add).
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:340$998 ($add).
+  creating $macc model for $add$sram_ip/groq_sram_controller_scrubber.sv:345$1008 ($add).
+  creating $macc model for $neg$sram_ip/groq_sram_controller_scrubber.sv:83$853 ($neg).
+  creating $macc model for $neg$sram_ip/groq_sram_controller_scrubber.sv:84$861 ($neg).
+  creating $alu model for $macc $neg$sram_ip/groq_sram_controller_scrubber.sv:84$861.
+  creating $alu model for $macc $neg$sram_ip/groq_sram_controller_scrubber.sv:83$853.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:345$1008.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:340$998.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:335$994.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:328$990.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:315$987.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:307$986.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:298$976.
+  creating $alu model for $macc $add$sram_ip/groq_sram_controller_scrubber.sv:240$920.
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:240$920: $auto$alumacc.cc:512:replace_alu$3198
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:298$976: $auto$alumacc.cc:512:replace_alu$3201
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:307$986: $auto$alumacc.cc:512:replace_alu$3204
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:315$987: $auto$alumacc.cc:512:replace_alu$3207
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:328$990: $auto$alumacc.cc:512:replace_alu$3210
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:335$994: $auto$alumacc.cc:512:replace_alu$3213
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:340$998: $auto$alumacc.cc:512:replace_alu$3216
+  creating $alu cell for $add$sram_ip/groq_sram_controller_scrubber.sv:345$1008: $auto$alumacc.cc:512:replace_alu$3219
+  creating $alu cell for $neg$sram_ip/groq_sram_controller_scrubber.sv:83$853: $auto$alumacc.cc:512:replace_alu$3222
+  creating $alu cell for $neg$sram_ip/groq_sram_controller_scrubber.sv:84$861: $auto$alumacc.cc:512:replace_alu$3225
+  created 10 $alu and 0 $macc cells.
+
+4.13. Executing SHARE pass (SAT-based resource sharing).
+
+4.14. Executing OPT pass (performing simple optimizations).
+
+4.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1061 debug messages>
+
+4.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+4.15. Executing MEMORY pass.
+
+4.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.17. Executing OPT pass (performing simple optimizations).
+
+4.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+<suppressed ~23 debug messages>
+
+4.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 2 unused cells and 21 unused wires.
+<suppressed ~9 debug messages>
+
+4.17.5. Finished fast OPT passes.
+
+4.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.19. Executing OPT pass (performing simple optimizations).
+
+4.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1045 debug messages>
+
+4.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.19.6. Executing OPT_SHARE pass.
+
+4.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+4.20. Executing TECHMAP pass (map to technology primitives).
+
+4.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+4.20.2. Continuing TECHMAP pass.
+Using template $paramod$e9679b690548ba55b1f1b57f80da909b90290ccf\_90_alu for cells of type $alu.
+Using template $paramod$ef8fb1849064cca7dc908988762d3374786d9fdb\_90_alu for cells of type $alu.
+Using template $paramod$2af30114e9bd4ccb04dad757b3f0a8f6bf0615b0\_90_alu for cells of type $alu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$constmap:587bfd344aba6fff5ae2fc198a50240a44929441$paramod$64b19f47ed5f126636dbd98d727ec46a7ec08d71\_90_shift_shiftx for cells of type $shift.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$constmap:ef93c775a2b05f2875ca0d29a9fe3f9089400aea$paramod$c8ab1ecc0cbd92a1d758a35a7e303d242cd36532\_90_shift_shiftx for cells of type $shift.
+Analyzing pattern of constant bits for this cell:
+Creating constmapped module `$paramod$constmap:546e4b6dac33b866b101af9b3922e0d86c8d5942$paramod$c8ab1ecc0cbd92a1d758a35a7e303d242cd36532\_90_shift_shiftx'.
+
+4.20.21. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$constmap:546e4b6dac33b866b101af9b3922e0d86c8d5942$paramod$c8ab1ecc0cbd92a1d758a35a7e303d242cd36532\_90_shift_shiftx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$3741.
+    dead port 2/2 on $mux $procmux$3735.
+    dead port 2/2 on $mux $procmux$3729.
+    dead port 2/2 on $mux $procmux$3723.
+Removed 4 multiplexer ports.
+<suppressed ~813 debug messages>
+
+4.20.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$constmap:546e4b6dac33b866b101af9b3922e0d86c8d5942$paramod$c8ab1ecc0cbd92a1d758a35a7e303d242cd36532\_90_shift_shiftx.
+<suppressed ~30 debug messages>
+Removed 0 unused cells and 9 unused wires.
+Using template $paramod$constmap:546e4b6dac33b866b101af9b3922e0d86c8d5942$paramod$c8ab1ecc0cbd92a1d758a35a7e303d242cd36532\_90_shift_shiftx for cells of type $shift.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$constmap:1ef046be63c9541309f2f19c4ef998a798f64488$paramod$7fe1424d9d826b3a6286885bc851fafa5143be2b\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$constmap:0e8e7796a8807b41c66b937a3859ba9c337e6459$paramod$13f6de216fab0291dae2ed61b18bfc59a0d96cf6\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$0d77d96adcc5e0bf7d795647ad4de27831d7b3d3\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100001 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+Using extmapper simplemap for cells of type $reduce_xor.
+No more expansions possible.
+<suppressed ~2716 debug messages>
+
+4.21. Executing OPT pass (performing simple optimizations).
+
+4.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+<suppressed ~448 debug messages>
+Optimizing module groq_sram_controller_scrubber.
+<suppressed ~10530 debug messages>
+
+4.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+<suppressed ~1479 debug messages>
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+<suppressed ~1491 debug messages>
+Removed a total of 990 cells.
+
+4.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 99 unused cells and 2914 unused wires.
+<suppressed ~101 debug messages>
+
+4.21.5. Finished fast OPT passes.
+
+4.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `groq_sram_controller_scrubber'. Setting top module to groq_sram_controller_scrubber.
+
+4.22.1. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+4.22.2. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+Removed 0 unused modules.
+
+4.23. Printing statistics.
+
+=== $paramod\groq_sram_ecc_secded\PIPELINE=1'0 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      720 wires
+     1387 wire bits
+       23 public wires
+      529 public wire bits
+       12 ports
+      294 port bits
+      904 cells
+       65   $_AND_
+       64   $_MUX_
+      136   $_NOT_
+       98   $_OR_
+      541   $_XOR_
+
+=== groq_sram_controller_scrubber ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1891 wires
+    36814 wire bits
+      110 public wires
+     4571 public wire bits
+       37 ports
+      600 port bits
+    34736 cells
+     6551   $_AND_
+      329   $_DFFE_PN0P_
+     2308   $_DFF_PN0_
+    18941   $_MUX_
+      121   $_NOT_
+     6308   $_OR_
+      178   $_XOR_
+        6 submodules
+        6   $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+    40160 groq_sram_controller_scrubber
+      904 $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+        +----------Count including submodules.
+        | 
+     6211 wires
+    45136 wire bits
+      248 public wires
+     7745 public wire bits
+      109 ports
+     2364 port bits
+        - memories
+        - memory bits
+        - processes
+    40160 cells
+     6941   $_AND_
+      329   $_DFFE_PN0P_
+     2308   $_DFF_PN0_
+    19325   $_MUX_
+      937   $_NOT_
+     6896   $_OR_
+     3424   $_XOR_
+        6 submodules
+        6   $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+4.24. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\groq_sram_ecc_secded\PIPELINE=1'0...
+Checking module groq_sram_controller_scrubber...
+Found and reported 0 problems.
+
+5. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFFLQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_N_.
+  cell DFFHQNx1_ASAP7_75t_R (inv, pins=3, area=0.29) is a direct match for cell type $_DFF_P_.
+  cell DFFASRHQNx1_ASAP7_75t_R (inv, pins=5, area=0.38) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    \DFFLQNx1_ASAP7_75t_R _DFF_N_ (.CLK( C), .D( D), .QN(~Q));
+    \DFFHQNx1_ASAP7_75t_R _DFF_P_ (.CLK( C), .D( D), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    unmapped dff cell: $_DFF_PN0_
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFASRHQNx1_ASAP7_75t_R _DFFSR_PNN_ (.CLK( C), .D( D), .QN(~Q), .RESETN( R), .SETN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+5.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~8 debug messages>
+Mapping DFF cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0':
+Mapping DFF cells in module `\groq_sram_controller_scrubber':
+  mapped 2637 $_DFFSR_PNN_ cells to \DFFASRHQNx1_ASAP7_75t_R cells.
+
+6. Executing ABC pass (technology mapping using ABC).
+
+6.1. Extracting gate netlist of module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0' to `<abc-temp-dir>/input.blif'..
+
+6.1.1. Executed ABC.
+Extracted 904 gates and 1040 wires to a netlist network with 136 inputs and 81 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.31 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFASRHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx1_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx3_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5p33DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx6p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx8DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx4_ASAP7_75t_R".
+ABC: Library "asap7_rvt_ff" from "/nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib" has 169 cells (33 skipped: 23 seq; 0 tri-state; 10 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.42 sec
+ABC: Memory =   82.23 MB. Time =     0.42 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FAx1_ASAP7_75t_R").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+6.1.2. Re-integrating ABC results.
+ABC RESULTS:   AND2x2_ASAP7_75t_R cells:        2
+ABC RESULTS:   AND3x1_ASAP7_75t_R cells:        2
+ABC RESULTS:   AO21x1_ASAP7_75t_R cells:       14
+ABC RESULTS:   AOI211xp5_ASAP7_75t_R cells:       15
+ABC RESULTS:   AOI21xp33_ASAP7_75t_R cells:      334
+ABC RESULTS:   AOI22xp33_ASAP7_75t_R cells:        1
+ABC RESULTS:   AOI31xp33_ASAP7_75t_R cells:        1
+ABC RESULTS:   INVx1_ASAP7_75t_R cells:      191
+ABC RESULTS:   NAND2xp33_ASAP7_75t_R cells:      105
+ABC RESULTS:   NAND3xp33_ASAP7_75t_R cells:      342
+ABC RESULTS:   NAND4xp25_ASAP7_75t_R cells:       28
+ABC RESULTS:   NAND5xp2_ASAP7_75t_R cells:       48
+ABC RESULTS:   NOR2xp33_ASAP7_75t_R cells:       23
+ABC RESULTS:   NOR3xp33_ASAP7_75t_R cells:      324
+ABC RESULTS:   NOR4xp25_ASAP7_75t_R cells:        1
+ABC RESULTS:   OA21x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   OAI211xp5_ASAP7_75t_R cells:       11
+ABC RESULTS:   OAI21xp33_ASAP7_75t_R cells:      297
+ABC RESULTS:   OAI31xp33_ASAP7_75t_R cells:       44
+ABC RESULTS:   OR2x4_ASAP7_75t_R cells:        3
+ABC RESULTS:   OR3x1_ASAP7_75t_R cells:        2
+ABC RESULTS:   XNOR2x2_ASAP7_75t_R cells:       82
+ABC RESULTS:   XOR2x2_ASAP7_75t_R cells:      107
+ABC RESULTS:        internal signals:      823
+ABC RESULTS:           input signals:      136
+ABC RESULTS:          output signals:       81
+Removing temp directory.
+
+6.2. Extracting gate netlist of module `\groq_sram_controller_scrubber' to `<abc-temp-dir>/input.blif'..
+
+6.2.1. Executed ABC.
+Extracted 35065 gates and 38314 wires to a netlist network with 3247 inputs and 2967 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.31 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFASRHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFHQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQNx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFLQx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DHLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx1_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx2p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx3_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx4_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx5p33DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx6p67DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "ICGx8DC_ASAP7_75t_R" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFHx4_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx1_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx2_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx3_ASAP7_75t_R".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFLx4_ASAP7_75t_R".
+ABC: Library "asap7_rvt_ff" from "/nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib" has 169 cells (33 skipped: 23 seq; 0 tri-state; 10 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.42 sec
+ABC: Memory =   82.23 MB. Time =     0.42 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FAx1_ASAP7_75t_R").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+6.2.2. Re-integrating ABC results.
+ABC RESULTS:   A2O1A1Ixp33_ASAP7_75t_R cells:     4924
+ABC RESULTS:   A2O1A1O1Ixp25_ASAP7_75t_R cells:     2304
+ABC RESULTS:   AND2x2_ASAP7_75t_R cells:        4
+ABC RESULTS:   AND4x2_ASAP7_75t_R cells:        1
+ABC RESULTS:   AOI211xp5_ASAP7_75t_R cells:        1
+ABC RESULTS:   AOI21xp33_ASAP7_75t_R cells:     4756
+ABC RESULTS:   AOI221xp5_ASAP7_75t_R cells:      576
+ABC RESULTS:   AOI22xp33_ASAP7_75t_R cells:     1009
+ABC RESULTS:   AOI31xp33_ASAP7_75t_R cells:        6
+ABC RESULTS:   INVx1_ASAP7_75t_R cells:     2978
+ABC RESULTS:   NAND2xp33_ASAP7_75t_R cells:     7982
+ABC RESULTS:   NAND3xp33_ASAP7_75t_R cells:       53
+ABC RESULTS:   NAND4xp25_ASAP7_75t_R cells:      453
+ABC RESULTS:   NAND5xp2_ASAP7_75t_R cells:        5
+ABC RESULTS:   NOR2xp33_ASAP7_75t_R cells:     4779
+ABC RESULTS:   NOR3xp33_ASAP7_75t_R cells:      181
+ABC RESULTS:   NOR4xp25_ASAP7_75t_R cells:      166
+ABC RESULTS:   NOR5xp2_ASAP7_75t_R cells:        2
+ABC RESULTS:   OA21x2_ASAP7_75t_R cells:        2
+ABC RESULTS:   OAI21xp33_ASAP7_75t_R cells:     4937
+ABC RESULTS:   OAI221xp5_ASAP7_75t_R cells:      146
+ABC RESULTS:   OAI22xp33_ASAP7_75t_R cells:     1296
+ABC RESULTS:   OAI31xp33_ASAP7_75t_R cells:     4612
+ABC RESULTS:   OAI32xp33_ASAP7_75t_R cells:        1
+ABC RESULTS:   OR3x1_ASAP7_75t_R cells:        1
+ABC RESULTS:   XNOR2x2_ASAP7_75t_R cells:      152
+ABC RESULTS:   XOR2x2_ASAP7_75t_R cells:       12
+ABC RESULTS:        internal signals:    32100
+ABC RESULTS:           input signals:     3247
+ABC RESULTS:          output signals:     2967
+Removing temp directory.
+Removing global temp directory.
+
+7. Printing statistics.
+
+=== $paramod\groq_sram_ecc_secded\PIPELINE=1'0 ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     2834        - wires
+     3501        - wire bits
+       23        - public wires
+      529        - public wire bits
+       12        - ports
+      294        - port bits
+     1978  156.618 cells
+        2    0.175   AND2x2_ASAP7_75t_R
+        2    0.175   AND3x1_ASAP7_75t_R
+       14    1.225   AO21x1_ASAP7_75t_R
+       15    1.312   AOI211xp5_ASAP7_75t_R
+      334   24.349   AOI21xp33_ASAP7_75t_R
+        1    0.087   AOI22xp33_ASAP7_75t_R
+        1    0.087   AOI31xp33_ASAP7_75t_R
+      191    8.354   INVx1_ASAP7_75t_R
+      105    6.124   NAND2xp33_ASAP7_75t_R
+      342   24.932   NAND3xp33_ASAP7_75t_R
+       28    2.449   NAND4xp25_ASAP7_75t_R
+       48    4.899   NAND5xp2_ASAP7_75t_R
+       23    1.341   NOR2xp33_ASAP7_75t_R
+      324    23.62   NOR3xp33_ASAP7_75t_R
+        1    0.087   NOR4xp25_ASAP7_75t_R
+        1    0.102   OA21x2_ASAP7_75t_R
+       11    0.962   OAI211xp5_ASAP7_75t_R
+      297   21.651   OAI21xp33_ASAP7_75t_R
+       44    3.849   OAI31xp33_ASAP7_75t_R
+        3     0.35   OR2x4_ASAP7_75t_R
+        2    0.175   OR3x1_ASAP7_75t_R
+       82   13.151   XNOR2x2_ASAP7_75t_R
+      107   17.161   XOR2x2_ASAP7_75t_R
+
+   Chip area for module '$paramod\groq_sram_ecc_secded\PIPELINE=1'0': 156.618360
+     of which used for sequential elements: 0.000000 (0.00%)
+
+=== groq_sram_controller_scrubber ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+    49443        - wires
+    84366        - wire bits
+      110        - public wires
+     4571        - public wire bits
+       37        - ports
+      600        - port bits
+    43976   4092.3 cells
+     4924  430.752   A2O1A1Ixp33_ASAP7_75t_R
+     2304  302.331   A2O1A1O1Ixp25_ASAP7_75t_R
+        4     0.35   AND2x2_ASAP7_75t_R
+        1    0.117   AND4x2_ASAP7_75t_R
+        1    0.087   AOI211xp5_ASAP7_75t_R
+     4756  346.712   AOI21xp33_ASAP7_75t_R
+      576   58.787   AOI221xp5_ASAP7_75t_R
+     1009   88.267   AOI22xp33_ASAP7_75t_R
+        6    0.525   AOI31xp33_ASAP7_75t_R
+     2637  999.634   DFFASRHQNx1_ASAP7_75t_R
+     2978  130.258   INVx1_ASAP7_75t_R
+     7982   465.51   NAND2xp33_ASAP7_75t_R
+       53    3.864   NAND3xp33_ASAP7_75t_R
+      453   39.628   NAND4xp25_ASAP7_75t_R
+        5     0.51   NAND5xp2_ASAP7_75t_R
+     4779  278.711   NOR2xp33_ASAP7_75t_R
+      181   13.195   NOR3xp33_ASAP7_75t_R
+      166   14.522   NOR4xp25_ASAP7_75t_R
+        2    0.204   NOR5xp2_ASAP7_75t_R
+        2    0.204   OA21x2_ASAP7_75t_R
+     4937  359.907   OAI21xp33_ASAP7_75t_R
+      146   14.901   OAI221xp5_ASAP7_75t_R
+     1296  113.374   OAI22xp33_ASAP7_75t_R
+     4612  403.458   OAI31xp33_ASAP7_75t_R
+        1    0.102   OAI32xp33_ASAP7_75t_R
+        1    0.087   OR3x1_ASAP7_75t_R
+      152   24.378   XNOR2x2_ASAP7_75t_R
+       12    1.925   XOR2x2_ASAP7_75t_R
+        6        - submodules
+        6        -   $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+   Chip area for module '\groq_sram_controller_scrubber': 4092.299820
+     of which used for sequential elements: 999.633960 (24.43%)
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+    55844  5032.01 groq_sram_controller_scrubber
+     1978  156.618 $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+    66447        - wires
+   105372        - wire bits
+      248        - public wires
+     7745        - public wire bits
+      109        - ports
+     2364        - port bits
+        -        - memories
+        -        - memory bits
+        -        - processes
+    55844  5032.01 cells
+     4924  430.752   A2O1A1Ixp33_ASAP7_75t_R
+     2304  302.331   A2O1A1O1Ixp25_ASAP7_75t_R
+       16      1.4   AND2x2_ASAP7_75t_R
+       12     1.05   AND3x1_ASAP7_75t_R
+        1    0.117   AND4x2_ASAP7_75t_R
+       84    7.348   AO21x1_ASAP7_75t_R
+       91    7.961   AOI211xp5_ASAP7_75t_R
+     6760  492.804   AOI21xp33_ASAP7_75t_R
+      576   58.787   AOI221xp5_ASAP7_75t_R
+     1015   88.792   AOI22xp33_ASAP7_75t_R
+       12     1.05   AOI31xp33_ASAP7_75t_R
+     2637  999.634   DFFASRHQNx1_ASAP7_75t_R
+     4124  180.384   INVx1_ASAP7_75t_R
+     8612  502.252   NAND2xp33_ASAP7_75t_R
+     2105  153.455   NAND3xp33_ASAP7_75t_R
+      621   54.325   NAND4xp25_ASAP7_75t_R
+      293   29.904   NAND5xp2_ASAP7_75t_R
+     4917  286.759   NOR2xp33_ASAP7_75t_R
+     2125  154.913   NOR3xp33_ASAP7_75t_R
+      172   15.047   NOR4xp25_ASAP7_75t_R
+        2    0.204   NOR5xp2_ASAP7_75t_R
+        8    0.816   OA21x2_ASAP7_75t_R
+       66    5.774   OAI211xp5_ASAP7_75t_R
+     6719  489.815   OAI21xp33_ASAP7_75t_R
+      146   14.901   OAI221xp5_ASAP7_75t_R
+     1296  113.374   OAI22xp33_ASAP7_75t_R
+     4876  426.552   OAI31xp33_ASAP7_75t_R
+        1    0.102   OAI32xp33_ASAP7_75t_R
+       18      2.1   OR2x4_ASAP7_75t_R
+       13    1.137   OR3x1_ASAP7_75t_R
+      644  103.285   XNOR2x2_ASAP7_75t_R
+      654  104.889   XOR2x2_ASAP7_75t_R
+        6   939.71 submodules
+        6   939.71   $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+   Chip area for top module '\groq_sram_controller_scrubber': 5032.009980
+     of which used for sequential elements: 999.633960 (19.87%)
+
+8. Executing Verilog backend.
+
+8.1. Executing BMUXMAP pass.
+
+8.2. Executing DEMUXMAP pass.
+Dumping module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Dumping module `\groq_sram_controller_scrubber'.
+
+Warnings: 1 unique messages, 2 total
+End of script. Logfile hash: 643734e03c, CPU: user 5.64s system 0.26s, MEM: 211.60 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 47% 1x abc (4 sec), 18% 2x write_verilog (1 sec), ...

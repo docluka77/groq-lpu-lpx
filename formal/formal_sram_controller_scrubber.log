@@ -1,0 +1,1112 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Executing script file `formal/prove_sram_controller_scrubber.ys' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv
+Generating RTLIL representation for module `\groq_sram_ecc_secded'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv
+Generating RTLIL representation for module `\groq_sram_controller_scrubber'.
+Warning: Replacing memory \mem_q with list of registers. See /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:277
+Successfully finished Verilog frontend.
+Parameter \P_ADDR_W = 2
+
+3. Executing AST frontend in derive mode using pre-parsed AST for module `\groq_sram_controller_scrubber'.
+Parameter \P_ADDR_W = 2
+Generating RTLIL representation for module `$paramod\groq_sram_controller_scrubber\P_ADDR_W=32'00000000000000000000000000000010'.
+Warning: Replacing memory \mem_q with list of registers. See /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:277
+
+4. Executing PREP pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     \groq_sram_ecc_secded
+Parameter \PIPELINE = 1'0
+
+4.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\groq_sram_ecc_secded'.
+Parameter \PIPELINE = 1'0
+Generating RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Parameter \PIPELINE = 1'0
+Found cached RTLIL representation for module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+
+4.1.3. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+4.1.4. Analyzing design hierarchy..
+Top module:  \groq_sram_controller_scrubber
+Used module:     $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+Removing unused module `\groq_sram_ecc_secded'.
+Removed 1 unused modules.
+Module groq_sram_controller_scrubber directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 448 empty switches in `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+Found and cleaned up 448 empty switches in `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+Cleaned up 896 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921 in module groq_sram_controller_scrubber.
+Removed 1 dead cases from process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951 in module groq_sram_controller_scrubber.
+Marked 6 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951 in module groq_sram_controller_scrubber.
+Removed 2 dead cases from process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019 in module groq_sram_controller_scrubber.
+Marked 13 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019 in module groq_sram_controller_scrubber.
+Marked 1 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091 in module groq_sram_controller_scrubber.
+Removed 3 dead cases from process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095 in module groq_sram_controller_scrubber.
+Marked 4 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095 in module groq_sram_controller_scrubber.
+Marked 64 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384 in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Removed a total of 6 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 11 redundant assignments.
+Promoted 572 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+Found async reset \rst_n in `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+Found async reset \rst_n in `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~96 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+     1/9: $2$lookahead\bank_repair_addr_o$920[7:0]$934
+     2/9: $2$bitselwrite$pos$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$908[31:0]$932
+     3/9: $2$lookahead\bank_repair_en_o$919[3:0]$933
+     4/9: $2$bitselwrite$pos$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:83$907[1:0]$931
+     5/9: $1$lookahead\bank_repair_addr_o$920[7:0]$930
+     6/9: $1$lookahead\bank_repair_en_o$919[3:0]$929
+     7/9: $1$bitselwrite$pos$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$908[31:0]$928
+     8/9: $1$bitselwrite$pos$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:83$907[1:0]$927
+     9/9: $0\efuse_load_ack_o[0:0]
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+     1/14: $4\scrub_rd_fire_o[0:0]
+     2/14: $3\scrub_rd_fire_o[0:0]
+     3/14: $3\scrub_active_addr_o[1:0]
+     4/14: $3\scrub_active_bank_o[1:0]
+     5/14: $3\scrub_wb_fire_o[0:0]
+     6/14: $2\scrub_wb_fire_o[0:0]
+     7/14: $2\scrub_active_addr_o[1:0]
+     8/14: $2\scrub_active_bank_o[1:0]
+     9/14: $2\scrub_rd_fire_o[0:0]
+    10/14: $1\scrub_active_addr_o[1:0]
+    11/14: $1\scrub_active_bank_o[1:0]
+    12/14: $1\scrub_wb_fire_o[0:0]
+    13/14: $1\scrub_rd_fire_o[0:0]
+    14/14: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$909_DATA[143:0]$1003
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+     1/60: $3$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:346$915_DATA[143:0]$1087
+     2/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$914_ADDR[3:0]$1081
+     3/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$914_DATA[143:0]$1082
+     4/60: $2$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:346$915_DATA[143:0]$1084
+     5/60: $2$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:346$915_ADDR[3:0]$1083
+     6/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$913_ADDR[3:0]$1077
+     7/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$913_DATA[143:0]$1078
+     8/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$912_ADDR[3:0]$1073
+     9/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$912_DATA[143:0]$1074
+    10/60: $0\scrub_addr_q[1:0]
+    11/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$911_DATA[143:0]$1066
+    12/60: $3$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_DATA[143:0]$1059
+    13/60: $0\vliw_rd_repaired_row_hit_o[0:0]
+    14/60: $2$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_DATA[143:0]$1056
+    15/60: $2$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_ADDR[3:0]$1055
+    16/60: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:346$915_DATA[143:0]$1054
+    17/60: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:346$915_ADDR[3:0]$1053
+    18/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$914_DATA[143:0]$1052
+    19/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$914_ADDR[3:0]$1051
+    20/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$913_DATA[143:0]$1050
+    21/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$913_ADDR[3:0]$1049
+    22/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$912_DATA[143:0]$1048
+    23/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$912_ADDR[3:0]$1047
+    24/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$911_DATA[143:0]$1046
+    25/60: $1$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$911_ADDR[3:0]$1045
+    26/60: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_DATA[143:0]$1044
+    27/60: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_ADDR[3:0]$1043
+    28/60: $0\vliw_rd_valid_o[0:0]
+    29/60: $1$fordecl_block$643.$for_loop$644[3].$fordecl_block$645.a[31:0]$1042
+    30/60: $1$fordecl_block$643.$for_loop$644[2].$fordecl_block$645.a[31:0]$1041
+    31/60: $1$fordecl_block$643.$for_loop$644[1].$fordecl_block$645.a[31:0]$1040
+    32/60: $1$fordecl_block$643.$for_loop$644[0].$fordecl_block$645.a[31:0]$1039
+    33/60: $1$fordecl_block$643.b[31:0]$1038
+    34/60: $0\mem_q[15][143:0]
+    35/60: $0\mem_q[14][143:0]
+    36/60: $0\mem_q[13][143:0]
+    37/60: $0\mem_q[12][143:0]
+    38/60: $0\mem_q[11][143:0]
+    39/60: $0\mem_q[10][143:0]
+    40/60: $0\mem_q[9][143:0]
+    41/60: $0\mem_q[8][143:0]
+    42/60: $0\mem_q[7][143:0]
+    43/60: $0\mem_q[6][143:0]
+    44/60: $0\mem_q[5][143:0]
+    45/60: $0\mem_q[4][143:0]
+    46/60: $0\mem_q[3][143:0]
+    47/60: $0\mem_q[2][143:0]
+    48/60: $0\mem_q[1][143:0]
+    49/60: $0\mem_q[0][143:0]
+    50/60: $0\wb_clean_codeword_q[143:0]
+    51/60: $0\wb_addr_q[1:0]
+    52/60: $0\wb_bank_q[1:0]
+    53/60: $0\wb_pending_q[0:0]
+    54/60: $0\scrub_bank_q[1:0]
+    55/60: $2$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$911_ADDR[3:0]$1065
+    56/60: $0\vliw_rd_raw_cw_q[143:0]
+    57/60: $0\first_ded_addr_o[1:0]
+    58/60: $0\first_ded_bank_o[1:0]
+    59/60: $0\scrub_ded_alert_o[0:0]
+    60/60: $0\scrub_corrected_cnt_o[15:0]
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+     1/5: $0\f_wb_clean_q[143:0]
+     2/5: $0\f_wb_addr_q[1:0]
+     3/5: $0\f_wb_bank_q[1:0]
+     4/5: $0\f_wb_fired_q[0:0]
+     5/5: $0\f_past_valid_q[0:0]
+Creating decoders for process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+     1/20: $2$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$918_DATA[143:0]$1163
+     2/20: $2$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$917_DATA[143:0]$1157
+     3/20: $2$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$916_DATA[143:0]$1152
+     4/20: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$918_DATA[143:0]$1149
+     5/20: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$918_ADDR[3:0]$1148
+     6/20: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$917_DATA[143:0]$1147
+     7/20: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$917_ADDR[3:0]$1146
+     8/20: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$916_DATA[143:0]$1145
+     9/20: $1$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$916_ADDR[3:0]$1144
+    10/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$1164_EN
+    11/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1158_EN
+    12/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN
+    13/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:395$1139_EN
+    14/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN
+    15/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:386$1122_EN
+    16/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN
+    17/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:382$1114_EN
+    18/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN
+    19/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:378$1106_EN
+    20/20: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN
+Creating decoders for process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+Creating decoders for process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+     1/64: $64\data_corr_comb[63:63]
+     2/64: $63\data_corr_comb[62:62]
+     3/64: $62\data_corr_comb[61:61]
+     4/64: $61\data_corr_comb[60:60]
+     5/64: $60\data_corr_comb[59:59]
+     6/64: $59\data_corr_comb[58:58]
+     7/64: $58\data_corr_comb[57:57]
+     8/64: $57\data_corr_comb[56:56]
+     9/64: $56\data_corr_comb[55:55]
+    10/64: $55\data_corr_comb[54:54]
+    11/64: $54\data_corr_comb[53:53]
+    12/64: $53\data_corr_comb[52:52]
+    13/64: $52\data_corr_comb[51:51]
+    14/64: $51\data_corr_comb[50:50]
+    15/64: $50\data_corr_comb[49:49]
+    16/64: $49\data_corr_comb[48:48]
+    17/64: $48\data_corr_comb[47:47]
+    18/64: $47\data_corr_comb[46:46]
+    19/64: $46\data_corr_comb[45:45]
+    20/64: $45\data_corr_comb[44:44]
+    21/64: $44\data_corr_comb[43:43]
+    22/64: $43\data_corr_comb[42:42]
+    23/64: $42\data_corr_comb[41:41]
+    24/64: $41\data_corr_comb[40:40]
+    25/64: $40\data_corr_comb[39:39]
+    26/64: $39\data_corr_comb[38:38]
+    27/64: $38\data_corr_comb[37:37]
+    28/64: $37\data_corr_comb[36:36]
+    29/64: $36\data_corr_comb[35:35]
+    30/64: $35\data_corr_comb[34:34]
+    31/64: $34\data_corr_comb[33:33]
+    32/64: $33\data_corr_comb[32:32]
+    33/64: $32\data_corr_comb[31:31]
+    34/64: $31\data_corr_comb[30:30]
+    35/64: $30\data_corr_comb[29:29]
+    36/64: $29\data_corr_comb[28:28]
+    37/64: $28\data_corr_comb[27:27]
+    38/64: $27\data_corr_comb[26:26]
+    39/64: $26\data_corr_comb[25:25]
+    40/64: $25\data_corr_comb[24:24]
+    41/64: $24\data_corr_comb[23:23]
+    42/64: $23\data_corr_comb[22:22]
+    43/64: $22\data_corr_comb[21:21]
+    44/64: $21\data_corr_comb[20:20]
+    45/64: $20\data_corr_comb[19:19]
+    46/64: $19\data_corr_comb[18:18]
+    47/64: $18\data_corr_comb[17:17]
+    48/64: $17\data_corr_comb[16:16]
+    49/64: $16\data_corr_comb[15:15]
+    50/64: $15\data_corr_comb[14:14]
+    51/64: $14\data_corr_comb[13:13]
+    52/64: $13\data_corr_comb[12:12]
+    53/64: $12\data_corr_comb[11:11]
+    54/64: $11\data_corr_comb[10:10]
+    55/64: $10\data_corr_comb[9:9]
+    56/64: $9\data_corr_comb[8:8]
+    57/64: $8\data_corr_comb[7:7]
+    58/64: $7\data_corr_comb[6:6]
+    59/64: $6\data_corr_comb[5:5]
+    60/64: $5\data_corr_comb[4:4]
+    61/64: $4\data_corr_comb[3:3]
+    62/64: $3\data_corr_comb[2:2]
+    63/64: $2\data_corr_comb[1:1]
+    64/64: $1\data_corr_comb[0:0]
+Creating decoders for process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_rd_data_o' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_rd_sec_err_o' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_rd_ded_err_o' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_rd_fire_o' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_wb_fire_o' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_active_bank_o' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_active_addr_o' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\vliw_wr_cw_c' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\dma_wr_cw_c' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_raw_cw_c' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\fg_bank_busy_c' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\fg_overwrites_wb_c' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_sec_any_c' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.\scrub_ded_any_c' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$fordecl_block$641.b' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$909_ADDR' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$909_DATA' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$916_ADDR' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$916_DATA' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$917_ADDR' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$917_DATA' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$918_ADDR' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+No latch inferred for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$918_DATA' from process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\ecc_out' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\codeword_out' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\valid_out' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\data_corrected' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\syndrome' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\single_err_detected' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\double_err_detected' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\data_raw' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\ecc_raw' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\syn_low' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\overall_par' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\syndrome_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\data_corr_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\single_err_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\double_err_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.k' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[0].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[1].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[2].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[3].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[4].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[5].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$5.$for_loop$6[6].$fordecl_block$7.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$9.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\ecc_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.\codeword_comb' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.k' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[0].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[1].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[2].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[3].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[4].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[5].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+No latch inferred for signal `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$fordecl_block$1.$for_loop$2[6].$fordecl_block$3.i' from process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_sram_controller_scrubber.\bank_repair_en_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+  created $adff cell `$procdff$3154' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\bank_repair_addr_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+  created $adff cell `$procdff$3159' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\efuse_load_ack_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+  created $adff cell `$procdff$3164' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$bitselwrite$pos$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:83$907' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+  created $adff cell `$procdff$3169' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$bitselwrite$pos$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$908' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+  created $adff cell `$procdff$3174' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$lookahead\bank_repair_en_o$919' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+  created $adff cell `$procdff$3179' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$lookahead\bank_repair_addr_o$920' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+  created $adff cell `$procdff$3184' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\vliw_rd_valid_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3189' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\vliw_rd_repaired_row_hit_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3194' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_corrected_cnt_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3199' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_ded_alert_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3204' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\first_ded_bank_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3209' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\first_ded_addr_o' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3214' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\vliw_rd_raw_cw_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3219' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_bank_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3224' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\scrub_addr_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3229' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_pending_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3234' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_bank_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3239' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_addr_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3244' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\wb_clean_codeword_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3249' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.b' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3254' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[0].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3259' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[1].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3264' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[2].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3269' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$fordecl_block$643.$for_loop$644[3].$fordecl_block$645.a' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3274' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[0]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3279' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[1]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3284' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[2]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3289' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[3]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3294' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[4]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3299' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[5]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3304' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[6]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3309' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[7]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3314' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[8]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3319' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[9]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3324' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[10]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3329' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[11]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3334' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[12]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3339' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[13]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3344' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[14]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3349' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\mem_q[15]' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3354' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_ADDR' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3359' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_DATA' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3364' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$911_ADDR' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3369' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$911_DATA' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3374' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$912_ADDR' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3379' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$912_DATA' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3384' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$913_ADDR' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3389' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$913_DATA' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3394' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$914_ADDR' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3399' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_wr$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$914_DATA' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3404' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:346$915_ADDR' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3409' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:346$915_DATA' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+  created $adff cell `$procdff$3414' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\f_past_valid_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+  created $adff cell `$procdff$3419' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\f_wb_fired_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+  created $adff cell `$procdff$3424' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\f_wb_bank_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+  created $adff cell `$procdff$3429' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\f_wb_addr_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+  created $adff cell `$procdff$3434' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sram_controller_scrubber.\f_wb_clean_q' using process `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+  created $adff cell `$procdff$3439' with positive edge clock and positive level reset.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+Removing empty process `groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:75$921'.
+Found and cleaned up 6 empty switches in `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+Removing empty process `groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:226$951'.
+Found and cleaned up 17 empty switches in `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+Removing empty process `groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:273$1019'.
+Removing empty process `groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:358$1091'.
+Found and cleaned up 8 empty switches in `\groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+Removing empty process `groq_sram_controller_scrubber.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:374$1095'.
+Removing empty process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$1796'.
+Found and cleaned up 64 empty switches in `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+Removing empty process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$1384'.
+Removing empty process `$paramod\groq_sram_ecc_secded\PIPELINE=1'0.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$1167'.
+Cleaned up 96 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+<suppressed ~142 debug messages>
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+<suppressed ~8 debug messages>
+
+4.3. Executing FUTURE pass.
+
+4.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+
+4.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Removed 106 unused cells and 1180 unused wires.
+<suppressed ~108 debug messages>
+
+4.6. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\groq_sram_ecc_secded\PIPELINE=1'0...
+Checking module groq_sram_controller_scrubber...
+Found and reported 0 problems.
+
+4.7. Executing OPT pass (performing simple optimizations).
+
+4.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+<suppressed ~183 debug messages>
+Removed a total of 61 cells.
+
+4.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$1814.
+    dead port 1/2 on $mux $procmux$1817.
+    dead port 2/2 on $mux $procmux$1819.
+    dead port 1/2 on $mux $procmux$1826.
+    dead port 2/2 on $mux $procmux$1828.
+    dead port 1/2 on $mux $procmux$1834.
+    dead port 2/2 on $mux $procmux$1836.
+    dead port 1/2 on $mux $procmux$1842.
+    dead port 2/2 on $mux $procmux$1844.
+    dead port 2/2 on $mux $procmux$1851.
+    dead port 2/2 on $mux $procmux$1853.
+    dead port 2/2 on $mux $procmux$1859.
+    dead port 2/2 on $mux $procmux$1865.
+    dead port 2/2 on $mux $procmux$1871.
+    dead port 2/2 on $mux $procmux$1877.
+    dead port 2/2 on $mux $procmux$1975.
+Removed 16 multiplexer ports.
+<suppressed ~1145 debug messages>
+
+4.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+<suppressed ~30 debug messages>
+Removed a total of 10 cells.
+
+4.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 0 unused cells and 87 unused wires.
+<suppressed ~1 debug messages>
+
+4.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \groq_sram_controller_scrubber..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1111 debug messages>
+
+4.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+  Optimizing cells in module \groq_sram_controller_scrubber.
+Performed a total of 0 changes.
+
+4.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+4.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 5 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1603 ($eq).
+Removed top 4 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1606 ($eq).
+Removed top 4 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1609 ($eq).
+Removed top 4 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1612 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1615 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1618 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1621 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1624 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1627 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1630 ($eq).
+Removed top 3 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1633 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1636 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1639 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1642 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1645 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1648 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1651 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1654 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1657 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1660 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1663 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1666 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1669 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1672 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1675 ($eq).
+Removed top 2 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1678 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1681 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1684 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1687 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1690 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1693 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1696 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1699 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1702 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1705 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1708 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1711 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1714 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1717 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1720 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1723 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1726 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1729 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1732 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1735 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1738 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1741 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1744 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1747 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1750 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1753 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1756 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1759 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1762 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1765 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1768 ($eq).
+Removed top 1 bits (of 7) from port B of cell $paramod\groq_sram_ecc_secded\PIPELINE=1'0.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$1771 ($eq).
+Converting cell groq_sram_controller_scrubber.$neg$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:83$935 ($neg) from signed to unsigned.
+Removed top 1 bits (of 3) from port A of cell groq_sram_controller_scrubber.$neg$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:83$935 ($neg).
+Removed top 30 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$942 ($mul).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$942 ($mul).
+Removed top 28 bits (of 33) from port A of cell groq_sram_controller_scrubber.$neg$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$943 ($neg).
+Converting cell groq_sram_controller_scrubber.$neg$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$943 ($neg) from signed to unsigned.
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$neg$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$943 ($neg).
+Removed top 1 bits (of 2) from port B of cell groq_sram_controller_scrubber.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:231$963 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_sram_controller_scrubber.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:232$965 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_sram_controller_scrubber.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:233$968 ($eq).
+Removed top 29 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$1001 ($mul).
+Removed top 27 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$1001 ($mul).
+Removed top 27 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$1002 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$1002 ($add).
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$1002 ($add).
+Removed top 29 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$1057 ($mul).
+Removed top 27 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$1057 ($mul).
+Removed top 27 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$1058 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$1058 ($add).
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$1058 ($add).
+Removed top 30 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:300$1061 ($mul).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:300$1061 ($mul).
+Removed top 27 bits (of 32) from port B of cell groq_sram_controller_scrubber.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:300$1062 ($shiftx).
+Removed top 29 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$1067 ($mul).
+Removed top 27 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$1067 ($mul).
+Removed top 27 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$1068 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$1068 ($add).
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$1068 ($add).
+Removed top 15 bits (of 16) from port B of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:328$1072 ($add).
+Removed top 29 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$1075 ($mul).
+Removed top 27 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$1075 ($mul).
+Removed top 27 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$1076 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$1076 ($add).
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$1076 ($add).
+Removed top 29 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$1079 ($mul).
+Removed top 27 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$1079 ($mul).
+Removed top 27 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$1080 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$1080 ($add).
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$1080 ($add).
+Removed top 29 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$1089 ($mul).
+Removed top 27 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$1089 ($mul).
+Removed top 27 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$1090 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$1090 ($add).
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$1090 ($add).
+Removed top 29 bits (of 32) from port B of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1150 ($mul).
+Removed top 27 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1150 ($mul).
+Removed top 27 bits (of 32) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1156 ($add).
+Removed top 28 bits (of 32) from port Y of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1156 ($add).
+Removed top 1 bits (of 5) from port A of cell groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1156 ($add).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1900_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1901_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1902_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1903_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1904_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1905_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1906_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1918_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1919_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1920_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1921_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1922_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1923_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1924_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1967_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1968_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1969_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1970_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1971_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1972_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$1973_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2268_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2281_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2294_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2321_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2335_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2349_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2378_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2393_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2408_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2439_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2455_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2471_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2504_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2521_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2538_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2573_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2591_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2609_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2646_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2665_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2684_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2865_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2866_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2867_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2868_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2869_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2870_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sram_controller_scrubber.$procmux$2871_CMP0 ($eq).
+Removed top 1 bits (of 5) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:240$1001 ($mul).
+Removed top 1 bits (of 5) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$1057 ($mul).
+Removed top 1 bits (of 5) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$1067 ($mul).
+Removed top 1 bits (of 5) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$1075 ($mul).
+Removed top 1 bits (of 5) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$1079 ($mul).
+Removed top 1 bits (of 5) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$1089 ($mul).
+Removed top 1 bits (of 5) from port Y of cell groq_sram_controller_scrubber.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1150 ($mul).
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$1058_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:307$1068_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:335$1076_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:340$1080_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:345$1090_Y.
+Removed top 28 bits (of 32) from wire groq_sram_controller_scrubber.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1151_Y.
+
+4.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+4.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.11. Executing OPT pass (performing simple optimizations).
+
+4.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+Optimizing module groq_sram_controller_scrubber.
+
+4.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\groq_sram_ecc_secded\PIPELINE=1'0'.
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+4.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\groq_sram_ecc_secded\PIPELINE=1'0..
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+4.11.4. Finished fast OPT passes.
+
+4.12. Printing statistics.
+
+=== $paramod\groq_sram_ecc_secded\PIPELINE=1'0 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      608 wires
+     1114 wire bits
+       23 public wires
+      529 public wire bits
+       12 ports
+      294 port bits
+      666 cells
+        1   $and
+       64   $eq
+       64   $logic_and
+       64   $mux
+       65   $not
+        1   $reduce_or
+        3   $reduce_xor
+      404   $xor
+
+=== groq_sram_controller_scrubber ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      522 wires
+    25348 wire bits
+      115 public wires
+     4721 public wire bits
+       37 ports
+      600 port bits
+      472 cells
+        9   $add
+       37   $adff
+        2   $and
+       14   $check
+      125   $eq
+       34   $logic_and
+       19   $logic_not
+       14   $logic_or
+        9   $mul
+      178   $mux
+        1   $ne
+        2   $neg
+        8   $not
+        2   $or
+        4   $pmux
+        6   $reduce_xor
+        3   $shift
+        4   $shiftx
+        1   $xor
+        6 submodules
+        6   $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+     4468 groq_sram_controller_scrubber
+      666 $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+        +----------Count including submodules.
+        | 
+     4170 wires
+    32032 wire bits
+      253 public wires
+     7895 public wire bits
+      109 ports
+     2364 port bits
+        - memories
+        - memory bits
+        - processes
+     4468 cells
+        9   $add
+       37   $adff
+        8   $and
+       14   $check
+      509   $eq
+      418   $logic_and
+       19   $logic_not
+       14   $logic_or
+        9   $mul
+      562   $mux
+        1   $ne
+        2   $neg
+      398   $not
+        2   $or
+        4   $pmux
+        6   $reduce_or
+       24   $reduce_xor
+        3   $shift
+        4   $shiftx
+     2425   $xor
+        6 submodules
+        6   $paramod\groq_sram_ecc_secded\PIPELINE=1'0
+
+4.13. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\groq_sram_ecc_secded\PIPELINE=1'0...
+Checking module groq_sram_controller_scrubber...
+Found and reported 0 problems.
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\groq_sram_ecc_secded\PIPELINE=1'0.
+<suppressed ~6 debug messages>
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+<suppressed ~1076 debug messages>
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+6.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$3249 ($adff) from module groq_sram_controller_scrubber (D = { \scrub_clean_hi_c \scrub_clean_lo_c }, Q = \wb_clean_codeword_q).
+Adding EN signal on $procdff$3244 ($adff) from module groq_sram_controller_scrubber (D = \scrub_addr_q, Q = \wb_addr_q).
+Adding EN signal on $procdff$3239 ($adff) from module groq_sram_controller_scrubber (D = \scrub_bank_q, Q = \wb_bank_q).
+Adding EN signal on $procdff$3229 ($adff) from module groq_sram_controller_scrubber (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:315$1069_Y [3:2], Q = \scrub_addr_q).
+Adding EN signal on $procdff$3224 ($adff) from module groq_sram_controller_scrubber (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:315$1069_Y [1:0], Q = \scrub_bank_q).
+Adding EN signal on $procdff$3219 ($adff) from module groq_sram_controller_scrubber (D = $3$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_DATA[143:0]$1059, Q = \vliw_rd_raw_cw_q).
+Adding EN signal on $procdff$3214 ($adff) from module groq_sram_controller_scrubber (D = \scrub_addr_q, Q = \first_ded_addr_o).
+Adding EN signal on $procdff$3209 ($adff) from module groq_sram_controller_scrubber (D = \scrub_bank_q, Q = \first_ded_bank_o).
+Adding EN signal on $procdff$3204 ($adff) from module groq_sram_controller_scrubber (D = 1'1, Q = \scrub_ded_alert_o).
+Adding EN signal on $procdff$3199 ($adff) from module groq_sram_controller_scrubber (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:328$1072_Y, Q = \scrub_corrected_cnt_o).
+Adding EN signal on $procdff$3159 ($adff) from module groq_sram_controller_scrubber (D = $or$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$949_Y, Q = \bank_repair_addr_o).
+Adding EN signal on $procdff$3154 ($adff) from module groq_sram_controller_scrubber (D = $or$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:83$941_Y, Q = \bank_repair_en_o).
+
+6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 26 unused cells and 819 unused wires.
+<suppressed ~27 debug messages>
+
+6.5. Rerunning OPT passes. (Removed registers in this run.)
+
+6.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+
+6.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+<suppressed ~21 debug messages>
+Removed a total of 7 cells.
+
+6.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+6.10. Finished fast OPT passes.
+
+7. Executing ASYNC2SYNC pass.
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3452 ($adffe): ARST=\rst_n, D={ \scrub_clean_hi_c \scrub_clean_lo_c }, Q=\wb_clean_codeword_q
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3457 ($adffe): ARST=\rst_n, D=\scrub_addr_q, Q=\wb_addr_q
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3462 ($adffe): ARST=\rst_n, D=\scrub_bank_q, Q=\wb_bank_q
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3467 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:315$1069_Y [3:2], Q=\scrub_addr_q
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3468 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:315$1069_Y [1:0], Q=\scrub_bank_q
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3469 ($adffe): ARST=\rst_n, D=$3$mem2reg_rd$\mem_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:298$910_DATA[143:0]$1059, Q=\vliw_rd_raw_cw_q
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3470 ($adffe): ARST=\rst_n, D=\scrub_addr_q, Q=\first_ded_addr_o
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3475 ($adffe): ARST=\rst_n, D=\scrub_bank_q, Q=\first_ded_bank_o
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3480 ($adffe): ARST=\rst_n, D=1'1, Q=\scrub_ded_alert_o
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3483 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:328$1072_Y, Q=\scrub_corrected_cnt_o
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3488 ($adffe): ARST=\rst_n, D=$or$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:84$949_Y, Q=\bank_repair_addr_o
+Replacing groq_sram_controller_scrubber.$auto$ff.cc:337:slice$3489 ($adffe): ARST=\rst_n, D=$or$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:83$941_Y, Q=\bank_repair_en_o
+Replacing groq_sram_controller_scrubber.$procdff$3164 ($adff): ARST=\rst_n, D=\efuse_load_req_i, Q=\efuse_load_ack_o
+Replacing groq_sram_controller_scrubber.$procdff$3189 ($adff): ARST=\rst_n, D=\vliw_rd_en_i, Q=\vliw_rd_valid_o
+Replacing groq_sram_controller_scrubber.$procdff$3194 ($adff): ARST=\rst_n, D=$0\vliw_rd_repaired_row_hit_o[0:0], Q=\vliw_rd_repaired_row_hit_o
+Replacing groq_sram_controller_scrubber.$procdff$3234 ($adff): ARST=\rst_n, D=$0\wb_pending_q[0:0], Q=\wb_pending_q
+Replacing groq_sram_controller_scrubber.$procdff$3279 ($adff): ARST=\rst_n, D=$0\mem_q[0][143:0], Q=\mem_q[0]
+Replacing groq_sram_controller_scrubber.$procdff$3284 ($adff): ARST=\rst_n, D=$0\mem_q[1][143:0], Q=\mem_q[1]
+Replacing groq_sram_controller_scrubber.$procdff$3289 ($adff): ARST=\rst_n, D=$0\mem_q[2][143:0], Q=\mem_q[2]
+Replacing groq_sram_controller_scrubber.$procdff$3294 ($adff): ARST=\rst_n, D=$0\mem_q[3][143:0], Q=\mem_q[3]
+Replacing groq_sram_controller_scrubber.$procdff$3299 ($adff): ARST=\rst_n, D=$0\mem_q[4][143:0], Q=\mem_q[4]
+Replacing groq_sram_controller_scrubber.$procdff$3304 ($adff): ARST=\rst_n, D=$0\mem_q[5][143:0], Q=\mem_q[5]
+Replacing groq_sram_controller_scrubber.$procdff$3309 ($adff): ARST=\rst_n, D=$0\mem_q[6][143:0], Q=\mem_q[6]
+Replacing groq_sram_controller_scrubber.$procdff$3314 ($adff): ARST=\rst_n, D=$0\mem_q[7][143:0], Q=\mem_q[7]
+Replacing groq_sram_controller_scrubber.$procdff$3319 ($adff): ARST=\rst_n, D=$0\mem_q[8][143:0], Q=\mem_q[8]
+Replacing groq_sram_controller_scrubber.$procdff$3324 ($adff): ARST=\rst_n, D=$0\mem_q[9][143:0], Q=\mem_q[9]
+Replacing groq_sram_controller_scrubber.$procdff$3329 ($adff): ARST=\rst_n, D=$0\mem_q[10][143:0], Q=\mem_q[10]
+Replacing groq_sram_controller_scrubber.$procdff$3334 ($adff): ARST=\rst_n, D=$0\mem_q[11][143:0], Q=\mem_q[11]
+Replacing groq_sram_controller_scrubber.$procdff$3339 ($adff): ARST=\rst_n, D=$0\mem_q[12][143:0], Q=\mem_q[12]
+Replacing groq_sram_controller_scrubber.$procdff$3344 ($adff): ARST=\rst_n, D=$0\mem_q[13][143:0], Q=\mem_q[13]
+Replacing groq_sram_controller_scrubber.$procdff$3349 ($adff): ARST=\rst_n, D=$0\mem_q[14][143:0], Q=\mem_q[14]
+Replacing groq_sram_controller_scrubber.$procdff$3354 ($adff): ARST=\rst_n, D=$0\mem_q[15][143:0], Q=\mem_q[15]
+Replacing groq_sram_controller_scrubber.$procdff$3419 ($adff): ARST=\rst_n, D=1'1, Q=\f_past_valid_q
+Replacing groq_sram_controller_scrubber.$procdff$3424 ($adff): ARST=\rst_n, D=$0\f_wb_fired_q[0:0], Q=\f_wb_fired_q
+Replacing groq_sram_controller_scrubber.$procdff$3429 ($adff): ARST=\rst_n, D=\wb_bank_q, Q=\f_wb_bank_q
+Replacing groq_sram_controller_scrubber.$procdff$3434 ($adff): ARST=\rst_n, D=\wb_addr_q, Q=\f_wb_addr_q
+Replacing groq_sram_controller_scrubber.$procdff$3439 ($adff): ARST=\rst_n, D=\wb_clean_codeword_q, Q=\f_wb_clean_q
+
+8. Executing OPT pass (performing simple optimizations).
+
+8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+<suppressed ~16 debug messages>
+
+8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+8.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$3194 ($sdff) from module groq_sram_controller_scrubber (D = $logic_and$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:299$1064_Y, Q = $auto$async2sync.cc:234:execute$3518, rval = 1'0).
+
+8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+Removed 13 unused cells and 29 unused wires.
+<suppressed ~14 debug messages>
+
+8.5. Rerunning OPT passes. (Removed registers in this run.)
+
+8.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_controller_scrubber.
+
+8.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_controller_scrubber'.
+Removed a total of 0 cells.
+
+8.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_controller_scrubber..
+
+8.10. Finished fast OPT passes.
+
+9. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Import set-constraint for this timestep: \rst_n = 1'0
+Final constraint equation: \rst_n = 1'0
+Imported 3552 cells to SAT database.
+No constraints for initial state found.
+
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 3552 cells to SAT database.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1105_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:378$1109_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1113_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:382$1117_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1121_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:386$1125_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:389$1128_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:391$1131_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:392$1134_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1138_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:395$1141_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1154_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1160_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$1166_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 3552 cells to SAT database.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1105_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:378$1109_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1113_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:382$1117_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1121_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:386$1125_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:389$1128_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:391$1131_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:392$1134_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1138_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:395$1141_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1154_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1160_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$1166_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 3552 cells to SAT database.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1105_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:378$1109_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1113_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:382$1117_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1121_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:386$1125_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:389$1128_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:391$1131_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:392$1134_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1138_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:395$1141_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1154_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1160_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$1166_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 3552 cells to SAT database.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1105_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:378$1109_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:377$1102_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1113_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:382$1117_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:381$1110_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1121_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:386$1125_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:385$1118_EN.
+Import proof for assert: $logic_not$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:389$1128_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:391$1131_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:392$1134_Y when 1'1.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1138_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:395$1141_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:394$1136_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1154_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:399$1160_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:400$1166_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv:398$1153_EN.
+
+Solving problem with 1093962 variables and 2996399 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+Warnings: 1 unique messages, 2 total
+End of script. Logfile hash: 5d710969f3, CPU: user 9.93s system 1.67s, MEM: 888.95 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 85% 1x sat (9 sec), 5% 3x read_verilog (0 sec), ...

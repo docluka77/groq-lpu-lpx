@@ -1,0 +1,5 @@
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv
+prep -top groq_sxm_slice
+async2sync
+chformal -lower
+sat -verify -seq 2 -set-init-zero -prove-asserts

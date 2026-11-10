@@ -1,0 +1,23 @@
+{
+  "suite": "uvm_lpx_mxfp8_dma",
+  "dut": ["groq_mxfp8_nvfp4_dot_engine", "groq_c2c_serdes_pcs", "groq_pcie_c2c_dma"],
+  "driven_cycles": 3600,
+  "observed_cycles": 3600,
+  "checked_cycles": 3600,
+  "dpi_calls": 3600,
+  "dot_engine_checks": 3600,
+  "serdes_pcs_checks": 3600,
+  "pcie_dma_checks": 3600,
+  "dot_zero_skip_events": 1744,
+  "dot_nan_inf_events": 453,
+  "pcs_replay_events": 145,
+  "pcs_crc_err_events": 147,
+  "dma_window_stall_events": 324,
+  "dma_parity_err_events": 96,
+  "dot_mismatches": 0,
+  "pcs_mismatches": 0,
+  "dma_mismatches": 0,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

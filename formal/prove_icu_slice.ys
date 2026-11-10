@@ -1,0 +1,8 @@
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv
+hierarchy -top groq_icu_slice
+proc
+opt
+async2sync
+dffunmap
+stat
+sat -seq 8 -set-init-zero -prove-asserts

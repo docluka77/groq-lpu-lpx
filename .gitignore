@@ -1,0 +1,37 @@
+# Verilator & C++ Build Artifacts
+**/obj_dir*/
+**/build*/
+*.o
+*.d
+*.a
+*.so
+*.exe
+
+# Python Cache
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Formal Mutation Temp Workdirs
+formal/mutation_testing/work*/
+
+# Large Generated Waveforms, LCOV Databases & Annotated Sources
+*.vcd
+*.fst
+*.dat
+*.info
+**/annotated_cov/
+**/results/dut_bug/
+**/results/fault_*/
+**/fault_injection_qual.log
+logs/
+
+# Large Generated Gate-Level Netlists & Full-Chip Raw Synth Logs (Regenerated via synth/run_synth_all.sh)
+synth/*_netlist.v
+synth/*_equiv_asap7.v
+synth/synth_groq_lpu_top_*.log
+formal/formal_lpu_top.log
+formal/formal_full_chip.log
+formal/formal_spec_decode_gate_equiv.log
+gate_sim/netlists/
+compiler/out/

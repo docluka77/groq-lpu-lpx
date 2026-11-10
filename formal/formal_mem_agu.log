@@ -1,0 +1,435 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `read_verilog -sv -DFORMAL /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv; prep -top groq_mem_agu; async2sync; chformal -lower; sat -verify -prove-asserts -seq 8 -set-init-zero' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv
+Generating RTLIL representation for module `\groq_mem_agu'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_mem_agu
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_mem_agu
+Removed 0 unused modules.
+Module groq_mem_agu directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39 in module groq_mem_agu.
+Marked 6 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30 in module groq_mem_agu.
+Removed 1 dead cases from process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17 in module groq_mem_agu.
+Marked 1 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17 in module groq_mem_agu.
+Removed a total of 1 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 10 redundant assignments.
+Promoted 11 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+Found async reset \rst_n in `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~12 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:191$50'.
+     1/7: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN
+     2/7: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN
+     3/7: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:208$66_EN
+     4/7: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$64_EN
+     5/7: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN
+     6/7: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:201$60_EN
+     7/7: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN
+Creating decoders for process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+     1/6: $0\f_past_stride0[3:0]
+     2/6: $0\f_past_addr[3:0]
+     3/6: $0\f_was_linear_step[0:0]
+     4/6: $0\f_past_base[3:0]
+     5/6: $0\f_was_cfg_load[0:0]
+     6/6: $0\f_past_valid[0:0]
+Creating decoders for process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+     1/11: $0\busy_q[0:0]
+     2/11: $0\accum1_q[3:0]
+     3/11: $0\accum0_q[3:0]
+     4/11: $0\idx1_q[3:0]
+     5/11: $0\idx0_q[3:0]
+     6/11: $0\count1_q[3:0]
+     7/11: $0\count0_q[3:0]
+     8/11: $0\stride1_q[3:0]
+     9/11: $0\stride0_q[3:0]
+    10/11: $0\base_q[3:0]
+    11/11: $0\mode_q[1:0]
+Creating decoders for process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+     1/1: $1\addr_out[3:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_mem_agu.\addr_out' from process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+No latch inferred for signal `\groq_mem_agu.\addr_valid' from process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+No latch inferred for signal `\groq_mem_agu.\idx_0_out' from process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+No latch inferred for signal `\groq_mem_agu.\idx_1_out' from process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+No latch inferred for signal `\groq_mem_agu.\inner_wrap' from process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+No latch inferred for signal `\groq_mem_agu.\tile_done' from process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+No latch inferred for signal `\groq_mem_agu.\agu_busy' from process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_mem_agu.\f_past_valid' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+  created $adff cell `$procdff$188' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\f_was_cfg_load' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+  created $adff cell `$procdff$193' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\f_past_base' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+  created $adff cell `$procdff$198' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\f_was_linear_step' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+  created $adff cell `$procdff$203' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\f_past_addr' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+  created $adff cell `$procdff$208' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\f_past_stride0' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+  created $adff cell `$procdff$213' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\mode_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$218' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\base_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$223' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\stride0_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$228' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\stride1_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$233' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\count0_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$238' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\count1_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$243' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\idx0_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$248' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\idx1_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$253' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\accum0_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$258' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\accum1_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$263' with positive edge clock and positive level reset.
+Creating register for signal `\groq_mem_agu.\busy_q' using process `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+  created $adff cell `$procdff$268' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 5 empty switches in `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:191$50'.
+Removing empty process `groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:191$50'.
+Removing empty process `groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:172$39'.
+Found and cleaned up 6 empty switches in `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+Removing empty process `groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:113$30'.
+Found and cleaned up 1 empty switch in `\groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+Removing empty process `groq_mem_agu.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:83$17'.
+Cleaned up 12 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_mem_agu.
+<suppressed ~44 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_mem_agu.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_mem_agu..
+Removed 19 unused cells and 125 unused wires.
+<suppressed ~20 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module groq_mem_agu...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_mem_agu.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_mem_agu'.
+<suppressed ~30 debug messages>
+Removed a total of 10 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_mem_agu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~71 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_mem_agu.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_mem_agu'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_mem_agu..
+Removed 0 unused cells and 15 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_mem_agu.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_mem_agu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~63 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_mem_agu.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_mem_agu'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_mem_agu..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_mem_agu.
+
+2.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell groq_mem_agu.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:142$33 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_mem_agu.$ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52 ($ge).
+Removed top 3 bits (of 4) from port B of cell groq_mem_agu.$ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54 ($ge).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_mem_agu..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_mem_agu.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_mem_agu'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_mem_agu..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== groq_mem_agu ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      117 wires
+      297 wire bits
+       42 public wires
+      122 public wire bits
+       18 ports
+       46 port bits
+      114 cells
+        9   $add
+       17   $adff
+        1   $and
+       11   $check
+        7   $eq
+        2   $ge
+        8   $logic_and
+       10   $logic_not
+        1   $logic_or
+        2   $lt
+       42   $mux
+        1   $ne
+        1   $pmux
+        2   $sub
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module groq_mem_agu...
+Found and reported 0 problems.
+
+3. Executing ASYNC2SYNC pass.
+Replacing groq_mem_agu.$procdff$188 ($adff): ARST=\rst_n, D=1'1, Q=\f_past_valid
+Replacing groq_mem_agu.$procdff$193 ($adff): ARST=\rst_n, D=\cfg_load, Q=\f_was_cfg_load
+Replacing groq_mem_agu.$procdff$198 ($adff): ARST=\rst_n, D=\base_addr, Q=\f_past_base
+Replacing groq_mem_agu.$procdff$203 ($adff): ARST=\rst_n, D=$0\f_was_linear_step[0:0], Q=\f_was_linear_step
+Replacing groq_mem_agu.$procdff$208 ($adff): ARST=\rst_n, D=\addr_out, Q=\f_past_addr
+Replacing groq_mem_agu.$procdff$213 ($adff): ARST=\rst_n, D=\stride0_q, Q=\f_past_stride0
+Replacing groq_mem_agu.$procdff$218 ($adff): ARST=\rst_n, D=$0\mode_q[1:0], Q=\mode_q
+Replacing groq_mem_agu.$procdff$223 ($adff): ARST=\rst_n, D=$0\base_q[3:0], Q=\base_q
+Replacing groq_mem_agu.$procdff$228 ($adff): ARST=\rst_n, D=$0\stride0_q[3:0], Q=\stride0_q
+Replacing groq_mem_agu.$procdff$233 ($adff): ARST=\rst_n, D=$0\stride1_q[3:0], Q=\stride1_q
+Replacing groq_mem_agu.$procdff$238 ($adff): ARST=\rst_n, D=$0\count0_q[3:0], Q=\count0_q
+Replacing groq_mem_agu.$procdff$243 ($adff): ARST=\rst_n, D=$0\count1_q[3:0], Q=\count1_q
+Replacing groq_mem_agu.$procdff$248 ($adff): ARST=\rst_n, D=$0\idx0_q[3:0], Q=\idx0_q
+Replacing groq_mem_agu.$procdff$253 ($adff): ARST=\rst_n, D=$0\idx1_q[3:0], Q=\idx1_q
+Replacing groq_mem_agu.$procdff$258 ($adff): ARST=\rst_n, D=$0\accum0_q[3:0], Q=\accum0_q
+Replacing groq_mem_agu.$procdff$263 ($adff): ARST=\rst_n, D=$0\accum1_q[3:0], Q=\accum1_q
+Replacing groq_mem_agu.$procdff$268 ($adff): ARST=\rst_n, D=$0\busy_q[0:0], Q=\busy_q
+
+4. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:234:execute$269 $auto$async2sync.cc:234:execute$271 $auto$async2sync.cc:234:execute$273 $auto$async2sync.cc:234:execute$275 $auto$async2sync.cc:234:execute$277 $auto$async2sync.cc:234:execute$279 $auto$async2sync.cc:234:execute$281 $auto$async2sync.cc:234:execute$283 $auto$async2sync.cc:234:execute$285 $auto$async2sync.cc:234:execute$287 $auto$async2sync.cc:234:execute$289 $auto$async2sync.cc:234:execute$291 $auto$async2sync.cc:234:execute$293 $auto$async2sync.cc:234:execute$295 $auto$async2sync.cc:234:execute$297 $auto$async2sync.cc:234:execute$299 $auto$async2sync.cc:234:execute$301 } = 54'000000000000000000000000000000000000000000000000000000
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Imported 153 cells to SAT database.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$73_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:215$71_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$70_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:210$69_EN.
+Import proof for assert: \busy_q when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:207$65_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$63_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:206$62_EN.
+Import proof for assert: \addr_valid when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: \inner_wrap when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:200$59_EN.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:197$58_Y when 1'1.
+Import proof for assert: $lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:196$56_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:194$54_Y when 1'1.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_mem_agu.sv:193$52_Y when 1'1.
+
+Solving problem with 18690 variables and 50289 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: 29ff36173e, CPU: user 1.09s system 0.01s, MEM: 37.79 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 98% 1x sat (1 sec), 0% 2x read_verilog (0 sec), ...

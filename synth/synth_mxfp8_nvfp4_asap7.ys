@@ -1,0 +1,7 @@
+read_verilog -sv -Irtl rtl/groq_mxfp8_nvfp4_dot_engine.sv
+chformal -remove
+synth -top groq_mxfp8_nvfp4_dot_engine -noshare -noabc
+dfflibmap -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+abc -fast -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+stat -liberty /nfs/share/home/chenpei/hyr/latentcore_mla_dsa_20261103/synth/asap7_rvt_ff.lib
+write_verilog -noattr synth/groq_mxfp8_nvfp4_dot_engine_asap7_netlist.v

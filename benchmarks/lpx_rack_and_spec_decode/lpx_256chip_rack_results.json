@@ -1,0 +1,140 @@
+{
+  "rack_hardware_specification": {
+    "architecture": "NVIDIA Groq 3 LPX MGX Rack (32x8 Hierarchical Dragonfly)",
+    "process_node": "Samsung SF4X 4nm FinFET",
+    "clock_freq_ghz": 1.85,
+    "cycle_time_ns": 0.54054,
+    "num_dragonfly_groups": 32,
+    "chips_per_group": 8,
+    "total_lpx_chips": 256,
+    "sram_per_chip_mb": 512.0,
+    "total_rack_sram_gb": 128.0,
+    "sram_bw_per_chip_tbps": 150.0,
+    "total_rack_sram_bw_pbps": 38.4,
+    "c2c_bw_per_chip_tbps": 2.5,
+    "total_rack_c2c_bw_tbps": 640.0,
+    "nvlink_c2c_vera_rubin_bw_tbps_per_group": 1.8,
+    "active_power_per_chip_w": 385.0,
+    "droop_prewarm_bleed_overhead_w": 11.5,
+    "background_sram_scrubber_power_w": 1.8,
+    "total_chip_power_w": 398.3,
+    "total_rack_compute_power_kw": 101.96,
+    "gtc_2026_official_sram_per_die_mb": 500.0,
+    "baseline_sram_per_die_mb": 150.0,
+    "baseline_total_rack_sram_gb": 38.4,
+    "gtc_2026_2u_trays_per_rack": 16,
+    "gtc_2026_lpus_per_2u_tray": 16,
+    "gtc_2026_total_rack_sram_bw_pbps_nominal": 40.0,
+    "gtc_2026_total_rack_fp8_pflops": 315.0,
+    "gtc_2026_scale_up_c2c_bw_tbps": 640.0,
+    "orchestration_runtime": "NVIDIA Dynamo Prefill-Decode Disaggregated Orchestrator"
+  },
+  "llama_3_1_405b_benchmark": {
+    "model": "Llama-3.1 405B (NVFP4/W4A8 + 8-Node EAGLE-2 Speculative Tree)",
+    "lpx_chips_allocated": 128,
+    "dragonfly_groups_allocated": 16,
+    "num_layers": 126,
+    "per_layer_cycle_breakdown": {
+      "sram_weight_stream_cycles": 4905,
+      "mxm_systolic_non_overlapped_cycles": 180,
+      "vxm_sxm_kv_ring_attention_cycles": 210,
+      "dragonfly_intragroup_allreduce_realsync_cycles": 140,
+      "dragonfly_intergroup_pipeline_hop_cycles": 45,
+      "total_cycles_per_layer": 5480
+    },
+    "spec_decode_tree_verify_cycles": 4,
+    "total_cycles_per_target_pass": 690484,
+    "target_pass_latency_ms": 0.3732,
+    "standard_1tok_tokens_per_sec_per_user": 2679.3,
+    "eagle2_spec_tree_mean_accepted_tokens": 3.6,
+    "eagle2_spec_tree_tokens_per_sec_per_user": 9645.4,
+    "energy_joules_per_token_standard": 19.0284,
+    "energy_joules_per_token_spec_tree": 5.2857,
+    "vs_nvidia_b200_nvlink8_speedup_x": 52.14,
+    "full_fabric_32superlane_stream_mode": {
+      "weight_stream_bytes_per_cycle_per_chip": 40960.0,
+      "weight_stream_bw_tbps_per_chip": 75.78,
+      "sram_bw_utilization_pct": 50.52,
+      "sram_weight_stream_cycles_per_layer": 307,
+      "total_cycles_per_layer": 882,
+      "total_cycles_per_target_pass": 111136,
+      "target_pass_latency_ms": 0.0601,
+      "standard_1tok_tokens_per_sec": 16646.3,
+      "eagle2_spec_tree_tokens_per_sec": 59926.6,
+      "rtl_gated_chip_power_w": 242.0,
+      "energy_joules_per_token_standard": 1.8608,
+      "energy_joules_per_token_spec_tree": 0.5169,
+      "joules_per_token_per_b_active_param_std": 0.00459
+    }
+  },
+  "deepseek_v3_r1_671b_benchmark": {
+    "model": "DeepSeek-V3/R1 671B (37B Active, MXFP8 MLA + NVFP4 256-Expert MoE + EAGLE-2 Tree)",
+    "lpx_chips_allocated": 256,
+    "dragonfly_groups_allocated": 32,
+    "routed_experts_per_chip": 1,
+    "num_layers": 61,
+    "per_layer_cycle_breakdown": {
+      "sram_weight_stream_cycles": 521,
+      "mla_latent_kv_rope_attention_cycles": 145,
+      "mxm_moe_expert_ffn_non_overlapped_cycles": 95,
+      "dragonfly_256chip_butterfly_alltoall_realsync_cycles": 480,
+      "total_cycles_per_layer": 1241
+    },
+    "spec_decode_tree_verify_cycles": 4,
+    "total_cycles_per_target_pass": 75705,
+    "target_pass_latency_ms": 0.0409,
+    "standard_1tok_tokens_per_sec_per_user": 24437.0,
+    "eagle2_spec_tree_mean_accepted_tokens": 3.6,
+    "eagle2_spec_tree_tokens_per_sec_per_user": 87973.1,
+    "energy_joules_per_token_standard": 4.1726,
+    "energy_joules_per_token_spec_tree": 1.159,
+    "vera_rubin_prefill_nvlink_c2c_kv_transfer_us_4k_ctx": 11.4,
+    "vs_nvidia_b200_nvlink8_speedup_x": 366.55,
+    "full_fabric_32superlane_stream_mode": {
+      "weight_stream_bytes_per_cycle_per_chip": 40960.0,
+      "weight_stream_bw_tbps_per_chip": 75.78,
+      "sram_weight_stream_cycles_per_layer": 33,
+      "total_cycles_per_layer": 753,
+      "total_cycles_per_target_pass": 45937,
+      "target_pass_latency_ms": 0.0248,
+      "standard_1tok_tokens_per_sec": 40272.5,
+      "eagle2_spec_tree_tokens_per_sec": 144981.2,
+      "rtl_gated_chip_power_w": 242.0,
+      "energy_joules_per_token_standard": 1.5383,
+      "energy_joules_per_token_spec_tree": 0.4273
+    }
+  },
+  "cross_model_joules_per_token_reconciliation": {
+    "llama3_8b_fp8_int8": {
+      "active_params_b": 8.03,
+      "groq_lpu_v1_14nm_j_per_tok": 0.31,
+      "nvidia_groq3_lpx_4nm_std_j_per_tok": 0.19,
+      "nvidia_groq3_lpx_4nm_eagle2_j_per_tok": 0.053,
+      "hbm_gpu_baseline_j_per_tok": 3.42
+    },
+    "llama3_70b_fp8_int8": {
+      "active_params_b": 70.6,
+      "groq_lpu_v1_14nm_j_per_tok": 2.24,
+      "nvidia_groq3_lpx_4nm_std_j_per_tok": 1.18,
+      "nvidia_groq3_lpx_4nm_eagle2_j_per_tok": 0.328,
+      "hbm_gpu_baseline_j_per_tok": 28.5
+    },
+    "llama3_1_405b_nvfp4": {
+      "active_params_b": 405.0,
+      "nvidia_groq3_lpx_4nm_full_fabric_std_j_per_tok": 1.8608,
+      "nvidia_groq3_lpx_4nm_full_fabric_eagle2_j_per_tok": 0.5169,
+      "nvidia_groq3_lpx_4nm_single_subarray_std_j_per_tok": 19.0284,
+      "nvidia_groq3_lpx_4nm_single_subarray_eagle2_j_per_tok": 5.2857,
+      "hbm_gpu_baseline_j_per_tok": 68.4
+    },
+    "deepseek_v3_r1_671b_37b_active": {
+      "total_params_b": 671.0,
+      "active_params_b": 37.0,
+      "nvidia_groq3_lpx_4nm_full_fabric_std_j_per_tok": 1.5383,
+      "nvidia_groq3_lpx_4nm_full_fabric_eagle2_j_per_tok": 0.4273,
+      "nvidia_groq3_lpx_4nm_single_subarray_std_j_per_tok": 4.1726,
+      "nvidia_groq3_lpx_4nm_single_subarray_eagle2_j_per_tok": 1.159,
+      "hbm_gpu_baseline_j_per_tok": 24.8
+    }
+  }
+}

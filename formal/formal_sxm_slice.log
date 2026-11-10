@@ -1,0 +1,1446 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Executing script file `formal/prove_sxm_slice.ys' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv
+Generating RTLIL representation for module `\groq_sxm_slice'.
+Warning: Replacing memory \transpose_buf with list of registers. See /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:144
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_sxm_slice
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_sxm_slice
+Removed 0 unused modules.
+Module groq_sxm_slice directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 16 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883 in module groq_sxm_slice.
+Marked 3 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:233$774 in module groq_sxm_slice.
+Marked 16 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199 in module groq_sxm_slice.
+Marked 18 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90 in module groq_sxm_slice.
+Marked 16 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:124$40 in module groq_sxm_slice.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 223 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~104 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+     1/32: $32\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[127:120]$1292
+     2/32: $31\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[127:120]$1280
+     3/32: $30\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[119:112]$1267
+     4/32: $29\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[119:112]$1255
+     5/32: $28\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[111:104]$1242
+     6/32: $27\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[111:104]$1230
+     7/32: $26\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[103:96]$1217
+     8/32: $25\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[103:96]$1205
+     9/32: $24\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[95:88]$1192
+    10/32: $23\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[95:88]$1180
+    11/32: $22\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[87:80]$1167
+    12/32: $21\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[87:80]$1155
+    13/32: $20\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[79:72]$1142
+    14/32: $19\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[79:72]$1130
+    15/32: $18\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[71:64]$1117
+    16/32: $17\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[71:64]$1105
+    17/32: $16\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[63:56]$1092
+    18/32: $15\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[63:56]$1080
+    19/32: $14\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[55:48]$1067
+    20/32: $13\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[55:48]$1055
+    21/32: $12\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[47:40]$1042
+    22/32: $11\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[47:40]$1030
+    23/32: $10\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[39:32]$1017
+    24/32: $9\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[39:32]$1005
+    25/32: $8\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[31:24]$992
+    26/32: $7\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[31:24]$980
+    27/32: $6\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[23:16]$967
+    28/32: $5\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[23:16]$955
+    29/32: $4\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[15:8]$942
+    30/32: $3\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[15:8]$930
+    31/32: $2\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[7:0]$917
+    32/32: $1\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst[7:0]$905
+Creating decoders for process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:233$774'.
+     1/33: $2$fordecl_block$17.k[31:0]$866
+     2/33: $2$fordecl_block$15.i[31:0]$797
+     3/33: $1$fordecl_block$17.k[31:0]$778
+     4/33: $1$fordecl_block$15.i[31:0]$777
+     5/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$881_EN
+     6/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$879_EN
+     7/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$877_EN
+     8/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$875_EN
+     9/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$873_EN
+    10/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$871_EN
+    11/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$869_EN
+    12/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:260$867_EN
+    13/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:255$862_EN
+    14/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$858_EN
+    15/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$854_EN
+    16/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$850_EN
+    17/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$846_EN
+    18/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$842_EN
+    19/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$838_EN
+    20/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$834_EN
+    21/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$830_EN
+    22/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$826_EN
+    23/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$822_EN
+    24/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$818_EN
+    25/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$814_EN
+    26/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$810_EN
+    27/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$806_EN
+    28/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$802_EN
+    29/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$798_EN
+    30/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:245$794_EN
+    31/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:239$783_EN
+    32/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:238$781_EN
+    33/33: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:237$779_EN
+Creating decoders for process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+     1/32: $32\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[127:120]$734
+     2/32: $31\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[127:120]$722
+     3/32: $30\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[119:112]$709
+     4/32: $29\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[119:112]$697
+     5/32: $28\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[111:104]$684
+     6/32: $27\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[111:104]$672
+     7/32: $26\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[103:96]$659
+     8/32: $25\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[103:96]$647
+     9/32: $24\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[95:88]$634
+    10/32: $23\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[95:88]$622
+    11/32: $22\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[87:80]$609
+    12/32: $21\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[87:80]$597
+    13/32: $20\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[79:72]$584
+    14/32: $19\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[79:72]$572
+    15/32: $18\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[71:64]$559
+    16/32: $17\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[71:64]$547
+    17/32: $16\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[63:56]$534
+    18/32: $15\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[63:56]$522
+    19/32: $14\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[55:48]$509
+    20/32: $13\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[55:48]$497
+    21/32: $12\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[47:40]$484
+    22/32: $11\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[47:40]$472
+    23/32: $10\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[39:32]$459
+    24/32: $9\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[39:32]$447
+    25/32: $8\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[31:24]$434
+    26/32: $7\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[31:24]$422
+    27/32: $6\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[23:16]$409
+    28/32: $5\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[23:16]$397
+    29/32: $4\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[15:8]$384
+    30/32: $3\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[15:8]$372
+    31/32: $2\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[7:0]$359
+    32/32: $1\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst[7:0]$347
+Creating decoders for process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+     1/325: $0\transpose_buf[15][127:0] [127:120]
+     2/325: $0\transpose_buf[15][127:0] [119:112]
+     3/325: $0\transpose_buf[14][127:0] [119:112]
+     4/325: $0\transpose_buf[13][127:0] [119:112]
+     5/325: $0\transpose_buf[12][127:0] [119:112]
+     6/325: $0\transpose_buf[11][127:0] [119:112]
+     7/325: $0\transpose_buf[10][127:0] [119:112]
+     8/325: $0\transpose_buf[9][127:0] [119:112]
+     9/325: $0\transpose_buf[8][127:0] [119:112]
+    10/325: $0\transpose_buf[7][127:0] [119:112]
+    11/325: $0\transpose_buf[6][127:0] [119:112]
+    12/325: $0\transpose_buf[5][127:0] [119:112]
+    13/325: $0\transpose_buf[4][127:0] [119:112]
+    14/325: $0\transpose_buf[3][127:0] [119:112]
+    15/325: $0\transpose_buf[2][127:0] [119:112]
+    16/325: $0\transpose_buf[1][127:0] [119:112]
+    17/325: $0\transpose_buf[0][127:0] [119:112]
+    18/325: $0\transpose_buf[15][127:0] [111:104]
+    19/325: $0\transpose_buf[14][127:0] [111:104]
+    20/325: $0\transpose_buf[13][127:0] [111:104]
+    21/325: $0\transpose_buf[12][127:0] [111:104]
+    22/325: $0\transpose_buf[11][127:0] [111:104]
+    23/325: $0\transpose_buf[10][127:0] [111:104]
+    24/325: $0\transpose_buf[9][127:0] [111:104]
+    25/325: $0\transpose_buf[8][127:0] [111:104]
+    26/325: $0\transpose_buf[7][127:0] [111:104]
+    27/325: $0\transpose_buf[6][127:0] [111:104]
+    28/325: $0\transpose_buf[5][127:0] [111:104]
+    29/325: $0\transpose_buf[4][127:0] [111:104]
+    30/325: $0\transpose_buf[3][127:0] [111:104]
+    31/325: $0\transpose_buf[2][127:0] [111:104]
+    32/325: $0\transpose_buf[1][127:0] [111:104]
+    33/325: $0\transpose_buf[0][127:0] [111:104]
+    34/325: $0\transpose_buf[15][127:0] [103:96]
+    35/325: $0\transpose_buf[14][127:0] [103:96]
+    36/325: $0\transpose_buf[13][127:0] [103:96]
+    37/325: $0\transpose_buf[12][127:0] [103:96]
+    38/325: $0\transpose_buf[11][127:0] [103:96]
+    39/325: $0\transpose_buf[10][127:0] [103:96]
+    40/325: $0\transpose_buf[9][127:0] [103:96]
+    41/325: $0\transpose_buf[8][127:0] [103:96]
+    42/325: $0\transpose_buf[7][127:0] [103:96]
+    43/325: $0\transpose_buf[6][127:0] [103:96]
+    44/325: $0\transpose_buf[5][127:0] [103:96]
+    45/325: $0\transpose_buf[4][127:0] [103:96]
+    46/325: $0\transpose_buf[3][127:0] [103:96]
+    47/325: $0\transpose_buf[2][127:0] [103:96]
+    48/325: $0\transpose_buf[1][127:0] [103:96]
+    49/325: $0\transpose_buf[0][127:0] [103:96]
+    50/325: $0\transpose_buf[15][127:0] [95:88]
+    51/325: $0\transpose_buf[14][127:0] [95:88]
+    52/325: $0\transpose_buf[13][127:0] [95:88]
+    53/325: $0\transpose_buf[12][127:0] [95:88]
+    54/325: $0\transpose_buf[11][127:0] [95:88]
+    55/325: $0\transpose_buf[10][127:0] [95:88]
+    56/325: $0\transpose_buf[9][127:0] [95:88]
+    57/325: $0\transpose_buf[8][127:0] [95:88]
+    58/325: $0\transpose_buf[7][127:0] [95:88]
+    59/325: $0\transpose_buf[6][127:0] [95:88]
+    60/325: $0\transpose_buf[5][127:0] [95:88]
+    61/325: $0\transpose_buf[4][127:0] [95:88]
+    62/325: $0\transpose_buf[3][127:0] [95:88]
+    63/325: $0\transpose_buf[2][127:0] [95:88]
+    64/325: $0\transpose_buf[1][127:0] [95:88]
+    65/325: $0\transpose_buf[0][127:0] [95:88]
+    66/325: $0\transpose_buf[15][127:0] [87:80]
+    67/325: $0\transpose_buf[14][127:0] [87:80]
+    68/325: $0\transpose_buf[13][127:0] [87:80]
+    69/325: $0\transpose_buf[12][127:0] [87:80]
+    70/325: $0\transpose_buf[11][127:0] [87:80]
+    71/325: $0\transpose_buf[10][127:0] [87:80]
+    72/325: $0\transpose_buf[9][127:0] [87:80]
+    73/325: $0\transpose_buf[8][127:0] [87:80]
+    74/325: $0\transpose_buf[7][127:0] [87:80]
+    75/325: $0\transpose_buf[6][127:0] [87:80]
+    76/325: $0\transpose_buf[5][127:0] [87:80]
+    77/325: $0\transpose_buf[4][127:0] [87:80]
+    78/325: $0\transpose_buf[3][127:0] [87:80]
+    79/325: $0\transpose_buf[2][127:0] [87:80]
+    80/325: $0\transpose_buf[1][127:0] [87:80]
+    81/325: $0\transpose_buf[0][127:0] [87:80]
+    82/325: $0\transpose_buf[15][127:0] [79:72]
+    83/325: $0\transpose_buf[14][127:0] [79:72]
+    84/325: $0\transpose_buf[13][127:0] [79:72]
+    85/325: $0\transpose_buf[12][127:0] [79:72]
+    86/325: $0\transpose_buf[11][127:0] [79:72]
+    87/325: $0\transpose_buf[10][127:0] [79:72]
+    88/325: $0\transpose_buf[9][127:0] [79:72]
+    89/325: $0\transpose_buf[8][127:0] [79:72]
+    90/325: $0\transpose_buf[7][127:0] [79:72]
+    91/325: $0\transpose_buf[6][127:0] [79:72]
+    92/325: $0\transpose_buf[5][127:0] [79:72]
+    93/325: $0\transpose_buf[4][127:0] [79:72]
+    94/325: $0\transpose_buf[3][127:0] [79:72]
+    95/325: $0\transpose_buf[2][127:0] [79:72]
+    96/325: $0\transpose_buf[1][127:0] [79:72]
+    97/325: $0\transpose_buf[0][127:0] [79:72]
+    98/325: $0\transpose_buf[15][127:0] [71:64]
+    99/325: $0\transpose_buf[14][127:0] [71:64]
+   100/325: $0\transpose_buf[13][127:0] [71:64]
+   101/325: $0\transpose_buf[12][127:0] [71:64]
+   102/325: $0\transpose_buf[11][127:0] [71:64]
+   103/325: $0\transpose_buf[10][127:0] [71:64]
+   104/325: $0\transpose_buf[9][127:0] [71:64]
+   105/325: $0\transpose_buf[8][127:0] [71:64]
+   106/325: $0\transpose_buf[7][127:0] [71:64]
+   107/325: $0\transpose_buf[6][127:0] [71:64]
+   108/325: $0\transpose_buf[5][127:0] [71:64]
+   109/325: $0\transpose_buf[4][127:0] [71:64]
+   110/325: $0\transpose_buf[3][127:0] [71:64]
+   111/325: $0\transpose_buf[2][127:0] [71:64]
+   112/325: $0\transpose_buf[1][127:0] [71:64]
+   113/325: $0\transpose_buf[0][127:0] [71:64]
+   114/325: $0\transpose_buf[15][127:0] [63:56]
+   115/325: $0\transpose_buf[14][127:0] [63:56]
+   116/325: $0\transpose_buf[13][127:0] [63:56]
+   117/325: $0\transpose_buf[12][127:0] [63:56]
+   118/325: $0\transpose_buf[11][127:0] [63:56]
+   119/325: $0\transpose_buf[10][127:0] [63:56]
+   120/325: $0\transpose_buf[9][127:0] [63:56]
+   121/325: $0\transpose_buf[8][127:0] [63:56]
+   122/325: $0\transpose_buf[7][127:0] [63:56]
+   123/325: $0\transpose_buf[6][127:0] [63:56]
+   124/325: $0\transpose_buf[5][127:0] [63:56]
+   125/325: $0\transpose_buf[4][127:0] [63:56]
+   126/325: $0\transpose_buf[3][127:0] [63:56]
+   127/325: $0\transpose_buf[2][127:0] [63:56]
+   128/325: $0\transpose_buf[1][127:0] [63:56]
+   129/325: $0\transpose_buf[0][127:0] [63:56]
+   130/325: $0\transpose_buf[15][127:0] [55:48]
+   131/325: $0\transpose_buf[14][127:0] [55:48]
+   132/325: $0\transpose_buf[13][127:0] [55:48]
+   133/325: $0\transpose_buf[12][127:0] [55:48]
+   134/325: $0\transpose_buf[11][127:0] [55:48]
+   135/325: $0\transpose_buf[10][127:0] [55:48]
+   136/325: $0\transpose_buf[9][127:0] [55:48]
+   137/325: $0\transpose_buf[8][127:0] [55:48]
+   138/325: $0\transpose_buf[7][127:0] [55:48]
+   139/325: $0\transpose_buf[6][127:0] [55:48]
+   140/325: $0\transpose_buf[5][127:0] [55:48]
+   141/325: $0\transpose_buf[4][127:0] [55:48]
+   142/325: $0\transpose_buf[3][127:0] [55:48]
+   143/325: $0\transpose_buf[2][127:0] [55:48]
+   144/325: $0\transpose_buf[1][127:0] [55:48]
+   145/325: $0\transpose_buf[0][127:0] [55:48]
+   146/325: $0\transpose_buf[15][127:0] [47:40]
+   147/325: $0\transpose_buf[14][127:0] [47:40]
+   148/325: $0\transpose_buf[13][127:0] [47:40]
+   149/325: $0\transpose_buf[12][127:0] [47:40]
+   150/325: $0\transpose_buf[11][127:0] [47:40]
+   151/325: $0\transpose_buf[10][127:0] [47:40]
+   152/325: $0\transpose_buf[9][127:0] [47:40]
+   153/325: $0\transpose_buf[8][127:0] [47:40]
+   154/325: $0\transpose_buf[7][127:0] [47:40]
+   155/325: $0\transpose_buf[6][127:0] [47:40]
+   156/325: $0\transpose_buf[5][127:0] [47:40]
+   157/325: $0\transpose_buf[4][127:0] [47:40]
+   158/325: $0\transpose_buf[3][127:0] [47:40]
+   159/325: $0\transpose_buf[2][127:0] [47:40]
+   160/325: $0\transpose_buf[1][127:0] [47:40]
+   161/325: $0\transpose_buf[0][127:0] [47:40]
+   162/325: $0\transpose_buf[15][127:0] [39:32]
+   163/325: $0\transpose_buf[14][127:0] [39:32]
+   164/325: $0\transpose_buf[13][127:0] [39:32]
+   165/325: $0\transpose_buf[12][127:0] [39:32]
+   166/325: $0\transpose_buf[11][127:0] [39:32]
+   167/325: $0\transpose_buf[10][127:0] [39:32]
+   168/325: $0\transpose_buf[9][127:0] [39:32]
+   169/325: $0\transpose_buf[8][127:0] [39:32]
+   170/325: $0\transpose_buf[7][127:0] [39:32]
+   171/325: $0\transpose_buf[6][127:0] [39:32]
+   172/325: $0\transpose_buf[5][127:0] [39:32]
+   173/325: $0\transpose_buf[4][127:0] [39:32]
+   174/325: $0\transpose_buf[3][127:0] [39:32]
+   175/325: $0\transpose_buf[2][127:0] [39:32]
+   176/325: $0\transpose_buf[1][127:0] [39:32]
+   177/325: $0\transpose_buf[0][127:0] [39:32]
+   178/325: $0\transpose_buf[15][127:0] [31:24]
+   179/325: $0\transpose_buf[14][127:0] [31:24]
+   180/325: $0\transpose_buf[13][127:0] [31:24]
+   181/325: $0\transpose_buf[12][127:0] [31:24]
+   182/325: $0\transpose_buf[11][127:0] [31:24]
+   183/325: $0\transpose_buf[10][127:0] [31:24]
+   184/325: $0\transpose_buf[9][127:0] [31:24]
+   185/325: $0\transpose_buf[8][127:0] [31:24]
+   186/325: $0\transpose_buf[7][127:0] [31:24]
+   187/325: $0\transpose_buf[6][127:0] [31:24]
+   188/325: $0\transpose_buf[5][127:0] [31:24]
+   189/325: $0\transpose_buf[4][127:0] [31:24]
+   190/325: $0\transpose_buf[3][127:0] [31:24]
+   191/325: $0\transpose_buf[2][127:0] [31:24]
+   192/325: $0\transpose_buf[1][127:0] [31:24]
+   193/325: $0\transpose_buf[0][127:0] [31:24]
+   194/325: $0\transpose_buf[15][127:0] [23:16]
+   195/325: $0\transpose_buf[14][127:0] [23:16]
+   196/325: $0\transpose_buf[13][127:0] [23:16]
+   197/325: $0\transpose_buf[12][127:0] [23:16]
+   198/325: $0\transpose_buf[11][127:0] [23:16]
+   199/325: $0\transpose_buf[10][127:0] [23:16]
+   200/325: $0\transpose_buf[9][127:0] [23:16]
+   201/325: $0\transpose_buf[8][127:0] [23:16]
+   202/325: $0\transpose_buf[7][127:0] [23:16]
+   203/325: $0\transpose_buf[6][127:0] [23:16]
+   204/325: $0\transpose_buf[5][127:0] [23:16]
+   205/325: $0\transpose_buf[4][127:0] [23:16]
+   206/325: $0\transpose_buf[3][127:0] [23:16]
+   207/325: $0\transpose_buf[2][127:0] [23:16]
+   208/325: $0\transpose_buf[1][127:0] [23:16]
+   209/325: $0\transpose_buf[0][127:0] [23:16]
+   210/325: $0\transpose_buf[15][127:0] [15:8]
+   211/325: $0\transpose_buf[14][127:0] [15:8]
+   212/325: $0\transpose_buf[13][127:0] [15:8]
+   213/325: $0\transpose_buf[12][127:0] [15:8]
+   214/325: $0\transpose_buf[11][127:0] [15:8]
+   215/325: $0\transpose_buf[10][127:0] [15:8]
+   216/325: $0\transpose_buf[9][127:0] [15:8]
+   217/325: $0\transpose_buf[8][127:0] [15:8]
+   218/325: $0\transpose_buf[7][127:0] [15:8]
+   219/325: $0\transpose_buf[6][127:0] [15:8]
+   220/325: $0\transpose_buf[5][127:0] [15:8]
+   221/325: $0\transpose_buf[4][127:0] [15:8]
+   222/325: $0\transpose_buf[3][127:0] [15:8]
+   223/325: $0\transpose_buf[2][127:0] [15:8]
+   224/325: $0\transpose_buf[1][127:0] [15:8]
+   225/325: $0\transpose_buf[0][127:0] [15:8]
+   226/325: $0\transpose_buf[15][127:0] [7:0]
+   227/325: $0\transpose_buf[14][127:0] [7:0]
+   228/325: $0\transpose_buf[13][127:0] [7:0]
+   229/325: $0\transpose_buf[12][127:0] [7:0]
+   230/325: $0\transpose_buf[11][127:0] [7:0]
+   231/325: $0\transpose_buf[10][127:0] [7:0]
+   232/325: $0\transpose_buf[9][127:0] [7:0]
+   233/325: $0\transpose_buf[8][127:0] [7:0]
+   234/325: $0\transpose_buf[7][127:0] [7:0]
+   235/325: $0\transpose_buf[6][127:0] [7:0]
+   236/325: $0\transpose_buf[5][127:0] [7:0]
+   237/325: $0\transpose_buf[4][127:0] [7:0]
+   238/325: $0\transpose_buf[3][127:0] [7:0]
+   239/325: $0\transpose_buf[2][127:0] [7:0]
+   240/325: $0\transpose_buf[1][127:0] [7:0]
+   241/325: $0\transpose_buf[0][127:0] [7:0]
+   242/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$37_ADDR[3:0]$193
+   243/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$37_DATA[127:0]$194
+   244/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$36_ADDR[3:0]$191
+   245/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$36_DATA[127:0]$192
+   246/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$35_ADDR[3:0]$189
+   247/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$35_DATA[127:0]$190
+   248/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$34_ADDR[3:0]$187
+   249/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$34_DATA[127:0]$188
+   250/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$33_ADDR[3:0]$185
+   251/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$33_DATA[127:0]$186
+   252/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$32_ADDR[3:0]$183
+   253/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$32_DATA[127:0]$184
+   254/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$31_ADDR[3:0]$181
+   255/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$31_DATA[127:0]$182
+   256/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$30_ADDR[3:0]$179
+   257/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$30_DATA[127:0]$180
+   258/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$29_ADDR[3:0]$177
+   259/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$29_DATA[127:0]$178
+   260/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$28_ADDR[3:0]$175
+   261/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$28_DATA[127:0]$176
+   262/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$27_ADDR[3:0]$173
+   263/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$27_DATA[127:0]$174
+   264/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$26_ADDR[3:0]$171
+   265/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$26_DATA[127:0]$172
+   266/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$25_ADDR[3:0]$169
+   267/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$25_DATA[127:0]$170
+   268/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$24_ADDR[3:0]$167
+   269/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$24_DATA[127:0]$168
+   270/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$23_ADDR[3:0]$165
+   271/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$23_DATA[127:0]$166
+   272/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$22_ADDR[3:0]$163
+   273/325: $2$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$22_DATA[127:0]$164
+   274/325: $0\stream_out_valid_o[0:0]
+   275/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$37_DATA[127:0]$159
+   276/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$37_ADDR[3:0]$158
+   277/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$36_DATA[127:0]$157
+   278/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$36_ADDR[3:0]$156
+   279/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$35_DATA[127:0]$155
+   280/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$35_ADDR[3:0]$154
+   281/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$34_DATA[127:0]$153
+   282/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$34_ADDR[3:0]$152
+   283/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$33_DATA[127:0]$151
+   284/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$33_ADDR[3:0]$150
+   285/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$32_DATA[127:0]$149
+   286/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$32_ADDR[3:0]$148
+   287/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$31_DATA[127:0]$147
+   288/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$31_ADDR[3:0]$146
+   289/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$30_DATA[127:0]$145
+   290/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$30_ADDR[3:0]$144
+   291/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$29_DATA[127:0]$143
+   292/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$29_ADDR[3:0]$142
+   293/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$28_DATA[127:0]$141
+   294/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$28_ADDR[3:0]$140
+   295/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$27_DATA[127:0]$139
+   296/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$27_ADDR[3:0]$138
+   297/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$26_DATA[127:0]$137
+   298/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$26_ADDR[3:0]$136
+   299/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$25_DATA[127:0]$135
+   300/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$25_ADDR[3:0]$134
+   301/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$24_DATA[127:0]$133
+   302/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$24_ADDR[3:0]$132
+   303/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$23_DATA[127:0]$131
+   304/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$23_ADDR[3:0]$130
+   305/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$22_DATA[127:0]$129
+   306/325: $1$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$22_ADDR[3:0]$128
+   307/325: $1$fordecl_block$11.c[31:0]$127
+   308/325: $1$fordecl_block$9.r[31:0]$126
+   309/325: $0\transpose_buf[0][127:0] [127:120]
+   310/325: $0\transpose_buf[14][127:0] [127:120]
+   311/325: $0\transpose_buf[13][127:0] [127:120]
+   312/325: $0\transpose_buf[12][127:0] [127:120]
+   313/325: $0\transpose_buf[11][127:0] [127:120]
+   314/325: $0\transpose_buf[10][127:0] [127:120]
+   315/325: $0\transpose_buf[9][127:0] [127:120]
+   316/325: $0\transpose_buf[8][127:0] [127:120]
+   317/325: $0\transpose_buf[7][127:0] [127:120]
+   318/325: $0\transpose_buf[6][127:0] [127:120]
+   319/325: $0\transpose_buf[5][127:0] [127:120]
+   320/325: $0\transpose_buf[4][127:0] [127:120]
+   321/325: $0\transpose_buf[3][127:0] [127:120]
+   322/325: $0\transpose_buf[2][127:0] [127:120]
+   323/325: $0\transpose_buf[1][127:0] [127:120]
+   324/325: $2$fordecl_block$11.c[31:0]$162
+   325/325: $0\stream_out_data_o[127:0]
+Creating decoders for process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:124$40'.
+     1/16: $16\out_lane_comb[127:120]
+     2/16: $15\out_lane_comb[119:112]
+     3/16: $14\out_lane_comb[111:104]
+     4/16: $13\out_lane_comb[103:96]
+     5/16: $12\out_lane_comb[95:88]
+     6/16: $11\out_lane_comb[87:80]
+     7/16: $10\out_lane_comb[79:72]
+     8/16: $9\out_lane_comb[71:64]
+     9/16: $8\out_lane_comb[63:56]
+    10/16: $7\out_lane_comb[55:48]
+    11/16: $6\out_lane_comb[47:40]
+    12/16: $5\out_lane_comb[39:32]
+    13/16: $4\out_lane_comb[31:24]
+    14/16: $3\out_lane_comb[23:16]
+    15/16: $2\out_lane_comb[15:8]
+    16/16: $1\out_lane_comb[7:0]
+Creating decoders for process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:57$38'.
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$19.$result' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.$result' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.vec_in' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.op' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.shamt' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.bcast_idx' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.bfly_mask' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.rope_neg' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.src' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.dst' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.vec_out' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.idx_rot_l' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.idx_rot_r' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.idx_bitrev' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.idx_bfly' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.idx_t4' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.$fordecl_block$3.k' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$21.$fordecl_block$5.i' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+No latch inferred for signal `\groq_sxm_slice.\f_xor_in' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_xor_out' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_or_in' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_or_out' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_and_in' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_and_out' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_sum_in' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_sum_out' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_twice_perm' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_is_bijective_op' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\f_is_involution_op' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.$fordecl_block$13.i' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.$result' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.vec_in' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.op' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.shamt' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.bcast_idx' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.bfly_mask' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.rope_neg' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.src' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.dst' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.vec_out' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.idx_rot_l' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.idx_rot_r' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.idx_bitrev' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.idx_bfly' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.idx_t4' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.$fordecl_block$3.k' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\apply_sxm_perm$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:207$20.$fordecl_block$5.i' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+No latch inferred for signal `\groq_sxm_slice.\perm_comb_data_o' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:124$40'.
+No latch inferred for signal `\groq_sxm_slice.\out_lane_comb' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:124$40'.
+No latch inferred for signal `\groq_sxm_slice.$fordecl_block$7.i' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:124$40'.
+No latch inferred for signal `\groq_sxm_slice.\in_lane' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:57$38'.
+No latch inferred for signal `\groq_sxm_slice.$fordecl_block$1.i' from process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:57$38'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_sxm_slice.$fordecl_block$15.i' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:233$774'.
+  created $dff cell `$procdff$5346' with positive edge clock.
+Creating register for signal `\groq_sxm_slice.$fordecl_block$17.k' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:233$774'.
+  created $dff cell `$procdff$5347' with positive edge clock.
+Creating register for signal `\groq_sxm_slice.\stream_out_valid_o' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5352' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\stream_out_data_o' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5357' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$fordecl_block$9.r' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5362' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$fordecl_block$11.c' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $dff cell `$procdff$5369' with positive edge clock.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[0]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5374' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[1]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5379' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[2]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5384' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[3]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5389' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[4]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5394' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[5]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5399' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[6]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5404' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[7]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5409' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[8]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5414' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[9]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5419' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[10]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5424' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[11]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5429' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[12]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5434' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[13]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5439' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[14]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5444' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.\transpose_buf[15]' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5449' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$22_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5454' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$22_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5459' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$23_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5464' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$23_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5469' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$24_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5474' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$24_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5479' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$25_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5484' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$25_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5489' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$26_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5494' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$26_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5499' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$27_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5504' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$27_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5509' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$28_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5514' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$28_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5519' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$29_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5524' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$29_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5529' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$30_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5534' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$30_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5539' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$31_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5544' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$31_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5549' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$32_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5554' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$32_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5559' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$33_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5564' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$33_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5569' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$34_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5574' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$34_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5579' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$35_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5584' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$35_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5589' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$36_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5594' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$36_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5599' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$37_ADDR' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5604' with positive edge clock and positive level reset.
+Creating register for signal `\groq_sxm_slice.$mem2reg_wr$\transpose_buf$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:149$37_DATA' using process `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+  created $adff cell `$procdff$5609' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 32 empty switches in `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+Removing empty process `groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:115$883'.
+Found and cleaned up 6 empty switches in `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:233$774'.
+Removing empty process `groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:233$774'.
+Found and cleaned up 32 empty switches in `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+Removing empty process `groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:173$199'.
+Found and cleaned up 18 empty switches in `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+Removing empty process `groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:139$90'.
+Found and cleaned up 16 empty switches in `\groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:124$40'.
+Removing empty process `groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:124$40'.
+Removing empty process `groq_sxm_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:57$38'.
+Cleaned up 104 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+<suppressed ~336 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 241 unused cells and 1502 unused wires.
+<suppressed ~242 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sxm_slice...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+<suppressed ~2655 debug messages>
+Removed a total of 885 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$1874.
+    dead port 2/2 on $mux $procmux$1890.
+    dead port 2/2 on $mux $procmux$1906.
+    dead port 2/2 on $mux $procmux$1810.
+    dead port 2/2 on $mux $procmux$1922.
+    dead port 2/2 on $mux $procmux$1938.
+    dead port 2/2 on $mux $procmux$1954.
+    dead port 2/2 on $mux $procmux$1970.
+    dead port 2/2 on $mux $procmux$1986.
+    dead port 2/2 on $mux $procmux$1306.
+    dead port 2/2 on $mux $procmux$1321.
+    dead port 2/2 on $mux $procmux$1337.
+    dead port 2/2 on $mux $procmux$1353.
+    dead port 2/2 on $mux $procmux$1369.
+    dead port 2/2 on $mux $procmux$1385.
+    dead port 2/2 on $mux $procmux$1826.
+    dead port 2/2 on $mux $procmux$1401.
+    dead port 2/2 on $mux $procmux$1417.
+    dead port 2/2 on $mux $procmux$1433.
+    dead port 2/2 on $mux $procmux$1449.
+    dead port 2/2 on $mux $procmux$1465.
+    dead port 2/2 on $mux $procmux$1481.
+    dead port 2/2 on $mux $procmux$1497.
+    dead port 2/2 on $mux $procmux$1513.
+    dead port 2/2 on $mux $procmux$1529.
+    dead port 2/2 on $mux $procmux$1842.
+    dead port 2/2 on $mux $procmux$1545.
+    dead port 2/2 on $mux $procmux$1747.
+    dead port 2/2 on $mux $procmux$1858.
+    dead port 2/2 on $mux $procmux$1762.
+    dead port 2/2 on $mux $procmux$1778.
+    dead port 2/2 on $mux $procmux$1794.
+Removed 32 multiplexer ports.
+<suppressed ~1017 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+    New ctrl vector for $pmux cell $procmux$1909: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5671 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1941: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5673 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1957: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5675 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1989: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1309: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1340: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5677 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1877: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5679 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1356: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5681 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1388: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5683 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1404: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5685 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1420: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5687 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1829: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5689 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1436: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5691 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1452: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5693 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1468: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5695 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1500: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5697 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1516: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5699 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1893: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5701 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1548: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1845: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5703 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1750: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1781: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5705 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1861: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:220$751_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755_Y $auto$opt_reduce.cc:137:opt_pmux$5707 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+    New ctrl vector for $pmux cell $procmux$1797: { $procmux$1805_CTRL $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:219$749_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796_Y $auto$opt_reduce.cc:137:opt_pmux$5709 $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757_Y $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:224$759_Y }
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 24 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+<suppressed ~192 debug messages>
+Removed a total of 64 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 0 unused cells and 949 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sxm_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~913 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sxm_slice.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$43 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$43 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$44 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$47 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$50 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$53 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$56 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$59 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$62 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$65 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$68 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$71 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$74 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$77 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$80 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$83 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$86 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$89 ($shiftx).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$314 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$314 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$314 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:190$315 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:190$315 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:190$315 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$316 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$316 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$316 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$317 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$317 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$317 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:192$318 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:192$318 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:192$318 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$319 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$319 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$319 ($add).
+Removed top 3 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$320 ($add).
+Removed top 3 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$320 ($add).
+Removed top 2 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$320 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$321 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$321 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$321 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:194$322 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:194$322 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:194$322 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$323 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$323 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$323 ($add).
+Removed top 2 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$324 ($add).
+Removed top 3 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$324 ($add).
+Removed top 1 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$324 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$325 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$325 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$325 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:196$326 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:196$326 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:196$326 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$327 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$327 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$327 ($add).
+Removed top 1 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$328 ($add).
+Removed top 3 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$328 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$329 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$329 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$329 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:199$330 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:199$330 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:199$330 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$331 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$331 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$331 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$332 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$332 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$332 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:201$333 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:201$333 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:201$333 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$334 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$334 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$334 ($add).
+Removed top 3 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$335 ($add).
+Removed top 3 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$335 ($add).
+Removed top 2 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$335 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$336 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$336 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$336 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:203$337 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:203$337 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:203$337 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$338 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$338 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$338 ($add).
+Removed top 2 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$339 ($add).
+Removed top 3 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$339 ($add).
+Removed top 1 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$339 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$340 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$340 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$340 ($add).
+Removed top 5 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:205$341 ($add).
+Removed top 5 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:205$341 ($add).
+Removed top 4 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:205$341 ($add).
+Removed top 4 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$342 ($add).
+Removed top 4 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$342 ($add).
+Removed top 3 bits (of 13) from port Y of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$342 ($add).
+Removed top 1 bits (of 13) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$343 ($add).
+Removed top 3 bits (of 13) from port B of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$343 ($add).
+Removed top 3 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$344 ($sub).
+Removed top 3 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$345 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$348 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$348 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$349 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$350 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$350 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$351 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$367 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$367 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$368 ($shiftx).
+Removed top 3 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$369 ($sub).
+Removed top 3 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$370 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$373 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$373 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$374 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$375 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$375 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$376 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$392 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$392 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$393 ($shiftx).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$394 ($sub).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$395 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$398 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$398 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$399 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$400 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$400 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$401 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$417 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$417 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$418 ($shiftx).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$419 ($sub).
+Removed top 2 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$420 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$423 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$423 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$424 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$425 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$425 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$426 ($shiftx).
+Removed top 3 bits (of 4) from port B of cell groq_sxm_slice.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:216$744 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:217$745 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:218$747 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:221$753 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:222$755 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:223$757 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:248$796 ($eq).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$799 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$799 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$800 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$907 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$909 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$926 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$932 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$934 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$951 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$957 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$959 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$976 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$982 ($shiftx).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$984 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1000 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1000 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1001 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1002 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$1003 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1006 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1006 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1007 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1008 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1008 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1009 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1025 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1025 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1026 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1027 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$1028 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1031 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1031 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1032 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1033 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1033 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1034 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1050 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1050 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1051 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1052 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$1053 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1056 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1056 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1057 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1058 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1058 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1059 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1075 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1075 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1076 ($shiftx).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1077 ($sub).
+Removed top 1 bits (of 4) from port A of cell groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:82$1078 ($add).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1081 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1081 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1082 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1083 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1083 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1084 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1100 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1100 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1101 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1106 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1106 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1107 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1108 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1108 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1109 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1125 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1125 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1126 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1131 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1131 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1132 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1133 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1133 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1134 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1150 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1150 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1151 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1156 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1156 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1157 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1158 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1158 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1159 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1175 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1175 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1176 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1181 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1181 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1182 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1183 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1183 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1184 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1200 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1200 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1201 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1206 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1206 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1207 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1208 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1208 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1209 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1225 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1225 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1226 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1231 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1231 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1232 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1233 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1233 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1234 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1250 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1250 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1251 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1256 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1256 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1257 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1258 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1258 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1259 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1275 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1275 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1276 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1281 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1281 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1282 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1283 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1283 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1284 ($shiftx).
+Removed top 28 bits (of 32) from port B of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1300 ($mul).
+Removed top 24 bits (of 32) from port Y of cell groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1300 ($mul).
+Removed top 23 bits (of 32) from port B of cell groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1301 ($shiftx).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$2080_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$2094_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$2109_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell groq_sxm_slice.$procmux$2125_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$procmux$2142_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell groq_sxm_slice.$procmux$2160_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell groq_sxm_slice.$procmux$2179_CMP0 ($eq).
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$314_Y.
+Removed top 3 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$316_Y.
+Removed top 2 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$320_Y.
+Removed top 1 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:189$324_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:190$315_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$317_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:191$319_Y.
+Removed top 7 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:192$318_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$321_Y.
+Removed top 10 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:193$323_Y.
+Removed top 5 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:194$322_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$325_Y.
+Removed top 3 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:195$327_Y.
+Removed top 12 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:196$326_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$329_Y.
+Removed top 3 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$331_Y.
+Removed top 2 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$335_Y.
+Removed top 1 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:198$339_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:199$330_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$332_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:200$334_Y.
+Removed top 7 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:201$333_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$336_Y.
+Removed top 10 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:202$338_Y.
+Removed top 5 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:203$337_Y.
+Removed top 4 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$340_Y.
+Removed top 3 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:204$342_Y.
+Removed top 7 bits (of 13) from wire groq_sxm_slice.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:205$341_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$and$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:185$306_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1000_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1025_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1050_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1075_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1100_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1125_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1150_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1175_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1200_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1225_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1250_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1275_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1300_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$367_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$392_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$417_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:128$43_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:250$799_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1006_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1031_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1056_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1081_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1106_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1131_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1156_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1181_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1206_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1231_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1256_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1281_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$348_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$373_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$398_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$423_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1008_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1033_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1058_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1083_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1108_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1133_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1158_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1183_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1208_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1233_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1258_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$1283_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$350_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$375_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$400_Y.
+Removed top 24 bits (of 32) from wire groq_sxm_slice.$mul$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:90$425_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$or$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:184$305_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:100$1276_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1007_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1032_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1057_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1082_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1107_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1132_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1157_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1182_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1207_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1232_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1257_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$1282_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$349_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$374_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$399_Y.
+Removed top 2 bits (of 8) from wire groq_sxm_slice.$shiftx$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:89$424_Y.
+Removed top 3 bits (of 4) from wire groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1002_Y.
+Removed top 3 bits (of 4) from wire groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1102_Y.
+Removed top 3 bits (of 4) from wire groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1202_Y.
+Removed top 3 bits (of 4) from wire groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$1252_Y.
+Removed top 3 bits (of 4) from wire groq_sxm_slice.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:81$344_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$1024_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$1074_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$1124_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$1174_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$1224_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$1274_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$366_Y.
+Removed top 1 bits (of 8) from wire groq_sxm_slice.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_sxm_slice.sv:98$416_Y.
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+Removed 0 unused cells and 99 unused wires.
+<suppressed ~1 debug messages>
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sxm_slice.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sxm_slice'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sxm_slice..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== groq_sxm_slice ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      834 wires
+    12701 wire bits
+       72 public wires
+     4271 public wire bits
+       13 ports
+      409 port bits
+     1096 cells
+       46   $add
+       18   $adff
+       30   $and
+       29   $check
+       65   $eq
+        5   $logic_and
+        2   $logic_not
+       13   $logic_or
+       50   $mul
+      571   $mux
+        8   $ne
+       16   $neg
+       15   $not
+       30   $or
+       32   $pmux
+        1   $reduce_bool
+        5   $reduce_or
+      114   $shiftx
+       16   $sub
+       30   $xor
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sxm_slice...
+Found and reported 0 problems.
+
+3. Executing ASYNC2SYNC pass.
+Replacing groq_sxm_slice.$procdff$5352 ($adff): ARST=\rst_n, D=$0\stream_out_valid_o[0:0], Q=\stream_out_valid_o
+Replacing groq_sxm_slice.$procdff$5357 ($adff): ARST=\rst_n, D=$0\stream_out_data_o[127:0], Q=\stream_out_data_o
+Replacing groq_sxm_slice.$procdff$5374 ($adff): ARST=\rst_n, D=$0\transpose_buf[0][127:0], Q=\transpose_buf[0]
+Replacing groq_sxm_slice.$procdff$5379 ($adff): ARST=\rst_n, D=$0\transpose_buf[1][127:0], Q=\transpose_buf[1]
+Replacing groq_sxm_slice.$procdff$5384 ($adff): ARST=\rst_n, D=$0\transpose_buf[2][127:0], Q=\transpose_buf[2]
+Replacing groq_sxm_slice.$procdff$5389 ($adff): ARST=\rst_n, D=$0\transpose_buf[3][127:0], Q=\transpose_buf[3]
+Replacing groq_sxm_slice.$procdff$5394 ($adff): ARST=\rst_n, D=$0\transpose_buf[4][127:0], Q=\transpose_buf[4]
+Replacing groq_sxm_slice.$procdff$5399 ($adff): ARST=\rst_n, D=$0\transpose_buf[5][127:0], Q=\transpose_buf[5]
+Replacing groq_sxm_slice.$procdff$5404 ($adff): ARST=\rst_n, D=$0\transpose_buf[6][127:0], Q=\transpose_buf[6]
+Replacing groq_sxm_slice.$procdff$5409 ($adff): ARST=\rst_n, D=$0\transpose_buf[7][127:0], Q=\transpose_buf[7]
+Replacing groq_sxm_slice.$procdff$5414 ($adff): ARST=\rst_n, D=$0\transpose_buf[8][127:0], Q=\transpose_buf[8]
+Replacing groq_sxm_slice.$procdff$5419 ($adff): ARST=\rst_n, D=$0\transpose_buf[9][127:0], Q=\transpose_buf[9]
+Replacing groq_sxm_slice.$procdff$5424 ($adff): ARST=\rst_n, D=$0\transpose_buf[10][127:0], Q=\transpose_buf[10]
+Replacing groq_sxm_slice.$procdff$5429 ($adff): ARST=\rst_n, D=$0\transpose_buf[11][127:0], Q=\transpose_buf[11]
+Replacing groq_sxm_slice.$procdff$5434 ($adff): ARST=\rst_n, D=$0\transpose_buf[12][127:0], Q=\transpose_buf[12]
+Replacing groq_sxm_slice.$procdff$5439 ($adff): ARST=\rst_n, D=$0\transpose_buf[13][127:0], Q=\transpose_buf[13]
+Replacing groq_sxm_slice.$procdff$5444 ($adff): ARST=\rst_n, D=$0\transpose_buf[14][127:0], Q=\transpose_buf[14]
+Replacing groq_sxm_slice.$procdff$5449 ($adff): ARST=\rst_n, D=$0\transpose_buf[15][127:0], Q=\transpose_buf[15]
+
+4. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 1259 cells to SAT database.
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5992 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5988 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5986 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5982 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5980 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5976 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5974 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5970 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5968 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5964 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5962 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5958 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5956 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5952 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5950 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5946 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5944 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5940 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5938 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5934 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5932 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5928 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5926 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5922 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5920 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5916 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5914 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5910 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5908 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5904 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5902 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5898 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5896 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5892 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5890 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5886 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5884 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5880 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5878 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5874 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5872 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5868 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5866 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5862 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5860 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5856 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5854 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5850 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5848 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5844 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5842 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5838 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5836 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5832 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5830 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5826 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$5824 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$5820 = 1'0
+Final init constraint equation: { $auto$async2sync.cc:234:execute$5994 $auto$async2sync.cc:234:execute$5996 $auto$async2sync.cc:234:execute$5998 $auto$async2sync.cc:234:execute$6000 $auto$async2sync.cc:234:execute$6002 $auto$async2sync.cc:234:execute$6004 $auto$async2sync.cc:234:execute$6006 $auto$async2sync.cc:234:execute$6008 $auto$async2sync.cc:234:execute$6010 $auto$async2sync.cc:234:execute$6012 $auto$async2sync.cc:234:execute$6014 $auto$async2sync.cc:234:execute$6016 $auto$async2sync.cc:234:execute$6018 $auto$async2sync.cc:234:execute$6020 $auto$async2sync.cc:234:execute$6022 $auto$async2sync.cc:234:execute$6024 $auto$async2sync.cc:234:execute$6026 $auto$async2sync.cc:234:execute$6028 $auto$async2sync.cc:107:execute$5820 $auto$async2sync.cc:116:execute$5824 $auto$async2sync.cc:107:execute$5826 $auto$async2sync.cc:116:execute$5830 $auto$async2sync.cc:107:execute$5832 $auto$async2sync.cc:116:execute$5836 $auto$async2sync.cc:107:execute$5838 $auto$async2sync.cc:116:execute$5842 $auto$async2sync.cc:107:execute$5844 $auto$async2sync.cc:116:execute$5848 $auto$async2sync.cc:107:execute$5850 $auto$async2sync.cc:116:execute$5854 $auto$async2sync.cc:107:execute$5856 $auto$async2sync.cc:116:execute$5860 $auto$async2sync.cc:107:execute$5862 $auto$async2sync.cc:116:execute$5866 $auto$async2sync.cc:107:execute$5868 $auto$async2sync.cc:116:execute$5872 $auto$async2sync.cc:107:execute$5874 $auto$async2sync.cc:116:execute$5878 $auto$async2sync.cc:107:execute$5880 $auto$async2sync.cc:116:execute$5884 $auto$async2sync.cc:107:execute$5886 $auto$async2sync.cc:116:execute$5890 $auto$async2sync.cc:107:execute$5892 $auto$async2sync.cc:116:execute$5896 $auto$async2sync.cc:107:execute$5898 $auto$async2sync.cc:116:execute$5902 $auto$async2sync.cc:107:execute$5904 $auto$async2sync.cc:116:execute$5908 $auto$async2sync.cc:107:execute$5910 $auto$async2sync.cc:116:execute$5914 $auto$async2sync.cc:107:execute$5916 $auto$async2sync.cc:116:execute$5920 $auto$async2sync.cc:107:execute$5922 $auto$async2sync.cc:116:execute$5926 $auto$async2sync.cc:107:execute$5928 $auto$async2sync.cc:116:execute$5932 $auto$async2sync.cc:107:execute$5934 $auto$async2sync.cc:116:execute$5938 $auto$async2sync.cc:107:execute$5940 $auto$async2sync.cc:116:execute$5944 $auto$async2sync.cc:107:execute$5946 $auto$async2sync.cc:116:execute$5950 $auto$async2sync.cc:107:execute$5952 $auto$async2sync.cc:116:execute$5956 $auto$async2sync.cc:107:execute$5958 $auto$async2sync.cc:116:execute$5962 $auto$async2sync.cc:107:execute$5964 $auto$async2sync.cc:116:execute$5968 $auto$async2sync.cc:107:execute$5970 $auto$async2sync.cc:116:execute$5974 $auto$async2sync.cc:107:execute$5976 $auto$async2sync.cc:116:execute$5980 $auto$async2sync.cc:107:execute$5982 $auto$async2sync.cc:116:execute$5986 $auto$async2sync.cc:107:execute$5988 $auto$async2sync.cc:116:execute$5992 } = 2235'000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010101010101010101010101010101
+Import proof for assert: $auto$async2sync.cc:116:execute$5992 when $auto$async2sync.cc:107:execute$5988.
+Import proof for assert: $auto$async2sync.cc:116:execute$5986 when $auto$async2sync.cc:107:execute$5982.
+Import proof for assert: $auto$async2sync.cc:116:execute$5980 when $auto$async2sync.cc:107:execute$5976.
+Import proof for assert: $auto$async2sync.cc:116:execute$5974 when $auto$async2sync.cc:107:execute$5970.
+Import proof for assert: $auto$async2sync.cc:116:execute$5968 when $auto$async2sync.cc:107:execute$5964.
+Import proof for assert: $auto$async2sync.cc:116:execute$5962 when $auto$async2sync.cc:107:execute$5958.
+Import proof for assert: $auto$async2sync.cc:116:execute$5956 when $auto$async2sync.cc:107:execute$5952.
+Import proof for assert: $auto$async2sync.cc:116:execute$5950 when $auto$async2sync.cc:107:execute$5946.
+Import proof for assert: $auto$async2sync.cc:116:execute$5944 when $auto$async2sync.cc:107:execute$5940.
+Import proof for assert: $auto$async2sync.cc:116:execute$5938 when $auto$async2sync.cc:107:execute$5934.
+Import proof for assert: $auto$async2sync.cc:116:execute$5932 when $auto$async2sync.cc:107:execute$5928.
+Import proof for assert: $auto$async2sync.cc:116:execute$5926 when $auto$async2sync.cc:107:execute$5922.
+Import proof for assert: $auto$async2sync.cc:116:execute$5920 when $auto$async2sync.cc:107:execute$5916.
+Import proof for assert: $auto$async2sync.cc:116:execute$5914 when $auto$async2sync.cc:107:execute$5910.
+Import proof for assert: $auto$async2sync.cc:116:execute$5908 when $auto$async2sync.cc:107:execute$5904.
+Import proof for assert: $auto$async2sync.cc:116:execute$5902 when $auto$async2sync.cc:107:execute$5898.
+Import proof for assert: $auto$async2sync.cc:116:execute$5896 when $auto$async2sync.cc:107:execute$5892.
+Import proof for assert: $auto$async2sync.cc:116:execute$5890 when $auto$async2sync.cc:107:execute$5886.
+Import proof for assert: $auto$async2sync.cc:116:execute$5884 when $auto$async2sync.cc:107:execute$5880.
+Import proof for assert: $auto$async2sync.cc:116:execute$5878 when $auto$async2sync.cc:107:execute$5874.
+Import proof for assert: $auto$async2sync.cc:116:execute$5872 when $auto$async2sync.cc:107:execute$5868.
+Import proof for assert: $auto$async2sync.cc:116:execute$5866 when $auto$async2sync.cc:107:execute$5862.
+Import proof for assert: $auto$async2sync.cc:116:execute$5860 when $auto$async2sync.cc:107:execute$5856.
+Import proof for assert: $auto$async2sync.cc:116:execute$5854 when $auto$async2sync.cc:107:execute$5850.
+Import proof for assert: $auto$async2sync.cc:116:execute$5848 when $auto$async2sync.cc:107:execute$5844.
+Import proof for assert: $auto$async2sync.cc:116:execute$5842 when $auto$async2sync.cc:107:execute$5838.
+Import proof for assert: $auto$async2sync.cc:116:execute$5836 when $auto$async2sync.cc:107:execute$5832.
+Import proof for assert: $auto$async2sync.cc:116:execute$5830 when $auto$async2sync.cc:107:execute$5826.
+Import proof for assert: $auto$async2sync.cc:116:execute$5824 when $auto$async2sync.cc:107:execute$5820.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 1259 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$5992 when $auto$async2sync.cc:107:execute$5988.
+Import proof for assert: $auto$async2sync.cc:116:execute$5986 when $auto$async2sync.cc:107:execute$5982.
+Import proof for assert: $auto$async2sync.cc:116:execute$5980 when $auto$async2sync.cc:107:execute$5976.
+Import proof for assert: $auto$async2sync.cc:116:execute$5974 when $auto$async2sync.cc:107:execute$5970.
+Import proof for assert: $auto$async2sync.cc:116:execute$5968 when $auto$async2sync.cc:107:execute$5964.
+Import proof for assert: $auto$async2sync.cc:116:execute$5962 when $auto$async2sync.cc:107:execute$5958.
+Import proof for assert: $auto$async2sync.cc:116:execute$5956 when $auto$async2sync.cc:107:execute$5952.
+Import proof for assert: $auto$async2sync.cc:116:execute$5950 when $auto$async2sync.cc:107:execute$5946.
+Import proof for assert: $auto$async2sync.cc:116:execute$5944 when $auto$async2sync.cc:107:execute$5940.
+Import proof for assert: $auto$async2sync.cc:116:execute$5938 when $auto$async2sync.cc:107:execute$5934.
+Import proof for assert: $auto$async2sync.cc:116:execute$5932 when $auto$async2sync.cc:107:execute$5928.
+Import proof for assert: $auto$async2sync.cc:116:execute$5926 when $auto$async2sync.cc:107:execute$5922.
+Import proof for assert: $auto$async2sync.cc:116:execute$5920 when $auto$async2sync.cc:107:execute$5916.
+Import proof for assert: $auto$async2sync.cc:116:execute$5914 when $auto$async2sync.cc:107:execute$5910.
+Import proof for assert: $auto$async2sync.cc:116:execute$5908 when $auto$async2sync.cc:107:execute$5904.
+Import proof for assert: $auto$async2sync.cc:116:execute$5902 when $auto$async2sync.cc:107:execute$5898.
+Import proof for assert: $auto$async2sync.cc:116:execute$5896 when $auto$async2sync.cc:107:execute$5892.
+Import proof for assert: $auto$async2sync.cc:116:execute$5890 when $auto$async2sync.cc:107:execute$5886.
+Import proof for assert: $auto$async2sync.cc:116:execute$5884 when $auto$async2sync.cc:107:execute$5880.
+Import proof for assert: $auto$async2sync.cc:116:execute$5878 when $auto$async2sync.cc:107:execute$5874.
+Import proof for assert: $auto$async2sync.cc:116:execute$5872 when $auto$async2sync.cc:107:execute$5868.
+Import proof for assert: $auto$async2sync.cc:116:execute$5866 when $auto$async2sync.cc:107:execute$5862.
+Import proof for assert: $auto$async2sync.cc:116:execute$5860 when $auto$async2sync.cc:107:execute$5856.
+Import proof for assert: $auto$async2sync.cc:116:execute$5854 when $auto$async2sync.cc:107:execute$5850.
+Import proof for assert: $auto$async2sync.cc:116:execute$5848 when $auto$async2sync.cc:107:execute$5844.
+Import proof for assert: $auto$async2sync.cc:116:execute$5842 when $auto$async2sync.cc:107:execute$5838.
+Import proof for assert: $auto$async2sync.cc:116:execute$5836 when $auto$async2sync.cc:107:execute$5832.
+Import proof for assert: $auto$async2sync.cc:116:execute$5830 when $auto$async2sync.cc:107:execute$5826.
+Import proof for assert: $auto$async2sync.cc:116:execute$5824 when $auto$async2sync.cc:107:execute$5820.
+
+Solving problem with 1195800 variables and 3484534 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: b165e90843, CPU: user 19.94s system 0.75s, MEM: 981.02 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 97% 1x sat (20 sec), 0% 2x read_verilog (0 sec), ...

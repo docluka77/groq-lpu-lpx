@@ -1,0 +1,134 @@
+{
+  "stage": "7B_UVM_SRAM_MEM",
+  "timestamp_utc": "2026-11-06T04:56:27.545356+00:00",
+  "status": "PASS",
+  "checks": {
+    "compile_zero_errors": true,
+    "clean_exit_zero": true,
+    "clean_transactions_ge_2500": true,
+    "clean_zero_mismatches": true,
+    "clean_functional_coverage_100": true,
+    "clean_sec_1bit_verified": true,
+    "clean_ded_2bit_verified": true,
+    "clean_conflict_verified": true,
+    "clean_mbist_verified": true,
+    "dut_bug_caught_nonzero_rc": true,
+    "dut_bug_mismatches_detected": true
+  },
+  "cases": {
+    "clean": {
+      "returncode": 0,
+      "summary": {
+        "driven": 2729,
+        "observed": 2729,
+        "checked": 2729,
+        "dpi_calls": 2729,
+        "mismatches": 0,
+        "ordering_errors": 0,
+        "read_checked": 1904,
+        "write_checked": 1372,
+        "sec_checked": 300,
+        "ded_checked": 256,
+        "conflict_seen": 64,
+        "mbist_verified": 1,
+        "functional_coverage": 100.0,
+        "pass": 1
+      },
+      "rtl_coverage": {
+        "groq_mem_agu.sv": {
+          "hit": 96,
+          "total": 98,
+          "pct": 97.96
+        },
+        "groq_mem_slice.sv": {
+          "hit": 83,
+          "total": 86,
+          "pct": 96.51
+        },
+        "groq_sram_ecc_secded.sv": {
+          "hit": 55,
+          "total": 55,
+          "pct": 100.0
+        },
+        "groq_sram_macro_sp.sv": {
+          "hit": 175,
+          "total": 178,
+          "pct": 98.31
+        }
+      }
+    },
+    "dut_bug": {
+      "returncode": 1,
+      "summary": {
+        "driven": 2729,
+        "observed": 2729,
+        "checked": 2729,
+        "dpi_calls": 2729,
+        "mismatches": 16,
+        "ordering_errors": 0,
+        "read_checked": 1904,
+        "write_checked": 1372,
+        "sec_checked": 300,
+        "ded_checked": 256,
+        "conflict_seen": 64,
+        "mbist_verified": 1,
+        "functional_coverage": 100.0,
+        "pass": 0
+      },
+      "rtl_coverage": {
+        "groq_mem_agu.sv": {
+          "hit": 96,
+          "total": 98,
+          "pct": 97.96
+        },
+        "groq_mem_slice.sv": {
+          "hit": 83,
+          "total": 86,
+          "pct": 96.51
+        },
+        "groq_sram_ecc_secded.sv": {
+          "hit": 55,
+          "total": 55,
+          "pct": 100.0
+        },
+        "groq_sram_macro_sp.sv": {
+          "hit": 175,
+          "total": 178,
+          "pct": 98.31
+        }
+      }
+    }
+  },
+  "commands": [
+    {
+      "name": "compile",
+      "returncode": 0,
+      "seconds": 1.92,
+      "log": "compile.log"
+    },
+    {
+      "name": "sim_clean",
+      "returncode": 0,
+      "seconds": 0.517,
+      "log": "sim_clean.log"
+    },
+    {
+      "name": "cov_clean",
+      "returncode": 0,
+      "seconds": 0.166,
+      "log": "cov_clean.log"
+    },
+    {
+      "name": "sim_dut_bug",
+      "returncode": 1,
+      "seconds": 0.517,
+      "log": "sim_dut_bug.log"
+    },
+    {
+      "name": "cov_dut_bug",
+      "returncode": 0,
+      "seconds": 0.166,
+      "log": "cov_dut_bug.log"
+    }
+  ]
+}

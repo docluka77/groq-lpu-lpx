@@ -1,0 +1,928 @@
+{
+  "project": "Groq LPU (14nm TSP) & NVIDIA Groq 3 LPX (4nm) Spatial Architecture",
+  "stage": "Stage 38: Master Automated Signoff Receipt Across All 38 Stages (Phases I\u2013V)",
+  "stages_verified": 42,
+  "timestamp_utc": "2026-11-10T05:09:50.755534+00:00",
+  "overall_signoff_status": "PASS",
+  "rtl_audit": {
+    "module_count": 21,
+    "total_lines": 7991,
+    "total_bytes": 359013,
+    "all_present": true,
+    "modules": [
+      {
+        "file": "sram_ip/groq_sram_ecc_secded.sv",
+        "module": "groq_sram_ecc_secded",
+        "description": "72,64 SECDED Hsiao ECC Encoder/Decoder",
+        "lines": 176,
+        "bytes": 7177,
+        "exists": true
+      },
+      {
+        "file": "sram_ip/groq_sram_macro_sp.sv",
+        "module": "groq_sram_macro_sp",
+        "description": "64b+8b ECC Single-Port Foundry SRAM Macro + Row Repair CAM + March C- MBIST",
+        "lines": 338,
+        "bytes": 13510,
+        "exists": true
+      },
+      {
+        "file": "sram_ip/groq_mem_agu.sv",
+        "module": "groq_mem_agu",
+        "description": "2D Strided & Gather/Scatter Hardware Address Generation Unit",
+        "lines": 222,
+        "bytes": 8399,
+        "exists": true
+      },
+      {
+        "file": "sram_ip/groq_mem_slice.sv",
+        "module": "groq_mem_slice",
+        "description": "220 MiB On-Chip Multi-Bank SRAM Slice with Bank-Conflict Detector",
+        "lines": 315,
+        "bytes": 14168,
+        "exists": true
+      },
+      {
+        "file": "sram_ip/groq_sram_controller_scrubber.sv",
+        "module": "groq_sram_controller_scrubber",
+        "description": "Zero-Contention Autonomous Background SECDED Scrubbing FSM, eFuse Row-Repair Loader & MBIST Wrapper",
+        "lines": 407,
+        "bytes": 18564,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_pkg.sv",
+        "module": "groq_pkg",
+        "description": "144-bit VLIW ISA, Stream Fabric, Precision & Dragonfly C2C Package",
+        "lines": 178,
+        "bytes": 9767,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_stream_fabric.sv",
+        "module": "groq_stream_fabric",
+        "description": "32-Track 128-bit East/West Zero-Stall Spatial Stream Register Fabric",
+        "lines": 297,
+        "bytes": 13347,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_icu_slice.sv",
+        "module": "groq_icu_slice",
+        "description": "8-Slice 144-bit VLIW Instruction Control & Hardware Barrier Sync Unit",
+        "lines": 352,
+        "bytes": 15640,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_mxm_slice.sv",
+        "module": "groq_mxm_slice",
+        "description": "16x16 Systolic Weight-Stationary INT8/FP8/INT4 Planar MAC Array",
+        "lines": 386,
+        "bytes": 16065,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_sxm_slice.sv",
+        "module": "groq_sxm_slice",
+        "description": "16-Lane Crossbar Permute, Rotate, Shift & 16x16 Matrix Transpose Unit",
+        "lines": 270,
+        "bytes": 11860,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_vxm_slice.sv",
+        "module": "groq_vxm_slice",
+        "description": "16-Lane Vector ALU, Tree Reducer, Piecewise-Linear LUT & SwiGLU/RoPE/RMSNorm",
+        "lines": 481,
+        "bytes": 19948,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_nim_realsync.sv",
+        "module": "groq_nim_realsync",
+        "description": "Plesiochronous C2C Link Controller, CRC-8 & Hardware RealSync Elastic Deskew",
+        "lines": 410,
+        "bytes": 17283,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_mxfp8_nvfp4_dot_engine.sv",
+        "module": "groq_mxfp8_nvfp4_dot_engine",
+        "description": "NVIDIA Groq 3 LPX / Vera Rubin MXFP8 & NVFP4 Microscaling Tensor Engine (W4A8 + E8M0)",
+        "lines": 574,
+        "bytes": 24919,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_c2c_serdes_pcs.sv",
+        "module": "groq_c2c_serdes_pcs",
+        "description": "64B/66B Scrambler, Link Training FSM, CRC-16-CCITT & 4-Entry Go-Back-N Replay PCS",
+        "lines": 438,
+        "bytes": 18257,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_pcie_c2c_dma.sv",
+        "module": "groq_pcie_c2c_dma",
+        "description": "4-Entry Descriptor Ring Host PCIe Gen5 / NVLink-C2C DMA with VLIW Window Controller",
+        "lines": 336,
+        "bytes": 14384,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_spec_decode_tree_sampler.sv",
+        "module": "groq_spec_decode_tree_sampler",
+        "description": "8-Node EAGLE-2/Medusa Tree-Attention Draft-Verification & Longest-Prefix Acceptance Sampler",
+        "lines": 404,
+        "bytes": 15546,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_power_droop_controller.sv",
+        "module": "groq_power_droop_controller",
+        "description": "4th-Order RLC PDN dI/dt Estimator, 4-Cycle Pre-Warming Bleed Controller & Emergency VDD Droop Throttler",
+        "lines": 185,
+        "bytes": 8337,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_c2c_kv_quant_rx_engine.sv",
+        "module": "groq_c2c_kv_quant_rx_engine",
+        "description": "16-Lane Combinational BF16/FP16-to-MXFP8/NVFP4/E8M0 Disaggregated Prefill KV-Cache Ingress Quantizer",
+        "lines": 355,
+        "bytes": 14230,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_lpu_top.sv",
+        "module": "groq_lpu_top",
+        "description": "Full-Chip 8-Slice Spatial Pipeline Top-Level Integration",
+        "lines": 810,
+        "bytes": 45643,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_lpu_cluster_top.sv",
+        "module": "groq_lpu_cluster_top",
+        "description": "2-Chip Dragonfly C2C Cluster Top with Programmable Channel Skew & Fault Injection",
+        "lines": 381,
+        "bytes": 21267,
+        "exists": true
+      },
+      {
+        "file": "rtl/groq_dragonfly_8chip_cluster.sv",
+        "module": "groq_dragonfly_8chip_cluster",
+        "description": "8-Chip Dragonfly Group Scale-Out Cluster (8x LPU + 8x PCS + DMA + 8x8 Switch Matrix)",
+        "lines": 676,
+        "bytes": 30702,
+        "exists": true
+      }
+    ]
+  },
+  "formal_audit": {
+    "formal_log_count": 25,
+    "functional_formal_logs": 19,
+    "gate_equiv_formal_logs": 6,
+    "total_sat_proofs_succeeded": 29,
+    "total_equiv_proofs_succeeded": 4,
+    "all_passed": true,
+    "logs": [
+      {
+        "log_file": "formal/formal_ecc_secded.log",
+        "target": "groq_sram_ecc_secded",
+        "description": "SECDED Single-Bit Correction & Double-Bit Detection Exactness",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 7652,
+        "peak_sat_clauses": 21035,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_sram_macro_sp.log",
+        "target": "groq_sram_macro_sp",
+        "description": "SRAM Sleep Clamping, Row-Redundancy CAM & Read-Valid Protocol",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 379266,
+        "peak_sat_clauses": 1026801,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_mem_agu.log",
+        "target": "groq_mem_agu",
+        "description": "2D Strided & Gather/Scatter Address Bounds & Wrap Exactness",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 18690,
+        "peak_sat_clauses": 50289,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_mem_slice.log",
+        "target": "groq_mem_slice",
+        "description": "Multi-Bank Conflict Detection, ECC Scrubbing & MBIST Control",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 1575995,
+        "peak_sat_clauses": 4272164,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_sram_controller_scrubber.log",
+        "target": "groq_sram_controller_scrubber",
+        "description": "Zero VLIW/DMA Contention, eFuse CAM Priority & Re-Encoded Parity Exactness",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 1093962,
+        "peak_sat_clauses": 2996399,
+        "pass": true
+      },
+      {
+        "log_file": "formal/groq_stream_fabric_formal.log",
+        "target": "groq_stream_fabric",
+        "description": "1-Cycle Hop Propagation, Collision Detection & ICG Gating",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 144152,
+        "peak_sat_clauses": 373017,
+        "pass": true
+      },
+      {
+        "log_file": "formal/groq_icu_slice_formal.log",
+        "target": "groq_icu_slice",
+        "description": "VLIW Dispatch, Hardware Barrier Release & RealSync Drift Bounds",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 321297,
+        "peak_sat_clauses": 843464,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_mxm_slice.log",
+        "target": "groq_mxm_slice",
+        "description": "Ping-Pong Weight Isolation, Zero-Skip Gating & Systolic MAC Exactness",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 1095910,
+        "peak_sat_clauses": 3185539,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_sxm_slice.log",
+        "target": "groq_sxm_slice",
+        "description": "Crossbar Permute, Rotate, Broadcast & 16x16 Transpose Exactness",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 1195800,
+        "peak_sat_clauses": 3484534,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_vxm_slice.log",
+        "target": "groq_vxm_slice",
+        "description": "Vector ALU, Tree Reduction, Saturation, SwiGLU & Quant Scale Bounds",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 270385,
+        "peak_sat_clauses": 761773,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_nim_realsync.log",
+        "target": "groq_nim_realsync",
+        "description": "CRC-8 Fault Rejection, RealSync Deskew & AllReduce Saturation",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 958872,
+        "peak_sat_clauses": 2561837,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_lpu_top.log",
+        "target": "groq_lpu_top",
+        "description": "Full-Chip 8-Slice Integration Safety & SECDED Containment Invariants",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 409218,
+        "peak_sat_clauses": 1013635,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_mxfp8_nvfp4_dot.log",
+        "target": "groq_mxfp8_nvfp4_dot_engine",
+        "description": "6-Step Sequential SAT Proof of MXFP8/NVFP4/W4A8 Microscaling Dot Engine",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 1242249,
+        "peak_sat_clauses": 3502615,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_c2c_serdes_pcs.log",
+        "target": "groq_c2c_serdes_pcs",
+        "description": "64B/66B Scrambler Involution, Link Training FSM, CRC-16 & Go-Back-N Replay SAT Proof",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 464582,
+        "peak_sat_clauses": 1202403,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_pcie_c2c_dma.log",
+        "target": "groq_pcie_c2c_dma",
+        "description": "Deterministic VLIW Window Exclusion (vliw_sram_busy -> wr_en==0) & Stride SAT Proof",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 75868,
+        "peak_sat_clauses": 203659,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_dragonfly_8chip.log",
+        "target": "groq_dragonfly_8chip_cluster",
+        "description": "Compositional 90-Assertion SAT Proof of 8-Chip Dragonfly Cluster & Switch Matrix",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 2701514,
+        "peak_sat_clauses": 7272937,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_spec_decode_sampler.log",
+        "target": "groq_spec_decode_tree_sampler",
+        "description": "10-Step Sequential SAT Proof of 8-Node EAGLE-2/Medusa Tree Acceptance & KV Ring Advance",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 346510,
+        "peak_sat_clauses": 990735,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_power_droop_controller.log",
+        "target": "groq_power_droop_controller",
+        "description": "12-Step Sequential SAT Proof of 4th-Order RLC PDN dI/dt Bleed & VDD Droop Mitigation",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 35912,
+        "peak_sat_clauses": 99484,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_c2c_kv_quant_rx.log",
+        "target": "groq_c2c_kv_quant_rx_engine",
+        "description": "Combinational SAT Proof of BF16/FP16-to-MXFP8/NVFP4 KV-Cache Ingress Quantization",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 82505,
+        "peak_sat_clauses": 226822,
+        "pass": true
+      },
+      {
+        "log_file": "formal/gate_equiv_proof.log",
+        "target": "gate_equiv_ecc_agu_icu",
+        "description": "Gate-Level ASAP7 7nm Netlist vs. RTL Equivalence Proof (ECC, AGU, ICU)",
+        "sat_proofs_succeeded": 3,
+        "equiv_proofs_succeeded": 1,
+        "peak_sat_variables": 229340,
+        "peak_sat_clauses": 599885,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_mxfp8_nvfp4_gate_equiv.log",
+        "target": "gate_equiv_mxfp8_nvfp4",
+        "description": "Inductive (1,532 DFFs) & Miter SAT Gate Equivalence of MXFP8/NVFP4 Engine",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 1,
+        "peak_sat_variables": 304144,
+        "peak_sat_clauses": 795372,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_stage12_gate_equiv.log",
+        "target": "gate_equiv_pcs_dma",
+        "description": "Gate-Level ASAP7 7nm Netlist vs. RTL Miter SAT Equivalence for PCS & DMA",
+        "sat_proofs_succeeded": 2,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 141746,
+        "peak_sat_clauses": 367596,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_spec_decode_gate_equiv.log",
+        "target": "gate_equiv_spec_decode",
+        "description": "Inductive & Miter SAT Gate Equivalence for Speculative Decode Tree Sampler",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 1,
+        "peak_sat_variables": 313485,
+        "peak_sat_clauses": 823627,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_stage19_20_gate_equiv.log",
+        "target": "gate_equiv_droop_scrubber",
+        "description": "Gate-Level ASAP7 7nm Netlist vs. RTL Miter SAT Equivalence for Power Droop & Scrubber",
+        "sat_proofs_succeeded": 2,
+        "equiv_proofs_succeeded": 0,
+        "peak_sat_variables": 2036346,
+        "peak_sat_clauses": 5297221,
+        "pass": true
+      },
+      {
+        "log_file": "formal/formal_stage23_gate_equiv.log",
+        "target": "gate_equiv_c2c_kv_quant",
+        "description": "Inductive (293 DFFs) & Combinational Miter SAT Gate Equivalence for C2C KV Quantizer",
+        "sat_proofs_succeeded": 1,
+        "equiv_proofs_succeeded": 1,
+        "peak_sat_variables": 102523,
+        "peak_sat_clauses": 266112,
+        "pass": true
+      }
+    ]
+  },
+  "formal_mutation_audit": {
+    "summary_json": "formal/mutation_testing/mutation_campaign_summary.json",
+    "report_md": "reports/STAGE25B_FORMAL_MUTATION_TESTING_REPORT.md",
+    "total_modules_qualified": 17,
+    "total_mutants": 42,
+    "mutants_killed": 42,
+    "mutants_survived": 0,
+    "mutation_kill_rate_pct": 100.0,
+    "vacuous_assertions_detected": 0,
+    "pass": true
+  },
+  "uvm_audit": {
+    "suite_count": 10,
+    "IEEE_standard": "Accellera IEEE 1800.2-2020 UVM + C++17 DPI-C Reference Model",
+    "master_regression_log": "reports/FULL_10SUITE_UVM_REGRESSION.log",
+    "total_clean_checked_cycles": 78897,
+    "total_lockstep_module_comparisons_suite10": 300000,
+    "total_clean_mismatches": 0,
+    "average_functional_coverage_pct": 100.0,
+    "total_fault_injection_mismatches_caught": 94976,
+    "all_passed": true,
+    "suites": [
+      {
+        "suite": "uvm_stream_icu",
+        "dut": [
+          "groq_stream_fabric",
+          "groq_icu_slice"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 2200,
+        "fault_injection_mismatches_caught": 980,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_stream_icu/results/clean/coverage_clean.info",
+        "lcov_bytes": 1490885,
+        "report_md": "uvm_tb/uvm_stream_icu/UVM_STREAM_ICU_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_sram_mem",
+        "dut": [
+          "groq_sram_ecc_secded",
+          "groq_sram_macro_sp",
+          "groq_mem_agu",
+          "groq_mem_slice"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 2729,
+        "fault_injection_mismatches_caught": 16,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_sram_mem/results/clean/coverage.info",
+        "lcov_bytes": 1325606,
+        "report_md": "uvm_tb/uvm_sram_mem/UVM_SRAM_MEM_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_mxm_sxm",
+        "dut": [
+          "groq_mxm_slice",
+          "groq_sxm_slice"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 3200,
+        "fault_injection_mismatches_caught": 5387,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_mxm_sxm/results/clean/coverage_clean.info",
+        "lcov_bytes": 1331585,
+        "report_md": "uvm_tb/uvm_mxm_sxm/UVM_MXM_SXM_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_vxm_nim",
+        "dut": [
+          "groq_vxm_slice",
+          "groq_nim_realsync"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 3200,
+        "fault_injection_mismatches_caught": 4905,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_vxm_nim/results/clean/coverage_clean.info",
+        "lcov_bytes": 1489327,
+        "report_md": "uvm_tb/uvm_vxm_nim/UVM_VXM_NIM_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_full_chip",
+        "dut": [
+          "groq_lpu_cluster_top",
+          "groq_lpu_top"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 3666,
+        "fault_injection_mismatches_caught": 220,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_full_chip/results/clean/coverage_clean.info",
+        "lcov_bytes": 2818890,
+        "report_md": "uvm_tb/uvm_full_chip/UVM_FULL_CHIP_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_lpx_mxfp8_dma",
+        "dut": [
+          "groq_mxfp8_nvfp4_dot_engine",
+          "groq_c2c_serdes_pcs",
+          "groq_pcie_c2c_dma"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 3600,
+        "fault_injection_mismatches_caught": 9089,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_lpx_mxfp8_dma/results/clean/coverage_clean.info",
+        "lcov_bytes": 1649232,
+        "report_md": "uvm_tb/uvm_lpx_mxfp8_dma/UVM_LPX_MXFP8_DMA_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_dragonfly_8chip",
+        "dut": [
+          "groq_dragonfly_8chip_cluster"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 3102,
+        "fault_injection_mismatches_caught": 6476,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_dragonfly_8chip/results/clean/coverage_clean.info",
+        "lcov_bytes": 3797819,
+        "report_md": "uvm_tb/uvm_dragonfly_8chip/UVM_DRAGONFLY_8CHIP_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_spec_power_scrub",
+        "dut": [
+          "groq_spec_decode_tree_sampler",
+          "groq_power_droop_controller",
+          "groq_sram_controller_scrubber"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 3600,
+        "fault_injection_mismatches_caught": 10703,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_spec_power_scrub/results/clean/coverage_clean.info",
+        "lcov_bytes": 1999561,
+        "report_md": "uvm_tb/uvm_spec_power_scrub/UVM_SPEC_POWER_SCRUB_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_c2c_kv_quant",
+        "dut": [
+          "groq_c2c_kv_quant_rx_engine",
+          "groq_mxfp8_nvfp4_dot_engine"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 3600,
+        "fault_injection_mismatches_caught": 7200,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_c2c_kv_quant/results/clean/coverage_clean.info",
+        "lcov_bytes": 1430715,
+        "report_md": "uvm_tb/uvm_c2c_kv_quant/UVM_C2C_KV_QUANT_REPORT.md",
+        "pass": true
+      },
+      {
+        "suite": "uvm_high_intensity_cross_ref",
+        "dut": [
+          "groq_sxm_slice",
+          "groq_vxm_slice",
+          "groq_nim_realsync",
+          "groq_mxfp8_nvfp4_dot_engine",
+          "groq_c2c_kv_quant_rx_engine",
+          "groq_spec_decode_tree_sampler"
+        ],
+        "clean_mismatches": 0,
+        "functional_coverage_pct": 100.0,
+        "clean_checked_cycles": 50000,
+        "fault_injection_mismatches_caught": 50000,
+        "fault_rejection_verified": true,
+        "lcov_file": "uvm_tb/uvm_high_intensity_cross_ref/results/clean/coverage_clean.info",
+        "lcov_bytes": 2523646,
+        "report_md": "uvm_tb/uvm_high_intensity_cross_ref/UVM_HIGH_INTENSITY_CROSS_REF_REPORT.md",
+        "pass": true
+      }
+    ]
+  },
+  "stress_campaign_audit": {
+    "stage8_100k_adversarial": {
+      "log_file": "formal/stage8_adversarial_stress.log",
+      "cycles": 100000,
+      "invariant_checks": 500085,
+      "errors": 0,
+      "pass": true
+    },
+    "stage22_200k_endurance": {
+      "log_file": "formal/stage22_200k_endurance.log",
+      "cycles": 200000,
+      "invariant_checks": 1600037,
+      "sram_ser_injected": 2500,
+      "sram_ser_scrub_healed": 2497,
+      "c2c_crc16_replays": 667,
+      "errors": 0,
+      "pass": true
+    },
+    "stage29_500k_soak": {
+      "log_file": "formal/stage29_500k_soak.log",
+      "cycles": 500000,
+      "subsystems_verified": 9,
+      "invariant_checks": 4500047,
+      "sram_ser_injected": 6250,
+      "sram_ser_scrub_healed": 6247,
+      "c2c_crc16_replays": 1667,
+      "kv_quant_blocks_verified": 499999,
+      "kv_quant_nan_inf_clamped": 64119,
+      "errors": 0,
+      "pass": true
+    },
+    "total_stress_cycles": 800000,
+    "total_invariant_checks": 6600169,
+    "all_passed": true
+  },
+  "llm_benchmark_audit": {
+    "benchmark_file": "benchmarks/llm_inference_rtl/llm_benchmark_results.json",
+    "overall_pass": true,
+    "tensors_verified": 21,
+    "total_bit_errors": 0,
+    "total_exec_cycles": 272,
+    "ecc_single_bit_corrected_reads": 142,
+    "ecc_double_bit_errors": 0,
+    "cluster_collision_fault": 0,
+    "cluster_c2c_crc_err": 0,
+    "chip0_deskew_events": 1,
+    "chip1_deskew_events": 1,
+    "chip0_zero_skip_macs": 368,
+    "chip0_gated_hops": 406,
+    "chip1_gated_hops": 406
+  },
+  "synthesis_ppa_audit": {
+    "ppa_summary_file": "synth/ppa_summary.json",
+    "top_level_asap7_log": "synth/synth_groq_lpu_top_asap7.log",
+    "top_level_asap7_netlist": "synth/groq_lpu_top_asap7_netlist.v",
+    "top_level_asap7_netlist_bytes": 191129579,
+    "top_level_asap7_chip_area": 187232.714999,
+    "top_level_asap7_seq_area": 20515.89708,
+    "top_level_asap7_seq_pct": 10.96,
+    "synthesized_module_count": 11,
+    "chip_level_rollup": {},
+    "llm_workload_energy_efficiency": {},
+    "pass": true
+  },
+  "phase2_extensions_audit": {
+    "stage15_compiler": {
+      "compiler_file": "compiler/groq_deterministic_compiler.py",
+      "log_file": "compiler/compiler_verification.log",
+      "report_md": "reports/STAGE15_DETERMINISTIC_COMPILER_REPORT.md",
+      "workloads_compiled": 3,
+      "negative_hazards_caught": 4,
+      "rtl_cosim_vectors_verified": "9/9 (144/144 lanes, 0 mismatches)",
+      "pass": true
+    },
+    "stage16_deepseek_mla_moe_8chip": {
+      "trace_file": "benchmarks/deepseek_mla_moe_8chip/rtl_execution_trace.json",
+      "report_md": "reports/STAGE16_DEEPSEEK_MLA_MOE_8CHIP_REPORT.md",
+      "tokens_decoded": 4,
+      "chips": 8,
+      "total_exec_cycles": 1206,
+      "total_tensor_checks": 704,
+      "total_bit_errors": 0,
+      "live_sram_secded_corrected": 4672,
+      "live_pcs_crc16_replays": 64,
+      "pass": true
+    },
+    "stage17_25a_gate_level_sim_and_vcd_power": {
+      "cosim_log_file": "gate_sim/cosim.log",
+      "power_summary_file": "gate_sim/gate_power_summary.json",
+      "report_md": "reports/STAGE17_GATE_LEVEL_SIM_AND_POWER_REPORT.md",
+      "asap7_gate_modules_simulated": 12,
+      "total_asap7_standard_cells": 200670,
+      "gate_vs_rtl_comparisons": 62400,
+      "gate_vs_rtl_mismatches": 0,
+      "measured_active_toggle_rate": 0.14923,
+      "measured_idle_toggle_rate": 0.000199,
+      "toggle_reduction_pct": 99.87,
+      "power_savings_pct": 67.3,
+      "calibrated_joules_per_token": {
+        "groq_lpu_top_asap7_total_std_cells": 528541,
+        "analytical_assumed_alpha": 0.15,
+        "measured_vcd_active_alpha": 0.14923,
+        "measured_vcd_blended_llm_alpha": 0.10154,
+        "llama3_8b_j_per_token_14nm_vcd_calibrated": 0.2902,
+        "llama3_8b_j_per_token_4nm_lpx_vcd_calibrated": 0.177,
+        "llama3_70b_j_per_token_14nm_vcd_calibrated": 2.1029,
+        "llama3_70b_j_per_token_4nm_lpx_vcd_calibrated": 1.1019
+      },
+      "pass": true
+    }
+  },
+  "phase3_4_extensions_audit": {
+    "stage22_lpx_rack_and_spec_decode": {
+      "rtl_summary_file": "benchmarks/lpx_rack_and_spec_decode/spec_decode_8chip_rtl_summary.json",
+      "rack_results_file": "benchmarks/lpx_rack_and_spec_decode/lpx_256chip_rack_results.json",
+      "report_md": "reports/STAGE22_LPX_RACK_AND_SPEC_DECODE_REPORT.md",
+      "target_passes_executed": 4,
+      "total_emitted_tokens": 16,
+      "effective_decode_speedup_x": 4.0,
+      "peak_didt_reduction_pct": 82,
+      "sram_ser_upsets_scrub_healed": 32,
+      "llama_405b_spec_tok_per_s": 9645.4,
+      "pass": true
+    },
+    "stage27_disagg_prefill_decode_8chip": {
+      "summary_file": "benchmarks/disagg_prefill_decode_8chip/disagg_prefill_decode_summary.json",
+      "report_md": "reports/STAGE27_DISAGG_PREFILL_DECODE_8CHIP_REPORT.md",
+      "total_cycles": 535,
+      "pass_checks": 176,
+      "errors": 0,
+      "c2c_prefill_ingress": {
+        "flits_transmitted_with_replays": 72,
+        "flits_received": 64,
+        "crc16_errors_injected": 8,
+        "gbn_nacks_received": 8,
+        "gbn_replays_completed": 8
+      },
+      "kv_quant_engine": {
+        "blocks_quantized": 32,
+        "zero_lanes_detected": 96,
+        "modes_verified": [
+          "BF16_TO_MXFP8_E4M3",
+          "FP16_TO_MXFP8_E4M3",
+          "BF16_TO_NVFP4_E2M1",
+          "RAW128_BYPASS"
+        ]
+      },
+      "sram_scrubber": {
+        "efuse_repaired_banks": 4,
+        "repaired_row_read_hits": 4,
+        "ser_injected": 32,
+        "ser_corrected": 32,
+        "uncorrectable_ded_alerts": 0
+      },
+      "power_droop": {
+        "unmitigated_peak_didt": 200,
+        "mitigated_peak_didt": 36,
+        "didt_reduction_pct": 82.0,
+        "unmitigated_min_vdd_mv": 597,
+        "mitigated_min_vdd_mv": 684,
+        "unmitigated_emerg_throttle_cycles": 4,
+        "mitigated_emerg_throttle_cycles": 0
+      },
+      "speculative_decoding": {
+        "target_passes": 4,
+        "pass_emitted_tokens": [
+          4,
+          5,
+          3,
+          4
+        ],
+        "total_emitted_tokens": 16,
+        "total_kv_ring_advance": 12,
+        "effective_speedup_x": 4.0
+      },
+      "pass": true
+    }
+  },
+  "bug_ledger_audit": {
+    "bug_ledger_file": "reports/BUG_LEDGER_AND_FIXES.md",
+    "bugs_discovered_and_fixed": 22,
+    "bug_entries": [
+      {
+        "bug_id": "BUG-ICU-001",
+        "title": "Unlatched `sync_mask` During Multi-Cycle `ICU_SYNC_BARRIER` Stall When `imem_fetch_en_o` Is Gated"
+      },
+      {
+        "bug_id": "BUG-ICU-002",
+        "title": "Ungated `ICU_NOTIFY` & `ICU_REALSYNC_ADJ` Instruction Decode on Halted or Barrier-Waiting Slices"
+      },
+      {
+        "bug_id": "BUG-MXM-001",
+        "title": "Per-Byte Zero-Skip Operand Isolation Corrupts 16-Bit Planar Weight Pair (`PREC_FP16` / `PREC_BF16`) When Only One Byte of a 16-Bit Activation Is Zero"
+      },
+      {
+        "bug_id": "BUG-VXM-001",
+        "title": "32-Bit Signed Rounding Addition Overflow in `VXM_QUANT_SCALE` Near `INT32_MAX` Causes Positive-to-Negative Saturation Inversion"
+      },
+      {
+        "bug_id": "BUG-VXM-002",
+        "title": "Unsigned Concatenation Before Arithmetic Right Shift (`>>> 6`) in `VXM_SWIGLU` Zero-Fills Sign Bits and Clamps All Negative SwiGLU Products to `+127`"
+      },
+      {
+        "bug_id": "BUG-NIM-001",
+        "title": "Silent Deskew Flit Drop When Scheduled `RealSync` Target Release Cycle Coincides With Active Non-`NIM_RECV` Opcode"
+      },
+      {
+        "bug_id": "BUG-TOP-001",
+        "title": "Unpacked Struct Array Member Indexing (`vliw[s].field`) and Dynamic 3D Packed LHS/RHS Bit-Slice Indexing in `groq_lpu_top.sv`"
+      },
+      {
+        "bug_id": "BUG-CLUSTER-001",
+        "title": "Hardcoded Tie-Off of East Hemisphere Host DMA Preload (`host_mem_e_wr_*`) and SECDED ECC Fault Injection (`mem_err_inject_*`) Ports in `groq_lpu_cluster_top`"
+      },
+      {
+        "bug_id": "BUG-DRAGONFLY-001",
+        "title": "Hardcoded Tie-Off of Per-Chip SRAM SECDED ECC Fault Injection Ports (`mem_err_inject_en_i`, `mem_err_inject_mask_i`) in `groq_dragonfly_8chip_cluster`"
+      },
+      {
+        "bug_id": "BUG-DRAGONFLY-002",
+        "title": "64B/66B Scrambler LFSR Phase Desynchronization & Unlatched Replay Destination Across 8x8 Dragonfly Switch Matrix During Go-Back-N CRC-16 Replay"
+      },
+      {
+        "bug_id": "BUG-DOT-001",
+        "title": "8-Bit Magnitude Product Truncation in `MODE_INT8_SYM` (`a_mag * w_mag`)"
+      },
+      {
+        "bug_id": "BUG-PCS-001",
+        "title": "Width Mismatch Between 4-Bit `rx_expected_seq_q` and 2-Bit Go-Back-N Replay Pointer `nack_seq_o[1:0]`"
+      },
+      {
+        "bug_id": "BUG-DFLY-001",
+        "title": "Combinational Reverse-NACK Feedback Loop (`UNOPTFLAT`) Across 0-Delay 8x8 Dragonfly Switch Matrix"
+      },
+      {
+        "bug_id": "BUG-ASAP7-SIM-001",
+        "title": "Active-Low Async Set/Reset (`SETN`/`RESETN`) and Inverted `QN` Polarity in `DFFASRHQNx1_ASAP7_75t_R` Gate-Level Simulation Model"
+      },
+      {
+        "bug_id": "BUG-LIT-001",
+        "title": "Two's-Complement `-128` (`8'h80`) Negation Wrap-Around Overflow in `SXM_BUTTERFLY_SWAP` RoPE Even-Lane Sign Negation"
+      },
+      {
+        "bug_id": "BUG-LIT-002",
+        "title": "Missing Native NVIDIA Blackwell / Vera Rubin / Groq 3 LPX `NVFP4` Mode With `FP8 E4M3` Fractional Block Scales (`MODE_NVFP4_E4M3_SCALE = 3'd5`)"
+      },
+      {
+        "bug_id": "BUG-LIT-003",
+        "title": "Missing Autonomous ISCA 2022 Hardware-Aligned Counter (`HAC`) Local Consensus Oscillator State in `groq_nim_realsync.sv`"
+      },
+      {
+        "bug_id": "BUG-LIT-004",
+        "title": "Calibration of 256-Chip Rack Simulator & Architecture Spec to Official GTC 2026 NVIDIA Groq 3 LPX Specifications (`500 MB/die`, `128 GB/rack`, `315 PFLOPS` FP8, `16x 2U` Trays, NVIDIA Dynamo)"
+      },
+      {
+        "bug_id": "BUG-LIT-005",
+        "title": "Missing IEEE 754-2019 Round-to-Nearest-Even (`PREC_INT8_RNE`) Mode in `groq_vxm_slice.sv` Dynamic Quantizer"
+      },
+      {
+        "bug_id": "BUG-LIT-006",
+        "title": "Missing Native NVIDIA `NVFP4` `FP8 E4M3` Fractional Block Scale Telemetry Register (`scale_nvfp4_e4m3_q`) in `groq_c2c_kv_quant_rx_engine.sv`"
+      },
+      {
+        "bug_id": "BUG-LIT-007",
+        "title": "Missing EAGLE-2 / EAGLE-3 Context-Aware Dynamic Draft Tree Confidence Accumulator (`eagle2_tree_confidence_q`) in `groq_spec_decode_tree_sampler.sv`"
+      },
+      {
+        "bug_id": "BUG-LIT-008",
+        "title": "Golden Reference Model (`groq_golden_model.py`) Parity Gap for Phase II?IV Hardware IP Blocks & Wave 1-2 Literature Upgrades"
+      }
+    ],
+    "pass": true
+  },
+  "literature_115_sources_and_phase5_audit": {
+    "literature_60_doc": "docs/LITERATURE_60_SOURCES_AUDIT_AND_CROSS_VERIFICATION.md",
+    "literature_115_master_doc": "docs/LITERATURE_115_SOURCES_MASTER_AUDIT.md",
+    "traceability_matrix_json": "reports/LITERATURE_VS_RTL_TRACEABILITY_MATRIX.json",
+    "stage35_uvm10_report_md": "reports/STAGE35_HIGH_INTENSITY_UVM10_AND_REFMODEL_REPORT.md",
+    "total_sources_verified": 115,
+    "literature_refinements_closed": 8,
+    "total_documented_and_closed_bugs": 22,
+    "uvm_suite10_transactions": 50000,
+    "uvm_suite10_lockstep_module_comparisons": 300000,
+    "golden_model_unit_tests_passed": 18,
+    "pass": true
+  },
+  "quantitative_metrics_vs_papers_audit": {
+    "audit_json": "reports/QUANTITATIVE_METRICS_VS_PAPERS_AUDIT.json",
+    "audit_report_md": "reports/STAGE39_QUANTITATIVE_METRICS_VS_PAPERS_AUDIT_REPORT.md",
+    "total_metrics_audited": 56,
+    "metrics_passed": 56,
+    "discrepancies_resolved": 4,
+    "pass": true
+  }
+}

@@ -1,0 +1,5 @@
+STAGE 13 8-CHIP DRAGONFLY CLUSTER SMOKE TEST PASSED: 0 ERRORS, link_up=ff dma_cnt=9
+- formal/tb_stage13_dragonfly_8chip_smoke.sv:276: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 168ps; walltime 0.076 s; speed 2.212 ns/s
+- Verilator: cpu 0.052 s on 1 threads; allocated 11 MB

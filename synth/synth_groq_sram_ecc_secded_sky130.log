@@ -1,0 +1,783 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `
+        read_verilog -sv -Irtl -Isram_ip sram_ip/groq_sram_ecc_secded.sv;
+        
+        chformal -remove;
+        synth -top groq_sram_ecc_secded -noabc;
+        dfflibmap -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib;
+        abc -fast -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib;
+        stat -liberty /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib;
+        write_verilog -noattr synth/groq_sram_ecc_secded_sky130_netlist.v
+    ' --
+
+1. Executing Verilog-2005 frontend: sram_ip/groq_sram_ecc_secded.sv
+Parsing SystemVerilog input from `sram_ip/groq_sram_ecc_secded.sv' to AST representation.
+verilog frontend filename sram_ip/groq_sram_ecc_secded.sv
+Generating RTLIL representation for module `\groq_sram_ecc_secded'.
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_sram_ecc_secded
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_sram_ecc_secded
+Removed 0 unused modules.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 448 empty switches in `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+Found and cleaned up 448 empty switches in `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+Cleaned up 896 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 64 switch rules as full_case in process $proc$sram_ip/groq_sram_ecc_secded.sv:73$228 in module groq_sram_ecc_secded.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 520 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~64 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+Creating decoders for process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+     1/64: $64\data_corr_comb[63:63]
+     2/64: $63\data_corr_comb[62:62]
+     3/64: $62\data_corr_comb[61:61]
+     4/64: $61\data_corr_comb[60:60]
+     5/64: $60\data_corr_comb[59:59]
+     6/64: $59\data_corr_comb[58:58]
+     7/64: $58\data_corr_comb[57:57]
+     8/64: $57\data_corr_comb[56:56]
+     9/64: $56\data_corr_comb[55:55]
+    10/64: $55\data_corr_comb[54:54]
+    11/64: $54\data_corr_comb[53:53]
+    12/64: $53\data_corr_comb[52:52]
+    13/64: $52\data_corr_comb[51:51]
+    14/64: $51\data_corr_comb[50:50]
+    15/64: $50\data_corr_comb[49:49]
+    16/64: $49\data_corr_comb[48:48]
+    17/64: $48\data_corr_comb[47:47]
+    18/64: $47\data_corr_comb[46:46]
+    19/64: $46\data_corr_comb[45:45]
+    20/64: $45\data_corr_comb[44:44]
+    21/64: $44\data_corr_comb[43:43]
+    22/64: $43\data_corr_comb[42:42]
+    23/64: $42\data_corr_comb[41:41]
+    24/64: $41\data_corr_comb[40:40]
+    25/64: $40\data_corr_comb[39:39]
+    26/64: $39\data_corr_comb[38:38]
+    27/64: $38\data_corr_comb[37:37]
+    28/64: $37\data_corr_comb[36:36]
+    29/64: $36\data_corr_comb[35:35]
+    30/64: $35\data_corr_comb[34:34]
+    31/64: $34\data_corr_comb[33:33]
+    32/64: $33\data_corr_comb[32:32]
+    33/64: $32\data_corr_comb[31:31]
+    34/64: $31\data_corr_comb[30:30]
+    35/64: $30\data_corr_comb[29:29]
+    36/64: $29\data_corr_comb[28:28]
+    37/64: $28\data_corr_comb[27:27]
+    38/64: $27\data_corr_comb[26:26]
+    39/64: $26\data_corr_comb[25:25]
+    40/64: $25\data_corr_comb[24:24]
+    41/64: $24\data_corr_comb[23:23]
+    42/64: $23\data_corr_comb[22:22]
+    43/64: $22\data_corr_comb[21:21]
+    44/64: $21\data_corr_comb[20:20]
+    45/64: $20\data_corr_comb[19:19]
+    46/64: $19\data_corr_comb[18:18]
+    47/64: $18\data_corr_comb[17:17]
+    48/64: $17\data_corr_comb[16:16]
+    49/64: $16\data_corr_comb[15:15]
+    50/64: $15\data_corr_comb[14:14]
+    51/64: $14\data_corr_comb[13:13]
+    52/64: $13\data_corr_comb[12:12]
+    53/64: $12\data_corr_comb[11:11]
+    54/64: $11\data_corr_comb[10:10]
+    55/64: $10\data_corr_comb[9:9]
+    56/64: $9\data_corr_comb[8:8]
+    57/64: $8\data_corr_comb[7:7]
+    58/64: $7\data_corr_comb[6:6]
+    59/64: $6\data_corr_comb[5:5]
+    60/64: $5\data_corr_comb[4:4]
+    61/64: $4\data_corr_comb[3:3]
+    62/64: $3\data_corr_comb[2:2]
+    63/64: $2\data_corr_comb[1:1]
+    64/64: $1\data_corr_comb[0:0]
+Creating decoders for process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sram_ecc_secded.\ecc_out' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+No latch inferred for signal `\groq_sram_ecc_secded.\codeword_out' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+No latch inferred for signal `\groq_sram_ecc_secded.\valid_out' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+No latch inferred for signal `\groq_sram_ecc_secded.\data_corrected' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+No latch inferred for signal `\groq_sram_ecc_secded.\syndrome' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+No latch inferred for signal `\groq_sram_ecc_secded.\single_err_detected' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+No latch inferred for signal `\groq_sram_ecc_secded.\double_err_detected' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+No latch inferred for signal `\groq_sram_ecc_secded.\data_raw' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\ecc_raw' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\syn_low' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\overall_par' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\syndrome_comb' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\data_corr_comb' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\single_err_comb' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\double_err_comb' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.k' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[0].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[1].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[2].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[3].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[4].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[5].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[6].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$9.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\ecc_comb' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.\codeword_comb' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.k' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[0].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[1].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[2].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[3].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[4].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[5].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[6].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:128$640'.
+Found and cleaned up 64 empty switches in `\groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+Removing empty process `groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:73$228'.
+Removing empty process `groq_sram_ecc_secded.$proc$sram_ip/groq_sram_ecc_secded.sv:47$11'.
+Cleaned up 64 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+<suppressed ~8 debug messages>
+
+2.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+Removed 0 unused cells and 678 unused wires.
+<suppressed ~1 debug messages>
+
+2.5. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_ecc_secded...
+Found and reported 0 problems.
+
+2.6. Executing OPT pass (performing simple optimizations).
+
+2.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_ecc_secded..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~128 debug messages>
+
+2.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_ecc_secded.
+Performed a total of 0 changes.
+
+2.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.6.9. Finished fast OPT passes. (There is nothing left to do.)
+
+2.7. Executing FSM pass (extract and optimize FSM).
+
+2.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+2.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_ecc_secded..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~128 debug messages>
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_ecc_secded.
+Performed a total of 0 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.8.9. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 5 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$447 ($eq).
+Removed top 4 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$450 ($eq).
+Removed top 4 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$453 ($eq).
+Removed top 4 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$456 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$459 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$462 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$465 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$468 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$471 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$474 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$477 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$480 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$483 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$486 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$489 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$492 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$495 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$498 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$501 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$504 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$507 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$510 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$513 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$516 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$519 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$522 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$525 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$528 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$531 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$534 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$537 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$540 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$543 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$546 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$549 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$552 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$555 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$558 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$561 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$564 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$567 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$570 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$573 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$576 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$579 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$582 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$585 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$588 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$591 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$594 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$597 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$600 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$603 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$606 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$609 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$612 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$sram_ip/groq_sram_ecc_secded.sv:92$615 ($eq).
+
+2.10. Executing PEEPOPT pass (run peephole optimizers).
+
+2.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module groq_sram_ecc_secded:
+  created 0 $alu and 0 $macc cells.
+
+2.13. Executing SHARE pass (SAT-based resource sharing).
+
+2.14. Executing OPT pass (performing simple optimizations).
+
+2.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_ecc_secded..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~128 debug messages>
+
+2.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_ecc_secded.
+Performed a total of 0 changes.
+
+2.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+2.15. Executing MEMORY pass.
+
+2.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+2.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+2.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+2.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+2.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+2.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.17. Executing OPT pass (performing simple optimizations).
+
+2.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.17.5. Finished fast OPT passes.
+
+2.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+2.19. Executing OPT pass (performing simple optimizations).
+
+2.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_ecc_secded..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~128 debug messages>
+
+2.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_ecc_secded.
+Performed a total of 0 changes.
+
+2.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.19.6. Executing OPT_SHARE pass.
+
+2.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+2.20. Executing TECHMAP pass (map to technology primitives).
+
+2.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+2.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $reduce_xor.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $mux.
+No more expansions possible.
+<suppressed ~743 debug messages>
+
+2.21. Executing OPT pass (performing simple optimizations).
+
+2.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+<suppressed ~448 debug messages>
+
+2.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+<suppressed ~1479 debug messages>
+Removed a total of 493 cells.
+
+2.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+Removed 0 unused cells and 432 unused wires.
+<suppressed ~1 debug messages>
+
+2.21.5. Finished fast OPT passes.
+
+2.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `groq_sram_ecc_secded'. Setting top module to groq_sram_ecc_secded.
+
+2.22.1. Analyzing design hierarchy..
+Top module:  \groq_sram_ecc_secded
+
+2.22.2. Analyzing design hierarchy..
+Top module:  \groq_sram_ecc_secded
+Removed 0 unused modules.
+
+2.23. Printing statistics.
+
+=== groq_sram_ecc_secded ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      720 wires
+     1387 wire bits
+       23 public wires
+      529 public wire bits
+       12 ports
+      294 port bits
+      904 cells
+       65   $_AND_
+       64   $_MUX_
+      136   $_NOT_
+       98   $_OR_
+      541   $_XOR_
+
+2.24. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_ecc_secded...
+Found and reported 0 problems.
+
+3. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+3.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~24 debug messages>
+Mapping DFF cells in module `\groq_sram_ecc_secded':
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Extracting gate netlist of module `\groq_sram_ecc_secded' to `<abc-temp-dir>/input.blif'..
+
+4.1.1. Executed ABC.
+Extracted 904 gates and 1040 wires to a netlist network with 136 inputs and 81 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Dec 15 2025 17:24:15)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.07 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_bleeder_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__lpflow_inputisolatch_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/nfs/share/home/chenpei/hyr/dac2027_llm_dsa_marathon/synth/lib/sky130_fd_sc_hd__tt_025C_1v80.lib" has 334 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.10 sec
+ABC: Memory =   19.81 MB. Time =     0.10 sec
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:       84
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_inputiso0p_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:      152
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:      128
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:       20
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:      118
+ABC RESULTS:   sky130_fd_sc_hd__xnor3_4 cells:      125
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:       56
+ABC RESULTS:   sky130_fd_sc_hd__xor3_4 cells:       65
+ABC RESULTS:        internal signals:      823
+ABC RESULTS:           input signals:      136
+ABC RESULTS:          output signals:       81
+Removing temp directory.
+Removing global temp directory.
+
+5. Printing statistics.
+
+=== groq_sram_ecc_secded ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     1624        - wires
+     2291        - wire bits
+       23        - public wires
+      529        - public wire bits
+       12        - ports
+      294        - port bits
+      768 8.47E+03 cells
+        1    5.005   sky130_fd_sc_hd__a21oi_1
+        2   17.517   sky130_fd_sc_hd__and2b_2
+       84  315.302   sky130_fd_sc_hd__clkinv_1
+        2   15.014   sky130_fd_sc_hd__lpflow_inputiso0p_1
+      152  570.547   sky130_fd_sc_hd__nand2_1
+        4   20.019   sky130_fd_sc_hd__nand3_1
+      128  800.768   sky130_fd_sc_hd__nand4_1
+       20   75.072   sky130_fd_sc_hd__nor2_1
+        9   45.043   sky130_fd_sc_hd__nor3_1
+        2    10.01   sky130_fd_sc_hd__o21ai_0
+      118 1.03E+03   sky130_fd_sc_hd__xnor2_1
+      125   3284.4   sky130_fd_sc_hd__xnor3_4
+       56   490.47   sky130_fd_sc_hd__xor2_1
+       65 1.79E+03   sky130_fd_sc_hd__xor3_4
+
+   Chip area for module '\groq_sram_ecc_secded': 8471.875200
+     of which used for sequential elements: 0.000000 (0.00%)
+
+6. Executing Verilog backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Dumping module `\groq_sram_ecc_secded'.
+
+End of script. Logfile hash: ce7b48f0db, CPU: user 0.31s system 0.02s, MEM: 47.29 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 43% 1x abc (0 sec), 13% 3x read_verilog (0 sec), ...

@@ -1,0 +1,5 @@
+STAGE 5 FULL-CHIP & 2-CHIP CLUSTER SMOKE TEST PASSED: c0_gated=16 c1_gated=16 c1_skew=0
+- formal/tb_stage5_top_smoke.sv:144: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 20ns; walltime 0.001 s; speed 15.366 us/s
+- Verilator: cpu 0.001 s on 1 threads; allocated 4 MB

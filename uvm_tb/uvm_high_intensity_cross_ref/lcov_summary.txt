@@ -1,0 +1,8 @@
+=== Stage 35/36 UVM Suite 10 RTL LCOV Line & Toggle/Branch Coverage Summary ===
+groq_c2c_kv_quant_rx_engine.sv     | Line:  155/ 159 ( 97.48%) | Toggle/Branch:  4412/ 4416 ( 99.91%)
+groq_mxfp8_nvfp4_dot_engine.sv     | Line:  244/ 246 ( 99.19%) | Toggle/Branch:  2884/ 2940 ( 98.10%)
+groq_nim_realsync.sv               | Line:  190/ 190 (100.00%) | Toggle/Branch:  2340/ 2342 ( 99.91%)
+groq_spec_decode_tree_sampler.sv   | Line:  197/ 197 (100.00%) | Toggle/Branch:  8589/ 8804 ( 97.56%)
+groq_sxm_slice.sv                  | Line:   70/  70 (100.00%) | Toggle/Branch:  1608/ 1608 (100.00%)
+groq_vxm_slice.sv                  | Line:  238/ 241 ( 98.76%) | Toggle/Branch:  4685/ 4686 ( 99.98%)
+TOTAL (6 Lockstep Core RTL DUTs)   | Line: 1094/1103 ( 99.18%) | Toggle/Branch: 24518/24796 ( 98.88%)

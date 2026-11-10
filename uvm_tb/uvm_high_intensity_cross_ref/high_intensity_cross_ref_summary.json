@@ -1,0 +1,18 @@
+{
+  "suite": "uvm_high_intensity_cross_ref",
+  "dut": ["groq_sxm_slice", "groq_vxm_slice", "groq_nim_realsync", "groq_mxfp8_nvfp4_dot_engine", "groq_c2c_kv_quant_rx_engine", "groq_spec_decode_tree_sampler"],
+  "driven_cycles": 50000,
+  "observed_cycles": 50000,
+  "checked_cycles": 50000,
+  "dpi_tx_calls": 50000,
+  "dpi_lockstep_module_comparisons": 300000,
+  "sxm_mismatches": 0,
+  "vxm_mismatches": 0,
+  "nim_mismatches": 0,
+  "dot_mismatches": 0,
+  "kvq_mismatches": 0,
+  "spec_mismatches": 0,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

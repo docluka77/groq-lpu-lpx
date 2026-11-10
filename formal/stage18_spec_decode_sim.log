@@ -1,0 +1,24 @@
+[PASS] Greedy Argmax: valid_o asserted
+[PASS] Greedy Argmax: 16-lane Bitonic sort non-increasing monotonicity
+[PASS] Greedy Argmax: exact max logit (121) and token ID (0xA7) selected
+[PASS] Greedy Argmax: rank-15 minimum logit is -128
+[PASS] Top-K (K=1): only rank-0 kept in nucleus_mask_o, selects 0xA7
+[PASS] Top-K=4 & Top-P=500: nucleus_mask_o == 16'h0007 (ranks 0..2 active)
+[PASS] Top-K=4 & Top-P=500: deterministic inverse-CDF selects rank-2 token 0xAD (logit 108)
+[PASS] Top-K=8 & PRNG step: nucleus_mask_o == 16'h00FF and Xoroshiro PRNG advanced
+[PASS] SpecTree Full Accept: all 8 draft nodes accepted (mask=0xFF)
+[PASS] SpecTree Full Accept: deepest leaf d*=6 (p_6=180 > p_7=120), depth=4, emitted=5, kv_adv=4
+[PASS] SpecTree Full Accept: committed_tokens_o == {0x99(bonus), 0x16, 0x13, 0x11, 0x10}
+[PASS] SpecTree Partial Branch: nodes {0, 2, 5} accepted; children {3,4,6} of rejected node 1 masked out
+[PASS] SpecTree Partial Branch: best_leaf=5, depth=3, emitted=4, kv_adv=3
+[PASS] SpecTree Partial Branch: committed_tokens_o == {0x00, 0x99(bonus), 0x15, 0x12, 0x10}
+[PASS] SpecTree Root Fallback: only root node 0 accepted, depth=1, emitted=2
+[PASS] SpecTree Root Fallback: committed_tokens_o == {0x00, 0x00, 0x00, 0x99(bonus), 0x10}
+[PASS] SpecTree Tie-Break: equal depth=4 and equal p=175 selects lowest node index d*=6
+==================================================================
+STAGE 18 SPECULATIVE DECODE & NUCLEUS SAMPLER SIM: 17 PASSED, 0 FAILED
+==================================================================
+- formal/tb_stage18_spec_decode_sampler.sv:268: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.054 2026-11-01
+- Verilator: $finish at 106ps; walltime 0.000 s; speed 719.190 ns/s
+- Verilator: cpu 0.000 s on 1 threads; allocated 2 MB

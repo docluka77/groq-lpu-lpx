@@ -1,0 +1,10 @@
+read_verilog -sv -DFORMAL -DFORMAL_SLICE_TOP -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_controller_scrubber.sv
+chparam -set P_ADDR_W 2 groq_sram_controller_scrubber
+prep -top groq_sram_controller_scrubber
+flatten
+opt -fast
+async2sync
+chformal -lower
+opt -fast
+sat -verify -seq 5 -set-at 1 rst_n 0 -prove-skip 1 -prove-asserts
+

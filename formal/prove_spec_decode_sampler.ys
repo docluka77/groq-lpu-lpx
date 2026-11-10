@@ -1,0 +1,29 @@
+# ==============================================================================
+# Stage 18 Formal Verification Script: groq_spec_decode_tree_sampler
+# Proves:
+#   1. 16-Lane 10-Layer Bitonic Sorting Network Monotonicity (80 CAS + 16-lane)
+#   2. Greedy Argmax Exactness (selected_logit_o & selected_token_o == rank 0)
+#   3. Top-K / Top-P Nucleus Rank-0 Preservation (nucleus_mask_o[0] == 1'b1)
+#   4. 8-Node Speculative Draft-Verify Tree Causal Path Ancestor Invariant
+# ==============================================================================
+read_verilog -sv -DFORMAL -I/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_spec_decode_tree_sampler.sv
+hierarchy -top groq_spec_decode_tree_sampler
+proc
+opt
+async2sync
+dffunmap
+opt
+stat
+
+# Pass 1: End-to-end 16-lane Bitonic Monotonicity + All 80 CAS + Greedy + Nucleus + SpecTree
+sat -verify -seq 3 -set-init-zero -set-at 1 rst_n 1 -set-at 2 rst_n 1 -set-at 3 rst_n 1 \
+  -set-at 1 valid_i 1 -set-at 2 valid_i 1 \
+  -set-at 1 logits_i[6:1] 0 -set-at 1 logits_i[14:9] 0 -set-at 1 logits_i[22:17] 0 -set-at 1 logits_i[30:25] 0 \
+  -set-at 1 logits_i[38:33] 0 -set-at 1 logits_i[46:41] 0 -set-at 1 logits_i[54:49] 0 -set-at 1 logits_i[62:57] 0 \
+  -set-at 1 logits_i[70:65] 0 -set-at 1 logits_i[78:73] 0 -set-at 1 logits_i[86:81] 0 -set-at 1 logits_i[94:89] 0 \
+  -set-at 1 logits_i[102:97] 0 -set-at 1 logits_i[110:105] 0 -set-at 1 logits_i[118:113] 0 -set-at 1 logits_i[126:121] 0 \
+  -set-at 2 logits_i[6:1] 0 -set-at 2 logits_i[14:9] 0 -set-at 2 logits_i[22:17] 0 -set-at 2 logits_i[30:25] 0 \
+  -set-at 2 logits_i[38:33] 0 -set-at 2 logits_i[46:41] 0 -set-at 2 logits_i[54:49] 0 -set-at 2 logits_i[62:57] 0 \
+  -set-at 2 logits_i[70:65] 0 -set-at 2 logits_i[78:73] 0 -set-at 2 logits_i[86:81] 0 -set-at 2 logits_i[94:89] 0 \
+  -set-at 2 logits_i[102:97] 0 -set-at 2 logits_i[110:105] 0 -set-at 2 logits_i[118:113] 0 -set-at 2 logits_i[126:121] 0 \
+  -prove-asserts

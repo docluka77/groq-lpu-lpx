@@ -1,0 +1,869 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Executing script file `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/formal/prove_icu_slice.ys' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv
+Generating RTLIL representation for module `\groq_icu_slice'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \groq_icu_slice
+
+2.2. Analyzing design hierarchy..
+Top module:  \groq_icu_slice
+Removed 0 unused modules.
+Module groq_icu_slice directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371 in module groq_icu_slice.
+Marked 1 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:259$366 in module groq_icu_slice.
+Marked 51 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252 in module groq_icu_slice.
+Marked 8 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9 in module groq_icu_slice.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 12 redundant assignments.
+Promoted 136 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:244$424'.
+  Set init value: \f_cycle = 4'0000
+  Set init value: \f_release_prev = 1'0
+  Set init value: \f_sync_active_prev = 2'00
+  Set init value: \f_pc_s0_prev = 16'0000000000000000
+  Set init value: \f_pc_s1_prev = 16'0000000000000000
+  Set init value: \f_realsync_prev = 64'0000000000000000000000000000000000000000000000000000000000000000
+  Set init value: \f_nop_n2_c1 = 1'0
+  Set init value: \f_nop_n2_c2 = 1'0
+  Set init value: \f_nop_n2_c3 = 1'0
+  Set init value: \f_nop_pc_c1 = 16'0000000000000000
+  Set init value: \f_nop_pc_c2 = 16'0000000000000000
+  Set init value: \f_nop_pc_c3 = 16'0000000000000000
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~93 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:244$424'.
+Creating decoders for process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+     1/26: $0\f_nop_pc_c3[15:0]
+     2/26: $0\f_nop_pc_c2[15:0]
+     3/26: $0\f_nop_pc_c1[15:0]
+     4/26: $0\f_nop_n2_c3[0:0]
+     5/26: $0\f_nop_n2_c2[0:0]
+     6/26: $0\f_nop_n2_c1[0:0]
+     7/26: $0\f_realsync_prev[63:0]
+     8/26: $0\f_pc_s1_prev[15:0]
+     9/26: $0\f_pc_s0_prev[15:0]
+    10/26: $0\f_sync_active_prev[1:0]
+    11/26: $0\f_release_prev[0:0]
+    12/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:334$421_EN
+    13/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:330$419_EN
+    14/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:329$416_EN
+    15/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:326$414_EN
+    16/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:325$412_EN
+    17/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:324$410_EN
+    18/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:321$408_EN
+    19/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:320$406_EN
+    20/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:319$404_EN
+    21/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:314$401_EN
+    22/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:313$399_EN
+    23/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:310$395_EN
+    24/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:309$393_EN
+    25/26: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:306$390_EN
+    26/26: $0\f_cycle[3:0]
+Creating decoders for process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:259$366'.
+     1/2: $assume$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:263$370_EN
+     2/2: $assume$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:261$368_EN
+Creating decoders for process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+     1/55: $0\slice_halted_q[7:0] [7]
+     2/55: $0\slice_halted_q[7:0] [6]
+     3/55: $0\barrier_waiting_q[7:0] [6]
+     4/55: $0\nop_active_q[7:0] [6]
+     5/55: $0\nop_timer_q[127:0] [111:96]
+     6/55: $0\pc_slice_q[127:0] [111:96]
+     7/55: $0\slice_halted_q[7:0] [5]
+     8/55: $0\barrier_waiting_q[7:0] [5]
+     9/55: $0\nop_active_q[7:0] [5]
+    10/55: $0\nop_timer_q[127:0] [95:80]
+    11/55: $0\pc_slice_q[127:0] [95:80]
+    12/55: $0\slice_halted_q[7:0] [4]
+    13/55: $0\barrier_waiting_q[7:0] [4]
+    14/55: $0\nop_active_q[7:0] [4]
+    15/55: $0\nop_timer_q[127:0] [79:64]
+    16/55: $0\pc_slice_q[127:0] [79:64]
+    17/55: $0\slice_halted_q[7:0] [3]
+    18/55: $0\barrier_waiting_q[7:0] [3]
+    19/55: $0\nop_active_q[7:0] [3]
+    20/55: $0\nop_timer_q[127:0] [63:48]
+    21/55: $0\pc_slice_q[127:0] [63:48]
+    22/55: $0\slice_halted_q[7:0] [2]
+    23/55: $0\barrier_waiting_q[7:0] [2]
+    24/55: $0\nop_active_q[7:0] [2]
+    25/55: $0\nop_timer_q[127:0] [47:32]
+    26/55: $0\pc_slice_q[127:0] [47:32]
+    27/55: $0\slice_halted_q[7:0] [1]
+    28/55: $0\barrier_waiting_q[7:0] [1]
+    29/55: $0\nop_active_q[7:0] [1]
+    30/55: $0\nop_timer_q[127:0] [31:16]
+    31/55: $0\pc_slice_q[127:0] [31:16]
+    32/55: $0\slice_halted_q[7:0] [0]
+    33/55: $0\barrier_waiting_q[7:0] [0]
+    34/55: $0\nop_active_q[7:0] [0]
+    35/55: $0\nop_timer_q[127:0] [15:0]
+    36/55: $0\pc_slice_q[127:0] [15:0]
+    37/55: $0\notify_latched_q[7:0] [6]
+    38/55: $0\notify_latched_q[7:0] [5]
+    39/55: $0\notify_latched_q[7:0] [4]
+    40/55: $0\notify_latched_q[7:0] [3]
+    41/55: $0\notify_latched_q[7:0] [2]
+    42/55: $0\notify_latched_q[7:0] [1]
+    43/55: $0\notify_latched_q[7:0] [0]
+    44/55: $1$fordecl_block$7.s[31:0]$259
+    45/55: $1$fordecl_block$5.s[31:0]$258
+    46/55: $0\realsync_cycle_cnt_q[63:0]
+    47/55: $1$fordecl_block$3.s[31:0]$257
+    48/55: $0\barrier_release_cnt_q[15:0]
+    49/55: $0\realsync_deskew_q[15:0]
+    50/55: $0\nop_timer_q[127:0] [127:112]
+    51/55: $2$fordecl_block$5.s[31:0]$261
+    52/55: $0\pc_slice_q[127:0] [127:112]
+    53/55: $0\nop_active_q[7:0] [7]
+    54/55: $0\barrier_waiting_q[7:0] [7]
+    55/55: $0\notify_latched_q[7:0] [7]
+Creating decoders for process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+     1/8: $8\active_sync_mask[7:0]
+     2/8: $7\active_sync_mask[7:0]
+     3/8: $6\active_sync_mask[7:0]
+     4/8: $5\active_sync_mask[7:0]
+     5/8: $4\active_sync_mask[7:0]
+     6/8: $3\active_sync_mask[7:0]
+     7/8: $2\active_sync_mask[7:0]
+     8/8: $1\active_sync_mask[7:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_icu_slice.\imem_fetch_en_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\pc_slice_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_vliw_valid_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_vliw_bundle_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_nop_timer_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_halted_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_waiting_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_ready_mask_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_release_pulse_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\barrier_release_cnt_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_cycle_cnt_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_deskew_offset_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_aligned_time_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\realsync_drift_fault_o' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\s_icu_op' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\s_sync_mask' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\s_nop_cnt' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\s_imm16' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_entering_sync' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\slice_sync_active' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\active_sync_mask' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.\abs_deskew' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+No latch inferred for signal `\groq_icu_slice.$fordecl_block$1.s' from process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_icu_slice.\f_cycle' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1400' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_release_prev' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1401' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_sync_active_prev' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1402' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_pc_s0_prev' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1403' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_pc_s1_prev' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1404' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_realsync_prev' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1405' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_nop_n2_c1' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1406' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_nop_n2_c2' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1407' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_nop_n2_c3' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1408' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_nop_pc_c1' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1409' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_nop_pc_c2' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1410' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\f_nop_pc_c3' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+  created $dff cell `$procdff$1411' with positive edge clock.
+Creating register for signal `\groq_icu_slice.\pc_slice_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1416' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\nop_active_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1421' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\nop_timer_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1426' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\barrier_waiting_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1431' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\notify_latched_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1436' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\slice_halted_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1441' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\realsync_cycle_cnt_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1446' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\realsync_deskew_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1451' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.\barrier_release_cnt_q' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1456' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.$fordecl_block$3.s' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $adff cell `$procdff$1461' with positive edge clock and positive level reset.
+Creating register for signal `\groq_icu_slice.$fordecl_block$5.s' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $dff cell `$procdff$1468' with positive edge clock.
+Creating register for signal `\groq_icu_slice.$fordecl_block$7.s' using process `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+  created $dff cell `$procdff$1475' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:244$424'.
+Found and cleaned up 9 empty switches in `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+Removing empty process `groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:267$371'.
+Found and cleaned up 1 empty switch in `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:259$366'.
+Removing empty process `groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:259$366'.
+Found and cleaned up 75 empty switches in `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+Removing empty process `groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:139$252'.
+Found and cleaned up 8 empty switches in `\groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+Removing empty process `groq_icu_slice.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:88$9'.
+Cleaned up 93 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~67 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~468 debug messages>
+Removed a total of 156 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $procmux$1000: \nop_active_q [2] -> 1'1
+      Replacing known input bits on port B of cell $procmux$996: \nop_active_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$993: \nop_active_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$991: \nop_active_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$989: \nop_active_q [2] -> 1'0
+      Replacing known input bits on port B of cell $procmux$971: \slice_halted_q [2] -> 1'1
+      Replacing known input bits on port B of cell $procmux$968: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port B of cell $procmux$965: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$962: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port A of cell $procmux$960: \slice_halted_q [2] -> 1'0
+      Replacing known input bits on port B of cell $procmux$905: \nop_active_q [3] -> 1'1
+      Replacing known input bits on port B of cell $procmux$901: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$898: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$896: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$894: \nop_active_q [3] -> 1'0
+      Replacing known input bits on port B of cell $procmux$876: \slice_halted_q [3] -> 1'1
+      Replacing known input bits on port B of cell $procmux$873: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port B of cell $procmux$870: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$867: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port A of cell $procmux$865: \slice_halted_q [3] -> 1'0
+      Replacing known input bits on port B of cell $procmux$810: \nop_active_q [4] -> 1'1
+      Replacing known input bits on port B of cell $procmux$806: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$803: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$801: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$799: \nop_active_q [4] -> 1'0
+      Replacing known input bits on port B of cell $procmux$781: \slice_halted_q [4] -> 1'1
+      Replacing known input bits on port B of cell $procmux$778: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port B of cell $procmux$775: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$772: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port A of cell $procmux$770: \slice_halted_q [4] -> 1'0
+      Replacing known input bits on port B of cell $procmux$715: \nop_active_q [5] -> 1'1
+      Replacing known input bits on port B of cell $procmux$711: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$708: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$706: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$704: \nop_active_q [5] -> 1'0
+      Replacing known input bits on port B of cell $procmux$686: \slice_halted_q [5] -> 1'1
+      Replacing known input bits on port B of cell $procmux$683: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port B of cell $procmux$680: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$677: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port A of cell $procmux$675: \slice_halted_q [5] -> 1'0
+      Replacing known input bits on port B of cell $procmux$620: \nop_active_q [6] -> 1'1
+      Replacing known input bits on port B of cell $procmux$616: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$613: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$611: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$609: \nop_active_q [6] -> 1'0
+      Replacing known input bits on port B of cell $procmux$591: \slice_halted_q [6] -> 1'1
+      Replacing known input bits on port B of cell $procmux$588: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port B of cell $procmux$585: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$582: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port A of cell $procmux$580: \slice_halted_q [6] -> 1'0
+      Replacing known input bits on port B of cell $procmux$577: \slice_halted_q [7] -> 1'1
+      Replacing known input bits on port B of cell $procmux$574: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port B of cell $procmux$571: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$568: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$566: \slice_halted_q [7] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1352: \nop_active_q [7] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1348: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1345: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1343: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1341: \nop_active_q [7] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1095: \nop_active_q [1] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1091: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1088: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1086: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1084: \nop_active_q [1] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1190: \nop_active_q [0] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1186: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1183: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1181: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1179: \nop_active_q [0] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1066: \slice_halted_q [1] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1063: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1060: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1057: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1055: \slice_halted_q [1] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1161: \slice_halted_q [0] -> 1'1
+      Replacing known input bits on port B of cell $procmux$1158: \slice_halted_q [0] -> 1'0
+      Replacing known input bits on port B of cell $procmux$1155: \slice_halted_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1152: \slice_halted_q [0] -> 1'0
+      Replacing known input bits on port A of cell $procmux$1150: \slice_halted_q [0] -> 1'0
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~440 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~90 debug messages>
+Removed a total of 30 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$1456 ($adff) from module groq_icu_slice (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:156$262_Y, Q = \barrier_release_cnt_q).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$622_Y, Q = \nop_active_q [6]).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$717_Y, Q = \nop_active_q [5]).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$812_Y, Q = \nop_active_q [4]).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$907_Y, Q = \nop_active_q [3]).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$1002_Y, Q = \nop_active_q [2]).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$1097_Y, Q = \nop_active_q [1]).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$1192_Y, Q = \nop_active_q [0]).
+Adding EN signal on $procdff$1421 ($adff) from module groq_icu_slice (D = $procmux$1354_Y, Q = \nop_active_q [7]).
+Handling D = Q on $procdff$1461 ($adff) from module groq_icu_slice (removing D path).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1277_Y, Q = \notify_latched_q [0]).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1272_Y, Q = \notify_latched_q [1]).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1267_Y, Q = \notify_latched_q [2]).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1262_Y, Q = \notify_latched_q [3]).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1257_Y, Q = \notify_latched_q [4]).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1252_Y, Q = \notify_latched_q [5]).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1247_Y, Q = \notify_latched_q [6]).
+Adding EN signal on $procdff$1436 ($adff) from module groq_icu_slice (D = $procmux$1374_Y, Q = \notify_latched_q [7]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$1239_Y, Q = \pc_slice_q [15:0]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$1144_Y, Q = \pc_slice_q [31:16]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$1049_Y, Q = \pc_slice_q [47:32]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$954_Y, Q = \pc_slice_q [63:48]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$859_Y, Q = \pc_slice_q [79:64]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$764_Y, Q = \pc_slice_q [95:80]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$669_Y, Q = \pc_slice_q [111:96]).
+Adding EN signal on $procdff$1416 ($adff) from module groq_icu_slice (D = $procmux$1332_Y, Q = \pc_slice_q [127:112]).
+Adding EN signal on $procdff$1468 ($dff) from module groq_icu_slice (D = 8, Q = $fordecl_block$5.s).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$595_Y, Q = \barrier_waiting_q [6]).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$690_Y, Q = \barrier_waiting_q [5]).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$785_Y, Q = \barrier_waiting_q [4]).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$880_Y, Q = \barrier_waiting_q [3]).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$975_Y, Q = \barrier_waiting_q [2]).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$1070_Y, Q = \barrier_waiting_q [1]).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$1165_Y, Q = \barrier_waiting_q [0]).
+Adding EN signal on $procdff$1431 ($adff) from module groq_icu_slice (D = $procmux$1361_Y, Q = \barrier_waiting_q [7]).
+Adding EN signal on $procdff$1451 ($adff) from module groq_icu_slice (D = $procmux$1285_Y, Q = \realsync_deskew_q).
+Adding EN signal on $procdff$1475 ($dff) from module groq_icu_slice (D = 8, Q = $fordecl_block$7.s).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$1214_Y, Q = \nop_timer_q [15:0]).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$1119_Y, Q = \nop_timer_q [31:16]).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$1024_Y, Q = \nop_timer_q [47:32]).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$929_Y, Q = \nop_timer_q [63:48]).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$834_Y, Q = \nop_timer_q [79:64]).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$739_Y, Q = \nop_timer_q [95:80]).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$644_Y, Q = \nop_timer_q [111:96]).
+Adding EN signal on $procdff$1426 ($adff) from module groq_icu_slice (D = $procmux$1304_Y, Q = \nop_timer_q [127:112]).
+Adding SRST signal on $procdff$1411 ($dff) from module groq_icu_slice (D = \f_nop_pc_c2, Q = \f_nop_pc_c3, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$1400 ($dff) from module groq_icu_slice (D = $procmux$554_Y, Q = \f_cycle, rval = 4'0001).
+Adding EN signal on $auto$ff.cc:337:slice$1799 ($sdff) from module groq_icu_slice (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:282$374_Y, Q = \f_cycle).
+Adding SRST signal on $procdff$1401 ($dff) from module groq_icu_slice (D = \barrier_release_pulse_o, Q = \f_release_prev, rval = 1'0).
+Adding SRST signal on $procdff$1402 ($dff) from module groq_icu_slice (D = \slice_sync_active [1:0], Q = \f_sync_active_prev, rval = 2'00).
+Adding SRST signal on $procdff$1404 ($dff) from module groq_icu_slice (D = \pc_slice_o [31:16], Q = \f_pc_s1_prev, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$1405 ($dff) from module groq_icu_slice (D = \realsync_cycle_cnt_o, Q = \f_realsync_prev, rval = 64'0000000000000000000000000000000000000000000000000000000000000000).
+Adding SRST signal on $procdff$1406 ($dff) from module groq_icu_slice (D = $and$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:291$384_Y, Q = \f_nop_n2_c1, rval = 1'0).
+Adding SRST signal on $procdff$1407 ($dff) from module groq_icu_slice (D = \f_nop_n2_c1, Q = \f_nop_n2_c2, rval = 1'0).
+Adding SRST signal on $procdff$1408 ($dff) from module groq_icu_slice (D = \f_nop_n2_c2, Q = \f_nop_n2_c3, rval = 1'0).
+Adding SRST signal on $procdff$1410 ($dff) from module groq_icu_slice (D = \f_nop_pc_c1, Q = \f_nop_pc_c2, rval = 16'0000000000000000).
+Setting constant 0-bit at position 0 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 1 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 2 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 1-bit at position 3 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 4 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 5 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 6 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 7 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 8 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 9 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 10 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 11 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 12 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 13 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 14 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 15 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 16 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 17 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 18 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 19 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 20 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 21 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 22 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 23 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 24 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 25 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 26 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 27 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 28 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 29 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 30 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 31 on $procdff$1461 ($dlatch) from module groq_icu_slice.
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 2 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 1-bit at position 3 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$1693 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 2 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 1-bit at position 3 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$1629 ($dffe) from module groq_icu_slice.
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 66 unused cells and 732 unused wires.
+<suppressed ~67 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+<suppressed ~41 debug messages>
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~320 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+<suppressed ~96 debug messages>
+Removed a total of 32 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$1409 ($dff) from module groq_icu_slice (D = \pc_slice_q [15:0], Q = \f_nop_pc_c1, rval = 16'0000000000000000).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+Removed 1 unused cells and 33 unused wires.
+<suppressed ~2 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_icu_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~318 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_icu_slice.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_icu_slice'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_icu_slice..
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_icu_slice.
+
+4.23. Finished fast OPT passes. (There is nothing left to do.)
+
+5. Executing ASYNC2SYNC pass.
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1476 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_icu_slice.sv:156$262_Y, Q=\barrier_release_cnt_q
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1477 ($adffe): ARST=\rst_n, D=$procmux$622_Y, Q=\nop_active_q [6]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1478 ($adffe): ARST=\rst_n, D=$procmux$717_Y, Q=\nop_active_q [5]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1479 ($adffe): ARST=\rst_n, D=$procmux$812_Y, Q=\nop_active_q [4]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1480 ($adffe): ARST=\rst_n, D=$procmux$907_Y, Q=\nop_active_q [3]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1481 ($adffe): ARST=\rst_n, D=$procmux$1002_Y, Q=\nop_active_q [2]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1482 ($adffe): ARST=\rst_n, D=$procmux$1097_Y, Q=\nop_active_q [1]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1483 ($adffe): ARST=\rst_n, D=$procmux$1192_Y, Q=\nop_active_q [0]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1484 ($adffe): ARST=\rst_n, D=$procmux$1354_Y, Q=\nop_active_q [7]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1485 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [0], Q=\notify_latched_q [0]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1488 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [1], Q=\notify_latched_q [1]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1491 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [2], Q=\notify_latched_q [2]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1494 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [3], Q=\notify_latched_q [3]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1497 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [4], Q=\notify_latched_q [4]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1500 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [5], Q=\notify_latched_q [5]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1503 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [6], Q=\notify_latched_q [6]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1506 ($adffe): ARST=\rst_n, D=$0\notify_latched_q[7:0] [7], Q=\notify_latched_q [7]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1509 ($adffe): ARST=\rst_n, D=$procmux$1239_Y, Q=\pc_slice_q [15:0]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1524 ($adffe): ARST=\rst_n, D=$procmux$1144_Y, Q=\pc_slice_q [31:16]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1539 ($adffe): ARST=\rst_n, D=$procmux$1049_Y, Q=\pc_slice_q [47:32]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1554 ($adffe): ARST=\rst_n, D=$procmux$954_Y, Q=\pc_slice_q [63:48]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1569 ($adffe): ARST=\rst_n, D=$procmux$859_Y, Q=\pc_slice_q [79:64]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1584 ($adffe): ARST=\rst_n, D=$procmux$764_Y, Q=\pc_slice_q [95:80]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1599 ($adffe): ARST=\rst_n, D=$procmux$669_Y, Q=\pc_slice_q [111:96]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1614 ($adffe): ARST=\rst_n, D=$procmux$1332_Y, Q=\pc_slice_q [127:112]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1634 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [6]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1641 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [5]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1648 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [4]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1655 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [3]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1662 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [2]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1669 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [1]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1676 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [0]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1683 ($adffe): ARST=\rst_n, D=$procmux$1070_Y, Q=\barrier_waiting_q [7]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1690 ($adffe): ARST=\rst_n, D=$0\realsync_deskew_q[15:0], Q=\realsync_deskew_q
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1694 ($adffe): ARST=\rst_n, D=$procmux$1214_Y, Q=\nop_timer_q [15:0]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1707 ($adffe): ARST=\rst_n, D=$procmux$1119_Y, Q=\nop_timer_q [31:16]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1720 ($adffe): ARST=\rst_n, D=$procmux$1024_Y, Q=\nop_timer_q [47:32]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1733 ($adffe): ARST=\rst_n, D=$procmux$929_Y, Q=\nop_timer_q [63:48]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1746 ($adffe): ARST=\rst_n, D=$procmux$834_Y, Q=\nop_timer_q [79:64]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1759 ($adffe): ARST=\rst_n, D=$procmux$739_Y, Q=\nop_timer_q [95:80]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1772 ($adffe): ARST=\rst_n, D=$procmux$644_Y, Q=\nop_timer_q [111:96]
+Replacing groq_icu_slice.$auto$ff.cc:337:slice$1785 ($adffe): ARST=\rst_n, D=$procmux$1304_Y, Q=\nop_timer_q [127:112]
+Replacing groq_icu_slice.$procdff$1441 ($adff): ARST=\rst_n, D=$0\slice_halted_q[7:0], Q=\slice_halted_q
+Replacing groq_icu_slice.$procdff$1446 ($adff): ARST=\rst_n, D=$0\realsync_cycle_cnt_q[63:0], Q=\realsync_cycle_cnt_q
+
+6. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+7. Printing statistics.
+
+=== groq_icu_slice ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      824 wires
+     7881 wire bits
+       50 public wires
+     3720 public wire bits
+       21 ports
+     2790 port bits
+      912 cells
+       16   $add
+       76   $and
+       14   $assert
+        2   $assume
+       97   $dff
+       51   $eq
+        1   $ge
+       17   $gt
+       21   $logic_and
+       12   $logic_not
+        8   $logic_or
+        2   $lt
+      384   $mux
+       40   $ne
+        1   $neg
+       49   $not
+       39   $or
+        8   $pmux
+       24   $reduce_and
+       41   $reduce_bool
+        1   $reduce_or
+        8   $sub
+
+8. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1892 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1888 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1886 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1882 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1880 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1876 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1874 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1870 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1868 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1864 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1862 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1858 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1856 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1852 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1850 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1846 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1844 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1840 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1838 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1834 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1832 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1828 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1826 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1822 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1820 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1816 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$1814 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$1810 = 1'0
+Import set-constraint from init attribute: \f_cycle = 4'0000
+Import set-constraint from init attribute: \f_nop_n2_c1 = 1'0
+Import set-constraint from init attribute: \f_nop_n2_c2 = 1'0
+Import set-constraint from init attribute: \f_nop_n2_c3 = 1'0
+Import set-constraint from init attribute: \f_nop_pc_c1 = 16'0000000000000000
+Import set-constraint from init attribute: \f_nop_pc_c2 = 16'0000000000000000
+Import set-constraint from init attribute: \f_nop_pc_c3 = 16'0000000000000000
+Import set-constraint from init attribute: \f_pc_s1_prev = 16'0000000000000000
+Import set-constraint from init attribute: \f_realsync_prev = 64'0000000000000000000000000000000000000000000000000000000000000000
+Import set-constraint from init attribute: \f_release_prev = 1'0
+Import set-constraint from init attribute: \f_sync_active_prev = 2'00
+Final init constraint equation: { $auto$async2sync.cc:234:execute$1980 $auto$async2sync.cc:234:execute$1978 $auto$async2sync.cc:234:execute$1976 $auto$async2sync.cc:234:execute$1974 $auto$async2sync.cc:234:execute$1972 $auto$async2sync.cc:234:execute$1970 $auto$async2sync.cc:234:execute$1968 $auto$async2sync.cc:234:execute$1966 $auto$async2sync.cc:234:execute$1964 $auto$async2sync.cc:234:execute$1962 $auto$async2sync.cc:234:execute$1960 $auto$async2sync.cc:234:execute$1958 $auto$async2sync.cc:234:execute$1956 $auto$async2sync.cc:234:execute$1954 $auto$async2sync.cc:234:execute$1952 $auto$async2sync.cc:234:execute$1950 $auto$async2sync.cc:234:execute$1948 $auto$async2sync.cc:234:execute$1946 $auto$async2sync.cc:234:execute$1944 $auto$async2sync.cc:234:execute$1942 $auto$async2sync.cc:234:execute$1940 $auto$async2sync.cc:234:execute$1938 $auto$async2sync.cc:234:execute$1936 $auto$async2sync.cc:234:execute$1934 $auto$async2sync.cc:234:execute$1932 $auto$async2sync.cc:234:execute$1930 $auto$async2sync.cc:234:execute$1928 $auto$async2sync.cc:234:execute$1926 $auto$async2sync.cc:234:execute$1924 $auto$async2sync.cc:234:execute$1922 $auto$async2sync.cc:234:execute$1920 $auto$async2sync.cc:234:execute$1918 $auto$async2sync.cc:234:execute$1916 $auto$async2sync.cc:234:execute$1914 $auto$async2sync.cc:234:execute$1912 $auto$async2sync.cc:234:execute$1910 $auto$async2sync.cc:234:execute$1908 $auto$async2sync.cc:234:execute$1906 $auto$async2sync.cc:234:execute$1904 $auto$async2sync.cc:234:execute$1902 $auto$async2sync.cc:234:execute$1900 $auto$async2sync.cc:234:execute$1898 $auto$async2sync.cc:234:execute$1896 $auto$async2sync.cc:234:execute$1894 \f_sync_active_prev \f_release_prev \f_realsync_prev \f_pc_s1_prev \f_nop_pc_c3 \f_nop_pc_c2 \f_nop_pc_c1 \f_nop_n2_c3 \f_nop_n2_c2 \f_nop_n2_c1 \f_cycle $auto$async2sync.cc:107:execute$1810 $auto$async2sync.cc:116:execute$1814 $auto$async2sync.cc:107:execute$1816 $auto$async2sync.cc:116:execute$1820 $auto$async2sync.cc:107:execute$1822 $auto$async2sync.cc:116:execute$1826 $auto$async2sync.cc:107:execute$1828 $auto$async2sync.cc:116:execute$1832 $auto$async2sync.cc:107:execute$1834 $auto$async2sync.cc:116:execute$1838 $auto$async2sync.cc:107:execute$1840 $auto$async2sync.cc:116:execute$1844 $auto$async2sync.cc:107:execute$1846 $auto$async2sync.cc:116:execute$1850 $auto$async2sync.cc:107:execute$1852 $auto$async2sync.cc:116:execute$1856 $auto$async2sync.cc:107:execute$1858 $auto$async2sync.cc:116:execute$1862 $auto$async2sync.cc:107:execute$1864 $auto$async2sync.cc:116:execute$1868 $auto$async2sync.cc:107:execute$1870 $auto$async2sync.cc:116:execute$1874 $auto$async2sync.cc:107:execute$1876 $auto$async2sync.cc:116:execute$1880 $auto$async2sync.cc:107:execute$1882 $auto$async2sync.cc:116:execute$1886 $auto$async2sync.cc:107:execute$1888 $auto$async2sync.cc:116:execute$1892 } = 550'0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Imported 912 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$1892 when $auto$async2sync.cc:107:execute$1888.
+Import proof for assert: $auto$async2sync.cc:116:execute$1886 when $auto$async2sync.cc:107:execute$1882.
+Import proof for assert: $auto$async2sync.cc:116:execute$1880 when $auto$async2sync.cc:107:execute$1876.
+Import proof for assert: $auto$async2sync.cc:116:execute$1874 when $auto$async2sync.cc:107:execute$1870.
+Import proof for assert: $auto$async2sync.cc:116:execute$1868 when $auto$async2sync.cc:107:execute$1864.
+Import proof for assert: $auto$async2sync.cc:116:execute$1862 when $auto$async2sync.cc:107:execute$1858.
+Import proof for assert: $auto$async2sync.cc:116:execute$1856 when $auto$async2sync.cc:107:execute$1852.
+Import proof for assert: $auto$async2sync.cc:116:execute$1850 when $auto$async2sync.cc:107:execute$1846.
+Import proof for assert: $auto$async2sync.cc:116:execute$1844 when $auto$async2sync.cc:107:execute$1840.
+Import proof for assert: $auto$async2sync.cc:116:execute$1838 when $auto$async2sync.cc:107:execute$1834.
+Import proof for assert: $auto$async2sync.cc:116:execute$1832 when $auto$async2sync.cc:107:execute$1828.
+Import proof for assert: $auto$async2sync.cc:116:execute$1826 when $auto$async2sync.cc:107:execute$1822.
+Import proof for assert: $auto$async2sync.cc:116:execute$1820 when $auto$async2sync.cc:107:execute$1816.
+Import proof for assert: $auto$async2sync.cc:116:execute$1814 when $auto$async2sync.cc:107:execute$1810.
+
+Solving problem with 321297 variables and 843464 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: bc28c12d5a, CPU: user 1.55s system 0.20s, MEM: 281.86 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 93% 1x sat (1 sec), 1% 2x read_verilog (0 sec), ...

@@ -1,0 +1,401 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Running command `read_verilog -sv -DFORMAL /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv; prep -top groq_sram_ecc_secded; chformal -lower; sat -verify -prove-asserts' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv
+Generating RTLIL representation for module `\groq_sram_ecc_secded'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_sram_ecc_secded
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_sram_ecc_secded
+Removed 0 unused modules.
+Module groq_sram_ecc_secded directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 448 empty switches in `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+Found and cleaned up 448 empty switches in `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+Cleaned up 896 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 64 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228 in module groq_sram_ecc_secded.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 520 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~67 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+Creating decoders for process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:150$653'.
+     1/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:168$672_EN
+     2/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:167$670_EN
+     3/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:166$668_EN
+     4/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:162$666_EN
+     5/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:161$664_EN
+     6/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:160$662_EN
+     7/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:156$660_EN
+     8/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:155$658_EN
+     9/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:154$656_EN
+    10/10: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:153$654_EN
+Creating decoders for process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+     1/64: $64\data_corr_comb[63:63]
+     2/64: $63\data_corr_comb[62:62]
+     3/64: $62\data_corr_comb[61:61]
+     4/64: $61\data_corr_comb[60:60]
+     5/64: $60\data_corr_comb[59:59]
+     6/64: $59\data_corr_comb[58:58]
+     7/64: $58\data_corr_comb[57:57]
+     8/64: $57\data_corr_comb[56:56]
+     9/64: $56\data_corr_comb[55:55]
+    10/64: $55\data_corr_comb[54:54]
+    11/64: $54\data_corr_comb[53:53]
+    12/64: $53\data_corr_comb[52:52]
+    13/64: $52\data_corr_comb[51:51]
+    14/64: $51\data_corr_comb[50:50]
+    15/64: $50\data_corr_comb[49:49]
+    16/64: $49\data_corr_comb[48:48]
+    17/64: $48\data_corr_comb[47:47]
+    18/64: $47\data_corr_comb[46:46]
+    19/64: $46\data_corr_comb[45:45]
+    20/64: $45\data_corr_comb[44:44]
+    21/64: $44\data_corr_comb[43:43]
+    22/64: $43\data_corr_comb[42:42]
+    23/64: $42\data_corr_comb[41:41]
+    24/64: $41\data_corr_comb[40:40]
+    25/64: $40\data_corr_comb[39:39]
+    26/64: $39\data_corr_comb[38:38]
+    27/64: $38\data_corr_comb[37:37]
+    28/64: $37\data_corr_comb[36:36]
+    29/64: $36\data_corr_comb[35:35]
+    30/64: $35\data_corr_comb[34:34]
+    31/64: $34\data_corr_comb[33:33]
+    32/64: $33\data_corr_comb[32:32]
+    33/64: $32\data_corr_comb[31:31]
+    34/64: $31\data_corr_comb[30:30]
+    35/64: $30\data_corr_comb[29:29]
+    36/64: $29\data_corr_comb[28:28]
+    37/64: $28\data_corr_comb[27:27]
+    38/64: $27\data_corr_comb[26:26]
+    39/64: $26\data_corr_comb[25:25]
+    40/64: $25\data_corr_comb[24:24]
+    41/64: $24\data_corr_comb[23:23]
+    42/64: $23\data_corr_comb[22:22]
+    43/64: $22\data_corr_comb[21:21]
+    44/64: $21\data_corr_comb[20:20]
+    45/64: $20\data_corr_comb[19:19]
+    46/64: $19\data_corr_comb[18:18]
+    47/64: $18\data_corr_comb[17:17]
+    48/64: $17\data_corr_comb[16:16]
+    49/64: $16\data_corr_comb[15:15]
+    50/64: $15\data_corr_comb[14:14]
+    51/64: $14\data_corr_comb[13:13]
+    52/64: $13\data_corr_comb[12:12]
+    53/64: $12\data_corr_comb[11:11]
+    54/64: $11\data_corr_comb[10:10]
+    55/64: $10\data_corr_comb[9:9]
+    56/64: $9\data_corr_comb[8:8]
+    57/64: $8\data_corr_comb[7:7]
+    58/64: $7\data_corr_comb[6:6]
+    59/64: $6\data_corr_comb[5:5]
+    60/64: $5\data_corr_comb[4:4]
+    61/64: $4\data_corr_comb[3:3]
+    62/64: $3\data_corr_comb[2:2]
+    63/64: $2\data_corr_comb[1:1]
+    64/64: $1\data_corr_comb[0:0]
+Creating decoders for process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_sram_ecc_secded.\ecc_out' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+No latch inferred for signal `\groq_sram_ecc_secded.\codeword_out' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+No latch inferred for signal `\groq_sram_ecc_secded.\valid_out' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+No latch inferred for signal `\groq_sram_ecc_secded.\data_corrected' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+No latch inferred for signal `\groq_sram_ecc_secded.\syndrome' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+No latch inferred for signal `\groq_sram_ecc_secded.\single_err_detected' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+No latch inferred for signal `\groq_sram_ecc_secded.\double_err_detected' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+No latch inferred for signal `\groq_sram_ecc_secded.\data_raw' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\ecc_raw' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\syn_low' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\overall_par' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\syndrome_comb' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\data_corr_comb' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\single_err_comb' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\double_err_comb' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.k' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[0].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[1].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[2].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[3].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[4].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[5].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$5.$for_loop$6[6].$fordecl_block$7.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$9.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+No latch inferred for signal `\groq_sram_ecc_secded.\ecc_comb' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.\codeword_comb' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.k' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[0].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[1].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[2].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[3].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[4].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[5].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+No latch inferred for signal `\groq_sram_ecc_secded.$fordecl_block$1.$for_loop$2[6].$fordecl_block$3.i' from process `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:128$675'.
+Found and cleaned up 3 empty switches in `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:150$653'.
+Removing empty process `groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:150$653'.
+Found and cleaned up 64 empty switches in `\groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+Removing empty process `groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:73$228'.
+Removing empty process `groq_sram_ecc_secded.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:47$11'.
+Cleaned up 67 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+<suppressed ~22 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+Removed 0 unused cells and 706 unused wires.
+<suppressed ~1 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_ecc_secded...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_ecc_secded..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~148 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_ecc_secded.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+<suppressed ~21 debug messages>
+Removed a total of 7 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+Removed 0 unused cells and 12 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_sram_ecc_secded..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~134 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_sram_ecc_secded.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 5 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$447 ($eq).
+Removed top 4 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$450 ($eq).
+Removed top 4 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$453 ($eq).
+Removed top 4 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$456 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$459 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$462 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$465 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$468 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$471 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$474 ($eq).
+Removed top 3 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$477 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$480 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$483 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$486 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$489 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$492 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$495 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$498 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$501 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$504 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$507 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$510 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$513 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$516 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$519 ($eq).
+Removed top 2 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$522 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$525 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$528 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$531 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$534 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$537 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$540 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$543 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$546 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$549 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$552 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$555 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$558 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$561 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$564 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$567 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$570 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$573 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$576 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$579 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$582 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$585 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$588 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$591 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$594 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$597 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$600 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$603 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$606 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$609 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$612 ($eq).
+Removed top 1 bits (of 7) from port B of cell groq_sram_ecc_secded.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:92$615 ($eq).
+Removed top 71 bits (of 72) from port B of cell groq_sram_ecc_secded.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:143$640 ($sub).
+Removed top 71 bits (of 72) from port B of cell groq_sram_ecc_secded.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:144$642 ($sub).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_sram_ecc_secded.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_sram_ecc_secded'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_sram_ecc_secded..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== groq_sram_ecc_secded ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      628 wires
+     1489 wire bits
+       29 public wires
+      748 public wire bits
+       12 ports
+      294 port bits
+      696 cells
+        3   $and
+       10   $check
+       65   $eq
+       67   $logic_and
+        4   $logic_not
+       67   $mux
+       66   $not
+        3   $reduce_bool
+        1   $reduce_or
+        3   $reduce_xor
+        2   $sub
+      405   $xor
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module groq_sram_ecc_secded...
+Found and reported 0 problems.
+
+3. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up SAT problem:
+Final constraint equation: { } = { }
+Imported 716 cells to SAT database.
+Import proof for assert: $ne$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:168$673_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:166$668_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:154$657_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:166$668_EN.
+Import proof for assert: \double_err_comb when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:166$668_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:153$655_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:160$662_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:155$659_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:160$662_EN.
+Import proof for assert: \single_err_comb when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:160$662_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:156$661_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:153$654_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:155$659_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:153$654_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:154$657_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:153$654_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:153$655_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/sram_ip/groq_sram_ecc_secded.sv:153$654_EN.
+
+Solving problem with 7652 variables and 21035 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: fc9c595fdc, CPU: user 95.29s system 0.05s, MEM: 56.17 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 99% 1x sat (95 sec), 0% 2x read_verilog (0 sec), ...

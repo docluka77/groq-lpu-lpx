@@ -1,0 +1,15 @@
+{
+  "suite": "uvm_vxm_nim",
+  "dut": ["groq_vxm_slice", "groq_nim_realsync"],
+  "driven_cycles": 3200,
+  "observed_cycles": 3200,
+  "checked_cycles": 3200,
+  "dpi_calls": 3200,
+  "vxm_slice_checks": 3200,
+  "nim_realsync_checks": 3200,
+  "deskew_release_events": 1597,
+  "crc_fault_detections": 466,
+  "mismatches": 0,
+  "functional_coverage_pct": 100.00,
+  "pass": 1
+}

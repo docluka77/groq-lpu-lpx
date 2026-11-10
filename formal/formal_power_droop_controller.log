@@ -1,0 +1,557 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Executing script file `formal/prove_power_droop_controller.ys' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv
+Generating RTLIL representation for module `\groq_power_droop_controller'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_power_droop_controller
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_power_droop_controller
+Removed 0 unused modules.
+Module groq_power_droop_controller directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59 in module groq_power_droop_controller.
+Marked 4 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22 in module groq_power_droop_controller.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 3 redundant assignments.
+Promoted 38 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~12 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:162$71'.
+     1/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$88_EN
+     2/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN
+     3/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN
+     4/4: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN
+Creating decoders for process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+     1/4: $0\eff_current_q[7:0]
+     2/4: $0\therm_tick_q[2:0]
+     3/4: $0\droop_mitigated_events_o[15:0]
+     4/4: $0\thermal_temp_c_o[7:0]
+Creating decoders for process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+Creating decoders for process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+     1/6: $2\dummy_bleed_current_o[7:0]
+     2/6: $2\eff_current_next[7:0]
+     3/6: $1\dummy_bleed_current_o[7:0]
+     4/6: $1\eff_current_next[7:0]
+     5/6: $2\bleed_target_c[7:0]
+     6/6: $1\bleed_target_c[7:0]
+Creating decoders for process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_power_droop_controller.\eff_current_o' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\didt_signed_o' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\vdd_est_mv_o' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\emerg_throttle_o' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\abs_didt_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\ir_drop_mv_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\ind_drop_mv_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\total_drop_mv_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\temp_eq_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+No latch inferred for signal `\groq_power_droop_controller.\dummy_bleed_current_o' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.\dummy_bleed_mask_o' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.\eff_current_next' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.\ramp_down_floor_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.\step_up_sum_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.\prewarm_step_up_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.\bleed_target_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.$fordecl_block$1.k' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+No latch inferred for signal `\groq_power_droop_controller.\raw_demand_o' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\mxm_skip_clamped_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\mxm_unit_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\mxm_w_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\mxm_e_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\vxm_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\sxm_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\mem_w_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\mem_e_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\nim_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\icu_curr_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+No latch inferred for signal `\groq_power_droop_controller.\raw_demand_c' from process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_power_droop_controller.\thermal_temp_c_o' using process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+  created $adff cell `$procdff$152' with positive edge clock and positive level reset.
+Creating register for signal `\groq_power_droop_controller.\droop_mitigated_events_o' using process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+  created $adff cell `$procdff$157' with positive edge clock and positive level reset.
+Creating register for signal `\groq_power_droop_controller.\eff_current_q' using process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+  created $adff cell `$procdff$162' with positive edge clock and positive level reset.
+Creating register for signal `\groq_power_droop_controller.\therm_tick_q' using process `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+  created $adff cell `$procdff$167' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 3 empty switches in `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:162$71'.
+Removing empty process `groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:162$71'.
+Found and cleaned up 5 empty switches in `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+Removing empty process `groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:138$59'.
+Removing empty process `groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:120$45'.
+Found and cleaned up 4 empty switches in `\groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+Removing empty process `groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:81$22'.
+Removing empty process `groq_power_droop_controller.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:54$3'.
+Cleaned up 12 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+<suppressed ~14 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+Removed 6 unused cells and 109 unused wires.
+<suppressed ~7 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module groq_power_droop_controller...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_power_droop_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$125.
+    dead port 2/2 on $mux $procmux$131.
+    dead port 2/2 on $mux $procmux$143.
+Removed 3 multiplexer ports.
+<suppressed ~57 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_power_droop_controller.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+<suppressed ~1 debug messages>
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_power_droop_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~52 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_power_droop_controller.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+
+2.7.14. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.15. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_power_droop_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~52 debug messages>
+
+2.7.16. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_power_droop_controller.
+Performed a total of 0 changes.
+
+2.7.17. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+Removed a total of 0 cells.
+
+2.7.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+
+2.7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+
+2.7.20. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 8) from port A of cell groq_power_droop_controller.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:56$6 ($sub).
+Removed top 2 bits (of 8) from port B of cell groq_power_droop_controller.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:56$6 ($sub).
+Removed top 4 bits (of 8) from mux cell groq_power_droop_controller.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:58$7 ($mux).
+Removed top 3 bits (of 8) from mux cell groq_power_droop_controller.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:59$8 ($mux).
+Removed top 3 bits (of 8) from mux cell groq_power_droop_controller.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:60$9 ($mux).
+Removed top 3 bits (of 8) from mux cell groq_power_droop_controller.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:61$10 ($mux).
+Removed top 4 bits (of 8) from mux cell groq_power_droop_controller.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:63$12 ($mux).
+Removed top 3 bits (of 8) from mux cell groq_power_droop_controller.$ternary$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:65$14 ($mux).
+Removed top 4 bits (of 8) from port A of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$15 ($add).
+Removed top 3 bits (of 8) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$15 ($add).
+Removed top 2 bits (of 8) from port Y of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$15 ($add).
+Removed top 2 bits (of 8) from port A of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$16 ($add).
+Removed top 3 bits (of 8) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$16 ($add).
+Removed top 1 bits (of 8) from port Y of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$16 ($add).
+Removed top 1 bits (of 8) from port A of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$17 ($add).
+Removed top 3 bits (of 8) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$17 ($add).
+Removed top 4 bits (of 8) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$19 ($add).
+Removed top 3 bits (of 8) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$21 ($add).
+Removed top 1 bits (of 9) from port A of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:84$27 ($add).
+Removed top 1 bits (of 9) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:84$27 ($add).
+Removed top 1 bits (of 9) from port B of cell groq_power_droop_controller.$ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:85$28 ($ge).
+Removed top 7 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$36 ($gt).
+Removed top 3 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$37 ($gt).
+Removed top 2 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$38 ($gt).
+Removed top 2 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$39 ($gt).
+Removed top 1 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$40 ($gt).
+Removed top 1 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$41 ($gt).
+Removed top 1 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$42 ($gt).
+Removed top 1 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:107$43 ($gt).
+Removed top 1 bits (of 9) from port A of cell groq_power_droop_controller.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:121$46 ($sub).
+Removed top 1 bits (of 9) from port B of cell groq_power_droop_controller.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:121$46 ($sub).
+Removed top 6 bits (of 12) from port A of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:127$51 ($add).
+Removed top 5 bits (of 12) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:127$51 ($add).
+Removed top 4 bits (of 12) from port Y of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:127$51 ($add).
+Removed top 4 bits (of 12) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:129$52 ($gt).
+Removed top 4 bits (of 12) from port B of cell groq_power_droop_controller.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:130$53 ($sub).
+Removed top 2 bits (of 8) from port A of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:132$55 ($add).
+Removed top 2 bits (of 8) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:132$55 ($add).
+Removed top 1 bits (of 8) from port Y of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:132$55 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_power_droop_controller.$ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:134$57 ($ge).
+Removed top 2 bits (of 3) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:147$61 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_power_droop_controller.$lt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:149$63 ($lt).
+Removed top 7 bits (of 8) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:150$64 ($add).
+Removed top 1 bits (of 8) from port B of cell groq_power_droop_controller.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:151$65 ($gt).
+Removed top 7 bits (of 8) from port B of cell groq_power_droop_controller.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:152$66 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:155$70 ($add).
+Removed top 2 bits (of 8) from wire groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$15_Y.
+Removed top 1 bits (of 8) from wire groq_power_droop_controller.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:67$16_Y.
+Removed top 4 bits (of 8) from wire groq_power_droop_controller.icu_curr_c.
+Removed top 5 bits (of 12) from wire groq_power_droop_controller.ind_drop_mv_c.
+Removed top 6 bits (of 12) from wire groq_power_droop_controller.ir_drop_mv_c.
+Removed top 3 bits (of 8) from wire groq_power_droop_controller.mem_e_curr_c.
+Removed top 6 bits (of 8) from wire groq_power_droop_controller.mem_w_curr_c.
+Removed top 4 bits (of 8) from wire groq_power_droop_controller.nim_curr_c.
+Removed top 6 bits (of 8) from wire groq_power_droop_controller.sxm_curr_c.
+Removed top 1 bits (of 8) from wire groq_power_droop_controller.temp_eq_c.
+Removed top 5 bits (of 12) from wire groq_power_droop_controller.total_drop_mv_c.
+Removed top 4 bits (of 8) from wire groq_power_droop_controller.vxm_curr_c.
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== groq_power_droop_controller ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      104 wires
+      573 wire bits
+       43 public wires
+      283 public wire bits
+       19 ports
+      136 port bits
+       98 cells
+       14   $add
+        4   $adff
+        6   $check
+        2   $eq
+        4   $ge
+       13   $gt
+        4   $le
+        5   $logic_and
+        1   $logic_or
+        5   $lt
+       30   $mux
+        1   $ne
+        1   $reduce_bool
+        8   $sub
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module groq_power_droop_controller...
+Found and reported 0 problems.
+
+3. Executing FLATTEN pass (flatten design).
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+Removed a total of 0 cells.
+
+4.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$167 ($adff) from module groq_power_droop_controller (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:147$61_Y, Q = \therm_tick_q).
+Adding EN signal on $procdff$157 ($adff) from module groq_power_droop_controller (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:155$70_Y, Q = \droop_mitigated_events_o).
+Adding EN signal on $procdff$152 ($adff) from module groq_power_droop_controller (D = $procmux$115_Y, Q = \thermal_temp_c_o).
+
+4.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+Removed 5 unused cells and 5 unused wires.
+<suppressed ~6 debug messages>
+
+4.5. Rerunning OPT passes. (Removed registers in this run.)
+
+4.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+<suppressed ~1 debug messages>
+
+4.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+Removed a total of 0 cells.
+
+4.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+
+4.10. Finished fast OPT passes.
+
+5. Executing ASYNC2SYNC pass.
+Replacing groq_power_droop_controller.$auto$ff.cc:337:slice$180 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:147$61_Y, Q=\therm_tick_q
+Replacing groq_power_droop_controller.$auto$ff.cc:337:slice$181 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:155$70_Y, Q=\droop_mitigated_events_o
+Replacing groq_power_droop_controller.$auto$ff.cc:337:slice$184 ($adffe): ARST=\rst_n, D=$procmux$115_Y, Q=\thermal_temp_c_o
+Replacing groq_power_droop_controller.$procdff$162 ($adff): ARST=\rst_n, D=\eff_current_next, Q=\eff_current_q
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_power_droop_controller.
+<suppressed ~3 debug messages>
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_power_droop_controller'.
+Removed a total of 0 cells.
+
+6.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_power_droop_controller..
+Removed 9 unused cells and 12 unused wires.
+<suppressed ~10 debug messages>
+
+6.5. Finished fast OPT passes.
+
+7. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Import set-constraint for this timestep: \rst_n = 1'0
+Final constraint equation: \rst_n = 1'0
+Imported 100 cells to SAT database.
+No constraints for initial state found.
+
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Solving problem with 35912 variables and 99484 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+8. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+** Trying induction with length 1 **
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:234:execute$195 $auto$async2sync.cc:234:execute$193 $auto$async2sync.cc:234:execute$191 $auto$async2sync.cc:234:execute$189 } = 35'00000000000000000000000000000000000
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+[base case 1] Solving problem with 4332 variables and 11962 clauses..
+Base case for induction length 1 proven.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 100 cells to SAT database.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:164$73_Y when 1'1.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$77_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:168$75_EN.
+Import proof for assert: $eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$80_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:170$78_EN.
+Import proof for assert: $ge$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:122$47_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: $le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:176$90_Y when $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_power_droop_controller.sv:175$86_EN.
+Import proof for assert: 1'1 when 1'1.
+
+[induction step 1] Solving problem with 8782 variables and 24252 clauses..
+Induction step proven: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: 82730557d7, CPU: user 2.55s system 0.06s, MEM: 56.98 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 98% 2x sat (2 sec), 0% 9x opt_clean (0 sec), ...

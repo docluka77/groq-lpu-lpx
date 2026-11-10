@@ -1,0 +1,676 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+
+-- Executing script file `formal/prove_pcie_c2c_dma.ys' --
+
+1. Executing Verilog-2005 frontend: /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv
+Parsing SystemVerilog input from `/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv' to AST representation.
+verilog frontend filename /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv
+Generating RTLIL representation for module `\groq_pcie_c2c_dma'.
+Warning: Replacing memory \desc_ring_q with list of registers. See /nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:232
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \groq_pcie_c2c_dma
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \groq_pcie_c2c_dma
+Removed 0 unused modules.
+Module groq_pcie_c2c_dma directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$193 in module groq_pcie_c2c_dma.
+Marked 1 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$193 in module groq_pcie_c2c_dma.
+Marked 5 switch rules as full_case in process $proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68 in module groq_pcie_c2c_dma.
+Removed a total of 1 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 40 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:281$196'.
+  Set init value: \f_past_valid = 1'0
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~21 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:281$196'.
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$193'.
+     1/1: $1$mem2reg_rd$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$21_DATA[127:0]$195
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$171'.
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+     1/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:328$169_EN
+     2/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:325$165_EN
+     3/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:322$161_EN
+     4/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:321$159_EN
+     5/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:318$154_EN
+     6/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:317$151_EN
+     7/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:310$141_EN
+     8/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:305$139_EN
+     9/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:304$137_EN
+    10/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:303$135_EN
+    11/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:300$131_EN
+    12/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:297$127_EN
+    13/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:293$123_EN
+    14/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:292$119_EN
+    15/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:291$115_EN
+    16/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:290$112_EN
+    17/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:289$109_EN
+    18/18: $assert$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:288$107_EN
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:283$88'.
+     1/1: $assume$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:283$90_EN
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:282$87'.
+Creating decoders for process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+     1/22: $0\desc_count_q[2:0]
+     2/22: $2$mem2reg_wr$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:239$22_ADDR[1:0]$76
+     3/22: $2$mem2reg_wr$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:239$22_DATA[127:0]$77
+     4/22: $1$mem2reg_wr$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:239$22_DATA[127:0]$75
+     5/22: $1$mem2reg_wr$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:239$22_ADDR[1:0]$74
+     6/22: $0\dma_done_irq_q[0:0]
+     7/22: $1$fordecl_block$3.i[31:0]$73
+     8/22: $0\desc_ring_q[3][127:0]
+     9/22: $0\desc_ring_q[2][127:0]
+    10/22: $0\desc_ring_q[1][127:0]
+    11/22: $0\desc_ring_q[0][127:0]
+    12/22: $0\beats_transferred_q[15:0]
+    13/22: $0\completed_desc_cnt_q[7:0]
+    14/22: $0\imem_upper_q[15:0]
+    15/22: $0\rem_beats_q[7:0]
+    16/22: $0\stride_q[7:0]
+    17/22: $0\addr_q[15:0]
+    18/22: $0\dma_sel_q[2:0]
+    19/22: $0\dma_target_q[1:0]
+    20/22: $0\dma_active_q[0:0]
+    21/22: $0\tail_ptr_q[1:0]
+    22/22: $0\head_ptr_q[1:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\groq_pcie_c2c_dma.$mem2reg_rd$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$21_DATA' from process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$193'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$5.$result' from process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$171'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$20.$result' from process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$171'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$20.data_in' from process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$171'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$20.p' from process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$171'.
+No latch inferred for signal `\groq_pcie_c2c_dma.\calc_payload_parity16$func$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$20.$fordecl_block$1.i' from process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$171'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:315$6$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$366' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:316$7$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$367' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:316$8$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$368' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:317$9$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$369' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:317$10$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$370' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:318$11$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$371' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:320$12$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$372' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:320$13$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$373' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:321$14$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$374' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:322$15$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$375' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:324$16$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$376' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:324$17$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$377' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:327$18$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$378' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.$past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:327$19$0' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+  created $dff cell `$procdff$379' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.\f_past_valid' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:282$87'.
+  created $dff cell `$procdff$380' with positive edge clock.
+Creating register for signal `\groq_pcie_c2c_dma.\head_ptr_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$385' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\tail_ptr_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$390' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_count_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$395' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_active_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$400' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_target_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$405' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_sel_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$410' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\addr_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$415' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\stride_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$420' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\rem_beats_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$425' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\imem_upper_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$430' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\dma_done_irq_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$435' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\completed_desc_cnt_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$440' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\beats_transferred_q' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$445' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.$fordecl_block$3.i' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$450' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[0]' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$455' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[1]' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$460' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[2]' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$465' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.\desc_ring_q[3]' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$470' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.$mem2reg_wr$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:239$22_ADDR' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$475' with positive edge clock and positive level reset.
+Creating register for signal `\groq_pcie_c2c_dma.$mem2reg_wr$\desc_ring_q$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:239$22_DATA' using process `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+  created $adff cell `$procdff$480' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:281$196'.
+Found and cleaned up 1 empty switch in `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$193'.
+Removing empty process `groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:136$193'.
+Removing empty process `groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:180$171'.
+Found and cleaned up 12 empty switches in `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+Removing empty process `groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:285$92'.
+Found and cleaned up 1 empty switch in `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:283$88'.
+Removing empty process `groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:283$88'.
+Removing empty process `groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:282$87'.
+Found and cleaned up 7 empty switches in `\groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+Removing empty process `groq_pcie_c2c_dma.$proc$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:216$68'.
+Cleaned up 21 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~56 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 27 unused cells and 220 unused wires.
+<suppressed ~28 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module groq_pcie_c2c_dma...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~48 debug messages>
+Removed a total of 16 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~104 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~33 debug messages>
+Removed a total of 11 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 27 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~2 debug messages>
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~86 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.7.14. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.15. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \groq_pcie_c2c_dma..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~86 debug messages>
+
+2.7.16. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \groq_pcie_c2c_dma.
+Performed a total of 0 changes.
+
+2.7.17. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.7.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.7.20. Finished fast OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$eq$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:170$36 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:240$78 ($add).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:243$79 ($add).
+Removed top 2 bits (of 3) from port B of cell groq_pcie_c2c_dma.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:246$80 ($add).
+Removed top 2 bits (of 3) from port B of cell groq_pcie_c2c_dma.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:247$81 ($sub).
+Removed top 15 bits (of 16) from port B of cell groq_pcie_c2c_dma.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:261$82 ($add).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$le$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:262$83 ($le).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:266$84 ($add).
+Removed top 8 bits (of 16) from port B of cell groq_pcie_c2c_dma.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:268$85 ($add).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:269$86 ($sub).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$gt$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:316$149 ($gt).
+Removed top 8 bits (of 16) from port B of cell groq_pcie_c2c_dma.$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:317$152 ($add).
+Removed top 7 bits (of 8) from port B of cell groq_pcie_c2c_dma.$sub$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:318$155 ($sub).
+Removed top 56 bits (of 128) from mux cell groq_pcie_c2c_dma.$procmux$197 ($pmux).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$procmux$200_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$procmux$270_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell groq_pcie_c2c_dma.$procmux$301_CMP0 ($eq).
+Removed top 56 bits (of 128) from wire groq_pcie_c2c_dma.head_desc.
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== groq_pcie_c2c_dma ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      214 wires
+     3134 wire bits
+       76 public wires
+     1703 public wire bits
+       37 ports
+      793 port bits
+      211 cells
+        8   $add
+       17   $adff
+       19   $check
+       15   $dff
+       17   $eq
+        1   $ge
+        1   $gt
+        2   $le
+       25   $logic_and
+       21   $logic_not
+        7   $logic_or
+       54   $mux
+        1   $ne
+        2   $not
+        2   $pmux
+       16   $reduce_xor
+        3   $sub
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module groq_pcie_c2c_dma...
+Found and reported 0 problems.
+
+3. Executing FLATTEN pass (flatten design).
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+4.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$470 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[3]).
+Adding EN signal on $procdff$465 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[2]).
+Adding EN signal on $procdff$460 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[1]).
+Adding EN signal on $procdff$455 ($adff) from module groq_pcie_c2c_dma (D = \desc_push_data_i, Q = \desc_ring_q[0]).
+Adding EN signal on $procdff$445 ($adff) from module groq_pcie_c2c_dma (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:261$82_Y, Q = \beats_transferred_q).
+Adding EN signal on $procdff$440 ($adff) from module groq_pcie_c2c_dma (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:266$84_Y, Q = \completed_desc_cnt_q).
+Adding EN signal on $procdff$430 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [71:56], Q = \imem_upper_q).
+Adding EN signal on $procdff$425 ($adff) from module groq_pcie_c2c_dma (D = $0\rem_beats_q[7:0], Q = \rem_beats_q).
+Adding EN signal on $procdff$420 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [31:24], Q = \stride_q).
+Adding EN signal on $procdff$415 ($adff) from module groq_pcie_c2c_dma (D = $0\addr_q[15:0], Q = \addr_q).
+Adding EN signal on $procdff$410 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [4:2], Q = \dma_sel_q).
+Adding EN signal on $procdff$405 ($adff) from module groq_pcie_c2c_dma (D = \head_desc [1:0], Q = \dma_target_q).
+Adding EN signal on $procdff$400 ($adff) from module groq_pcie_c2c_dma (D = $0\dma_active_q[0:0], Q = \dma_active_q).
+Adding EN signal on $procdff$395 ($adff) from module groq_pcie_c2c_dma (D = $0\desc_count_q[2:0], Q = \desc_count_q).
+Adding EN signal on $procdff$390 ($adff) from module groq_pcie_c2c_dma (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:240$78_Y, Q = \tail_ptr_q).
+Adding EN signal on $procdff$385 ($adff) from module groq_pcie_c2c_dma (D = $add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:243$79_Y, Q = \head_ptr_q).
+
+4.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 19 unused cells and 23 unused wires.
+<suppressed ~20 debug messages>
+
+4.5. Rerunning OPT passes. (Removed registers in this run.)
+
+4.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~5 debug messages>
+
+4.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+4.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+4.10. Finished fast OPT passes.
+
+5. Executing ASYNC2SYNC pass.
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$482 ($adffe): ARST=\rst_n, D=\desc_push_data_i, Q=\desc_ring_q[3]
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$485 ($adffe): ARST=\rst_n, D=\desc_push_data_i, Q=\desc_ring_q[2]
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$488 ($adffe): ARST=\rst_n, D=\desc_push_data_i, Q=\desc_ring_q[1]
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$491 ($adffe): ARST=\rst_n, D=\desc_push_data_i, Q=\desc_ring_q[0]
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$494 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:261$82_Y, Q=\beats_transferred_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$499 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:266$84_Y, Q=\completed_desc_cnt_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$504 ($adffe): ARST=\rst_n, D=\head_desc [71:56], Q=\imem_upper_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$505 ($adffe): ARST=\rst_n, D=$0\rem_beats_q[7:0], Q=\rem_beats_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$508 ($adffe): ARST=\rst_n, D=\head_desc [31:24], Q=\stride_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$509 ($adffe): ARST=\rst_n, D=$0\addr_q[15:0], Q=\addr_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$516 ($adffe): ARST=\rst_n, D=\head_desc [4:2], Q=\dma_sel_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$517 ($adffe): ARST=\rst_n, D=\head_desc [1:0], Q=\dma_target_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$518 ($adffe): ARST=\rst_n, D=$0\dma_active_q[0:0], Q=\dma_active_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$525 ($adffe): ARST=\rst_n, D=$0\desc_count_q[2:0], Q=\desc_count_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$528 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:240$78_Y, Q=\tail_ptr_q
+Replacing groq_pcie_c2c_dma.$auto$ff.cc:337:slice$529 ($adffe): ARST=\rst_n, D=$add$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:243$79_Y, Q=\head_ptr_q
+Replacing groq_pcie_c2c_dma.$procdff$435 ($adff): ARST=\rst_n, D=$0\dma_done_irq_q[0:0], Q=\dma_done_irq_q
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+<suppressed ~1 debug messages>
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+<suppressed ~95 debug messages>
+Removed a total of 32 cells.
+
+6.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$async2sync.cc:110:execute$556 ($dff) from module groq_pcie_c2c_dma (D = $procmux$254_Y, Q = $auto$async2sync.cc:107:execute$554, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$562 ($dff) from module groq_pcie_c2c_dma (D = $procmux$250_Y, Q = $auto$async2sync.cc:107:execute$560, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$568 ($dff) from module groq_pcie_c2c_dma (D = $procmux$246_Y, Q = $auto$async2sync.cc:107:execute$566, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$574 ($dff) from module groq_pcie_c2c_dma (D = $procmux$242_Y, Q = $auto$async2sync.cc:107:execute$572, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$592 ($dff) from module groq_pcie_c2c_dma (D = $procmux$230_Y, Q = $auto$async2sync.cc:107:execute$590, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$598 ($dff) from module groq_pcie_c2c_dma (D = $procmux$226_Y, Q = $auto$async2sync.cc:107:execute$596, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$610 ($dff) from module groq_pcie_c2c_dma (D = $procmux$218_Y, Q = $auto$async2sync.cc:107:execute$608, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$622 ($dff) from module groq_pcie_c2c_dma (D = $procmux$210_Y, Q = $auto$async2sync.cc:107:execute$620, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$628 ($dff) from module groq_pcie_c2c_dma (D = $procmux$206_Y, Q = $auto$async2sync.cc:107:execute$626, rval = 1'0).
+Adding SRST signal on $auto$async2sync.cc:110:execute$634 ($dff) from module groq_pcie_c2c_dma (D = $procmux$202_Y, Q = $auto$async2sync.cc:107:execute$632, rval = 1'0).
+Adding SRST signal on $procdff$435 ($sdff) from module groq_pcie_c2c_dma (D = $procmux$279_Y, Q = $auto$async2sync.cc:234:execute$670, rval = 1'0).
+Setting constant 1-bit at position 0 on $auto$async2sync.cc:118:execute$547 ($dff) from module groq_pcie_c2c_dma.
+
+6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+Removed 45 unused cells and 79 unused wires.
+<suppressed ~46 debug messages>
+
+6.5. Rerunning OPT passes. (Removed registers in this run.)
+
+6.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module groq_pcie_c2c_dma.
+
+6.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\groq_pcie_c2c_dma'.
+Removed a total of 0 cells.
+
+6.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \groq_pcie_c2c_dma..
+
+6.10. Finished fast OPT passes.
+
+7. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 233 cells to SAT database.
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$548 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$554 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$560 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$566 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$572 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$590 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$596 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$608 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$620 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$626 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:107:execute$632 = 1'0
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$534 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$552 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$558 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$564 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$582 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$588 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$594 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$600 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$606 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$612 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$618 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$624 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$630 = 1'1
+Import set-constraint from init attribute: $auto$async2sync.cc:116:execute$636 = 1'1
+Import set-constraint from init attribute: \f_past_valid = 1'0
+Final init constraint equation: { $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:327$19$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:327$18$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:324$17$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:324$16$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:320$12$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:317$10$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:317$9$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:316$8$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:316$7$0 $past$/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/rtl/groq_pcie_c2c_dma.sv:315$6$0 $auto$async2sync.cc:234:execute$670 $auto$async2sync.cc:234:execute$668 $auto$async2sync.cc:234:execute$666 $auto$async2sync.cc:234:execute$664 $auto$async2sync.cc:234:execute$662 $auto$async2sync.cc:234:execute$660 $auto$async2sync.cc:234:execute$658 $auto$async2sync.cc:234:execute$656 $auto$async2sync.cc:234:execute$654 $auto$async2sync.cc:234:execute$652 $auto$async2sync.cc:234:execute$650 $auto$async2sync.cc:234:execute$648 $auto$async2sync.cc:234:execute$646 $auto$async2sync.cc:234:execute$644 $auto$async2sync.cc:234:execute$642 $auto$async2sync.cc:234:execute$640 $auto$async2sync.cc:234:execute$638 \f_past_valid $auto$async2sync.cc:116:execute$636 $auto$async2sync.cc:116:execute$630 $auto$async2sync.cc:116:execute$624 $auto$async2sync.cc:116:execute$618 $auto$async2sync.cc:116:execute$612 $auto$async2sync.cc:116:execute$606 $auto$async2sync.cc:116:execute$600 $auto$async2sync.cc:116:execute$594 $auto$async2sync.cc:116:execute$588 $auto$async2sync.cc:116:execute$582 $auto$async2sync.cc:116:execute$564 $auto$async2sync.cc:116:execute$558 $auto$async2sync.cc:116:execute$552 $auto$async2sync.cc:116:execute$534 $auto$async2sync.cc:107:execute$632 $auto$async2sync.cc:107:execute$626 $auto$async2sync.cc:107:execute$620 $auto$async2sync.cc:107:execute$608 $auto$async2sync.cc:107:execute$596 $auto$async2sync.cc:107:execute$590 $auto$async2sync.cc:107:execute$572 $auto$async2sync.cc:107:execute$566 $auto$async2sync.cc:107:execute$560 $auto$async2sync.cc:107:execute$554 $auto$async2sync.cc:107:execute$548 } = 663'000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111111111100000000000
+Import proof for assert: $auto$async2sync.cc:116:execute$534 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: 1'1 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$552 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$558 when $auto$async2sync.cc:107:execute$554.
+Import proof for assert: $auto$async2sync.cc:116:execute$564 when $auto$async2sync.cc:107:execute$560.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$566.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$572.
+Import proof for assert: $auto$async2sync.cc:116:execute$582 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$600 when $auto$async2sync.cc:107:execute$596.
+Import proof for assert: $auto$async2sync.cc:116:execute$606 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$612 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$618 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$624 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$630 when $auto$async2sync.cc:107:execute$626.
+Import proof for assert: $auto$async2sync.cc:116:execute$636 when $auto$async2sync.cc:107:execute$632.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 233 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$534 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: 1'1 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$552 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$558 when $auto$async2sync.cc:107:execute$554.
+Import proof for assert: $auto$async2sync.cc:116:execute$564 when $auto$async2sync.cc:107:execute$560.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$566.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$572.
+Import proof for assert: $auto$async2sync.cc:116:execute$582 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$600 when $auto$async2sync.cc:107:execute$596.
+Import proof for assert: $auto$async2sync.cc:116:execute$606 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$612 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$618 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$624 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$630 when $auto$async2sync.cc:107:execute$626.
+Import proof for assert: $auto$async2sync.cc:116:execute$636 when $auto$async2sync.cc:107:execute$632.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 233 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$534 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: 1'1 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$552 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$558 when $auto$async2sync.cc:107:execute$554.
+Import proof for assert: $auto$async2sync.cc:116:execute$564 when $auto$async2sync.cc:107:execute$560.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$566.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$572.
+Import proof for assert: $auto$async2sync.cc:116:execute$582 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$600 when $auto$async2sync.cc:107:execute$596.
+Import proof for assert: $auto$async2sync.cc:116:execute$606 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$612 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$618 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$624 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$630 when $auto$async2sync.cc:107:execute$626.
+Import proof for assert: $auto$async2sync.cc:116:execute$636 when $auto$async2sync.cc:107:execute$632.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 233 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$534 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: 1'1 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$552 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$558 when $auto$async2sync.cc:107:execute$554.
+Import proof for assert: $auto$async2sync.cc:116:execute$564 when $auto$async2sync.cc:107:execute$560.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$566.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$572.
+Import proof for assert: $auto$async2sync.cc:116:execute$582 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$600 when $auto$async2sync.cc:107:execute$596.
+Import proof for assert: $auto$async2sync.cc:116:execute$606 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$612 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$618 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$624 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$630 when $auto$async2sync.cc:107:execute$626.
+Import proof for assert: $auto$async2sync.cc:116:execute$636 when $auto$async2sync.cc:107:execute$632.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 233 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$534 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: 1'1 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$552 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$558 when $auto$async2sync.cc:107:execute$554.
+Import proof for assert: $auto$async2sync.cc:116:execute$564 when $auto$async2sync.cc:107:execute$560.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$566.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$572.
+Import proof for assert: $auto$async2sync.cc:116:execute$582 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$600 when $auto$async2sync.cc:107:execute$596.
+Import proof for assert: $auto$async2sync.cc:116:execute$606 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$612 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$618 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$624 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$630 when $auto$async2sync.cc:107:execute$626.
+Import proof for assert: $auto$async2sync.cc:116:execute$636 when $auto$async2sync.cc:107:execute$632.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Imported 233 cells to SAT database.
+Import proof for assert: $auto$async2sync.cc:116:execute$534 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: 1'1 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$552 when $auto$async2sync.cc:107:execute$548.
+Import proof for assert: $auto$async2sync.cc:116:execute$558 when $auto$async2sync.cc:107:execute$554.
+Import proof for assert: $auto$async2sync.cc:116:execute$564 when $auto$async2sync.cc:107:execute$560.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$566.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$572.
+Import proof for assert: $auto$async2sync.cc:116:execute$582 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$588 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$594 when $auto$async2sync.cc:107:execute$590.
+Import proof for assert: $auto$async2sync.cc:116:execute$600 when $auto$async2sync.cc:107:execute$596.
+Import proof for assert: $auto$async2sync.cc:116:execute$606 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$612 when $auto$async2sync.cc:107:execute$608.
+Import proof for assert: $auto$async2sync.cc:116:execute$618 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$624 when $auto$async2sync.cc:107:execute$620.
+Import proof for assert: $auto$async2sync.cc:116:execute$630 when $auto$async2sync.cc:107:execute$626.
+Import proof for assert: $auto$async2sync.cc:116:execute$636 when $auto$async2sync.cc:107:execute$632.
+
+Solving problem with 75868 variables and 203659 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: 4176752163, CPU: user 0.33s system 0.04s, MEM: 79.25 MB peak
+Yosys 0.60 (git sha1 5bafeb77d, g++ 11.4.0-1ubuntu1~22.04.2 -fPIC -O3)
+Time spent: 76% 1x sat (0 sec), 7% 10x opt_clean (0 sec), ...
