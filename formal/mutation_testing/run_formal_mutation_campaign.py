@@ -500,6 +500,51 @@ MUTANTS = [
         'expected_prop': 'Proof 6 (BUG-LIT-005): IEEE 754-2019 Round-to-Nearest-Even (PREC_INT8_RNE) Exact-Tie Evenness',
         'ys_cmd': 'read_verilog -sv -DFORMAL -I{root}/rtl {work_sv}; prep -top groq_vxm_slice; async2sync; chformal -lower; sat -verify -seq 1 -set-init-zero -prove-asserts'
     },
+    # 19. Stage 45 Deep Verification Mutants (4 mutants: MUT-043..046)
+    {
+        'id': 'MUT-043',
+        'module': 'groq_c2c_kv_quant_rx_engine',
+        'src': 'rtl/groq_c2c_kv_quant_rx_engine.sv',
+        'category': 'BUG-LIT-006 Native NVFP4 FP8 E4M3 Scale Sign-Bit Corruption',
+        'desc': 'Corrupt sign bit [7] of native NVFP4 FP8 E4M3 block scale (scale_nvfp4_e4m3_c[7] = 1\'b1)',
+        'target': 'scale_nvfp4_e4m3_c = (|is_finite_nz_c) ? {1\'b0, nvfp4_e4m3_exp4_c, max_emax_frac3_c} : 8\'d0;',
+        'replacement': 'scale_nvfp4_e4m3_c = {1\'b1, nvfp4_e4m3_exp4_c, max_emax_frac3_c};',
+        'expected_prop': 'Invariant 5 (BUG-LIT-006): Native NVFP4 FP8 E4M3 scale non-negativity (scale_nvfp4_e4m3_q[7] == 1\'b0)',
+        'ys_cmd': 'read_verilog -sv -DFORMAL -I{root}/rtl {work_sv}; prep -top groq_c2c_kv_quant_rx_engine; flatten; opt -fast; async2sync; chformal -lower; opt -fast; sat -verify -seq 2 -set-init-zero -prove-asserts'
+    },
+    {
+        'id': 'MUT-044',
+        'module': 'groq_spec_decode_tree_sampler',
+        'src': 'rtl/groq_spec_decode_tree_sampler.sv',
+        'category': 'BUG-LIT-007 EAGLE-2/3 Dynamic Draft Tree Confidence Overflow',
+        'desc': 'Inject +2048 offset into eagle2_tree_confidence_comb accumulator',
+        'target': 'eagle2_tree_confidence_comb = 16\'d0;',
+        'replacement': 'eagle2_tree_confidence_comb = 16\'d2048;',
+        'expected_prop': 'Property 5 (BUG-LIT-007): EAGLE-2/3 Context-Aware Dynamic Draft Tree Confidence Bound (<= 16\'d2040)',
+        'ys_cmd': 'read_verilog -sv -DFORMAL -I{root}/rtl {work_sv}; prep -top groq_spec_decode_tree_sampler; async2sync; chformal -lower; sat -verify -seq 3 -set-init-zero -prove-asserts'
+    },
+    {
+        'id': 'MUT-045',
+        'module': 'groq_power_droop_controller',
+        'src': 'rtl/groq_power_droop_controller.sv',
+        'category': 'PDN Dummy Bleeder Current Complement Invariant Violation',
+        'desc': 'Force dummy_bleed_current_o to 8\'d0 when raw_demand_c < bleed_target_c',
+        'target': 'dummy_bleed_current_o = bleed_target_c - raw_demand_c;',
+        'replacement': 'dummy_bleed_current_o = 8\'d0;',
+        'expected_prop': 'Property 2: Bleeder complement invariant (eff_current_next == raw_demand_c + dummy_bleed_current_o)',
+        'ys_cmd': 'read_verilog -sv -DFORMAL -I{root}/rtl {work_sv}; prep -top groq_power_droop_controller; flatten; opt -fast; async2sync; chformal -lower; opt -fast; sat -verify -seq 2 -set-init-zero -prove-asserts'
+    },
+    {
+        'id': 'MUT-046',
+        'module': 'groq_sram_controller_scrubber',
+        'src': 'sram_ip/groq_sram_controller_scrubber.sv',
+        'category': 'Scrubber Read/Writeback Mutual Exclusion Violation',
+        'desc': 'Allow scrub_rd_fire_o to assert simultaneously with scrub_wb_fire_o when wb_pending_q is high',
+        'target': '            end else if (!wb_pending_q) begin',
+        'replacement': '            end if (1\'b1) begin',
+        'expected_prop': 'Property 2: Mutual exclusion of scrub read and scrub writeback (!(scrub_rd_fire_o && scrub_wb_fire_o))',
+        'ys_cmd': 'read_verilog -sv -DFORMAL -DFORMAL_SLICE_TOP -I{root}/sram_ip {root}/sram_ip/groq_sram_ecc_secded.sv {work_sv}; chparam -set P_ADDR_W 2 groq_sram_controller_scrubber; prep -top groq_sram_controller_scrubber; flatten; opt -fast; async2sync; chformal -lower; opt -fast; sat -verify -seq 3 -set-init-zero -prove-asserts'
+    },
 ]
 
 
@@ -522,6 +567,7 @@ FALSIFIED_LINE_MAP = {
     'MUT-035': 378, 'MUT-036': 394,
     'MUT-037': 285, 'MUT-038': 281,
     'MUT-039': 259, 'MUT-040': 516, 'MUT-041': 369, 'MUT-042': 473,
+    'MUT-043': 331, 'MUT-044': 393, 'MUT-045': 170, 'MUT-046': 389,
 }
 
 

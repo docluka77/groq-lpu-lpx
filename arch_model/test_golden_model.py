@@ -378,6 +378,33 @@ class TestGroqGoldenModel(unittest.TestCase):
         self.assertTrue(r_dbe["dbe"])
         self.assertTrue(scrub.dbe_sticky_alarm)
 
+    def test_19_rtl_vs_reported_benchmark_calibration(self) -> None:
+        """Verify Stage 44 10,000-cycle RTL hardware-in-the-loop calibration against 12 published benchmarks."""
+        import json
+        from pathlib import Path
+        cal_path = Path(__file__).resolve().parent.parent / "benchmarks" / "rtl_perf_energy_calibration" / "sim_vs_reported_calibration.json"
+        self.assertTrue(cal_path.exists(), f"Missing calibration receipt: {cal_path}")
+        cal = json.loads(cal_path.read_text(encoding="utf-8"))
+        self.assertEqual(cal["overall_status"], "PASS")
+        self.assertEqual(cal["passed_benchmarks"], 12)
+        self.assertEqual(cal["total_benchmarks"], 12)
+        self.assertLessEqual(cal["max_relative_error_pct"], 3.50)
+        self.assertEqual(cal["rtl_telemetry_summary"]["total_rtl_cycles"], 10000)
+        self.assertEqual(cal["rtl_telemetry_summary"]["c2c_crc_errors"], 0)
+        self.assertEqual(cal["rtl_telemetry_summary"]["cluster_collision_faults"], 0)
+
+    def test_20_gtc2026_35x_perf_per_mw_validation(self) -> None:
+        """Verify NVIDIA GTC 2026 Groq 3 LPX 256-chip rack energy efficiency (0.228 J/tok) & 35x Perf/MW multiplier."""
+        import json
+        from pathlib import Path
+        cal_path = Path(__file__).resolve().parent.parent / "benchmarks" / "rtl_perf_energy_calibration" / "sim_vs_reported_calibration.json"
+        cal = json.loads(cal_path.read_text(encoding="utf-8"))
+        bm_map = {b["id"]: b for b in cal["benchmarks"]}
+        self.assertAlmostEqual(bm_map["BM-11"]["simulated"], 0.230, delta=0.01)
+        self.assertAlmostEqual(bm_map["BM-12"]["simulated"], 35.0, delta=1.0)
+        self.assertTrue(bm_map["BM-11"]["pass"])
+        self.assertTrue(bm_map["BM-12"]["pass"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

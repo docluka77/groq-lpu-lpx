@@ -2,12 +2,13 @@
 
 [![Verilator](https://img.shields.io/badge/Simulator-Verilator_5.054-blue?logo=gnu)](https://www.veripool.org/verilator/)
 [![UVM](https://img.shields.io/badge/UVM_1800.2--2020-10_Suites_%7C_337K%2B_Checks_PASS-brightgreen)](uvm_tb/)
-[![Formal](https://img.shields.io/badge/Yosys_0.60_Formal-21_Proofs_%7C_42%2F42_Mutants_Killed-success)](formal/)
+[![Formal](https://img.shields.io/badge/Yosys_0.60_Formal-21_Proofs_%7C_46%2F46_Mutants_Killed-success)](formal/)
 [![Gate-CoSim](https://img.shields.io/badge/ASAP7_7nm_Gate_CoSim-62%2C400_Checks_%7C_0_Mismatches-blueviolet)](gate_sim/)
 [![Literature Audit](https://img.shields.io/badge/Literature_%26_Patents-115_Sources_%7C_56%2F56_Metrics_Verified-orange)](docs/LITERATURE_115_SOURCES_MASTER_AUDIT.md)
+[![HIL Calibration](https://img.shields.io/badge/RTL_Perf_%26_Energy_Calibration-12%2F12_Benchmarks_%E2%89%A43.0%25_Err-teal)](reports/STAGE44_SIM_VS_REPORTED_PERF_ENERGY_CALIBRATION_REPORT.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **全栈开源硬件复现与形式化/UVM验证工程**：从 **Groq 第一代 14nm Tensor Streaming Processor (TSP / LPU)** 空间流架构，到 **英伟达 200 亿美元收购后的 NVIDIA Groq 3 LPX (Samsung SF4X 4nm)** 机架级推理协处理器，完整涵盖 **架构规范、21 个可综合 SystemVerilog RTL 与定制 6T SRAM IP（10,490 行）、Python 与 C++17 DPI-C 双黄金参考模型、确定性 144-bit VLIW 编译器、10 套 Accellera IEEE 1800.2-2020 UVM 验证平台、Yosys 0.60 形式化证明与 42 变异体 100% 击杀测试、ASAP7 7nm / Sky130 130nm 逻辑综合、门级锁步协同仿真与 Llama-3 / DeepSeek-V3/R1 端到端能效对账**。
+> **全栈开源硬件复现与形式化/UVM验证工程**：从 **Groq 第一代 14nm Tensor Streaming Processor (TSP / LPU)** 空间流架构，到 **英伟达 200 亿美元收购后的 NVIDIA Groq 3 LPX (Samsung SF4X 4nm)** 机架级推理协处理器，完整涵盖 **架构规范、21 个可综合 SystemVerilog RTL 与定制 6T SRAM IP（10,490 行）、Python 与 C++17 DPI-C 双黄金参考模型、确定性 144-bit VLIW 编译器、10 套 Accellera IEEE 1800.2-2020 UVM 验证平台、Yosys 0.60 形式化证明与 46 变异体 100% 击杀测试、ASAP7 7nm / Sky130 130nm 逻辑综合、门级锁步协同仿真与 Llama-3 / DeepSeek-V3/R1 端到端硬件在环能效校准**。
 
 ---
 
@@ -18,9 +19,10 @@
 | **1. 可综合 RTL 与定制 SRAM IP** | **21 个模块（`10,490` 行 SystemVerilog）**，零锁存器、零未驱动线网、Verilator `--lint-only -Wall` 零警告通过 | [`rtl/`](rtl/) · [`sram_ip/`](sram_ip/) |
 | **2. 115 篇文献/专利逐项对账** | 对照 **ISCA 2020/2022、ASPLOS 2023、24 项 Groq 授权美国专利及 NVIDIA GTC 2026** 完成 **56/56 项量化指标 100% 吻合验证** | [`LITERATURE_115_SOURCES_MASTER_AUDIT.md`](docs/LITERATURE_115_SOURCES_MASTER_AUDIT.md) · [`STAGE39_AUDIT_REPORT.md`](reports/STAGE39_QUANTITATIVE_METRICS_VS_PAPERS_AUDIT_REPORT.md) |
 | **3. Accellera UVM 1800.2-2020** | **10 套独立 UVM 验证环境**（含 1,074 行 C++17 DPI-C 主黄金模型锁步比对），累计 **`83,468` 笔事务（`337,068+` 次模块比对）`0` 失配**，Suite 10 行覆盖率 **`99.18%`**、翻转覆盖率 **`98.88%`** | [`uvm_tb/`](uvm_tb/) · [`FULL_10SUITE_UVM_REGRESSION.log`](reports/FULL_10SUITE_UVM_REGRESSION.log) |
-| **4. Yosys 0.60 形式化与变异测试** | **21 项无界 SAT/时序归纳与门级等价性证明全部 `Q.E.D.`**；针对 17 个模块注入 **42 个硬件变异体（`MUT-001`–`MUT-042`）实现 `42/42`（`100.0%`）击杀率** | [`formal/`](formal/) · [`STAGE25B_FORMAL_MUTATION_REPORT.md`](reports/STAGE25B_FORMAL_MUTATION_TESTING_REPORT.md) |
+| **4. Yosys 0.60 形式化与变异测试** | **21 项无界 SAT/时序归纳与门级等价性证明全部 `Q.E.D.`**；针对 17 个模块注入 **46 个硬件变异体（`MUT-001`–`MUT-046`）实现 `46/46`（`100.0%`）击杀率** | [`formal/`](formal/) · [`STAGE25B_FORMAL_MUTATION_REPORT.md`](reports/STAGE25B_FORMAL_MUTATION_TESTING_REPORT.md) |
 | **5. 双工艺综合与门级锁步功耗** | **ASAP7 7nm & Sky130 130nm** 17 模块全综合；12 模块 **5,220 周期（`62,400` 次比对）门级 vs. RTL 锁步 `0` 失配**，VCD 实测动态功耗降低 **`67.30%`** | [`synth/ppa_summary.json`](synth/ppa_summary.json) · [`STAGE17_GATE_SIM_REPORT.md`](reports/STAGE17_GATE_LEVEL_SIM_AND_POWER_REPORT.md) |
 | **6. 大模型推理与 256 芯片机架** | 支持 **Llama-3 8B/70B/405B** 与 **DeepSeek-V3/R1 671B (`37B` Active)**：4nm LPX 达 **`0.19 J/tok` (8B)**、**`1.18 J/tok` (70B)**、**`0.52 J/tok` (405B EAGLE-2)**、**`0.43 J/tok` (671B EAGLE-2)** | [`benchmarks/`](benchmarks/) · [`STAGE22_LPX_RACK_REPORT.md`](reports/STAGE22_LPX_RACK_AND_SPEC_DECODE_REPORT.md) |
+| **7. 10,000 周期 RTL 硬件在环能效校准** | 实测 **MXM 稳态利用率 `98.56%`**、**MXFP8/NVFP4 零跳过率 `26.53%`**、**LPX+Rubin 每兆瓦吞吐倍率 `35.18x`**，与 **12 项官方公开基准相对误差 `<= 3.00%` (`12/12 PASS`)** | [`rtl_perf_energy_calibration/`](benchmarks/rtl_perf_energy_calibration/) · [`STAGE44_CALIBRATION_REPORT.md`](reports/STAGE44_SIM_VS_REPORTED_PERF_ENERGY_CALIBRATION_REPORT.md) |
 
 ---
 
@@ -76,7 +78,7 @@ flowchart LR
 
 ---
 
-## 🛡️ 全栈验证矩阵：10 套 Accellera UVM 1800.2-2020 + Yosys 0.60 形式化与 42 变异体测试
+## 🛡️ 全栈验证矩阵：10 套 Accellera UVM 1800.2-2020 + Yosys 0.60 形式化与 46 变异体测试
 
 ### 1. 10 套 Accellera IEEE 1800.2-2020 UVM 验证平台 ([`uvm_tb/`](uvm_tb/))
 
@@ -95,10 +97,10 @@ flowchart LR
 | **Suite 9** | [`uvm_c2c_kv_quant`](uvm_tb/uvm_c2c_kv_quant/) | `c2c_kv_quant_rx` $\rightarrow$ `mxfp8_nvfp4_dot` | `3,600` | `0` | `100.0%` | `98.27%` / `99.25%` | Exit `1` (`UVM_FATAL`) |
 | **Suite 10** | [`uvm_high_intensity_cross_ref`](uvm_tb/uvm_high_intensity_cross_ref/) | **6 核心模块 vs. 1,074 行 C++17 主黄金模型锁步** | **`50,000` (`300,000` checks)** | **`0`** | **`100.0%`** | **`99.18%` / `98.88%`** | **Exit `1` (`UVM_FATAL`)** |
 
-### 2. Yosys 0.60 形式化验证、门级等价性与 42 变异体资格认证 ([`formal/`](formal/))
+### 2. Yosys 0.60 形式化验证、门级等价性与 46 变异体资格认证 ([`formal/`](formal/))
 
 - **21 项无界 SAT / 时序归纳证明 (`formal/prove_*.ys`)**：覆盖 `Hamming(72,64)` 单比特纠错恒等式、`RealSync` `±4` 周期准同步对齐、`PREC_INT8_RNE` 偶数舍入、`NVFP4_E4M3_SCALE` NaN 抑制、Dragonfly 路由无死锁等 **175+ 项硬件不变量**，全部 `SUCCESS! Q.E.D.`。
-- **42 变异体硬件突变测试 ([`formal/mutation_testing/run_formal_mutation_campaign.py`](formal/mutation_testing/run_formal_mutation_campaign.py))**：向 17 个模块注入 `MUT-001`–`MUT-042` 共 42 个硬件缺陷，形式化断言实现 **`42 / 42` (`100.0%`) 击杀率**（`0` 存活、`0` 空洞断言）。
+- **46 变异体硬件突变测试 ([`formal/mutation_testing/run_formal_mutation_campaign.py`](formal/mutation_testing/run_formal_mutation_campaign.py))**：向 17 个模块注入 `MUT-001`–`MUT-046` 共 46 个硬件缺陷，形式化断言实现 **`46 / 46` (`100.0%`) 击杀率**（`0` 存活、`0` 空洞断言）。
 - **500,000 周期全芯片耐力浸泡测试 (`formal/tb_stage29_500k_soak.sv`)**：连续运行 50 万周期随机/对抗负载，**`0` 死锁、`0` 屏障违例、`0` 未纠正 ECC 错误**。
 
 ---

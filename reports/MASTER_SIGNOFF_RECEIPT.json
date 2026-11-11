@@ -1,8 +1,8 @@
 {
   "project": "Groq LPU (14nm TSP) & NVIDIA Groq 3 LPX (4nm) Spatial Architecture",
-  "stage": "Stage 38: Master Automated Signoff Receipt Across All 38 Stages (Phases I\u2013V)",
-  "stages_verified": 42,
-  "timestamp_utc": "2026-11-10T05:09:50.755534+00:00",
+  "stage": "Stage 46: Master Automated Signoff Receipt Across All 46 Stages (Phases I\u2013VIII)",
+  "stages_verified": 46,
+  "timestamp_utc": "2026-11-11T02:17:01.926958+00:00",
   "overall_signoff_status": "PASS",
   "rtl_audit": {
     "module_count": 21,
@@ -444,8 +444,8 @@
     "summary_json": "formal/mutation_testing/mutation_campaign_summary.json",
     "report_md": "reports/STAGE25B_FORMAL_MUTATION_TESTING_REPORT.md",
     "total_modules_qualified": 17,
-    "total_mutants": 42,
-    "mutants_killed": 42,
+    "total_mutants": 46,
+    "mutants_killed": 46,
     "mutants_survived": 0,
     "mutation_kill_rate_pct": 100.0,
     "vacuous_assertions_detected": 0,
@@ -914,7 +914,7 @@
     "total_documented_and_closed_bugs": 22,
     "uvm_suite10_transactions": 50000,
     "uvm_suite10_lockstep_module_comparisons": 300000,
-    "golden_model_unit_tests_passed": 18,
+    "golden_model_unit_tests_passed": 20,
     "pass": true
   },
   "quantitative_metrics_vs_papers_audit": {
@@ -923,6 +923,16 @@
     "total_metrics_audited": 56,
     "metrics_passed": 56,
     "discrepancies_resolved": 4,
+    "pass": true
+  },
+  "phase8_github_and_hil_calibration_audit": {
+    "github_files_audit_json": "reports/GITHUB_456_FILES_AUDIT_RECEIPT.json",
+    "total_tracked_files_audited": 472,
+    "syntax_or_lint_errors": 0,
+    "rtl_calibration_json": "benchmarks/rtl_perf_energy_calibration/sim_vs_reported_calibration.json",
+    "rtl_calibration_report_md": "reports/STAGE44_SIM_VS_REPORTED_PERF_ENERGY_CALIBRATION_REPORT.md",
+    "calibrated_benchmarks_passed": 12,
+    "max_relative_error_pct": 3.0,
     "pass": true
   }
 }

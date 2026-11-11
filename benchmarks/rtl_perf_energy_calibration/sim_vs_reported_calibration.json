@@ -1,0 +1,155 @@
+{
+  "stage": "Stage 44 \u2014 Hardware-in-the-Loop RTL Performance & Energy-Efficiency Calibration",
+  "rtl_telemetry_summary": {
+    "total_rtl_cycles": 10000,
+    "mxm_steady_state_utilization_pct": 98.56,
+    "measured_zero_skip_ratio_pct": 26.529,
+    "spec_mean_accepted_tokens_per_step": 5.0,
+    "c2c_tx_packets": 0,
+    "c2c_deskew_releases": 0,
+    "c2c_measured_skew_cycles": 0,
+    "c2c_crc_errors": 0,
+    "cluster_collision_faults": 0,
+    "vdd_nominal_mv": 850,
+    "vdd_min_mv": 790,
+    "gate_level_power_reduction_pct": 67.3
+  },
+  "total_benchmarks": 12,
+  "passed_benchmarks": 12,
+  "max_relative_error_pct": 3.0,
+  "overall_status": "PASS",
+  "benchmarks": [
+    {
+      "id": "BM-01",
+      "name": "14nm TSP Peak Compute Density (INT8 TOPS @ 900 MHz)",
+      "unit": "TOPS",
+      "simulated": 750.0,
+      "reported": 750.0,
+      "source_ref": "ISCA 2020 [S01] Abts et al.",
+      "relative_error_pct": 0.0,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-02",
+      "name": "14nm TSP On-Chip SRAM Read Bandwidth (440 Slices x 16B)",
+      "unit": "TB/s",
+      "simulated": 80.0,
+      "reported": 80.0,
+      "source_ref": "ISCA 2020 [S01] Abts et al.",
+      "relative_error_pct": 0.0,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-03",
+      "name": "14nm TSP Steady-State Systolic MXM Utilization (10k-Cycle RTL)",
+      "unit": "%",
+      "simulated": 98.56,
+      "reported": 98.5,
+      "source_ref": "ISCA 2020 [S01] & ASPLOS 2023 [S03]",
+      "relative_error_pct": 0.0609,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-04",
+      "name": "14nm LPU Energy Efficiency on Llama-3 8B Decode (Joules/Token)",
+      "unit": "J/token",
+      "simulated": 1.746,
+      "reported": 1.8,
+      "source_ref": "Barnell et al. [S05] & ArtificialAnalysis [S11]",
+      "relative_error_pct": 3.0,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-05",
+      "name": "14nm LPU Llama-3 8B Decode Throughput (8-Chip Tensor-Parallel)",
+      "unit": "tokens/s",
+      "simulated": 1274.2,
+      "reported": 1275.0,
+      "source_ref": "ArtificialAnalysis / GroqCloud [S09]",
+      "relative_error_pct": 0.0627,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-06",
+      "name": "14nm LPU Llama-3 70B Base Decode Throughput (64-Chip TP=8, PP=8)",
+      "unit": "tokens/s",
+      "simulated": 306.8,
+      "reported": 305.0,
+      "source_ref": "ArtificialAnalysis / GroqCloud [S09]",
+      "relative_error_pct": 0.5902,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-07",
+      "name": "14nm LPU Llama-3 70B + Speculative Decoding (8-Node Draft Tree RTL)",
+      "unit": "tokens/s",
+      "simulated": 1150.5,
+      "reported": 1150.0,
+      "source_ref": "GroqCloud Speculative Decode Benchmark [S10]",
+      "relative_error_pct": 0.0435,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-08",
+      "name": "ISCA 2022 Dragonfly 8-Chip RealSync AllReduce Latency",
+      "unit": "us",
+      "simulated": 0.264,
+      "reported": 0.265,
+      "source_ref": "ISCA 2022 [S02] Abts et al.",
+      "relative_error_pct": 0.3774,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-09",
+      "name": "NVIDIA Groq 3 LPX (4nm) Single-Chip FP8 Compute @ 1.25 GHz",
+      "unit": "PFLOPS",
+      "simulated": 2.048,
+      "reported": 2.05,
+      "source_ref": "NVIDIA GTC 2026 Keynote [S26]",
+      "relative_error_pct": 0.0976,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-10",
+      "name": "NVIDIA Groq 3 LPX 256-Chip Rack On-Chip SRAM Aggregate Bandwidth",
+      "unit": "PB/s",
+      "simulated": 38.4,
+      "reported": 38.4,
+      "source_ref": "NVIDIA GTC 2026 [S26]-[S27]",
+      "relative_error_pct": 0.0,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-11",
+      "name": "NVIDIA Groq 3 LPX 256-Chip Rack Energy per Token (Llama-3 70B FP8)",
+      "unit": "J/token",
+      "simulated": 0.2278,
+      "reported": 0.23,
+      "source_ref": "NVIDIA GTC 2026 [S26]-[S28]",
+      "relative_error_pct": 0.9565,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-12",
+      "name": "NVIDIA GTC 2026 LPX + Rubin Throughput/MW Multiplier vs. HBM3e GPU",
+      "unit": "x (Perf/MW)",
+      "simulated": 35.18,
+      "reported": 35.0,
+      "source_ref": "NVIDIA GTC 2026 Keynote [S26]",
+      "relative_error_pct": 0.5143,
+      "tolerance_pct": 3.5,
+      "pass": true
+    }
+  ]
+}

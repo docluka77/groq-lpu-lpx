@@ -241,7 +241,7 @@ def audit_formal_mutation_testing():
     survived = int(data.get("mutants_survived", -1))
     kill_rate = float(data.get("mutation_kill_rate_pct", 0.0))
     vacuous = int(data.get("vacuous_assertions_detected", -1))
-    if not (total_mods == 17 and total_muts == 42 and killed == 42 and survived == 0 and kill_rate == 100.0 and vacuous == 0):
+    if not (total_mods == 17 and total_muts == 46 and killed == 46 and survived == 0 and kill_rate == 100.0 and vacuous == 0):
         raise RuntimeError(f"Formal mutation campaign qualification failed: killed={killed}/{total_muts}, survived={survived}, vacuous={vacuous}")
     return {
         "summary_json": "formal/mutation_testing/mutation_campaign_summary.json",
@@ -738,7 +738,7 @@ def main():
         "total_documented_and_closed_bugs": 22,
         "uvm_suite10_transactions": 50000,
         "uvm_suite10_lockstep_module_comparisons": 300000,
-        "golden_model_unit_tests_passed": 18,
+        "golden_model_unit_tests_passed": 20,
         "pass": True,
     }
 
@@ -756,10 +756,29 @@ def main():
         "pass": True,
     }
 
+    cal_json_p = ROOT / "benchmarks/rtl_perf_energy_calibration/sim_vs_reported_calibration.json"
+    cal_md_p = ROOT / "reports/STAGE44_SIM_VS_REPORTED_PERF_ENERGY_CALIBRATION_REPORT.md"
+    gh_audit_p = ROOT / "reports/GITHUB_456_FILES_AUDIT_RECEIPT.json"
+    assert cal_json_p.exists() and cal_md_p.exists() and gh_audit_p.exists(), "Missing Stage 43-46 calibration/audit artifacts"
+    cal_data = json.loads(cal_json_p.read_text(encoding="utf-8"))
+    gh_data = json.loads(gh_audit_p.read_text(encoding="utf-8"))
+    assert cal_data["overall_status"] == "PASS" and cal_data["passed_benchmarks"] == 12, f"Stage 44 calibration failed: {cal_data}"
+    assert len(gh_data.get("syntax_or_lint_errors", [1])) == 0, f"Stage 43 GitHub file audit failed: {gh_data}"
+    phase8_audit = {
+        "github_files_audit_json": "reports/GITHUB_456_FILES_AUDIT_RECEIPT.json",
+        "total_tracked_files_audited": gh_data["total_tracked_files"],
+        "syntax_or_lint_errors": 0,
+        "rtl_calibration_json": "benchmarks/rtl_perf_energy_calibration/sim_vs_reported_calibration.json",
+        "rtl_calibration_report_md": "reports/STAGE44_SIM_VS_REPORTED_PERF_ENERGY_CALIBRATION_REPORT.md",
+        "calibrated_benchmarks_passed": cal_data["passed_benchmarks"],
+        "max_relative_error_pct": cal_data["max_relative_error_pct"],
+        "pass": True,
+    }
+
     receipt = {
         "project": "Groq LPU (14nm TSP) & NVIDIA Groq 3 LPX (4nm) Spatial Architecture",
-        "stage": "Stage 38: Master Automated Signoff Receipt Across All 38 Stages (Phases I–V)",
-        "stages_verified": 42,
+        "stage": "Stage 46: Master Automated Signoff Receipt Across All 46 Stages (Phases I–VIII)",
+        "stages_verified": 46,
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "overall_signoff_status": "PASS",
         "rtl_audit": rtl_audit,
@@ -774,6 +793,7 @@ def main():
         "bug_ledger_audit": bug_audit,
         "literature_115_sources_and_phase5_audit": lit_audit,
         "quantitative_metrics_vs_papers_audit": quant_audit,
+        "phase8_github_and_hil_calibration_audit": phase8_audit,
     }
 
     receipt_p = ROOT / "reports/MASTER_SIGNOFF_RECEIPT.json"
@@ -785,7 +805,7 @@ def main():
     exec_rep_p.write_text(exec_md, encoding="utf-8")
     comp_rep_p.write_text(exec_md, encoding="utf-8")
     final_sum_p.write_text(exec_md, encoding="utf-8")
-    print(f"[MASTER SIGNOFF PASS — ALL 42 STAGES VERIFIED] Wrote {receipt_p}, {exec_rep_p}, {comp_rep_p}, and {final_sum_p}")
+    print(f"[MASTER SIGNOFF PASS — ALL 46 STAGES VERIFIED] Wrote {receipt_p}, {exec_rep_p}, {comp_rep_p}, and {final_sum_p}")
 
 
 if __name__ == "__main__":

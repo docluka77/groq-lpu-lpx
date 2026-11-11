@@ -1,0 +1,26 @@
+{
+  "total_tracked_files": 472,
+  "by_extension": {
+    "(no_ext)": 2,
+    ".md": 44,
+    ".py": 20,
+    ".json": 39,
+    ".hex": 90,
+    ".log": 127,
+    ".sh": 21,
+    ".cpp": 22,
+    ".sv": 67,
+    ".txt": 16,
+    ".ys": 23,
+    ".v": 1
+  },
+  "sv_rtl_files_linted": 25,
+  "py_files_ast_checked": 20,
+  "sh_files_bash_checked": 21,
+  "json_files_validated": 39,
+  "md_files_checked": 44,
+  "md_links_verified": 118,
+  "broken_md_links": [],
+  "syntax_or_lint_errors": [],
+  "crlf_files": []
+}
