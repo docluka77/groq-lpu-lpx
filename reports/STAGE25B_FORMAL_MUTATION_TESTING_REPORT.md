@@ -3,7 +3,7 @@
 **Project**: Groq LPU (v1 TSP) & NVIDIA Groq 3 LPX Architecture  
 **Qualification Engine**: Yosys 0.60 (`git sha1 5bafeb77d`) Built-In Circuit SAT Solver (`sat -verify -prove-asserts`)  
 **Workspace**: `ict-eda-9:/nfs/share/home/chenpei/hyr/groq_lpu_tsp_20261106/formal/mutation_testing/`  
-**Overall Verdict**: **PASS — 42 / 42 Hardware Mutants Killed (`100.0%` Mutation Kill Rate across all 17 Leaf RTL/SRAM IP Subsystems, `0` Vacuous Assertions, `21.431s` Total Wall Time)**
+**Overall Verdict**: **PASS — 50 / 50 Hardware Mutants Killed (`100.0%` Mutation Kill Rate across all 17 Leaf RTL/SRAM IP Subsystems, `0` Vacuous Assertions, `31.602s` Total Wall Time)**
 
 ---
 
@@ -11,24 +11,24 @@
 
 In industrial formal property verification (FPV), an `UNSAT` proof (`SAT proof finished - no model found: SUCCESS!`) guarantees correctness only if the underlying SystemVerilog assertions (`assert`) are **non-vacuous** and **tightly coupled** to every critical datapath, control, arbitration, and error-recovery path in the RTL.
 
-To mathematically rule out vacuous antecedents, over-constrained formal assumptions, or blind spots across our Yosys 0.60 formal verification suite, **Stage 25B** executes an automated **42-Mutant Hardware Fault Injection Campaign** (`run_formal_mutation_campaign.py`) spanning all **17 leaf formally verified RTL and SRAM IP modules**:
+To mathematically rule out vacuous antecedents, over-constrained formal assumptions, or blind spots across our Yosys 0.60 formal verification suite, **Stage 25B / Stage 49** executes an automated **50-Mutant Hardware Fault Injection Campaign** (`run_formal_mutation_campaign.py`) spanning all **17 leaf formally verified RTL and SRAM IP modules**:
 
 | Metric | Value | Qualification Requirement | Status |
 | :--- | :--- | :--- | :--- |
 | **Verified RTL / SRAM Modules Covered** | **17** (`rtl/` & `sram_ip/`) | All 17 leaf verified subsystems | **PASS** |
-| **Total Hardware Mutants Injected** | **38** (`MUT-001` – `MUT-038`) | 42 realistic single-line/operator bugs | **PASS** |
-| **Mutants Killed (`SAT FAIL` Counterexample)** | **42 / 42** | 42 (`100%`) | **PASS** |
-| **Mutants Survived (`False UNSAT`)** | **0 / 42** | 0 (`0%`) | **PASS** |
+| **Total Hardware Mutants Injected** | **50** (`MUT-001` – `MUT-050`) | 50 realistic single-line/operator bugs | **PASS** |
+| **Mutants Killed (`SAT FAIL` Counterexample)** | **50 / 50** | 50 (`100%`) | **PASS** |
+| **Mutants Survived (`False UNSAT`)** | **0 / 50** | 0 (`0%`) | **PASS** |
 | **Mutation Kill Rate (Bug-Detection Sensitivity)** | **100.0%** | `100.0%` | **PASS** |
 | **Vacuous Assertions Detected** | **0** | `0` | **PASS** |
-| **Aggregate CNF Variables Solved** | **12,796,861** | Full bit-precise CNF extraction | **PASS** |
-| **Total Parallel Campaign Wall Time (6 Workers)** | **21.431 s** | `< 90.0 s` | **PASS** |
-| **Cumulative Worker CPU Solve Time** | **111.305 s** | Recorded per mutant | **PASS** |
+| **Aggregate CNF Variables Solved** | **14,613,841** | Full bit-precise CNF extraction | **PASS** |
+| **Total Parallel Campaign Wall Time (6 Workers)** | **31.602 s** | `< 90.0 s` | **PASS** |
+| **Cumulative Worker CPU Solve Time** | **160.354 s** | Recorded per mutant | **PASS** |
 | **Clean RTL Integrity (`rtl/` & `sram_ip/`)** | **100% Untouched (`git status` clean)** | Mutations isolated to `work/` | **PASS** |
 
 ---
 
-## 2. Complete 42-Mutant Formal Qualification Matrix
+## 2. Complete 50-Mutant Formal Qualification Matrix
 
 Every mutant applies a surgical single-line/operator hardware fault to an isolated copy of the RTL inside `formal/mutation_testing/work/` and runs Yosys 0.60 `sat -verify -prove-asserts` to extract a concrete falsifying counterexample trace (`SAT proof finished - model found: FAIL!`):
 
@@ -75,7 +75,15 @@ Every mutant applies a surgical single-line/operator hardware fault to an isolat
 | `MUT-039` | `groq_sxm_slice` | `BUG-LIT-001` SXM RoPE `-128` Saturation Regression | `dst[i] = (src[idx_bfly] == 8'h80) ? 8'h7F : -src[idx_bfly]` -> `-src[idx_bfly]` | Property 4: RoPE even-lane saturating `-128 -> +127` (`L259`) | 1,193,560 | 3,478,198 | 6.35s | **KILLED** |
 | `MUT-040` | `groq_mxfp8_nvfp4_dot_engine` | `BUG-LIT-002` Native `NVFP4_E4M3_SCALE` NaN Trap Suppression | `((mode_i == MODE_NVFP4_E4M3_SCALE) ? (... == 7'h7F) :` -> `1'b0` | Property 3: Native `NVFP4_E4M3_SCALE` (`3'd5`) NaN scale trap (`L516`) | 418,356 | 1,177,820 | 3.04s | **KILLED** |
 | `MUT-041` | `groq_nim_realsync` | `BUG-LIT-003` NIM Autonomous `HAC` Consensus Corruption | `hac_counter_q <= incoming_target_cycle + 16'd1` -> `- 16'd1` | Proof: Autonomous `RealSync` `HAC` consensus lock (`L369`) | 478,011 | 1,276,640 | 9.48s | **KILLED** |
-| `MUT-042` | `groq_vxm_slice` | `BUG-LIT-005` VXM `PREC_INT8_RNE` Exact-Tie Bias Regression | `round_bias = (... && is_exact_tie && quot_lsb_even) ? 0 : half_val` -> `half_val` | Proof 6: IEEE 754-2019 `PREC_INT8_RNE` exact-tie evenness (`L473`) | 255,443 | 719,919 | 7.64s | **KILLED** |
+| `MUT-042` | `groq_vxm_slice` | `BUG-LIT-005` VXM `PREC_INT8_RNE` Exact-Tie Bias Regression | `round_bias = (... && is_exact_tie && quot_lsb_even) ? 0 : half_val` -> `half_val` | Proof 6: IEEE 754-2019 `PREC_INT8_RNE` exact-tie evenness (`L473`) | 255,443 | 719,919 | 6.09s | **KILLED** |
+| `MUT-043` | `groq_c2c_kv_quant_rx_engine` | `BUG-LIT-006` Native `NVFP4 E4M3` Scale Sign-Bit Corruption | `scale_nvfp4_e4m3_c = {1'b0, ...}` -> `{1'b1, ...}` | Invariant 5: Native NVFP4 FP8 E4M3 scale non-negativity (`L331`) | 52,463 | 145,280 | 0.49s | **KILLED** |
+| `MUT-044` | `groq_spec_decode_tree_sampler` | `BUG-LIT-007` EAGLE-2/3 Dynamic Tree Confidence Overflow | `eagle2_tree_confidence_comb = 16'd0` -> `16'd2048` | Property 5: EAGLE-2/3 dynamic draft tree confidence bound (`L393`) | 371,836 | 1,069,142 | 2.42s | **KILLED** |
+| `MUT-045` | `groq_power_droop_controller` | PDN Dummy Bleeder Current Complement Violation | `dummy_bleed_current_o = bleed_target_c - raw_demand_c` -> `8'd0` | Property 2: Bleeder complement invariant (`L170`) | 7,127 | 20,764 | 0.06s | **KILLED** |
+| `MUT-046` | `groq_sram_controller_scrubber` | Scrubber Read/Writeback Mutual Exclusion Violation | `end else if (!wb_pending_q) begin` -> `end if (1'b1) begin` | Property 2: Mutual exclusion of scrub read and writeback (`L389`) | 655,780 | 2,424,380 | 4.33s | **KILLED** |
+| `MUT-047` | `groq_sram_macro_sp` | SRAM Read-Valid Spurious Assertion on Write | `if (!eff_we_n) rvalid <= 1'b0` -> `1'b1` | Property 3: Read Valid only asserts after active read cycle (`L331`) | 86,776 | 316,520 | 0.53s | **KILLED** |
+| `MUT-048` | `groq_mem_agu` | AGU Inner Loop Index Bounds Overflow | `if (last_0) idx0_q <= '0` -> `idx0_q + 1'b1` | Property 2: Coordinate indices never exceed `safe_count0` (`L196`) | 9,170 | 27,594 | 0.05s | **KILLED** |
+| `MUT-049` | `groq_stream_fabric` | Stream Fabric Westward Hop Shift Drop | `west_valid_q[s][c] <= west_hop_valid[s+1][c]` -> `1'b0` | Theorem 1B: Exact 1-hop/cycle Westward arrival (`L262`) | 86,124 | 254,280 | 1.26s | **KILLED** |
+| `MUT-050` | `groq_mxm_slice` | MXM Zero-Cycle Ping-Pong Weight Swap Suppression | `active_bank_q <= ~active_bank_q` -> `active_bank_q` | Property 4: Ping-Pong Weight Buffer Zero-Cycle Swap (`L371`) | 546,849 | 1,738,510 | 8.37s | **KILLED** |
 
 ---
 

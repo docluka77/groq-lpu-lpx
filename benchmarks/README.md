@@ -1,6 +1,6 @@
 # Multi-Chip RTL & 256-LPX Rack-Scale LLM Inference Benchmarks (`benchmarks/`)
 
-This directory contains **4 end-to-end LLM inference & rack-scale benchmarks** spanning 2-chip `RealSync` RTL clusters, 8-chip Dragonfly RTL groups, and 256-chip NVIDIA Groq 3 LPX MGX racks:
+This directory contains **5 end-to-end LLM inference, rack-scale & hardware-in-the-loop calibration benchmarks** spanning 2-chip `RealSync` RTL clusters, 8-chip Dragonfly RTL groups, 256-chip NVIDIA Groq 3 LPX MGX racks, and 21-module full-RTL calibration:
 
 | Subdirectory | Workload & Hardware Scope | Key Verification & Performance Result |
 | :--- | :--- | :--- |
@@ -8,3 +8,4 @@ This directory contains **4 end-to-end LLM inference & rack-scale benchmarks** s
 | [`deepseek_mla_moe_8chip/`](deepseek_mla_moe_8chip/) | **DeepSeek-V3/R1 Multi-Head Latent Attention (MLA) + MoE on 8-Chip Dragonfly RTL Cluster** | `100%` bit-exact match vs. Python golden reference across 8-chip Radix-2 XOR butterfly `AllReduce` |
 | [`disagg_prefill_decode_8chip/`](disagg_prefill_decode_8chip/) | **NVIDIA Vera Rubin GPU Prefill $\rightarrow$ NVLink-C2C KV Quantizer $\rightarrow$ 8-Chip LPX Decode + EAGLE-2** | `100%` bit-exact end-to-end closed-loop execution (`FP16` KV $\rightarrow$ `MXFP8`/`NVFP4` $\rightarrow$ Dot Engine $\rightarrow$ Speculative Tree) |
 | [`lpx_rack_and_spec_decode/`](lpx_rack_and_spec_decode/) | **256-Chip NVIDIA Groq 3 LPX MGX Rack Simulator (`Llama-3.1 405B` & `DeepSeek-V3/R1 671B`)** | `Llama-3.1 405B`: **`0.52 J/tok`** (`59,925 tok/s` Full-Fabric EAGLE-2); `DeepSeek-V3 671B`: **`0.43 J/tok`** (`144,981 tok/s`) |
+| [`rtl_perf_energy_calibration/`](rtl_perf_energy_calibration/) | **10,000-Cycle 21-Module RTL Hardware-in-the-Loop Performance & Energy Calibration (`BM-01`–`BM-18`)** | **`18 / 18` published benchmarks calibrated within `<= 0.96%` max relative error** (`98.56%` MXM utilization, `0` C2C skew) |

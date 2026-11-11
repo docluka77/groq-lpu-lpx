@@ -379,16 +379,16 @@ class TestGroqGoldenModel(unittest.TestCase):
         self.assertTrue(scrub.dbe_sticky_alarm)
 
     def test_19_rtl_vs_reported_benchmark_calibration(self) -> None:
-        """Verify Stage 44 10,000-cycle RTL hardware-in-the-loop calibration against 12 published benchmarks."""
+        """Verify Stage 48 10,000-cycle RTL hardware-in-the-loop calibration against 18 published benchmarks."""
         import json
         from pathlib import Path
         cal_path = Path(__file__).resolve().parent.parent / "benchmarks" / "rtl_perf_energy_calibration" / "sim_vs_reported_calibration.json"
         self.assertTrue(cal_path.exists(), f"Missing calibration receipt: {cal_path}")
         cal = json.loads(cal_path.read_text(encoding="utf-8"))
         self.assertEqual(cal["overall_status"], "PASS")
-        self.assertEqual(cal["passed_benchmarks"], 12)
-        self.assertEqual(cal["total_benchmarks"], 12)
-        self.assertLessEqual(cal["max_relative_error_pct"], 3.50)
+        self.assertEqual(cal["passed_benchmarks"], 18)
+        self.assertEqual(cal["total_benchmarks"], 18)
+        self.assertLessEqual(cal["max_relative_error_pct"], 1.00)
         self.assertEqual(cal["rtl_telemetry_summary"]["total_rtl_cycles"], 10000)
         self.assertEqual(cal["rtl_telemetry_summary"]["c2c_crc_errors"], 0)
         self.assertEqual(cal["rtl_telemetry_summary"]["cluster_collision_faults"], 0)
@@ -404,6 +404,34 @@ class TestGroqGoldenModel(unittest.TestCase):
         self.assertAlmostEqual(bm_map["BM-12"]["simulated"], 35.0, delta=1.0)
         self.assertTrue(bm_map["BM-11"]["pass"])
         self.assertTrue(bm_map["BM-12"]["pass"])
+
+    def test_21_hil_c2c_realsync_deskew_and_scrubber_telemetry(self) -> None:
+        """Verify Stage 48 21-module RTL HIL telemetry: C2C RealSync 0-cycle deskew, PDN di/dt droop, and SRAM scrubber SBE auto-heal."""
+        import json
+        from pathlib import Path
+        tel_path = Path(__file__).resolve().parent.parent / "benchmarks" / "rtl_perf_energy_calibration" / "rtl_hardware_telemetry.json"
+        self.assertTrue(tel_path.exists(), f"Missing RTL hardware telemetry: {tel_path}")
+        tel = json.loads(tel_path.read_text(encoding="utf-8"))
+        self.assertEqual(tel["c2c_tx_packets"], 500)
+        self.assertEqual(tel["c2c_deskew_releases"], 500)
+        self.assertEqual(tel["c2c_measured_skew_cycles"], 0)
+        self.assertEqual(tel["c2c_crc_errors"], 0)
+        self.assertGreaterEqual(tel["droop_mitigated_events"], 100)
+        self.assertEqual(tel["emerg_throttle_events"], 0)
+        self.assertGreaterEqual(tel["vdd_min_mv"], 780)
+        self.assertGreater(tel["sram_scrub_corrected_sbe"], 0)
+        self.assertEqual(tel["sram_scrub_ded_alerts"], 0)
+
+    def test_22_18_benchmark_sub_1pct_accuracy(self) -> None:
+        """Verify all 18 calibrated Groq TSP & NVIDIA Groq 3 LPX benchmarks achieve <= 1.00% relative error."""
+        import json
+        from pathlib import Path
+        cal_path = Path(__file__).resolve().parent.parent / "benchmarks" / "rtl_perf_energy_calibration" / "sim_vs_reported_calibration.json"
+        cal = json.loads(cal_path.read_text(encoding="utf-8"))
+        self.assertEqual(len(cal["benchmarks"]), 18)
+        for bm in cal["benchmarks"]:
+            self.assertTrue(bm["pass"], f"Benchmark {bm['id']} failed calibration")
+            self.assertLessEqual(bm["relative_error_pct"], 1.00, f"Benchmark {bm['id']} error {bm['relative_error_pct']}% > 1.00%")
 
 
 if __name__ == "__main__":

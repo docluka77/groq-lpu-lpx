@@ -545,6 +545,51 @@ MUTANTS = [
         'expected_prop': 'Property 2: Mutual exclusion of scrub read and scrub writeback (!(scrub_rd_fire_o && scrub_wb_fire_o))',
         'ys_cmd': 'read_verilog -sv -DFORMAL -DFORMAL_SLICE_TOP -I{root}/sram_ip {root}/sram_ip/groq_sram_ecc_secded.sv {work_sv}; chparam -set P_ADDR_W 2 groq_sram_controller_scrubber; prep -top groq_sram_controller_scrubber; flatten; opt -fast; async2sync; chformal -lower; opt -fast; sat -verify -seq 3 -set-init-zero -prove-asserts'
     },
+    # 20. Stage 49 Deep Verification Mutants (4 mutants: MUT-047..050)
+    {
+        'id': 'MUT-047',
+        'module': 'groq_sram_macro_sp',
+        'src': 'sram_ip/groq_sram_macro_sp.sv',
+        'category': 'SRAM Read-Valid Spurious Assertion on Write',
+        'desc': 'Assert rvalid <= 1\'b1 during active SRAM write cycle (!eff_we_n)',
+        'target': '            if (!eff_we_n) begin\n                rvalid <= 1\'b0;',
+        'replacement': '            if (!eff_we_n) begin\n                rvalid <= 1\'b1;',
+        'expected_prop': 'Property 3: Read Valid only asserts after an active read cycle (assert(f_was_read_req))',
+        'ys_cmd': 'read_verilog -sv -DFORMAL {work_sv}; chparam -set ADDR_W 2 -set DEPTH 4 groq_sram_macro_sp; prep -top groq_sram_macro_sp; memory_map; async2sync; chformal -lower; sat -verify -prove-asserts -seq 3 -set-init-zero'
+    },
+    {
+        'id': 'MUT-048',
+        'module': 'groq_mem_agu',
+        'src': 'sram_ip/groq_mem_agu.sv',
+        'category': 'AGU Inner Loop Index Bounds Overflow',
+        'desc': 'Disable idx0_q reset on inner loop wrap (last_0) so idx0_q exceeds safe_count0',
+        'target': '            if (last_0) begin\n                idx0_q   <= \'0;',
+        'replacement': '            if (last_0) begin\n                idx0_q   <= idx0_q + 1\'b1;',
+        'expected_prop': 'Property 2: Coordinate indices never exceed configured bounds (idx0_q < safe_count0)',
+        'ys_cmd': 'read_verilog -sv -DFORMAL {work_sv}; prep -top groq_mem_agu; async2sync; chformal -lower; sat -verify -prove-asserts -seq 4 -set-init-zero'
+    },
+    {
+        'id': 'MUT-049',
+        'module': 'groq_stream_fabric',
+        'src': 'rtl/groq_stream_fabric.sv',
+        'category': 'Stream Fabric Westward Hop Shift Drop',
+        'desc': 'Drop Westward 1-hop/cycle spatial valid propagation west_valid_q[s][c]',
+        'target': 'west_valid_q[s][c] <= west_hop_valid[s+1][c];',
+        'replacement': 'west_valid_q[s][c] <= 1\'b0;',
+        'expected_prop': 'Theorem 1B: Exact 1-Hop/Cycle Westward Arrival',
+        'ys_cmd': 'read_verilog -sv -DFORMAL -I{root}/rtl {work_sv}; hierarchy -top groq_stream_fabric -chparam P_NUM_EAST_STREAMS 2 -chparam P_NUM_WEST_STREAMS 2 -chparam P_STREAM_WIDTH 16; proc; opt; async2sync; dffunmap; sat -verify -seq 5 -set-init-zero -prove-asserts'
+    },
+    {
+        'id': 'MUT-050',
+        'module': 'groq_mxm_slice',
+        'src': 'rtl/groq_mxm_slice.sv',
+        'category': 'MXM Zero-Cycle Ping-Pong Weight Swap Suppression',
+        'desc': 'Stall active_bank_q toggle when MXM_SWAP_WEIGHT instruction executes',
+        'target': '      if (mxm_op_i == groq_pkg::MXM_SWAP_WEIGHT) begin\n        active_bank_q <= ~active_bank_q;\n      end',
+        'replacement': '      if (mxm_op_i == groq_pkg::MXM_SWAP_WEIGHT) begin\n        active_bank_q <= active_bank_q;\n      end',
+        'expected_prop': 'Property 4: Ping-Pong Weight Buffer Zero-Cycle Swap (active_bank_o == ~f_active_bank_d1)',
+        'ys_cmd': 'read_verilog -sv -DFORMAL -I{root}/rtl {work_sv}; chparam -set P_LANES 4 -set P_STREAM_WIDTH 32 groq_mxm_slice; prep -top groq_mxm_slice; async2sync; chformal -lower; sat -verify -seq 3 -set-init-zero -prove-asserts'
+    },
 ]
 
 
@@ -568,6 +613,7 @@ FALSIFIED_LINE_MAP = {
     'MUT-037': 285, 'MUT-038': 281,
     'MUT-039': 259, 'MUT-040': 516, 'MUT-041': 369, 'MUT-042': 473,
     'MUT-043': 331, 'MUT-044': 393, 'MUT-045': 170, 'MUT-046': 389,
+    'MUT-047': 331, 'MUT-048': 196, 'MUT-049': 262, 'MUT-050': 371,
 }
 
 

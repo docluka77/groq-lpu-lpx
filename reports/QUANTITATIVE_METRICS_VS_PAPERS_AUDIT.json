@@ -320,10 +320,10 @@
     {
       "id": "M35",
       "category": "Formal & UVM Verification",
-      "metric": "Formal Mutation Kill Rate (46 Mutants)",
+      "metric": "Formal Mutation Kill Rate (50 Mutants)",
       "literature_source": "[S108],[S115] Yosys 0.60 Formal Mutation",
-      "expected": "46/46 (100.0%)",
-      "actual": "46/46 (100.0%)",
+      "expected": "50/50 (100.0%)",
+      "actual": "50/50 (100.0%)",
       "status": "PASS"
     },
     {

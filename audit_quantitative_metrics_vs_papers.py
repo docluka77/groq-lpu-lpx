@@ -95,8 +95,8 @@ def run_quantitative_audit() -> dict:
     add_check("M33", "Synthesis & Gate Co-Sim", "12-Module Gate Netlist Total Standard Cells", "gate_sim/gate_power_summary.json", 205362, gate_pwr["aggregate_gate_toggle_metrics"]["total_traced_std_cells"], gate_pwr["aggregate_gate_toggle_metrics"]["total_traced_std_cells"] >= 200000)
     add_check("M34", "Synthesis & Gate Co-Sim", "VCD Dynamic Power Savings (Zero-Skip + ICG)", "gate_sim/gate_power_summary.json", 66.94, gate_pwr["aggregate_gate_toggle_metrics"]["cosim_12mod_power_savings_pct"], abs(gate_pwr["aggregate_gate_toggle_metrics"]["cosim_12mod_power_savings_pct"] - 66.94) < 1.0)
 
-    # --- Group 5: Formal Verification, 46-Mutant Kill Rate & 10-Suite Accellera UVM ---
-    add_check("M35", "Formal & UVM Verification", "Formal Mutation Kill Rate (46 Mutants)", "[S108],[S115] Yosys 0.60 Formal Mutation", "46/46 (100.0%)", f"{mut_res['mutants_killed']}/{mut_res['total_mutants']} ({mut_res['mutation_kill_rate_pct']}%)", mut_res["mutants_killed"] == 46 and mut_res["total_mutants"] == 46)
+    # --- Group 5: Formal Verification, 50-Mutant Kill Rate & 10-Suite Accellera UVM ---
+    add_check("M35", "Formal & UVM Verification", "Formal Mutation Kill Rate (50 Mutants)", "[S108],[S115] Yosys 0.60 Formal Mutation", "50/50 (100.0%)", f"{mut_res['mutants_killed']}/{mut_res['total_mutants']} ({mut_res['mutation_kill_rate_pct']}%)", mut_res["mutants_killed"] == 50 and mut_res["total_mutants"] == 50)
     add_check("M36", "Formal & UVM Verification", "10-Suite Accellera IEEE 1800.2-2020 UVM Signoff", "reports/FULL_10SUITE_UVM_REGRESSION.log", "ALL 10 SUITES PASSED", "ALL 10 SUITES PASSED" if "=== ALL 10 ACCELLERA IEEE 1800.2-2020 UVM SUITES PASSED ===" in uvm_log else "FAIL", "=== ALL 10 ACCELLERA IEEE 1800.2-2020 UVM SUITES PASSED ===" in uvm_log)
     add_check("M37", "Formal & UVM Verification", "UVM Suite 10 Lockstep Checks & Coverage", "50,000 tx = 300,000 checks, 99.18% line cov", True, "Line: 1094/1103 ( 99.18%)" in uvm_log, "Line: 1094/1103 ( 99.18%)" in uvm_log)
 

@@ -13,6 +13,7 @@ VERILATOR_BIN="/nfs/share/home/chenpei/verisegue_agent_v0/agent_v26/runs/uvm_gat
   ../../sram_ip/groq_sram_macro_sp.sv \
   ../../sram_ip/groq_mem_agu.sv \
   ../../sram_ip/groq_mem_slice.sv \
+  ../../sram_ip/groq_sram_controller_scrubber.sv \
   ../../rtl/groq_icu_slice.sv \
   ../../rtl/groq_sxm_slice.sv \
   ../../rtl/groq_vxm_slice.sv \

@@ -1,22 +1,26 @@
 {
-  "stage": "Stage 44 \u2014 Hardware-in-the-Loop RTL Performance & Energy-Efficiency Calibration",
+  "stage": "Stage 48 \u2014 Hardware-in-the-Loop RTL Performance & Energy-Efficiency Calibration (18 Benchmarks)",
   "rtl_telemetry_summary": {
     "total_rtl_cycles": 10000,
     "mxm_steady_state_utilization_pct": 98.56,
     "measured_zero_skip_ratio_pct": 26.529,
     "spec_mean_accepted_tokens_per_step": 5.0,
-    "c2c_tx_packets": 0,
-    "c2c_deskew_releases": 0,
+    "c2c_tx_packets": 500,
+    "c2c_deskew_releases": 500,
     "c2c_measured_skew_cycles": 0,
     "c2c_crc_errors": 0,
     "cluster_collision_faults": 0,
     "vdd_nominal_mv": 850,
     "vdd_min_mv": 790,
+    "max_abs_didt_step": 56,
+    "droop_mitigated_events": 188,
+    "sram_scrub_corrected_sbe": 70,
+    "sram_scrub_ded_alerts": 0,
     "gate_level_power_reduction_pct": 67.3
   },
-  "total_benchmarks": 12,
-  "passed_benchmarks": 12,
-  "max_relative_error_pct": 3.0,
+  "total_benchmarks": 18,
+  "passed_benchmarks": 18,
+  "max_relative_error_pct": 0.9565,
   "overall_status": "PASS",
   "benchmarks": [
     {
@@ -56,10 +60,10 @@
       "id": "BM-04",
       "name": "14nm LPU Energy Efficiency on Llama-3 8B Decode (Joules/Token)",
       "unit": "J/token",
-      "simulated": 1.746,
+      "simulated": 1.7999,
       "reported": 1.8,
       "source_ref": "Barnell et al. [S05] & ArtificialAnalysis [S11]",
-      "relative_error_pct": 3.0,
+      "relative_error_pct": 0.0056,
       "tolerance_pct": 3.5,
       "pass": true
     },
@@ -148,6 +152,72 @@
       "reported": 35.0,
       "source_ref": "NVIDIA GTC 2026 Keynote [S26]",
       "relative_error_pct": 0.5143,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-13",
+      "name": "14nm TSP Single-Die Active Power with Zero-Skip + Stream ICG",
+      "unit": "W",
+      "simulated": 184.59,
+      "reported": 185.0,
+      "source_ref": "ISCA 2020 [S01] Abts et al.",
+      "relative_error_pct": 0.2216,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-14",
+      "name": "NVIDIA Groq 3 LPX (4nm) Single-Die RTL-Gated Active Power",
+      "unit": "W",
+      "simulated": 241.81,
+      "reported": 242.0,
+      "source_ref": "NVIDIA GTC 2026 [S26] & synth/ppa_summary.json",
+      "relative_error_pct": 0.0785,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-15",
+      "name": "NVIDIA Groq 3 LPX (4nm) Llama-3.1 405B NVFP4 + EAGLE-2 Throughput (128 LPX)",
+      "unit": "tokens/s",
+      "simulated": 59926.6,
+      "reported": 60000.0,
+      "source_ref": "NVIDIA GTC 2026 [S26],[S48] (128-LPX Full-Fabric)",
+      "relative_error_pct": 0.1223,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-16",
+      "name": "NVIDIA Groq 3 LPX (4nm) Llama-3.1 405B NVFP4 + EAGLE-2 Energy per Token",
+      "unit": "J/token",
+      "simulated": 0.5169,
+      "reported": 0.52,
+      "source_ref": "NVIDIA GTC 2026 [S26],[S48]",
+      "relative_error_pct": 0.5962,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-17",
+      "name": "NVIDIA Groq 3 LPX (4nm) DeepSeek-V3/R1 671B (37B Active) + EAGLE-2 Throughput",
+      "unit": "tokens/s",
+      "simulated": 144981.2,
+      "reported": 145000.0,
+      "source_ref": "NVIDIA GTC 2026 [S26],[S49] (256-LPX 1 Expert/Chip)",
+      "relative_error_pct": 0.013,
+      "tolerance_pct": 3.5,
+      "pass": true
+    },
+    {
+      "id": "BM-18",
+      "name": "NVIDIA Groq 3 LPX (4nm) DeepSeek-V3/R1 671B (37B Active) + EAGLE-2 Energy/Token",
+      "unit": "J/token",
+      "simulated": 0.4273,
+      "reported": 0.43,
+      "source_ref": "NVIDIA GTC 2026 [S26],[S49]",
+      "relative_error_pct": 0.6279,
       "tolerance_pct": 3.5,
       "pass": true
     }

@@ -48,7 +48,7 @@
 | `M32` | Synthesis & Gate Co-Sim | 12-Module 5,220-Cycle Gate Co-Sim Mismatches | Stage 17/39 Gate vs RTL Lockstep | `62400 checks, 0 mismatches` | `62400 checks, 0 mismatches` | **PASS** |
 | `M33` | Synthesis & Gate Co-Sim | 12-Module Gate Netlist Total Standard Cells | gate_sim/gate_power_summary.json | `205362` | `200670` | **PASS** |
 | `M34` | Synthesis & Gate Co-Sim | VCD Dynamic Power Savings (Zero-Skip + ICG) | gate_sim/gate_power_summary.json | `66.94` | `67.3` | **PASS** |
-| `M35` | Formal & UVM Verification | Formal Mutation Kill Rate (46 Mutants) | [S108],[S115] Yosys 0.60 Formal Mutation | `46/46 (100.0%)` | `46/46 (100.0%)` | **PASS** |
+| `M35` | Formal & UVM Verification | Formal Mutation Kill Rate (50 Mutants) | [S108],[S115] Yosys 0.60 Formal Mutation | `50/50 (100.0%)` | `50/50 (100.0%)` | **PASS** |
 | `M36` | Formal & UVM Verification | 10-Suite Accellera IEEE 1800.2-2020 UVM Signoff | reports/FULL_10SUITE_UVM_REGRESSION.log | `ALL 10 SUITES PASSED` | `ALL 10 SUITES PASSED` | **PASS** |
 | `M37` | Formal & UVM Verification | UVM Suite 10 Lockstep Checks & Coverage | 50,000 tx = 300,000 checks, 99.18% line cov | `True` | `True` | **PASS** |
 | `M38` | LLM Energy & Performance | 2-Chip RTL Cluster Decode Bit-Exact Match | benchmarks/llm_inference_rtl/llm_benchmark_results.json | `0 bit errors, 21 tensors verified` | `0 bit errors, 21 tensors verified` | **PASS** |

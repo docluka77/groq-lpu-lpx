@@ -17,9 +17,12 @@
   "sv_rtl_files_linted": 25,
   "py_files_ast_checked": 20,
   "sh_files_bash_checked": 21,
+  "ys_files_checked": 23,
+  "hex_files_checked": 90,
+  "cpp_files_checked": 22,
   "json_files_validated": 39,
   "md_files_checked": 44,
-  "md_links_verified": 118,
+  "md_links_verified": 119,
   "broken_md_links": [],
   "syntax_or_lint_errors": [],
   "crlf_files": []

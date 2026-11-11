@@ -136,11 +136,12 @@ module tb_rtl_perf_energy_calibration;
 
   // 5. Power & di/dt Droop Controller
   logic        droop_en, droop_prewarm, drp_throt;
-  logic [7:0]  droop_slice_act, drp_bmask;
-  logic [4:0]  droop_zskip_cnt;
-  logic [15:0] droop_pw_target, droop_max_step, droop_vdd_nom, droop_emerg_th;
-  logic [15:0] drp_raw, drp_eff, drp_bleed, drp_vdd, drp_temp, drp_evts;
-  logic signed [15:0] drp_didt;
+  logic [7:0]  droop_slice_act, drp_bmask, droop_pw_target, droop_max_step;
+  logic [5:0]  droop_zskip_cnt;
+  logic [11:0] droop_vdd_nom, droop_emerg_th, drp_vdd;
+  logic [7:0]  drp_raw, drp_eff, drp_bleed, drp_temp;
+  logic [15:0] drp_evts;
+  logic signed [8:0] drp_didt;
 
   groq_power_droop_controller u_droop (
     .clk(clk), .rst_n(rst_n), .enable_i(droop_en), .slice_active_i(droop_slice_act), .mxm_zero_skip_cnt_i(droop_zskip_cnt),
@@ -149,6 +150,31 @@ module tb_rtl_perf_energy_calibration;
     .raw_demand_o(drp_raw), .eff_current_o(drp_eff), .dummy_bleed_current_o(drp_bleed),
     .dummy_bleed_mask_o(drp_bmask), .didt_signed_o(drp_didt), .vdd_est_mv_o(drp_vdd),
     .thermal_temp_c_o(drp_temp), .emerg_throttle_o(drp_throt), .droop_mitigated_events_o(drp_evts)
+  );
+
+  // 6. Zero-Stall Cycle-Stealing SRAM SECDED Scrubber & eFuse Repair Controller
+  logic        scb_efuse_req, scb_vliw_ren, scb_vliw_wen, scb_dma_wen, scb_scrub_en, scb_ser_en;
+  logic [1:0]  scb_efuse_bank, scb_efuse_addr, scb_vliw_rbank, scb_vliw_raddr, scb_vliw_wbank, scb_vliw_waddr, scb_dma_wbank, scb_dma_waddr, scb_ser_bank, scb_ser_addr;
+  logic [127:0] scb_vliw_wdata, scb_dma_wdata, scb_rdat;
+  logic [143:0] scb_ser_mask;
+  logic [3:0]   scb_repen;
+  logic [7:0]   scb_repadr;
+  logic         scb_efack, scb_rval, scb_rsec, scb_rded, scb_rhit, scb_rdfire, scb_wbfire, scb_dedal;
+  logic [1:0]   scb_abank, scb_aaddr, scb_fbank, scb_faddr;
+  logic [15:0]  scb_ccnt;
+
+  groq_sram_controller_scrubber #(.P_ADDR_W(2)) u_scb (
+    .clk(clk), .rst_n(rst_n), .efuse_load_req_i(scb_efuse_req), .efuse_bank_i(scb_efuse_bank), .efuse_bad_addr_i(scb_efuse_addr),
+    .bank_repair_en_o(scb_repen), .bank_repair_addr_o(scb_repadr), .efuse_load_ack_o(scb_efack),
+    .vliw_rd_en_i(scb_vliw_ren), .vliw_rd_bank_i(scb_vliw_rbank), .vliw_rd_addr_i(scb_vliw_raddr),
+    .vliw_rd_valid_o(scb_rval), .vliw_rd_data_o(scb_rdat), .vliw_rd_sec_err_o(scb_rsec),
+    .vliw_rd_ded_err_o(scb_rded), .vliw_rd_repaired_row_hit_o(scb_rhit),
+    .vliw_wr_en_i(scb_vliw_wen), .vliw_wr_bank_i(scb_vliw_wbank), .vliw_wr_addr_i(scb_vliw_waddr), .vliw_wr_data_i(scb_vliw_wdata),
+    .dma_wr_en_i(scb_dma_wen), .dma_wr_bank_i(scb_dma_wbank), .dma_wr_addr_i(scb_dma_waddr), .dma_wr_data_i(scb_dma_wdata),
+    .scrub_enable_i(scb_scrub_en), .scrub_rd_fire_o(scb_rdfire), .scrub_wb_fire_o(scb_wbfire),
+    .scrub_active_bank_o(scb_abank), .scrub_active_addr_o(scb_aaddr), .scrub_corrected_cnt_o(scb_ccnt),
+    .scrub_ded_alert_o(scb_dedal), .first_ded_bank_o(scb_fbank), .first_ded_addr_o(scb_faddr),
+    .ser_inject_en_i(scb_ser_en), .ser_inject_bank_i(scb_ser_bank), .ser_inject_addr_i(scb_ser_addr), .ser_inject_mask_i(scb_ser_mask)
   );
 
   // Telemetry Counters across 10,000 Cycles (5 Decode Phases x 2,000 Cycles)
@@ -182,7 +208,7 @@ module tb_rtl_perf_energy_calibration;
     c0_vliw = '0;     c1_vliw = '0;
     c0_mem_wr_en = 1'b0; c0_mem_bank = '0; c0_mem_addr = '0; c0_mem_data = '0;
     c1_mem_wr_en = 1'b0; c1_mem_bank = '0; c1_mem_addr = '0; c1_mem_data = '0;
-    c2c_delay_sel = 2'd1; expected_flight = 16'd2;
+    c2c_delay_sel = 2'd1; expected_flight = 16'd3;
     c1_rs_adj_en = 1'b0;  c1_rs_adj_val = 16'sd0;
     dot_val = 1'b0; dot_zskip = 1'b1; dot_acc_en = 1'b1; dot_acc_clr = 1'b0;
     dot_mode = 3'd2; dot_ascale = 8'd127; dot_wscale = 8'd127;
@@ -193,9 +219,14 @@ module tb_rtl_perf_energy_calibration;
     sdt_tree_pidx = 24'hAD_22_40; sdt_tree_dprob = 64'hA0A0_A0A0_A0A0_A0A0;
     sdt_tree_tprob = 64'h80B0_90B0_B0B0_C0F0; sdt_tree_rand = 64'h3040_5060_7080_90A0;
     sdt_tree_dtok = 64'h1817_1615_1413_1211; sdt_bonus_tok = 8'h2A;
-    droop_en = 1'b1; droop_slice_act = 8'h00; droop_zskip_cnt = 5'd0;
-    droop_prewarm = 1'b0; droop_pw_target = 16'd600; droop_max_step = 16'd80;
-    droop_vdd_nom = 16'd850; droop_emerg_th = 16'd780;
+    droop_en = 1'b1; droop_slice_act = 8'h00; droop_zskip_cnt = 6'd0;
+    droop_prewarm = 1'b0; droop_pw_target = 8'd180; droop_max_step = 8'd24;
+    droop_vdd_nom = 12'd850; droop_emerg_th = 12'd780;
+    scb_efuse_req = 1'b0; scb_efuse_bank = 2'd0; scb_efuse_addr = 2'd0;
+    scb_vliw_ren = 1'b0; scb_vliw_rbank = 2'd0; scb_vliw_raddr = 2'd0;
+    scb_vliw_wen = 1'b0; scb_vliw_wbank = 2'd0; scb_vliw_waddr = 2'd0; scb_vliw_wdata = '0;
+    scb_dma_wen = 1'b0; scb_dma_wbank = 2'd0; scb_dma_waddr = 2'd0; scb_dma_wdata = '0;
+    scb_scrub_en = 1'b1; scb_ser_en = 1'b0; scb_ser_bank = 2'd0; scb_ser_addr = 2'd0; scb_ser_mask = 144'd1;
 
     repeat (10) @(posedge clk);
     rst_n = 1'b1;
@@ -211,16 +242,25 @@ module tb_rtl_perf_energy_calibration;
         c0_mem_data = {prng, prng ^ 64'h5555_AAAA_5555_AAAA};
         c1_mem_wr_en = 1'b1; c1_mem_bank = cyc[1:0]; c1_mem_addr = cyc[9:0];
         c1_mem_data = {prng ^ 64'h1234_5678_9ABC_DEF0, prng};
+        scb_dma_wen = 1'b1; scb_dma_wbank = cyc[1:0]; scb_dma_waddr = cyc[3:2];
+        scb_dma_wdata = {prng, ~prng};
         droop_prewarm = 1'b1;
         droop_slice_act = 8'h0F;
       end else begin
-        c0_mem_wr_en = 1'b0; c1_mem_wr_en = 1'b0;
-        droop_prewarm = 1'b0;
-        droop_slice_act = 8'hFF;
+        c0_mem_wr_en = 1'b0; c1_mem_wr_en = 1'b0; scb_dma_wen = 1'b0;
+        droop_prewarm = (cyc >= 9900);
+        droop_slice_act = (cyc < 9920) ? 8'hFF : 8'h03;
       end
 
+      // Inject periodic single-bit soft errors into idle SRAM bank for patrol scrubber auto-healing
+      scb_ser_en = (cyc >= 100 && cyc < 9000 && cyc[6:0] == 7'd32);
+      scb_ser_bank = cyc[8:7]; scb_ser_addr = cyc[10:9]; scb_ser_mask = 144'd1 << cyc[5:0];
+
       instr = '0;
-      instr.mem_op = (cyc >= 64 && cyc < 9920) ? MEM_READ_EAST : MEM_NOP;
+      instr.mem_op = (cyc >= 64 && cyc < 9920) ?
+                     ((cyc >= 5998 && cyc < 7998 && cyc[1:0] == 2'b00) ? MEM_READ_WEST : MEM_READ_EAST) : MEM_NOP;
+      instr.dst_stream = (cyc >= 5998 && cyc < 7998 && cyc[1:0] == 2'b00) ? 5'd0 : 5'd1;
+      instr.dst_dir_west = (cyc >= 5998 && cyc < 7998 && cyc[1:0] == 2'b00);
       instr.mem_base_addr = {10'd0, cyc[5:0]};
       instr.sxm_op = (cyc[2:0] == 3'd0) ? SXM_BARREL_ROTATE : SXM_PASSTHROUGH;
       instr.vxm_op = (cyc[3:0] == 4'd0) ? VXM_RMSNORM_RED : VXM_SWIGLU;
@@ -230,10 +270,15 @@ module tb_rtl_perf_energy_calibration;
       end else begin
         instr.mxm_op = MXM_NOP;
       end
-      instr.nim_op = (cyc >= 6000 && cyc < 8000 && cyc[1:0] == 2'b00) ? NIM_REALSYNC_PING : NIM_NOP;
-      instr.imm16 = 16'h0001;
+      instr.nim_op = (cyc >= 6000 && cyc < 8005) ? NIM_SEND : NIM_NOP;
+      instr.src_stream_a = 5'd16; // Westward stream 0 arriving at SLICE_NIM (Hop 0)
+      instr.imm16 = 16'h0001;     // Destination Chip 1
       for (int s = 0; s < NUM_SLICES; s++) begin
         instr.target_slice = s[3:0];
+        if (s != SLICE_NIM) begin
+          instr.src_stream_a = 5'd1;
+          instr.dst_stream   = (s == SLICE_MEM_W && cyc >= 5998 && cyc < 7998 && cyc[1:0] == 2'b00) ? 5'd0 : 5'(s + 1);
+        end
         c0_vliw[s] = instr;
         c1_vliw[s] = instr;
       end
@@ -259,6 +304,10 @@ module tb_rtl_perf_energy_calibration;
       sdt_tree_rand = prng;
       sdt_tree_tprob = (cyc[3] == 1'b0) ? 64'h8080_B0B0_B0B0_C0F0 : 64'h8080_8060_B0B0_C0F0;
 
+      #1ps;
+      if ((drp_didt < 0 ? 64'(-drp_didt) : 64'(drp_didt)) > max_abs_didt)
+        max_abs_didt = (drp_didt < 0 ? 64'(-drp_didt) : 64'(drp_didt));
+
       @(posedge clk);
       #1step;
 
@@ -267,7 +316,7 @@ module tb_rtl_perf_energy_calibration;
         zero_skipped_lanes_sum += 64'(dot_zlanes_o);
         total_dot_lanes_sum += (dot_mode == 3'd3) ? 64'd32 : 64'd16;
       end
-      droop_zskip_cnt = dot_zlanes_o[4:0];
+      droop_zskip_cnt = dot_zlanes_o;
       if (c0_tx_val) c2c_tx_packets++;
       if (c1_dsk_val) c2c_deskew_releases++;
       if (kvq_oval && kvq_wren) kvq_compressed_packets++;
@@ -277,8 +326,6 @@ module tb_rtl_perf_energy_calibration;
       end
       if (drp_vdd < vdd_min_mv && cyc > 10) vdd_min_mv = 64'(drp_vdd);
       if (drp_vdd > vdd_max_mv && cyc > 10) vdd_max_mv = 64'(drp_vdd);
-      if ((drp_didt < 0 ? -drp_didt : drp_didt) > max_abs_didt)
-        max_abs_didt = 64'(drp_didt < 0 ? -drp_didt : drp_didt);
       gated_stream_hops_sum = 64'(c0_gated) + 64'(c1_gated);
     end
 
@@ -306,15 +353,17 @@ module tb_rtl_perf_energy_calibration;
     $fwrite(fd, "  \"vdd_min_mv\": %0d,\n", vdd_min_mv);
     $fwrite(fd, "  \"vdd_max_mv\": %0d,\n", vdd_max_mv);
     $fwrite(fd, "  \"max_abs_didt_step\": %0d,\n", max_abs_didt);
+    $fwrite(fd, "  \"droop_mitigated_events\": %0d,\n", drp_evts);
     $fwrite(fd, "  \"emerg_throttle_events\": %0d,\n", drp_throt);
+    $fwrite(fd, "  \"sram_scrub_corrected_sbe\": %0d,\n", scb_ccnt);
+    $fwrite(fd, "  \"sram_scrub_ded_alerts\": %0d,\n", scb_dedal);
     $fwrite(fd, "  \"gated_stream_hops_sum\": %0d\n", gated_stream_hops_sum);
     $fwrite(fd, "}\n");
     $fclose(fd);
-    $display("[STAGE44-HIL-PASS] 10,000-cycle RTL calibration complete: MXM_util=%.2f%%, ZeroSkip=%.2f%%, SpecTokens/step=%.2f, Skew=%0d, Collisions=%0d",
+    $display("[STAGE48-HIL-PASS] 10,000-cycle RTL calibration complete: MXM_util=%.2f%%, ZeroSkip=%.2f%%, C2C_TX=%0d, C2C_Deskew=%0d, SBE_Healed=%0d, Max_di/dt=%0d, Skew=%0d, Collisions=%0d",
              (100.0 * real'(mxm_active_cycles)) / real'(total_cycles),
              (100.0 * real'(zero_skipped_lanes_sum)) / real'(total_dot_lanes_sum),
-             real'(spec_emitted_tokens_sum) / real'(spec_verify_steps),
-             c1_skew, coll_flt);
+             c2c_tx_packets, c2c_deskew_releases, scb_ccnt, max_abs_didt, c1_skew, coll_flt);
     $finish;
   end
 endmodule

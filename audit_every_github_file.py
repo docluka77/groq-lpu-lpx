@@ -33,6 +33,9 @@ def main():
         "sv_rtl_files_linted": 0,
         "py_files_ast_checked": 0,
         "sh_files_bash_checked": 0,
+        "ys_files_checked": 0,
+        "hex_files_checked": 0,
+        "cpp_files_checked": 0,
         "json_files_validated": 0,
         "md_files_checked": 0,
         "md_links_verified": 0,
@@ -78,6 +81,35 @@ def main():
                 stats["json_files_validated"] += 1
             except Exception as e:
                 stats["syntax_or_lint_errors"].append(f"JSON parse error in {rel}: {e}")
+
+        elif ext == ".ys":
+            txt = raw.decode("utf-8", errors="replace")
+            if "read_verilog" not in txt or not any(k in txt for k in ("sat", "equiv", "synth")):
+                stats["syntax_or_lint_errors"].append(f"Invalid Yosys script {rel}")
+            else:
+                stats["ys_files_checked"] += 1
+
+        elif ext == ".hex":
+            txt = raw.decode("utf-8", errors="replace")
+            bad_hex = False
+            for line in txt.splitlines():
+                s = line.strip()
+                if not s or s.startswith(("//", "#", "@")):
+                    continue
+                if not re.fullmatch(r"[0-9a-fA-F_]+", s):
+                    bad_hex = True
+                    break
+            if bad_hex:
+                stats["syntax_or_lint_errors"].append(f"Invalid hex line in {rel}")
+            else:
+                stats["hex_files_checked"] += 1
+
+        elif ext == ".cpp":
+            txt = raw.decode("utf-8", errors="replace")
+            if "#include" not in txt:
+                stats["syntax_or_lint_errors"].append(f"Missing #include in C++ file {rel}")
+            else:
+                stats["cpp_files_checked"] += 1
 
         elif ext == ".md":
             stats["md_files_checked"] += 1

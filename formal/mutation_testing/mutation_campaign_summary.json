@@ -2,13 +2,13 @@
   "stage": "Stage 25B Formal Mutation Testing Qualification",
   "tool": "Yosys 0.60 (git sha1 5bafeb77d) Built-In Circuit SAT Solver",
   "total_modules_qualified": 17,
-  "total_mutants": 46,
-  "mutants_killed": 46,
+  "total_mutants": 50,
+  "mutants_killed": 50,
   "mutants_survived": 0,
   "mutation_kill_rate_pct": 100.0,
   "vacuous_assertions_detected": 0,
-  "total_wall_time_sec": 27.291,
-  "sum_worker_cpu_time_sec": 148.98,
+  "total_wall_time_sec": 31.602,
+  "sum_worker_cpu_time_sec": 158.101,
   "mutants": [
     {
       "mutant_id": "MUT-001",
@@ -23,7 +23,7 @@
       "cex_step": 1,
       "sat_variables": 7680,
       "sat_clauses": 21105,
-      "solve_time_sec": 0.14,
+      "solve_time_sec": 0.144,
       "log_file": "formal/mutation_testing/work/MUT-001.log"
     },
     {
@@ -55,7 +55,7 @@
       "cex_step": 1,
       "sat_variables": 6280,
       "sat_clauses": 17111,
-      "solve_time_sec": 0.162,
+      "solve_time_sec": 0.16,
       "log_file": "formal/mutation_testing/work/MUT-003.log"
     },
     {
@@ -71,7 +71,7 @@
       "cex_step": 1,
       "sat_variables": 86797,
       "sat_clauses": 234430,
-      "solve_time_sec": 0.538,
+      "solve_time_sec": 0.559,
       "log_file": "formal/mutation_testing/work/MUT-004.log"
     },
     {
@@ -87,7 +87,7 @@
       "cex_step": 1,
       "sat_variables": 71629,
       "sat_clauses": 193258,
-      "solve_time_sec": 0.443,
+      "solve_time_sec": 0.474,
       "log_file": "formal/mutation_testing/work/MUT-005.log"
     },
     {
@@ -135,7 +135,7 @@
       "cex_step": 1,
       "sat_variables": 260446,
       "sat_clauses": 704681,
-      "solve_time_sec": 1.511,
+      "solve_time_sec": 1.542,
       "log_file": "formal/mutation_testing/work/MUT-008.log"
     },
     {
@@ -151,7 +151,7 @@
       "cex_step": 1,
       "sat_variables": 260498,
       "sat_clauses": 704815,
-      "solve_time_sec": 1.55,
+      "solve_time_sec": 1.515,
       "log_file": "formal/mutation_testing/work/MUT-009.log"
     },
     {
@@ -167,7 +167,7 @@
       "cex_step": 1,
       "sat_variables": 86145,
       "sat_clauses": 223087,
-      "solve_time_sec": 1.26,
+      "solve_time_sec": 1.266,
       "log_file": "formal/mutation_testing/work/MUT-010.log"
     },
     {
@@ -183,7 +183,7 @@
       "cex_step": 1,
       "sat_variables": 89657,
       "sat_clauses": 231763,
-      "solve_time_sec": 1.302,
+      "solve_time_sec": 1.258,
       "log_file": "formal/mutation_testing/work/MUT-011.log"
     },
     {
@@ -199,7 +199,7 @@
       "cex_step": 1,
       "sat_variables": 202100,
       "sat_clauses": 530066,
-      "solve_time_sec": 0.96,
+      "solve_time_sec": 0.985,
       "log_file": "formal/mutation_testing/work/MUT-012.log"
     },
     {
@@ -215,7 +215,7 @@
       "cex_step": 1,
       "sat_variables": 214624,
       "sat_clauses": 564838,
-      "solve_time_sec": 0.964,
+      "solve_time_sec": 0.939,
       "log_file": "formal/mutation_testing/work/MUT-013.log"
     },
     {
@@ -231,7 +231,7 @@
       "cex_step": 1,
       "sat_variables": 211619,
       "sat_clauses": 555823,
-      "solve_time_sec": 0.908,
+      "solve_time_sec": 0.921,
       "log_file": "formal/mutation_testing/work/MUT-014.log"
     },
     {
@@ -247,7 +247,7 @@
       "cex_step": 1,
       "sat_variables": 546901,
       "sat_clauses": 1589749,
-      "solve_time_sec": 8.77,
+      "solve_time_sec": 8.709,
       "log_file": "formal/mutation_testing/work/MUT-015.log"
     },
     {
@@ -263,7 +263,7 @@
       "cex_step": 1,
       "sat_variables": 363826,
       "sat_clauses": 1057627,
-      "solve_time_sec": 7.688,
+      "solve_time_sec": 7.546,
       "log_file": "formal/mutation_testing/work/MUT-016.log"
     },
     {
@@ -279,7 +279,7 @@
       "cex_step": 1,
       "sat_variables": 1128600,
       "sat_clauses": 3284290,
-      "solve_time_sec": 13.855,
+      "solve_time_sec": 14.27,
       "log_file": "formal/mutation_testing/work/MUT-017.log"
     },
     {
@@ -295,7 +295,7 @@
       "cex_step": 1,
       "sat_variables": 1195032,
       "sat_clauses": 3482232,
-      "solve_time_sec": 9.714,
+      "solve_time_sec": 9.596,
       "log_file": "formal/mutation_testing/work/MUT-018.log"
     },
     {
@@ -311,7 +311,7 @@
       "cex_step": 1,
       "sat_variables": 270385,
       "sat_clauses": 761773,
-      "solve_time_sec": 6.305,
+      "solve_time_sec": 6.353,
       "log_file": "formal/mutation_testing/work/MUT-019.log"
     },
     {
@@ -327,7 +327,7 @@
       "cex_step": 1,
       "sat_variables": 270369,
       "sat_clauses": 761725,
-      "solve_time_sec": 6.385,
+      "solve_time_sec": 6.589,
       "log_file": "formal/mutation_testing/work/MUT-020.log"
     },
     {
@@ -343,7 +343,7 @@
       "cex_step": 1,
       "sat_variables": 268792,
       "sat_clauses": 757282,
-      "solve_time_sec": 6.594,
+      "solve_time_sec": 6.135,
       "log_file": "formal/mutation_testing/work/MUT-021.log"
     },
     {
@@ -359,7 +359,7 @@
       "cex_step": 1,
       "sat_variables": 152135,
       "sat_clauses": 405867,
-      "solve_time_sec": 6.51,
+      "solve_time_sec": 6.049,
       "log_file": "formal/mutation_testing/work/MUT-022.log"
     },
     {
@@ -375,7 +375,7 @@
       "cex_step": 1,
       "sat_variables": 317780,
       "sat_clauses": 848409,
-      "solve_time_sec": 7.923,
+      "solve_time_sec": 7.844,
       "log_file": "formal/mutation_testing/work/MUT-023.log"
     },
     {
@@ -391,7 +391,7 @@
       "cex_step": 1,
       "sat_variables": 417716,
       "sat_clauses": 1175900,
-      "solve_time_sec": 2.866,
+      "solve_time_sec": 2.948,
       "log_file": "formal/mutation_testing/work/MUT-024.log"
     },
     {
@@ -407,7 +407,7 @@
       "cex_step": 1,
       "sat_variables": 835613,
       "sat_clauses": 2353327,
-      "solve_time_sec": 6.707,
+      "solve_time_sec": 6.405,
       "log_file": "formal/mutation_testing/work/MUT-025.log"
     },
     {
@@ -423,7 +423,7 @@
       "cex_step": 1,
       "sat_variables": 375061,
       "sat_clauses": 1008861,
-      "solve_time_sec": 3.057,
+      "solve_time_sec": 2.927,
       "log_file": "formal/mutation_testing/work/MUT-026.log"
     },
     {
@@ -439,7 +439,7 @@
       "cex_step": 1,
       "sat_variables": 461948,
       "sat_clauses": 1195665,
-      "solve_time_sec": 6.621,
+      "solve_time_sec": 6.411,
       "log_file": "formal/mutation_testing/work/MUT-027.log"
     },
     {
@@ -455,7 +455,7 @@
       "cex_step": 1,
       "sat_variables": 62474,
       "sat_clauses": 167581,
-      "solve_time_sec": 0.269,
+      "solve_time_sec": 0.27,
       "log_file": "formal/mutation_testing/work/MUT-028.log"
     },
     {
@@ -471,7 +471,7 @@
       "cex_step": 1,
       "sat_variables": 76786,
       "sat_clauses": 206221,
-      "solve_time_sec": 0.327,
+      "solve_time_sec": 0.319,
       "log_file": "formal/mutation_testing/work/MUT-029.log"
     },
     {
@@ -487,7 +487,7 @@
       "cex_step": 1,
       "sat_variables": 114494,
       "sat_clauses": 327150,
-      "solve_time_sec": 0.883,
+      "solve_time_sec": 0.909,
       "log_file": "formal/mutation_testing/work/MUT-030.log"
     },
     {
@@ -503,7 +503,7 @@
       "cex_step": 1,
       "sat_variables": 369841,
       "sat_clauses": 1057461,
-      "solve_time_sec": 2.712,
+      "solve_time_sec": 2.67,
       "log_file": "formal/mutation_testing/work/MUT-031.log"
     },
     {
@@ -519,7 +519,7 @@
       "cex_step": 1,
       "sat_variables": 371590,
       "sat_clauses": 1062324,
-      "solve_time_sec": 2.853,
+      "solve_time_sec": 2.79,
       "log_file": "formal/mutation_testing/work/MUT-032.log"
     },
     {
@@ -535,7 +535,7 @@
       "cex_step": 1,
       "sat_variables": 8393,
       "sat_clauses": 23155,
-      "solve_time_sec": 0.076,
+      "solve_time_sec": 0.068,
       "log_file": "formal/mutation_testing/work/MUT-033.log"
     },
     {
@@ -551,7 +551,7 @@
       "cex_step": 1,
       "sat_variables": 4348,
       "sat_clauses": 12011,
-      "solve_time_sec": 0.051,
+      "solve_time_sec": 0.049,
       "log_file": "formal/mutation_testing/work/MUT-034.log"
     },
     {
@@ -567,7 +567,7 @@
       "cex_step": 1,
       "sat_variables": 655855,
       "sat_clauses": 1797982,
-      "solve_time_sec": 4.221,
+      "solve_time_sec": 4.329,
       "log_file": "formal/mutation_testing/work/MUT-035.log"
     },
     {
@@ -583,7 +583,7 @@
       "cex_step": 1,
       "sat_variables": 656002,
       "sat_clauses": 1798387,
-      "solve_time_sec": 4.454,
+      "solve_time_sec": 4.352,
       "log_file": "formal/mutation_testing/work/MUT-036.log"
     },
     {
@@ -599,7 +599,7 @@
       "cex_step": 1,
       "sat_variables": 26510,
       "sat_clauses": 72806,
-      "solve_time_sec": 0.402,
+      "solve_time_sec": 0.406,
       "log_file": "formal/mutation_testing/work/MUT-037.log"
     },
     {
@@ -615,7 +615,7 @@
       "cex_step": 1,
       "sat_variables": 25886,
       "sat_clauses": 71110,
-      "solve_time_sec": 0.396,
+      "solve_time_sec": 0.393,
       "log_file": "formal/mutation_testing/work/MUT-038.log"
     },
     {
@@ -631,7 +631,7 @@
       "cex_step": 1,
       "sat_variables": 1193560,
       "sat_clauses": 3478198,
-      "solve_time_sec": 4.672,
+      "solve_time_sec": 4.753,
       "log_file": "formal/mutation_testing/work/MUT-039.log"
     },
     {
@@ -647,7 +647,7 @@
       "cex_step": 1,
       "sat_variables": 418356,
       "sat_clauses": 1177820,
-      "solve_time_sec": 3.106,
+      "solve_time_sec": 2.753,
       "log_file": "formal/mutation_testing/work/MUT-040.log"
     },
     {
@@ -663,7 +663,7 @@
       "cex_step": 1,
       "sat_variables": 478011,
       "sat_clauses": 1276640,
-      "solve_time_sec": 8.269,
+      "solve_time_sec": 8.665,
       "log_file": "formal/mutation_testing/work/MUT-041.log"
     },
     {
@@ -679,7 +679,7 @@
       "cex_step": 1,
       "sat_variables": 255443,
       "sat_clauses": 719919,
-      "solve_time_sec": 6.198,
+      "solve_time_sec": 6.086,
       "log_file": "formal/mutation_testing/work/MUT-042.log"
     },
     {
@@ -695,7 +695,7 @@
       "cex_step": 1,
       "sat_variables": 52463,
       "sat_clauses": 144237,
-      "solve_time_sec": 0.487,
+      "solve_time_sec": 0.489,
       "log_file": "formal/mutation_testing/work/MUT-043.log"
     },
     {
@@ -711,7 +711,7 @@
       "cex_step": 1,
       "sat_variables": 371836,
       "sat_clauses": 1062996,
-      "solve_time_sec": 2.419,
+      "solve_time_sec": 2.415,
       "log_file": "formal/mutation_testing/work/MUT-044.log"
     },
     {
@@ -727,7 +727,7 @@
       "cex_step": 1,
       "sat_variables": 7127,
       "sat_clauses": 19652,
-      "solve_time_sec": 0.061,
+      "solve_time_sec": 0.06,
       "log_file": "formal/mutation_testing/work/MUT-045.log"
     },
     {
@@ -743,8 +743,72 @@
       "cex_step": 1,
       "sat_variables": 655780,
       "sat_clauses": 1797787,
-      "solve_time_sec": 4.148,
+      "solve_time_sec": 4.333,
       "log_file": "formal/mutation_testing/work/MUT-046.log"
+    },
+    {
+      "mutant_id": "MUT-047",
+      "module": "groq_sram_macro_sp",
+      "source_file": "sram_ip/groq_sram_macro_sp.sv",
+      "category": "SRAM Read-Valid Spurious Assertion on Write",
+      "description": "Assert rvalid <= 1'b1 during active SRAM write cycle (!eff_we_n)",
+      "expected_property": "Property 3: Read Valid only asserts after an active read cycle (assert(f_was_read_req))",
+      "status": "KILLED",
+      "killed": true,
+      "falsified_assertion_line": 331,
+      "cex_step": 1,
+      "sat_variables": 86776,
+      "sat_clauses": 234373,
+      "solve_time_sec": 0.53,
+      "log_file": "formal/mutation_testing/work/MUT-047.log"
+    },
+    {
+      "mutant_id": "MUT-048",
+      "module": "groq_mem_agu",
+      "source_file": "sram_ip/groq_mem_agu.sv",
+      "category": "AGU Inner Loop Index Bounds Overflow",
+      "description": "Disable idx0_q reset on inner loop wrap (last_0) so idx0_q exceeds safe_count0",
+      "expected_property": "Property 2: Coordinate indices never exceed configured bounds (idx0_q < safe_count0)",
+      "status": "KILLED",
+      "killed": true,
+      "falsified_assertion_line": 196,
+      "cex_step": 1,
+      "sat_variables": 9170,
+      "sat_clauses": 24649,
+      "solve_time_sec": 0.05,
+      "log_file": "formal/mutation_testing/work/MUT-048.log"
+    },
+    {
+      "mutant_id": "MUT-049",
+      "module": "groq_stream_fabric",
+      "source_file": "rtl/groq_stream_fabric.sv",
+      "category": "Stream Fabric Westward Hop Shift Drop",
+      "description": "Drop Westward 1-hop/cycle spatial valid propagation west_valid_q[s][c]",
+      "expected_property": "Theorem 1B: Exact 1-Hop/Cycle Westward Arrival",
+      "status": "KILLED",
+      "killed": true,
+      "falsified_assertion_line": 262,
+      "cex_step": 1,
+      "sat_variables": 86124,
+      "sat_clauses": 223049,
+      "solve_time_sec": 1.257,
+      "log_file": "formal/mutation_testing/work/MUT-049.log"
+    },
+    {
+      "mutant_id": "MUT-050",
+      "module": "groq_mxm_slice",
+      "source_file": "rtl/groq_mxm_slice.sv",
+      "category": "MXM Zero-Cycle Ping-Pong Weight Swap Suppression",
+      "description": "Stall active_bank_q toggle when MXM_SWAP_WEIGHT instruction executes",
+      "expected_property": "Property 4: Ping-Pong Weight Buffer Zero-Cycle Swap (active_bank_o == ~f_active_bank_d1)",
+      "status": "KILLED",
+      "killed": true,
+      "falsified_assertion_line": 371,
+      "cex_step": 1,
+      "sat_variables": 546849,
+      "sat_clauses": 1589605,
+      "solve_time_sec": 8.367,
+      "log_file": "formal/mutation_testing/work/MUT-050.log"
     }
   ]
 }
